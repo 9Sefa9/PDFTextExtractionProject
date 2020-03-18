@@ -1,43 +1,43 @@
 package extractor;
 
+import exception.DrawException;
 import org.apache.fontbox.util.BoundingBox;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType3Font;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.TextPosition;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static layout.CharacterContainer.charactersBoxCoordinatesMap;
 
 public class PDFExtractor {
     private final String pdfPath = "src\\main\\resources\\08662658.pdf";
     private float min= Float.MAX_VALUE;
-    private PDDocument document;
+    private PDDocument pdfDocument;
+    private String pdfDocumentText;
     private PDFTextStripper pdfTextStripper;
-    private HashMap<Rectangle2D,Integer> m = new HashMap<>();
+
     public void start() throws IOException {
 
-        loadPDF(pdfPath);
-        analyze();
+        loadPDFDocument(pdfPath);
+        analyzePDFDocument();
         printCompleteDoc();
-        drawRectangle();
-        startPDF();
+        //drawCharactersBoundingBox();
+      //  startPDF();
 
     }
+
 
     private void startPDF() {
         if (Desktop.isDesktopSupported()) {
@@ -57,7 +57,7 @@ public class PDFExtractor {
     }
 
     //Eventuell abschnitte rausfiltern, anzahl buchstaben etc filtern.. usw. Mit zusammenarbeit von Data.java
-    private void analyze() {
+    private void analyzePDFDocument() {
         try {
             pdfTextStripper = new PDFTextStripper(){
                 @Override
@@ -65,6 +65,7 @@ public class PDFExtractor {
                     pdfTextStripper.setParagraphStart("\t");
                     StringBuilder builder = new StringBuilder();
                     for(TextPosition t : textPositions){
+
                             PDFont font = t.getFont();
                             BoundingBox boundingBox = font.getBoundingBox();
                             Rectangle2D.Float rect = new Rectangle2D.Float(boundingBox.getLowerLeftX(), boundingBox.getUpperRightY(), boundingBox.getWidth(), boundingBox.getHeight());
@@ -75,7 +76,7 @@ public class PDFExtractor {
                             Rectangle2D bounds = shape.getBounds2D();
                             bounds.setRect(bounds.getX(), bounds.getY() - bounds.getHeight(), bounds.getWidth(), bounds.getHeight());
 
-                            m.put(bounds, getCurrentPageNo());
+                            charactersBoxCoordinatesMap.put(bounds, getCurrentPageNo());
 
                         if(builder.length()==0){
                             builder.append("[[[FontSize:"+t.getFontSizeInPt()+" || "+t.getPageWidth()+ "]]]  ");
@@ -89,15 +90,19 @@ public class PDFExtractor {
                     super.writeString(newText, textPositions);
                 }
             };
+
+            //Wichtig, damit die initialisierung aufgerufen wird!
+            this.pdfDocumentText = pdfTextStripper.getText(this.pdfDocument);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    private void loadPDF(String pdfPath) {
+    private void loadPDFDocument(String pdfPath) {
         String absolutePath;
         try {
             absolutePath = Paths.get(pdfPath).toAbsolutePath().toString();
-            document = PDDocument.load(new File(absolutePath));
+            this.pdfDocument = PDDocument.load(new File(absolutePath));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,27 +110,30 @@ public class PDFExtractor {
     }
 
     private void printCompleteDoc(){
-        try {
-            if (!document.isEncrypted()) {
-                for (String line : pdfTextStripper.getText(document).split(pdfTextStripper.getParagraphStart())) {
+        if (!pdfDocument.isEncrypted()) {
+            for (String line : this.pdfDocumentText.split(pdfTextStripper.getParagraphStart())) {
+                String[] words = line.split(" ");
+                String firstWord = words[0].trim();
+                String lastWord = words[words.length-1].trim();
+                System.out.println("FirstWord:"+firstWord);
+                System.out.println("lastWord:"+lastWord);
+               // System.out.println(line);
 
-                    System.out.println(line);
-                    System.out.println("********************************************************************");
-                }
+                System.out.println("********************************************************************");
             }
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
-    private void drawRectangle(){
-        PDPage page;
+    private void drawCharactersBoundingBox(){
+        PDPage page=null;
         PDPageContentStream contentStream=null;
         try {
-            for(Map.Entry<Rectangle2D, Integer> map : this.m.entrySet()) {
-                page = this.document.getPage(map.getValue()-1);
-                contentStream = new PDPageContentStream(this.document,page,true,true);
+            if(charactersBoxCoordinatesMap == null)
+                throw new DrawException("Map is NULL!");
 
+            for(Map.Entry<Rectangle2D, Integer> map : charactersBoxCoordinatesMap.entrySet()) {
+
+                page = this.pdfDocument.getPage(map.getValue()-1);
+                contentStream = new PDPageContentStream(this.pdfDocument,page,true,true);
                 contentStream.addRect((float)map.getKey().getBounds2D().getX(),(float)map.getKey().getBounds2D().getY(), (float)map.getKey().getWidth(),(float)map.getKey().getHeight());
                 contentStream.setStrokingColor(Color.RED);
                 contentStream.stroke();
@@ -133,8 +141,8 @@ public class PDFExtractor {
             }
             try {
                 File file1 = new File("src\\main\\resources\\colored08662658.pdf");
-                document.save(file1);
-                document.close();
+                pdfDocument.save(file1);
+                pdfDocument.close();
             }catch (FileNotFoundException f){
                 Runtime.getRuntime().exec("taskkill /F /IM AcroRd32.exe");
                 try {
@@ -143,14 +151,12 @@ public class PDFExtractor {
                     e.printStackTrace();
                 }
                 File file1 = new File("src\\main\\resources\\colored08662658.pdf");
-                document.save(file1);
-                document.close();
+                pdfDocument.save(file1);
+                pdfDocument.close();
             }
-        } catch (IOException e) {
+        } catch (IOException | DrawException e) {
             e.printStackTrace();
-
         }
-
     }
 
 }
