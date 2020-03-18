@@ -8,7 +8,6 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.TextPosition;
-
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
@@ -23,7 +22,6 @@ import static layout.CharacterContainer.charactersBoxCoordinatesMap;
 
 public class PDFExtractor {
     private final String pdfPath = "src\\main\\resources\\08662658.pdf";
-    private float min= Float.MAX_VALUE;
     private PDDocument pdfDocument;
     private String pdfDocumentText;
     private PDFTextStripper pdfTextStripper;
@@ -79,7 +77,7 @@ public class PDFExtractor {
                             charactersBoxCoordinatesMap.put(bounds, getCurrentPageNo());
 
                         if(builder.length()==0){
-                            builder.append("[[[FontSize:"+t.getFontSizeInPt()+" || "+t.getPageWidth()+ "]]]  ");
+                           // builder.append("[[[FontSize:"+t.getFontSizeInPt()+" || "+t.getPageWidth()+ "]]]  ");
                         }
                         if(!t.equals(-1)){
                             builder.append(t);
@@ -116,8 +114,15 @@ public class PDFExtractor {
                 String firstWord = words[0].trim();
                 String lastWord = words[words.length-1].trim();
                 System.out.println("FirstWord:"+firstWord);
+
+
+                //Diese If Bedingung sorgt dafür, dass z.B "localization\nof" gesplittet wird.
+                if(lastWord.contains("\n")){
+                   String[] lastWordCorrection = lastWord.split("\n");
+                   lastWord = lastWordCorrection[lastWordCorrection.length-1];
+                }
+
                 System.out.println("lastWord:"+lastWord);
-               // System.out.println(line);
 
                 System.out.println("********************************************************************");
             }
