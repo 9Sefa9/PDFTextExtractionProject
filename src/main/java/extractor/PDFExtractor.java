@@ -124,6 +124,8 @@ public class PDFExtractor {
 
                 System.out.println("lastWord:"+lastWord);
 
+                //Printed den ganzen Line.
+                System.out.println(line);
                 System.out.println("********************************************************************");
             }
         }
