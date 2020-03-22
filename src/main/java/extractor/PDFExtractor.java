@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
-import static layout.CharacterContainer.charactersBoxCoordinatesMap;
+import static layout.Character.charactersBoxCoordinatesMap;
 
 public class PDFExtractor {
     private final String pdfPath = "src\\main\\resources\\08662658.pdf";
