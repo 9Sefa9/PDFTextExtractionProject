@@ -1,5 +1,5 @@
 package interfaces;
 
-public interface Extractable {
+public interface Extractable extends PDFX {
 
 }

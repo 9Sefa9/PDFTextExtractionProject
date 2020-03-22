@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 
 import static layout.Character.charactersBoxCoordinatesMap;
-
-public class PDFExtractor {
+//PLAYERGROUND!   PLAYGROUND!  PLAYGROUND!
+public class PLAYGROUND {
     private final String pdfPath = "src\\main\\resources\\08662658.pdf";
     private PDDocument pdfDocument;
     private String pdfDocumentText;

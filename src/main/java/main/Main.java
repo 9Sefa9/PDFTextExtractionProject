@@ -1,13 +1,13 @@
 package main;
 
-import extractor.PDFExtractor;
+import extractor.PLAYGROUND;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args){
 
-        PDFExtractor p = new PDFExtractor();
+        PLAYGROUND p = new PLAYGROUND();
         try {
             p.start();
         } catch (IOException e) {

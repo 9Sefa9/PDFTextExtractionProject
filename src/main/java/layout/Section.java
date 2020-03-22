@@ -1,4 +1,6 @@
 package layout;
 
-public class Section {
+import interfaces.Storable;
+
+public class Section implements Storable {
 }
