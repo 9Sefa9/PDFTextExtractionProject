@@ -8,6 +8,8 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.TextPosition;
+import utilities.Helper;
+
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
@@ -16,9 +18,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import static layout.Character.charactersBoxCoordinatesMap;
+import static layout.Word.wordsAndOccurencesMap;
+
 //PLAYERGROUND!   PLAYGROUND!  PLAYGROUND!
 public class PLAYGROUND {
     private final String pdfPath = "src\\main\\resources\\08662658.pdf";
@@ -30,7 +35,8 @@ public class PLAYGROUND {
 
         loadPDFDocument(pdfPath);
         analyzePDFDocument();
-        printCompleteDoc();
+        Helper.csvWriter("G:/Users/Progamer/Desktop/addressesWrite.csv",wordsAndOccurencesMap);
+      //  printCompleteDoc();
         //drawCharactersBoundingBox();
       //  startPDF();
 
@@ -62,8 +68,11 @@ public class PLAYGROUND {
                 protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
                     pdfTextStripper.setParagraphStart("\t");
                     StringBuilder builder = new StringBuilder();
+                    //Wird zum erstellen eines csv Files verwendet.
+                    //\w matched alle char's die kein word sind. any non-word character.
+                            wordsAndOccurencesMap.merge(text.replaceAll("\\W","").toLowerCase(Locale.ENGLISH),1,Integer::sum);
                     for(TextPosition t : textPositions){
-
+                            //Zum Umranden der einzelnen Character.
                             PDFont font = t.getFont();
                             BoundingBox boundingBox = font.getBoundingBox();
                             Rectangle2D.Float rect = new Rectangle2D.Float(boundingBox.getLowerLeftX(), boundingBox.getUpperRightY(), boundingBox.getWidth(), boundingBox.getHeight());
@@ -74,7 +83,10 @@ public class PLAYGROUND {
                             Rectangle2D bounds = shape.getBounds2D();
                             bounds.setRect(bounds.getX(), bounds.getY() - bounds.getHeight(), bounds.getWidth(), bounds.getHeight());
 
+                            //Wird zum zeichnen verwendet.
                             charactersBoxCoordinatesMap.put(bounds, getCurrentPageNo());
+
+
 
                         if(builder.length()==0){
                            // builder.append("[[[FontSize:"+t.getFontSizeInPt()+" || "+t.getPageWidth()+ "]]]  ");
