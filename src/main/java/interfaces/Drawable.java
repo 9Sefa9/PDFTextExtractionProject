@@ -1,5 +1,6 @@
 package interfaces;
 
+import extractor.Document;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -11,7 +12,6 @@ public abstract class Drawable implements PDFX{
     //Hauptinformationen einer geometrischen Figur
     protected float x,y,width,height;
     protected Color color;
-    protected PDDocument pdfDocument;
     protected PDPageContentStream contentStream;
     protected PDPage pdPage;
     protected int pageNumber;
@@ -21,13 +21,12 @@ public abstract class Drawable implements PDFX{
         setWidth(width);
         setHeight(height);
         setColor(color);
-        setPDFDocument(pdfDocument);
+        Document.setPdfDocument(pdfDocument);
         setPageNumber(pageNumber);
     }
 
 
     protected abstract void draw();
-    protected void setPDFDocument(PDDocument pdfDocument){ this.pdfDocument = pdfDocument;}
     protected void setColor(Color color){
         this.color = color;
     };
@@ -36,7 +35,6 @@ public abstract class Drawable implements PDFX{
     protected void setWidth(float width){ this.width = width;}
     protected void setHeight(float height){ this.height = height;}
     protected void setPageNumber(int pageNumber) { this.pageNumber = pageNumber;}
-    protected void setPdfDocument(PDDocument pdfDocument){this.pdfDocument=pdfDocument;}
     protected void setPdPage(PDPage pdPage){this.pdPage=pdPage;}
     protected void setContentStream(PDPageContentStream contentStream){this.contentStream = contentStream;}
     protected Color getColor(){return this.color;}
@@ -45,7 +43,6 @@ public abstract class Drawable implements PDFX{
     protected float getWidth(){return this.width;}
     protected float getHeight(){return this.height;}
     protected int getPageNumber(){return this.pageNumber;}
-    protected PDDocument getPdfDocument(){return this.pdfDocument;}
     protected PDPage getPdPage(){return this.pdPage;}
     protected PDPageContentStream getContentStream(){return this.contentStream;}
 

@@ -1,6 +1,7 @@
 package figure;
 
 import exception.DrawException;
+import extractor.Document;
 import interfaces.Drawable;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -20,38 +21,15 @@ public class Rectangle extends Drawable {
         super(x, y, width, height, color, pdfDocument, page);
 
     }
-    private void printFAKE(){
-        try {
-            File file1 = new File("src\\main\\resources\\colored08662658.pdf");
-            pdfDocument.save(file1);
-            pdfDocument.close();
-        } catch (FileNotFoundException f) {
-
-            try {
-                Thread.sleep(1500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            File file1 = new File("src\\main\\resources\\colored08662658.pdf");
-            try {
-                pdfDocument.save(file1);
-                pdfDocument.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     @Override
     // private void drawCharactersBoundingBox()
     public void draw() {
         try {
-            if (getPdfDocument() == null)
+            if (Document.getPdfDocument() == null)
                 throw new DrawException("PDDocument is null!");
 
-            setPdPage(getPdfDocument().getPage(getPageNumber()));
-            setContentStream(new PDPageContentStream(getPdfDocument(), getPdPage(), true, true));
+            setPdPage(Document.getPdfDocument().getPage(getPageNumber()));
+            setContentStream(new PDPageContentStream(Document.getPdfDocument(), getPdPage(), true, true));
 
             if (getContentStream() == null)
                 throw new DrawException("Content Stream Error!");
@@ -61,9 +39,6 @@ public class Rectangle extends Drawable {
             getContentStream().setStrokingColor(getColor());
             getContentStream().stroke();
             getContentStream().close();
-            // }
-
-
 
         } catch (IOException | DrawException i) {
             i.printStackTrace();
