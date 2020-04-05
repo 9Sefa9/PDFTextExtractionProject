@@ -5,11 +5,16 @@ import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
 import interfaces.PDFX;
 
+import java.awt.*;
 import java.io.*;
 import java.util.HashMap;
 
 //Statische Klasse als Hilfe für bestimmte Funktionalitäten.
 public class Helper implements PDFX {
+    /** Liest eine *.csv Datei bezüglich csvFile
+     * @param csvFile Der Pfad einer *.csv der abgelesen werden soll.
+     *
+     */
     public static void csvReader(String csvFile){
         try(CSVReader reader = new CSVReader(new FileReader(csvFile))){
             String[] line;
@@ -21,6 +26,10 @@ public class Helper implements PDFX {
         }
 
     }
+    /** Erstellt mithilfe csvFile eine neue *.csv Datei.
+     * @param path Pfad wo *.csv abgespeichert werden soll.
+     * @param wordsAndOccurencesMap Hashmap mit Wörtern(key) und wie oft diese auftauchen(value).
+     */
     public static void csvWriter(String path, HashMap<String,Integer> wordsAndOccurencesMap){
 
         try (CSVWriter writer = new CSVWriter(new FileWriter(path))){
@@ -47,10 +56,33 @@ public class Helper implements PDFX {
         }
     }
 
-        public static void main(String[] args) {
-              //  csvReader("G:/Users/Progamer/Desktop/addresses.csv");
-                //  csvWriter("G:/Users/Progamer/Desktop/addressesWrite.csv");
+    /** Startet PDF Document
+     * @param path Pfad eines PDF Documents, der gestartet werden soll.
+     *
+     */
+    public static void startPDF(String path) {
+        if (Desktop.isDesktopSupported()) {
+            try {
+                File myFile = new File(path/*"src\\main\\resources\\colored08662658.pdf"*/);
+                Desktop.getDesktop().open(myFile);
+            } catch (IOException ex) {
+                // no application registered for PDFs
+                try {
+                    Runtime.getRuntime().exec("taskkill /F /IM AcroRd32.exe");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                startPDF(path);
+            }
         }
+    }
+    public static void stopPDF(){
+        try {
+            Runtime.getRuntime().exec("taskkill /F /IM AcroRd32.exe");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
 

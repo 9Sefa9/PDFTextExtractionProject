@@ -34,10 +34,15 @@ public class PLAYGROUND {
     private PDFTextStripper pdfTextStripper;
 
     public void start() throws IOException {
+        // if (charactersBoxCoordinatesMap == null)
+        //   throw new DrawException("Map is NULL!");
 
+        // for (Map.Entry<Rectangle2D, Integer> map : charactersBoxCoordinatesMap.entrySet()) {
+
+        //  }
         loadPDFDocument(pdfPath);
         // analyzePDFDocument();
-        // Helper.csvWriter("G:/Users/Progamer/Desktop/addressesWrite.csv", wordsAndOccurencesMap);
+      //   Helper.csvWriter("G:/Users/Progamer/Desktop/addressesWrite.csv", wordsAndOccurencesMap);
         //  printCompleteDoc();
         //drawCharactersBoundingBox();
         //  startPDF();
@@ -107,22 +112,7 @@ public class PLAYGROUND {
     }
 
 
-    private void startPDF() {
-        if (Desktop.isDesktopSupported()) {
-            try {
-                File myFile = new File("src\\main\\resources\\colored08662658.pdf");
-                Desktop.getDesktop().open(myFile);
-            } catch (IOException ex) {
-                // no application registered for PDFs
-                try {
-                    Runtime.getRuntime().exec("taskkill /F /IM AcroRd32.exe");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                startPDF();
-            }
-        }
-    }
+
 
     //Eventuell abschnitte rausfiltern, anzahl buchstaben etc filtern.. usw. Mit zusammenarbeit von Data.java
     //hier werden zudem charactersBoxCoordinatesMap gefüllt um es später mit der Methode drawCharactersBoundingBox zeichnen zu können.
@@ -174,13 +164,7 @@ public class PLAYGROUND {
     }
 
     private void loadPDFDocument(String pdfPath) {
-        String absolutePath;
-        try {
-            absolutePath = Paths.get(pdfPath).toAbsolutePath().toString();
-            this.pdfDocument = PDDocument.load(new File(absolutePath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
     }
 
@@ -208,40 +192,6 @@ public class PLAYGROUND {
         }
     }
 
-    private void drawCharactersBoundingBox() {
-        PDPage page = null;
-        PDPageContentStream contentStream = null;
-        try {
-            if (charactersBoxCoordinatesMap == null)
-                throw new DrawException("Map is NULL!");
 
-            for (Map.Entry<Rectangle2D, Integer> map : charactersBoxCoordinatesMap.entrySet()) {
-
-                page = this.pdfDocument.getPage(map.getValue() - 1);
-                contentStream = new PDPageContentStream(this.pdfDocument, page, true, true);
-                contentStream.addRect((float) map.getKey().getBounds2D().getX(), (float) map.getKey().getBounds2D().getY(), (float) map.getKey().getWidth(), (float) map.getKey().getHeight());
-                contentStream.setStrokingColor(Color.RED);
-                contentStream.stroke();
-                contentStream.close();
-            }
-            try {
-                File file1 = new File("src\\main\\resources\\colored08662658.pdf");
-                pdfDocument.save(file1);
-                pdfDocument.close();
-            } catch (FileNotFoundException f) {
-                Runtime.getRuntime().exec("taskkill /F /IM AcroRd32.exe");
-                try {
-                    Thread.sleep(1500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                File file1 = new File("src\\main\\resources\\colored08662658.pdf");
-                pdfDocument.save(file1);
-                pdfDocument.close();
-            }
-        } catch (IOException | DrawException e) {
-            e.printStackTrace();
-        }
-    }
 
 }
