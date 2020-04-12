@@ -1,5 +1,5 @@
 package interfaces;
 
-public interface Storable extends PDFX {
+public abstract class Storable implements PDFX {
 
 }

@@ -1,6 +1,8 @@
 package main;
 
 import extractor.PLAYGROUND;
+import interfaces.PDFX;
+import interfaces.Storable;
 
 import java.io.IOException;
 
@@ -10,7 +12,6 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args){
-
         PLAYGROUND p = new PLAYGROUND();
         try {
             p.start();

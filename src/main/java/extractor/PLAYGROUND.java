@@ -40,7 +40,7 @@ public class PLAYGROUND {
         // for (Map.Entry<Rectangle2D, Integer> map : charactersBoxCoordinatesMap.entrySet()) {
 
         //  }
-        loadPDFDocument(pdfPath);
+       // loadPDFDocument(pdfPath);
         // analyzePDFDocument();
       //   Helper.csvWriter("G:/Users/Progamer/Desktop/addressesWrite.csv", wordsAndOccurencesMap);
         //  printCompleteDoc();
@@ -161,11 +161,6 @@ public class PLAYGROUND {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void loadPDFDocument(String pdfPath) {
-
-
     }
 
     private void printCompleteDoc() {
