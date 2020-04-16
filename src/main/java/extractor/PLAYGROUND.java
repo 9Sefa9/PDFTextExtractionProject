@@ -163,30 +163,4 @@ public class PLAYGROUND {
         }
     }
 
-    private void printCompleteDoc() {
-        if (!pdfDocument.isEncrypted()) {
-            for (String line : this.pdfDocumentText.split(pdfTextStripper.getParagraphStart())) {
-                String[] words = line.split(" ");
-                String firstWord = words[0].trim();
-                String lastWord = words[words.length - 1].trim();
-                System.out.println("FirstWord:" + firstWord);
-
-
-                //Diese If Bedingung sorgt dafür, dass z.B "localization\nof" gesplittet wird.
-                if (lastWord.contains("\n")) {
-                    String[] lastWordCorrection = lastWord.split("\n");
-                    lastWord = lastWordCorrection[lastWordCorrection.length - 1];
-                }
-
-                System.out.println("lastWord:" + lastWord);
-
-                //Printed den ganzen Line.
-                System.out.println(line);
-                System.out.println("********************************************************************");
-            }
-        }
-    }
-
-
-
 }

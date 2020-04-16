@@ -22,6 +22,7 @@ public class Rectangle extends Drawable {
 
     }
     @Override
+    //Malt etwas entsprechend der Koordinaten, die in super Klasse gesetzt wurden.
     // private void drawCharactersBoundingBox()
     public void draw() {
         try {

@@ -7,7 +7,12 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import java.io.File;
 import java.io.IOException;
 
-public class Export implements Extractable {
+public class Export extends Extractable {
+    @Override
+    public void importDocument(String path) {
+
+    }
+
     /**Exportiert PDF in ein festgelegtes Verzeichnis
      *
      * @param pdfDocument Gibt an, welches Document exportiert werden soll.

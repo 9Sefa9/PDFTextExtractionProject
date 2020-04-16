@@ -9,12 +9,13 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-public class Import implements Extractable {
+public class Import extends Extractable {
     /**
      * PDF Document wird importiert und unter der Klasse Document abgespeichert.
      *
      * @param path Pfad wo sich ein PDF befindet
      */
+    @Override
     public void importDocument(String path) {
         try {
             String absolutePath = Paths.get(path).toAbsolutePath().toString();
@@ -28,5 +29,7 @@ public class Import implements Extractable {
         }
     }
 
-
+    @Override
+    public void exportDocument(PDDocument pdfDocument, String path) {
+    }
 }

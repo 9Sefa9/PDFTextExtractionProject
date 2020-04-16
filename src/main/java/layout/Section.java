@@ -4,6 +4,6 @@ import interfaces.Storable;
 
 import java.util.HashMap;
 
-public class Section implements Storable {
+public class Section extends Storable {
 
 }

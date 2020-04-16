@@ -8,9 +8,9 @@ import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.IOException;
 
-public class Document implements Extractable {
-    public static PDDocument pdfDocument;
-
+public class Document {
+    private static PDDocument pdfDocument;
+    private static PDFTextStripper pdfTextStripper;
     public static void setPdfDocument(PDDocument pdfDoc) {
         pdfDocument = pdfDoc;
     }
@@ -25,6 +25,8 @@ public class Document implements Extractable {
         }
         return null;
     }
+    public static void setPdfTextStripper(PDFTextStripper strippper){pdfTextStripper = strippper;}
+    public static PDFTextStripper getPdfTextStripper(){return pdfTextStripper;}
     //@TODO Forschleife muss noch abgecheckt werden. was passiert da in der RegEx ?
     public static void printDocument(PDFTextStripper pdfTextStripper, PDDocument pdfDocument) {
         try {

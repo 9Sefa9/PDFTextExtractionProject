@@ -1,22 +1,27 @@
 package main;
 
-import extractor.PLAYGROUND;
-import interfaces.PDFX;
-import interfaces.Storable;
+import analyze.Analyze;
+import interfaces.Extractable;
+import io.Import;
 
-import java.io.IOException;
-
-/**Author Credentials
+/**
+ * Author Credentials
+ *
  * @author Sefa Gövercin - 3030095 - sefa.goevercin@stud.uni-due.de
  * @version 1.0
  */
 public class Main {
-    public static void main(String[] args){
-        PLAYGROUND p = new PLAYGROUND();
-        try {
-            p.start();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static void main(String[] args) {
+        Extractable imp= new Import();
+        Extractable analyze = new Analyze();
+        if (args.length == 0)
+            System.out.println("No Argument found!\nUsage: java -jar <dirPath>");
+        if (args.length > 1)
+            System.out.println("Too many Arguments found!\nUsage: java -jar <dirPath>");
+        if (args.length == 1) {
+            System.err.println("START EXTRACTION");
+            imp.importDocument(args[0]);
+
         }
     }
 }
