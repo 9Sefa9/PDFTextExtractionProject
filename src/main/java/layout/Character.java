@@ -14,10 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-public class Character extends Word{
+public class Character extends Word {
     //INteger ist die Seite Zahl, wo sich der Character befindet.
     //Rectangle2D die Coordinates des characters.
-    public static HashMap<Rectangle2D,Integer> charactersBoxCoordinatesMap = new HashMap<>();
+    public static HashMap<Rectangle2D, Integer> charactersBoxCoordinatesMap = new HashMap<>();
+
     @Override
     //hier werden zudem charactersBoxCoordinatesMap gefüllt um es später mit der Methode drawCharactersBoundingBox zeichnen zu können.
     protected void analyze() {

@@ -1,6 +1,6 @@
 package main;
 
-import analyze.Analyze;
+import extractor.DocumentHandler;
 import interfaces.Extractable;
 import io.Import;
 
@@ -13,14 +13,15 @@ import io.Import;
 public class Main {
     //"src\\main\\resources\\08662658.pdf";
     public static void main(String[] args) {
-        Extractable imp= new Import();
+        Extractable imp = new Import();
+        DocumentHandler handler = new DocumentHandler();
         if (args.length == 0)
             System.out.println("No Argument found!\nUsage: java -jar <dirPath>");
         if (args.length > 1)
             System.out.println("Too many Arguments found!\nUsage: java -jar <dirPath>");
         if (args.length == 1) {
             System.err.println("START EXTRACTION");
-            imp.importDocument(args[0]);
+            imp.importDocument(handler,args[0]);
 
         }
     }

@@ -1,6 +1,7 @@
 package io;
 
 import exception.ExportException;
+import extractor.DocumentHandler;
 import interfaces.Extractable;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
@@ -9,7 +10,7 @@ import java.io.IOException;
 
 public class Export extends Extractable {
     @Override
-    public void importDocument(String path) {
+    public void importDocument(DocumentHandler handler, String path) {
 
     }
 

@@ -21,6 +21,7 @@ public class Rectangle extends Drawable {
         super(x, y, width, height, color, pdfDocument, page);
 
     }
+
     @Override
     //Malt etwas entsprechend der Koordinaten, die in super Klasse gesetzt wurden.
     // private void drawCharactersBoundingBox()

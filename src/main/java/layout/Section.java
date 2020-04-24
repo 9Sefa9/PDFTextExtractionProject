@@ -94,15 +94,15 @@ public class Section extends Analyzable {
         */
         try {
             float width = Document.getPdfDocument().getPage(0).getMediaBox().getWidth();
-            float height= Document.getPdfDocument().getPage(0).getMediaBox().getHeight();
+            float height = Document.getPdfDocument().getPage(0).getMediaBox().getHeight();
             StringBuilder pdfText = new StringBuilder();
             PDFTextStripperByArea stripper = new PDFTextStripperByArea();
 
             stripper.setSortByPosition(true);
 
-            Rectangle2D rectLeft = new Rectangle2D.Float(0, 0, width/2,height);
+            Rectangle2D rectLeft = new Rectangle2D.Float(0, 0, width / 2, height);
 
-            Rectangle2D rectRight = new Rectangle2D.Float(width/2,0, width/2, height);
+            Rectangle2D rectRight = new Rectangle2D.Float(width / 2, 0, width / 2, height);
 
             stripper.addRegion("leftColumn", rectLeft);
 
