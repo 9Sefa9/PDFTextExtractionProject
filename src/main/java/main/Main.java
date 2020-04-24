@@ -11,9 +11,9 @@ import io.Import;
  * @version 1.0
  */
 public class Main {
+    //"src\\main\\resources\\08662658.pdf";
     public static void main(String[] args) {
         Extractable imp= new Import();
-        Extractable analyze = new Analyze();
         if (args.length == 0)
             System.out.println("No Argument found!\nUsage: java -jar <dirPath>");
         if (args.length > 1)
