@@ -22,6 +22,7 @@ import static layout.Character.charactersBoxCoordinatesMap;
 public class Section extends Analyzable {
     @Override
     //hier werden zudem charactersBoxCoordinatesMap gefüllt um es später mit der Methode drawCharactersBoundingBox zeichnen zu können.
+    //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     protected void analyze() {
         try {
             Document.getPdfDocument().pdfTextStripper = new PDFTextStripper() {

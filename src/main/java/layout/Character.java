@@ -21,6 +21,7 @@ public class Character extends Word {
 
     @Override
     //hier werden zudem charactersBoxCoordinatesMap gefüllt um es später mit der Methode drawCharactersBoundingBox zeichnen zu können.
+    //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     protected void analyze() {
         try {
             Document.getPdfDocument().pdfTextStripper = new PDFTextStripper() {

@@ -23,12 +23,12 @@ public class Import extends Extractable {
         try {
             String absolutePath = Paths.get(dirPath).toAbsolutePath().toString();
             file = new File(absolutePath);
-            if (!file.isDirectory() && !file.exists() ) {
+            if (!file.isDirectory() && !file.exists()) {
                 throw new ImportException("Document kann nicht importiert werden!");
             } else
-                //Document.setPdfDocument(PDDocument.load(new File(absolutePath)));
-            handler.setDocumentsList(file.listFiles((dir, name) -> name.endsWith(".pdf") ? true:false));
-        } catch ( ImportException e) {
+
+                handler.setDocumentsList(file.listFiles((dir, name) -> name.endsWith(".pdf") ? true : false));
+        } catch (ImportException e) {
             e.printStackTrace();
         }
     }
