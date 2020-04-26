@@ -20,10 +20,14 @@ import java.util.Locale;
 import static layout.Character.charactersBoxCoordinatesMap;
 
 public class Section extends Analyzable {
+    /**
+     * Analysiert die vorhanden sections innerhalb des PDF Dokuments.
+     */
     @Override
     //hier werden zudem charactersBoxCoordinatesMap gefüllt um es später mit der Methode drawCharactersBoundingBox zeichnen zu können.
     //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     protected void analyze() {
+      /*
         try {
             Document.getPdfDocument().pdfTextStripper = new PDFTextStripper() {
                 @Override
@@ -67,7 +71,12 @@ public class Section extends Analyzable {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+    }
+
+    @Override
+    public void start() {
+
     }
 
     //Überlegung:  Es existieren wörter, die in der Mitte kein Sinn ergeben. z.b But:  Bu    t
@@ -76,23 +85,7 @@ public class Section extends Analyzable {
     //Ich könnte aber auch teorethisch untersuchen ob es silben trennungen gibt wie :   pedestri-
     //keine ahnung. Muss ich noch mal schauen...
     private void linksRechtsSectionBoundingArea() {
-       /* float width = this.pdfDocument.getPage(0).getMediaBox().getWidth();
-        float height= this.pdfDocument.getPage(0).getMediaBox().getHeight();
-        Rectangle2D region = new Rectangle2D.Double(100,100, 100,100);
-        String regionName = "region";
-        PDFTextStripperByArea stripper = null;
-        try {
-            stripper = new PDFTextStripperByArea();
-            stripper.setSortByPosition(false);
-            stripper.addRegion(regionName, region);
-            stripper.extractRegions(this.pdfDocument.getPage(0));
-            this.pdfDocumentText = stripper.getText(this.pdfDocument);
-            System.out.println(stripper.getTextForRegion(regionName));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
+      /*
         try {
             float width = Document.getPdfDocument().getPage(0).getMediaBox().getWidth();
             float height = Document.getPdfDocument().getPage(0).getMediaBox().getHeight();
@@ -131,5 +124,6 @@ public class Section extends Analyzable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }*/
     }
 }

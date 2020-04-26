@@ -9,21 +9,17 @@ import java.io.File;
 import java.io.IOException;
 
 public class Export extends Extractable {
-    @Override
-    public void importDocument(DocumentHandler handler, String path) {
-
-    }
-
     /**Exportiert PDF in ein festgelegtes Verzeichnis
-     *
-     * @param pdfDocument Gibt an, welches Document exportiert werden soll.
+     * TODO muss noch implementiert werden.
+     * @param handler beherbergt die liste mit allen PDF'
      * @param path Gibt an, wohin das Dokument abgspeichert werden soll.
      */
-    public void exportDocument(PDDocument pdfDocument, String path) {
+    public void exportDocument(DocumentHandler handler, String path) {
+        /*
         //src\main\resources\colored08662658.pdf
         try {
-            if(pdfDocument==null)
-                throw new ExportException("pdf Document ist null!");
+            if(handler==null)
+                throw new ExportException("DocumentHandler ist null!");
 
             File file1 = new File(path);
             pdfDocument.save(file1);
@@ -32,5 +28,13 @@ public class Export extends Extractable {
         } catch (IOException | ExportException e){
             e.printStackTrace();
         }
+        */
+    }
+    /**
+     * NullFunction
+     */
+    @Override
+    public void importDocument(DocumentHandler handler, String path) {
+
     }
 }

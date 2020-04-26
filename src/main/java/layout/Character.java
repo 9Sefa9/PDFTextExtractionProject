@@ -1,6 +1,5 @@
 package layout;
 
-import extractor.Document;
 import org.apache.fontbox.util.BoundingBox;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -19,11 +18,14 @@ public class Character extends Word {
     //Rectangle2D die Coordinates des characters.
     public static HashMap<Rectangle2D, Integer> charactersBoxCoordinatesMap = new HashMap<>();
 
+    /**
+     * Analysiert die vorhanden characters innerhalb des PDF Dokuments.
+     */
     @Override
     //hier werden zudem charactersBoxCoordinatesMap gefüllt um es später mit der Methode drawCharactersBoundingBox zeichnen zu können.
     //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     protected void analyze() {
-        try {
+  /*      try {
             Document.getPdfDocument().pdfTextStripper = new PDFTextStripper() {
                 @Override
                 protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
@@ -66,6 +68,6 @@ public class Character extends Word {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }

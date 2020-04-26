@@ -25,15 +25,23 @@ public class Import extends Extractable {
             file = new File(absolutePath);
             if (!file.isDirectory() && !file.exists()) {
                 throw new ImportException("Document kann nicht importiert werden!");
-            } else
-
+            } else {
+                 //falls nur 1 PDF Dokument:
+                if(file.getName().endsWith(".pdf"))
+                    handler.setDocumentsList(new File[]{file});
+                else
+                //setze den Ordner mit den PDF Dokumenten in die DocumentsList.
                 handler.setDocumentsList(file.listFiles((dir, name) -> name.endsWith(".pdf") ? true : false));
+            }
         } catch (ImportException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * NullFunction
+     */
     @Override
-    public void exportDocument(PDDocument pdfDocument, String path) {
+    public void exportDocument(DocumentHandler handler, String path) {
     }
 }

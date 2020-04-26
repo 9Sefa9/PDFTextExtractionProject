@@ -15,18 +15,21 @@ public abstract class Drawable implements PDFX {
     protected PDPageContentStream contentStream;
     protected PDPage pdPage;
     protected int pageNumber;
-
+    protected PDDocument pdfDocument;
     public Drawable(float x, float y, float width, float height, Color color, PDDocument pdfDocument, int pageNumber) {
         setX(x);
         setY(y);
         setWidth(width);
         setHeight(height);
         setColor(color);
-        Document.setPdfDocument(pdfDocument);
+        setPdfDocument(pdfDocument);
         setPageNumber(pageNumber);
     }
 
-
+    protected void setPdfDocument(PDDocument pdfDocument) {
+        this.pdfDocument = pdfDocument;
+    }
+    protected PDDocument getPdfDocument(){return this.pdfDocument;}
     protected abstract void draw();
 
     protected void setColor(Color color) {

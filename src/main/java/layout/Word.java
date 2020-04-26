@@ -1,6 +1,5 @@
 package layout;
 
-import extractor.Document;
 import interfaces.Analyzable;
 import org.apache.fontbox.util.BoundingBox;
 import org.apache.pdfbox.pdmodel.font.PDFont;
@@ -19,11 +18,14 @@ import static layout.Character.charactersBoxCoordinatesMap;
 
 public class Word extends Analyzable {
     public static HashMap<String, Integer> wordsAndOccurencesMap = new HashMap<>();
-
+    /**
+     * Analysiert die vorhanden Wörter innerhalb des PDF Dokuments.
+     */
     @Override
     //hier werden zudem charactersBoxCoordinatesMap gefüllt um es später mit der Methode drawCharactersBoundingBox zeichnen zu können.
     //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     protected void analyze() {
+    /*
         try {
             Document.getPdfDocument().pdfTextStripper = new PDFTextStripper() {
                 @Override
@@ -67,6 +69,11 @@ public class Word extends Analyzable {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+    }
+
+    @Override
+    public void start() {
+
     }
 }
