@@ -54,7 +54,6 @@ public class Title extends Analyzable {
             height = firstPage.getMediaBox().getHeight();
             top = new Rectangle2D.Float(0, 0, width, height / 4.5f);
             createFontSizeList();
-            System.out.println(document.getPdfDocument().getDocument().)
             highestSize = getHighestFontSize(this.fontSizeList);
              Helper.delimiter();
              System.out.print(boundingArea(document));
@@ -71,14 +70,25 @@ public class Title extends Analyzable {
         try {
             //Erst wird der fontSizecheck gemacht. Im anschluss dann der Bound gesetzt.
             PDFTextStripperByArea stripper = new PDFTextStripperByArea() {
-
                 @Override
+                protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
+                    StringBuilder builder = new StringBuilder();
+                    for(TextPosition p: textPositions) {
+                        if (!text.isEmpty() && p.getFontSizeInPt() == highestSize) {
+                            builder.append(p);
+                        }
+                    }
+                    super.writeString(builder.toString(), textPositions);
+                }
+
+                /*@Override
                 protected void processTextPosition(TextPosition text) {
 
                     if (text.getFontSizeInPt() == highestSize) {
+
                         super.processTextPosition(text);
                     }
-                }
+                }*/
             };
 
             PDPage firstPage = document.getPdfDocument().getPage(0);
@@ -108,7 +118,6 @@ public class Title extends Analyzable {
 
                     //true -> text ohne beachtung der spalten.
                     setSortByPosition(true);
-                    Rectangle2D top = new Rectangle2D.Float(0, 0, width, height / 4.5f);
                     addRegion("top", top);
                     super.extractRegions(firstPage);
                     getTextForRegion("top");

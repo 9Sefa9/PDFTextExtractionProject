@@ -31,6 +31,7 @@ public class DocumentHandler {
                     throw new ImportException("Null File in documentFiles!");
                 Document newDocument = new Document(docFile.getName());
                 newDocument.setPdfDocument(PDDocument.load(docFile));
+
                 getDocumentsList().add(newDocument);
             }
         } catch (IOException | ImportException i) {
