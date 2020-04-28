@@ -57,8 +57,10 @@ public class Title extends Analyzable {
 
                 @Override
                 protected void processTextPosition(TextPosition text) {
-                    if (text.getFontSizeInPt() == highestSize)
+                    if (text.getFontSizeInPt() == highestSize) {
+
                         super.processTextPosition(text);
+                    }
                 }
             };
 
@@ -76,7 +78,7 @@ public class Title extends Analyzable {
             String titleRegion = stripper.getTextForRegion("top");
             StringBuilder title = new StringBuilder();
             title.append(titleRegion);
-            return title.toString();
+            return title.toString().trim();
                     /*
                     for (TextPosition position : textPositions) {
                         if(position.getFontSizeInPt() == highestFont){
@@ -95,16 +97,22 @@ public class Title extends Analyzable {
         try {
             //speichere alle schriftgrößen ab.
             PDFTextStripper testStripper = new PDFTextStripper() {
+
                 @Override
                 protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
-                    for (TextPosition t : textPositions)
-                        if(!text.isEmpty())
+                    StringBuilder br = new StringBuilder();
+                    for (TextPosition t : textPositions) {
+                        //der text.length>1 soll Fälle mit nur 1 Buchstaben ausschließe, die richtig groß sind.
+                        if (!text.isEmpty()) {
                             fontSizeList.add(t.getFontSizeInPt());
+                        }
+                    }
+
                 }
             };
 
             //notwendiger Aufruf, damit der STripper ausgeführt wird un die textPositionSizes list voll wird.
-            testStripper.getText(document.getPdfDocument());
+           testStripper.getText(document.getPdfDocument());
             //löscht duplikate. z.B.  6.0 6.0 6.0 ...
             this.fontSizeList = fontSizeList.stream().distinct().collect(Collectors.toList());
 
