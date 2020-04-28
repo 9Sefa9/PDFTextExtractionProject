@@ -8,8 +8,11 @@ import interfaces.Drawable;
 import interfaces.Extractable;
 import io.Export;
 import org.apache.fontbox.util.BoundingBox;
+import org.apache.pdfbox.cos.COSName;
+import org.apache.pdfbox.cos.COSStream;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDResources;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -21,6 +24,7 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,7 +34,9 @@ import static layout.Character.charactersBoxCoordinatesMap;
 public class Title extends Analyzable {
     private DocumentHandler documentHandler;
     private List<Float> fontSizeList;
-    private float highestSize;
+    private PDPage firstPage;
+    private float width, height, highestSize;
+    private Rectangle2D top;
 
     public Title(DocumentHandler handler) {
         this.documentHandler = handler;
@@ -43,14 +49,21 @@ public class Title extends Analyzable {
 
         //iteriert über alle PDF die vorher importiert wurden.
         for (Document document : documentHandler.getDocumentsList()) {
-            createFontSizeList(document);
+            firstPage = document.getPdfDocument().getPage(0);
+            width = firstPage.getMediaBox().getWidth();
+            height = firstPage.getMediaBox().getHeight();
+            top = new Rectangle2D.Float(0, 0, width, height / 4.5f);
+            createFontSizeList();
+            System.out.println(document.getPdfDocument().getDocument().)
             highestSize = getHighestFontSize(this.fontSizeList);
+             Helper.delimiter();
+             System.out.print(boundingArea(document));
+             Helper.delimiter();
 
-            String title = boundingArea(document);
-            System.out.println(title);
         }
 
     }
+
 
 
     //@TODO muss noch irgendwie gemacht werden.
@@ -69,12 +82,9 @@ public class Title extends Analyzable {
             };
 
             PDPage firstPage = document.getPdfDocument().getPage(0);
-            float width = firstPage.getMediaBox().getWidth();
-            float height = firstPage.getMediaBox().getHeight();
             //true -> text ohne beachtung der spalten.
             stripper.setSortByPosition(true);
-            Rectangle2D top = new Rectangle2D.Float(0, 0, width, height / 4.5f);
-            stripper.addRegion("top", top);
+            stripper.addRegion("top", this.top);
 
             stripper.extractRegions(firstPage);
 
@@ -90,14 +100,12 @@ public class Title extends Analyzable {
     }
 
 
-    private void createFontSizeList(Document document) {
+    private void createFontSizeList() {
         try {
             PDFTextStripperByArea stripper = new PDFTextStripperByArea() {
                 @Override
                 public void extractRegions(PDPage firstPage) throws IOException {
 
-                    float width = firstPage.getMediaBox().getWidth();
-                    float height = firstPage.getMediaBox().getHeight();
                     //true -> text ohne beachtung der spalten.
                     setSortByPosition(true);
                     Rectangle2D top = new Rectangle2D.Float(0, 0, width, height / 4.5f);
@@ -117,13 +125,10 @@ public class Title extends Analyzable {
                     }
                 }
             };
-            PDPage firstPage = document.getPdfDocument().getPage(0);
             stripper.extractRegions(firstPage);
             //löscht duplikate. z.B.  6.0 6.0 6.0 ...
             this.fontSizeList = fontSizeList.stream().distinct().collect(Collectors.toList());
-            for (int i = 0; i <this.fontSizeList.size() ; i++) {
-                System.out.println(this.fontSizeList.get(i));
-            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

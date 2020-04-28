@@ -10,6 +10,11 @@ public class Document {
     private PDDocument pdfDocument;
     private PDFTextStripper pdfTextStripper;
     private String pdfText;
+    private String pdfName;
+    public Document(String name) {
+        this.pdfName =name;
+    }
+
     public void setPdfDocument(PDDocument pdfDoc) {
         this.pdfDocument = pdfDoc;
     }
@@ -97,5 +102,8 @@ public class Document {
 
     public void setPdfText(String pdfText) {
         this.pdfText = pdfText;
+    }
+    public String getPdfName(){
+        return this.pdfName;
     }
 }

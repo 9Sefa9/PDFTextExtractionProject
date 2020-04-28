@@ -1,11 +1,20 @@
 package main;
 
+import extractor.Document;
 import extractor.DocumentHandler;
 import interfaces.Analyzable;
 import interfaces.Extractable;
+import io.Export;
 import io.Import;
 import layout.*;
 import layout.Character;
+import org.apache.pdfbox.cos.COSName;
+import org.apache.pdfbox.cos.COSStream;
+import org.apache.pdfbox.pdmodel.PDResources;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Author Credentials
@@ -25,11 +34,10 @@ public class Main {
             System.err.println("START EXTRACTION");
             Extractable imp = new Import();
             DocumentHandler handler = new DocumentHandler();
-            System.out.println(args[0]);
             imp.importDocument(handler,args[0]);
-
             Analyzable analyze[] = {new Title(handler)};
             analyze[0].start();
         }
     }
+
 }
