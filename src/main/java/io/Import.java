@@ -1,6 +1,7 @@
 package io;
 
 import exception.ImportException;
+import extractor.Document;
 import extractor.DocumentHandler;
 import interfaces.Extractable;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -42,6 +43,6 @@ public class Import extends Extractable {
      * NullFunction
      */
     @Override
-    public void exportDocument(DocumentHandler handler, String path) {
+    public void exportDocument(Document document, String path) {
     }
 }

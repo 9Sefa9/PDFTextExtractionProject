@@ -2,7 +2,11 @@ package layout;
 
 import extractor.Document;
 import extractor.DocumentHandler;
+import figure.Rectangle;
 import interfaces.Analyzable;
+import interfaces.Drawable;
+import interfaces.Extractable;
+import io.Export;
 import org.apache.fontbox.util.BoundingBox;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -57,20 +61,19 @@ public class Title extends Analyzable {
 
                 @Override
                 protected void processTextPosition(TextPosition text) {
-                    if (text.getFontSizeInPt() == highestSize) {
 
+                    if (text.getFontSizeInPt() == highestSize) {
                         super.processTextPosition(text);
                     }
                 }
             };
 
-            System.out.println("WRITE STRING!!!");
             PDPage firstPage = document.getPdfDocument().getPage(0);
             float width = firstPage.getMediaBox().getWidth();
             float height = firstPage.getMediaBox().getHeight();
             //true -> text ohne beachtung der spalten.
             stripper.setSortByPosition(true);
-            Rectangle2D top = new Rectangle2D.Float(0, 0, width, height / 3.5f);
+            Rectangle2D top = new Rectangle2D.Float(0, 0, width, height / 4.5f);
             stripper.addRegion("top", top);
 
             stripper.extractRegions(firstPage);
@@ -79,13 +82,7 @@ public class Title extends Analyzable {
             StringBuilder title = new StringBuilder();
             title.append(titleRegion);
             return title.toString().trim();
-                    /*
-                    for (TextPosition position : textPositions) {
-                        if(position.getFontSizeInPt() == highestFont){
-                            title.append(titleRegion);
-                        }
-                    }
-                    */
+
         } catch (IOException i) {
             i.printStackTrace();
         }
@@ -95,27 +92,38 @@ public class Title extends Analyzable {
 
     private void createFontSizeList(Document document) {
         try {
-            //speichere alle schriftgrößen ab.
-            PDFTextStripper testStripper = new PDFTextStripper() {
+            PDFTextStripperByArea stripper = new PDFTextStripperByArea() {
+                @Override
+                public void extractRegions(PDPage firstPage) throws IOException {
+
+                    float width = firstPage.getMediaBox().getWidth();
+                    float height = firstPage.getMediaBox().getHeight();
+                    //true -> text ohne beachtung der spalten.
+                    setSortByPosition(true);
+                    Rectangle2D top = new Rectangle2D.Float(0, 0, width, height / 4.5f);
+                    addRegion("top", top);
+                    super.extractRegions(firstPage);
+                    getTextForRegion("top");
+                }
 
                 @Override
-                protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
-                    StringBuilder br = new StringBuilder();
+                protected void writeString(String text, List<TextPosition> textPositions) {
+
                     for (TextPosition t : textPositions) {
                         //der text.length>1 soll Fälle mit nur 1 Buchstaben ausschließe, die richtig groß sind.
                         if (!text.isEmpty()) {
                             fontSizeList.add(t.getFontSizeInPt());
                         }
                     }
-
                 }
             };
-
-            //notwendiger Aufruf, damit der STripper ausgeführt wird un die textPositionSizes list voll wird.
-           testStripper.getText(document.getPdfDocument());
+            PDPage firstPage = document.getPdfDocument().getPage(0);
+            stripper.extractRegions(firstPage);
             //löscht duplikate. z.B.  6.0 6.0 6.0 ...
             this.fontSizeList = fontSizeList.stream().distinct().collect(Collectors.toList());
-
+            for (int i = 0; i <this.fontSizeList.size() ; i++) {
+                System.out.println(this.fontSizeList.get(i));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

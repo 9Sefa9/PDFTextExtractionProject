@@ -20,7 +20,10 @@ public class Rectangle extends Drawable {
     public Rectangle(float x, float y, float width, float height, Color color, PDDocument pdfDocument, int page) {
         super(x, y, width, height, color, pdfDocument, page);
     }
-
+    public
+    Rectangle(double x, double y, float width, float height, Color color, PDDocument pdfDocument, int page) {
+        super(x, y, width, height, color, pdfDocument, page);
+    }
     /**
      * Zeichnet ein rechteck in ein PDF Document.
      */
