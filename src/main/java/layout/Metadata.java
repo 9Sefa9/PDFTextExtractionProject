@@ -2,74 +2,77 @@ package layout;
 
 import extractor.Document;
 import extractor.DocumentHandler;
-import figure.Rectangle;
+
 import interfaces.Analyzable;
-import interfaces.Drawable;
-import interfaces.Extractable;
-import io.Export;
-import org.apache.fontbox.util.BoundingBox;
-import org.apache.pdfbox.cos.COSName;
-import org.apache.pdfbox.cos.COSStream;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDResources;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.pdfbox.text.PDFTextStripperByArea;
-import org.apache.pdfbox.text.TextPosition;
+
+import org.apache.pdfbox.pdmodel.*;
+
 import utilities.Helper;
 
-import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.*;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
-import static layout.Character.charactersBoxCoordinatesMap;
-
-public class Title extends Analyzable {
+public class Metadata extends Analyzable {
     private DocumentHandler documentHandler;
-    private List<Float> fontSizeList;
-    private PDPage firstPage;
-    private float width, height, highestSize;
-    private Rectangle2D top;
 
-    public Title(DocumentHandler handler) {
+    public Metadata(DocumentHandler handler) {
         this.documentHandler = handler;
-        fontSizeList = new ArrayList<>();
     }
 
-    //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     @Override
     protected void analyze() {
 
         //iteriert über alle PDF die vorher importiert wurden.
         for (Document document : documentHandler.getDocumentsList()) {
-            firstPage = document.getPdfDocument().getPage(0);
+
+            DateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
+            PDDocumentInformation info = document.getPdfDocument().getDocumentInformation();
+            System.out.println("Page Count=" + document.getPdfDocument().getNumberOfPages());
+            System.out.println("Title=" + info.getTitle());
+            System.out.println("Author=" + info.getAuthor());
+            System.out.println("Subject=" + info.getSubject());
+            System.out.println("Keywords=" + info.getKeywords());
+            System.out.println("Creator=" + info.getCreator());
+            System.out.println("Producer=" + info.getProducer());
+            System.out.println("Creation Date=" + formatter.format(info.getCreationDate().getTime()));
+            System.out.println("Modification Date=" + formatter.format(info.getModificationDate().getTime()));
+            System.out.println("Trapped=" + info.getTrapped());
+            Helper.delimiter();
+        }
+
+    }
+
+    @Override
+    public void start() {
+        analyze();
+    }
+}
+    /*
+
+    analyse methode:
+     firstPage = document.getPdfDocument().getPage(0);
             width = firstPage.getMediaBox().getWidth();
             height = firstPage.getMediaBox().getHeight();
             top = new Rectangle2D.Float(0, 0, width, height / 4.5f);
             createFontSizeList();
             highestSize = getHighestFontSize(this.fontSizeList);
-             Helper.delimiter();
-             System.out.print(boundingArea(document));
-             Helper.delimiter();
+            Helper.delimiter();
+            System.out.print(boundingArea(document));
+            Helper.delimiter();
 
-        }
-
-    }
-
-
-
-    //@TODO muss noch irgendwie gemacht werden.
     private String boundingArea(Document document) {
         try {
             //Erst wird der fontSizecheck gemacht. Im anschluss dann der Bound gesetzt.
             PDFTextStripperByArea stripper = new PDFTextStripperByArea() {
+                @Override
+                public void extractRegions(PDPage page) throws IOException {
+                    //true -> text ohne beachtung der spalten.
+                    setSortByPosition(true);
+                    addRegion("top", top);
+                    super.extractRegions(firstPage);
+                    getTextForRegion("top");
+                }
+
                 @Override
                 protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
                     StringBuilder builder = new StringBuilder();
@@ -81,27 +84,9 @@ public class Title extends Analyzable {
                     super.writeString(builder.toString(), textPositions);
                 }
 
-                /*@Override
-                protected void processTextPosition(TextPosition text) {
-
-                    if (text.getFontSizeInPt() == highestSize) {
-
-                        super.processTextPosition(text);
-                    }
-                }*/
             };
-
-            PDPage firstPage = document.getPdfDocument().getPage(0);
-            //true -> text ohne beachtung der spalten.
-            stripper.setSortByPosition(true);
-            stripper.addRegion("top", this.top);
-
             stripper.extractRegions(firstPage);
-
-            String titleRegion = stripper.getTextForRegion("top");
-            StringBuilder title = new StringBuilder();
-            title.append(titleRegion);
-            return title.toString().trim();
+            return stripper.getTextForRegion("top").trim();
 
         } catch (IOException i) {
             i.printStackTrace();
@@ -125,10 +110,9 @@ public class Title extends Analyzable {
 
                 @Override
                 protected void writeString(String text, List<TextPosition> textPositions) {
-
                     for (TextPosition t : textPositions) {
                         //der text.length>1 soll Fälle mit nur 1 Buchstaben ausschließe, die richtig groß sind.
-                        if (!text.isEmpty()) {
+                        if (!text.isEmpty() ) {
                             fontSizeList.add(t.getFontSizeInPt());
                         }
                     }
@@ -154,8 +138,6 @@ public class Title extends Analyzable {
         return minValue;
     }
 
-    @Override
-    public void start() {
-        analyze();
-    }
-}
+
+    */
+

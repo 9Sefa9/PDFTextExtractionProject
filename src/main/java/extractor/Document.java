@@ -11,10 +11,17 @@ public class Document {
     private PDFTextStripper pdfTextStripper;
     private String pdfText;
     private String pdfName;
-    public Document(String name) {
+    private String pdfPath;
+    public Document(String name, String absolutePath) {
         this.pdfName =name;
+        this.pdfPath = absolutePath;
     }
-
+    public void setPdfPath(String pdfPath){
+        this.pdfPath = pdfPath;
+    }
+    public String getPdfPath(){
+        return this.pdfPath;
+    }
     public void setPdfDocument(PDDocument pdfDoc) {
         this.pdfDocument = pdfDoc;
     }

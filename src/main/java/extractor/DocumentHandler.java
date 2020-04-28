@@ -29,7 +29,7 @@ public class DocumentHandler {
             for (File docFile : documentFiles) {
                 if (docFile == null)
                     throw new ImportException("Null File in documentFiles!");
-                Document newDocument = new Document(docFile.getName());
+                Document newDocument = new Document(docFile.getName(),docFile.getAbsolutePath());
                 newDocument.setPdfDocument(PDDocument.load(docFile));
 
                 getDocumentsList().add(newDocument);
