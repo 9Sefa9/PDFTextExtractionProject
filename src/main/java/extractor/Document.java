@@ -4,10 +4,12 @@ import exception.ImportException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
+import java.io.IOException;
+
 public class Document {
     private PDDocument pdfDocument;
     private PDFTextStripper pdfTextStripper;
-
+    private String pdfText;
     public void setPdfDocument(PDDocument pdfDoc) {
         this.pdfDocument = pdfDoc;
     }
@@ -27,6 +29,13 @@ public class Document {
     //wird verwendet, um den string zu bearbeiten.
     public void setPdfTextStripper(PDFTextStripper strippper) {
         this.pdfTextStripper = strippper;
+        //Wenn pdfTextStripper gesetzt wurde, soll der entsprechende Text auch gepseichert werden!
+        //spart uns Zeit, wenn wir printen wollen.
+        try {
+            setPdfText(strippper.getText(getPdfDocument()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public PDFTextStripper getPdfTextStripper() {
@@ -41,13 +50,23 @@ public class Document {
         return null;
     }
 
+    public void print(PDFTextStripper stripper){
+        try {
+            String pdfDocumentText = stripper.getText(pdfDocument);
+            //if (!this.pdfDocument.isEncrypted())
+                System.out.println(pdfDocumentText);
+            //else throw new Exception("PDFDocument is encrypted! - can't print PDFDocument");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //@TODO Forschleife muss noch abgecheckt werden. was passiert da in der RegEx ?
     public void print() {
         try {
             String pdfDocumentText = this.pdfTextStripper.getText(pdfDocument);
-            if (!this.pdfDocument.isEncrypted())
+            //if (!this.pdfDocument.isEncrypted())
                 System.out.println(pdfDocumentText);
-            else throw new Exception("PDFDocument is encrypted! - can't print PDFDocument");
+           // else throw new Exception("PDFDocument is encrypted! - can't print PDFDocument");
                     /*  String[] words = line.split(" ");
                       String firstWord = words[0].trim();
                       String lastWord = words[words.length - 1].trim();
@@ -70,5 +89,13 @@ public class Document {
         } catch (Exception i) {
             i.printStackTrace();
         }
+    }
+
+    public String getPdfText() {
+        return pdfText;
+    }
+
+    public void setPdfText(String pdfText) {
+        this.pdfText = pdfText;
     }
 }
