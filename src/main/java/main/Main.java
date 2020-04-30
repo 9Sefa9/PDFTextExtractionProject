@@ -5,6 +5,7 @@ import interfaces.Analyzable;
 import interfaces.Extractable;
 import io.Import;
 import layout.*;
+import layout.Character;
 
 /**
  * Author Credentials
@@ -21,12 +22,15 @@ public class Main {
         if (args.length > 1)
             System.out.println("Too many Arguments found!\nUsage: java -jar <dirPath>");
         if (args.length == 1) {
-            System.err.println("START EXTRACTION");
+            float jetzt = System.currentTimeMillis();
             Extractable imp = new Import();
             DocumentHandler handler = new DocumentHandler();
             imp.importDocument(handler,args[0]);
-            Analyzable analyze[] = {new Metadata(handler)};
-            analyze[0].start();
+            Analyzable analyzableDocument[] = {new Metadata(handler), new Character(handler), new Word(handler)};
+            for (Analyzable a : analyzableDocument) {
+                a.start();
+            }
+            System.out.println((System.currentTimeMillis() - jetzt)/1000);
         }
     }
 

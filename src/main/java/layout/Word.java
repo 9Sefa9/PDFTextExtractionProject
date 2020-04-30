@@ -1,30 +1,24 @@
 package layout;
 
+import extractor.DocumentHandler;
 import interfaces.Analyzable;
-import org.apache.fontbox.util.BoundingBox;
-import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.pdfbox.text.TextPosition;
-
-import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
 
-import static layout.Character.charactersBoxCoordinatesMap;
 
-public class Word extends Analyzable {
+public class Word implements Analyzable {
     public static HashMap<String, Integer> wordsAndOccurencesMap = new HashMap<>();
+
+    public Word(DocumentHandler handler) {
+
+    }
+
     /**
      * Analysiert die vorhanden Wörter innerhalb des PDF Dokuments.
      */
     @Override
     //hier werden zudem charactersBoxCoordinatesMap gefüllt um es später mit der Methode drawCharactersBoundingBox zeichnen zu können.
     //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
-    protected void analyze() {
+    public void analyze() {
     /*
         try {
             Document.getPdfDocument().pdfTextStripper = new PDFTextStripper() {

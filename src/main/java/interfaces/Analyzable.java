@@ -1,12 +1,12 @@
 package interfaces;
 
-public abstract class Analyzable implements PDFX {
+public interface Analyzable extends PDFX {
     /**
      * Die eigentliche Analyse des PDF Dokuments.
      */
-    abstract protected void analyze();
+    void analyze();
     /**
      * startet die methode analyze
      */
-    abstract public void start();
+    void start();
 }

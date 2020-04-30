@@ -12,7 +12,7 @@ import utilities.Helper;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-public class Metadata extends Analyzable {
+public class Metadata implements Analyzable {
     private DocumentHandler documentHandler;
 
     public Metadata(DocumentHandler handler) {
@@ -20,7 +20,7 @@ public class Metadata extends Analyzable {
     }
 
     @Override
-    protected void analyze() {
+    public void analyze() {
 
         //iteriert über alle PDF die vorher importiert wurden.
         for (Document document : documentHandler.getDocumentsList()) {

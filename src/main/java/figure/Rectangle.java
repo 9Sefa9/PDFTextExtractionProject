@@ -8,13 +8,8 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Map;
 
-import static layout.Character.charactersBoxCoordinatesMap;
+import java.io.IOException;
 
 public class Rectangle extends Drawable {
     public Rectangle(float x, float y, float width, float height, Color color, PDDocument pdfDocument, int page) {
