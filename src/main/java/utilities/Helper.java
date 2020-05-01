@@ -3,14 +3,17 @@ package utilities;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
+import exception.EmptyException;
+import extractor.Document;
 import interfaces.PDFX;
 
 import java.awt.*;
 import java.io.*;
 import java.util.HashMap;
+import java.util.List;
 
 //Statische Klasse als Hilfe für bestimmte Funktionalitäten.
-public class Helper implements PDFX {
+public class Helper<E> implements PDFX {
     /**
      * Liest eine *.csv Datei bezüglich csvFile
      *
@@ -98,6 +101,64 @@ public class Helper implements PDFX {
             System.out.print("#");
         }
         System.out.println();
+    }
+
+    /**
+     * printed etwas
+     *
+     * @param document wird geprinted.
+     */
+    //@TODO Forschleife muss noch abgecheckt werden. was passiert da in der RegEx ?
+    public static void print(Document document) {
+        try {
+            document.setPdfText(document.getPdfTextStripper().getText(document.getPdfDocument()));
+            if (!document.getPdfDocument().isEncrypted())
+                System.out.println(document.getPdfText());
+             else throw new Exception("PDFDocument is encrypted! - can't print PDFDocument");
+                    /*  String[] words = line.split(" ");
+                      String firstWord = words[0].trim();
+                      String lastWord = words[words.length - 1].trim();
+                       System.out.println("FirstWord:" + firstWord);
+
+
+                    Diese If Bedingung sorgt dafür, dass z.B "localization\nof" gesplittet wird.
+                       if (lastWord.contains("\n")) {
+                            String[] lastWordCorrection = lastWord.split("\n");
+                           lastWord = lastWordCorrection[lastWordCorrection.length - 1];
+                        }
+
+                         System.out.println("lastWord:" + lastWord);
+
+                    Printed den ganzen Line.
+
+                    System.out.println("********************************************************************");
+                      */
+
+        } catch (Exception i) {
+            i.printStackTrace();
+        }
+    }
+
+    public static void print(List list) {
+        try {
+            if (list == null)
+                throw new EmptyException("list ist null!");
+
+            list.forEach(System.out::println);
+        } catch (EmptyException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void print(HashMap list) {
+        try {
+            if (list == null)
+                throw new EmptyException("HashMap ist null!");
+
+            list.forEach((k, v) -> System.out.println("K: " + k + "  V:" + v));
+        } catch (EmptyException e) {
+            e.printStackTrace();
+        }
     }
 }
 

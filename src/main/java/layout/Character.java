@@ -7,6 +7,7 @@ import org.apache.fontbox.util.BoundingBox;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.TextPosition;
+import utilities.Helper;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.BiConsumer;
 
 public class Character implements Analyzable {
 
@@ -38,14 +40,17 @@ public class Character implements Analyzable {
                         setParagraphStart("\t");
                         //\w matched alle char's aber nicht non-word character.
                         // charactersOccurenceMap.merge(text.replaceAll("\\W", "").toLowerCase(Locale.ENGLISH), 1, Integer::sum);
-                        for(java.lang.Character c:text.replaceAll("\\W", "").toLowerCase(Locale.ENGLISH).toCharArray()){
+                        char []splittedText = text.replaceAll("\\W", "").toLowerCase(Locale.ENGLISH).toCharArray();
+                        for(java.lang.Character c:splittedText){
                             charactersOccurenceMap.merge(c, 1, Integer::sum);
                         }
 
                         super.writeString(text, textPositions);
                     }
                 });
-                document.print();
+            //    Helper.print(document);
+                //charactersOccurenceMap.forEach((c,i) -> System.out.println("C:"+c+"  I:"+i));
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

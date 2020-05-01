@@ -1,15 +1,22 @@
 package layout;
 
+import extractor.Document;
 import extractor.DocumentHandler;
 import interfaces.Analyzable;
+import org.apache.pdfbox.text.PDFTextStripper;
+import utilities.Helper;
+
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Locale;
 
 
 public class Word implements Analyzable {
-    public static HashMap<String, Integer> wordsAndOccurencesMap = new HashMap<>();
+    public static HashMap<String, Integer> wordOccurenceMap = new HashMap<>();
+    private DocumentHandler handler;
 
     public Word(DocumentHandler handler) {
-
+        this.handler = handler;
     }
 
     /**
@@ -19,6 +26,25 @@ public class Word implements Analyzable {
     //hier werden zudem charactersBoxCoordinatesMap gefüllt um es später mit der Methode drawCharactersBoundingBox zeichnen zu können.
     //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     public void analyze() {
+        for (Document document : handler.getDocumentsList()) {
+            try {
+                document.setPdfTextStripper(new PDFTextStripper(){
+                    @Override
+                    protected void writeString(String text) throws IOException {
+                        String []res = text.split(" ");
+                        for (String str:res) {
+                            if()
+                            wordOccurenceMap.merge(str.replaceAll("\\W","").toLowerCase(Locale.ENGLISH), 1, Integer::sum);
+                        }
+                        super.writeString(text);
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Helper.print(wordOccurenceMap);
+        }
+
     /*
         try {
             Document.getPdfDocument().pdfTextStripper = new PDFTextStripper() {
@@ -68,6 +94,6 @@ public class Word implements Analyzable {
 
     @Override
     public void start() {
-
+        analyze();
     }
 }

@@ -72,36 +72,6 @@ public class Document {
             e.printStackTrace();
         }
     }
-    //@TODO Forschleife muss noch abgecheckt werden. was passiert da in der RegEx ?
-    public void print() {
-        try {
-            String pdfDocumentText = this.pdfTextStripper.getText(pdfDocument);
-            //if (!this.pdfDocument.isEncrypted())
-                System.out.println(pdfDocumentText);
-           // else throw new Exception("PDFDocument is encrypted! - can't print PDFDocument");
-                    /*  String[] words = line.split(" ");
-                      String firstWord = words[0].trim();
-                      String lastWord = words[words.length - 1].trim();
-                       System.out.println("FirstWord:" + firstWord);
-
-
-                    Diese If Bedingung sorgt dafür, dass z.B "localization\nof" gesplittet wird.
-                       if (lastWord.contains("\n")) {
-                            String[] lastWordCorrection = lastWord.split("\n");
-                           lastWord = lastWordCorrection[lastWordCorrection.length - 1];
-                        }
-
-                         System.out.println("lastWord:" + lastWord);
-
-                    Printed den ganzen Line.
-
-                    System.out.println("********************************************************************");
-                      */
-
-        } catch (Exception i) {
-            i.printStackTrace();
-        }
-    }
 
     public String getPdfText() {
         return pdfText;

@@ -27,17 +27,8 @@ public class Metadata implements Analyzable {
 
             DateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
             PDDocumentInformation info = document.getPdfDocument().getDocumentInformation();
-            System.out.println("Page Count=" + document.getPdfDocument().getNumberOfPages());
-            System.out.println("Title=" + info.getTitle());
-            System.out.println("Author=" + info.getAuthor());
-            System.out.println("Subject=" + info.getSubject());
-            System.out.println("Keywords=" + info.getKeywords());
-            System.out.println("Creator=" + info.getCreator());
-            System.out.println("Producer=" + info.getProducer());
-            System.out.println("Creation Date=" + formatter.format(info.getCreationDate().getTime()));
-            System.out.println("Modification Date=" + formatter.format(info.getModificationDate().getTime()));
-            System.out.println("Trapped=" + info.getTrapped());
-            Helper.delimiter();
+          //  System.out.println("Page Count=" + document.getPdfDocument().getNumberOfPages()+"\n"+ "Title=" + info.getTitle()+"\n"+ "Author=" + info.getAuthor()+"\n"+ "Subject=" + info.getSubject()+"\n"+ "Keywords=" + info.getKeywords()+"\n"+ "Creator=" + info.getCreator()+"\n"+ "Producer=" + info.getProducer()+"\n"+ "Creation Date=" + formatter.format(info.getCreationDate().getTime())+"\n"+ "Modification Date=" + formatter.format(info.getModificationDate().getTime())+"\n"+ "Trapped=" + info.getTrapped());
+           // Helper.delimiter();
         }
 
     }
