@@ -33,7 +33,7 @@ public class Word implements Analyzable {
                     protected void writeString(String text) throws IOException {
                         String []res = text.split(" ");
                         for (String str:res) {
-                            if()
+
                             wordOccurenceMap.merge(str.replaceAll("\\W","").toLowerCase(Locale.ENGLISH), 1, Integer::sum);
                         }
                         super.writeString(text);

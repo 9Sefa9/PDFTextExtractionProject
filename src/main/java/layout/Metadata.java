@@ -7,14 +7,24 @@ import interfaces.Analyzable;
 
 import org.apache.pdfbox.pdmodel.*;
 
+import org.apache.pdfbox.text.PDFTextStripperByArea;
+import org.apache.pdfbox.text.TextPosition;
 import utilities.Helper;
 
+import java.awt.geom.Rectangle2D;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Metadata implements Analyzable {
     private DocumentHandler documentHandler;
-
+    private PDPage firstPage;
+    private float width,height,highestSize;
+    private Rectangle2D top;
+    private List<Float> fontSizeList;
     public Metadata(DocumentHandler handler) {
         this.documentHandler = handler;
     }
@@ -24,12 +34,29 @@ public class Metadata implements Analyzable {
 
         //iteriert über alle PDF die vorher importiert wurden.
         for (Document document : documentHandler.getDocumentsList()) {
-
             DateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
             PDDocumentInformation info = document.getPdfDocument().getDocumentInformation();
-          //  System.out.println("Page Count=" + document.getPdfDocument().getNumberOfPages()+"\n"+ "Title=" + info.getTitle()+"\n"+ "Author=" + info.getAuthor()+"\n"+ "Subject=" + info.getSubject()+"\n"+ "Keywords=" + info.getKeywords()+"\n"+ "Creator=" + info.getCreator()+"\n"+ "Producer=" + info.getProducer()+"\n"+ "Creation Date=" + formatter.format(info.getCreationDate().getTime())+"\n"+ "Modification Date=" + formatter.format(info.getModificationDate().getTime())+"\n"+ "Trapped=" + info.getTrapped());
-           // Helper.delimiter();
+            if (info.getTitle() == null || info.getTitle().isEmpty()) {
+                String fixedTitle = extract(document);
+                System.out.println(fixedTitle);
+            } else {
+                System.out.println("Page Count=" + document.getPdfDocument().getNumberOfPages() + "\n" + "Title=" + info.getTitle() + "\n" + "Author=" + info.getAuthor() + "\n" + "Subject=" + info.getSubject() + "\n" + "Keywords=" + info.getKeywords() + "\n" + "Creator=" + info.getCreator() + "\n" + "Producer=" + info.getProducer() + "\n" + "Creation Date=" + formatter.format(info.getCreationDate().getTime()) + "\n" + "Modification Date=" + formatter.format(info.getModificationDate().getTime()) + "\n" + "Trapped=" + info.getTrapped());
+            }
+            Helper.delimiter();
         }
+
+    }
+
+    private String extract(Document document) {
+        fontSizeList = new ArrayList<Float>();
+        firstPage = document.getPdfDocument().getPage(0);
+        width = firstPage.getMediaBox().getWidth();
+        height = firstPage.getMediaBox().getHeight();
+        top = new Rectangle2D.Float(0, 0, width, height / 4.5f);
+        createFontSizeList();
+        highestSize = getHighestFontSize(fontSizeList);
+        Helper.delimiter();
+        return boundingArea(document);
 
     }
 
@@ -37,19 +64,7 @@ public class Metadata implements Analyzable {
     public void start() {
         analyze();
     }
-}
-    /*
 
-    analyse methode:
-     firstPage = document.getPdfDocument().getPage(0);
-            width = firstPage.getMediaBox().getWidth();
-            height = firstPage.getMediaBox().getHeight();
-            top = new Rectangle2D.Float(0, 0, width, height / 4.5f);
-            createFontSizeList();
-            highestSize = getHighestFontSize(this.fontSizeList);
-            Helper.delimiter();
-            System.out.print(boundingArea(document));
-            Helper.delimiter();
 
     private String boundingArea(Document document) {
         try {
@@ -67,7 +82,7 @@ public class Metadata implements Analyzable {
                 @Override
                 protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
                     StringBuilder builder = new StringBuilder();
-                    for(TextPosition p: textPositions) {
+                    for (TextPosition p : textPositions) {
                         if (!text.isEmpty() && p.getFontSizeInPt() == highestSize) {
                             builder.append(p);
                         }
@@ -103,7 +118,7 @@ public class Metadata implements Analyzable {
                 protected void writeString(String text, List<TextPosition> textPositions) {
                     for (TextPosition t : textPositions) {
                         //der text.length>1 soll Fälle mit nur 1 Buchstaben ausschließe, die richtig groß sind.
-                        if (!text.isEmpty() ) {
+                        if (!text.isEmpty()) {
                             fontSizeList.add(t.getFontSizeInPt());
                         }
                     }
@@ -129,6 +144,5 @@ public class Metadata implements Analyzable {
         return minValue;
     }
 
-
-    */
+}
 
