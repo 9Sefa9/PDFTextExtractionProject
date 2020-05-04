@@ -22,15 +22,15 @@ public class Main {
         if (args.length > 1)
             System.out.println("Too many Arguments found!\nUsage: java -jar <dirPath>");
         if (args.length == 1) {
-            float jetzt = System.currentTimeMillis();
+            long jetzt = System.nanoTime();
             Extractable imp = new Import();
             DocumentHandler handler = new DocumentHandler();
             imp.importDocument(handler,args[0]);
-            Analyzable [] analyzableDocument = {new Metadata(handler), new Character(handler) /*new Word(handler)*/};
+            Analyzable [] analyzableDocument = {new Metadata(handler), new Character(handler), new Image(handler)};
             for (Analyzable a : analyzableDocument) {
                 a.start();
             }
-            System.out.println((System.currentTimeMillis() - jetzt)/1000);
+            System.out.println("Main: Time needed: "+(System.nanoTime() - jetzt)/1000000000);
         }
     }
 

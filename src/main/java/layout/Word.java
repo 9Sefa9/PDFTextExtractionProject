@@ -23,8 +23,6 @@ public class Word implements Analyzable {
      * Analysiert die vorhanden Wörter innerhalb des PDF Dokuments.
      */
     @Override
-    //hier werden zudem charactersBoxCoordinatesMap gefüllt um es später mit der Methode drawCharactersBoundingBox zeichnen zu können.
-    //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     public void analyze() {
         for (Document document : handler.getDocumentsList()) {
             try {
