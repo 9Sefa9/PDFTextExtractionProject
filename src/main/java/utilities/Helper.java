@@ -9,8 +9,11 @@ import interfaces.PDFX;
 
 import java.awt.*;
 import java.io.*;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.Map.*;
 
 //Statische Klasse als Hilfe für bestimmte Funktionalitäten.
 public class Helper<E> implements PDFX {
@@ -158,6 +161,18 @@ public class Helper<E> implements PDFX {
             list.forEach((k, v) -> System.out.println("K: " + k + "  V:" + v));
         } catch (EmptyException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void deleteDuplicates(HashMap<Float, String> list) {
+        Set<Float> keys = list.keySet(); // The set of keys in the map.
+
+        Iterator<Float> keyIter = keys.iterator();
+
+        while (keyIter.hasNext()) {
+            float key = keyIter.next();
+            String value = list.get(key);
+            list.put(key, value);
         }
     }
 }
