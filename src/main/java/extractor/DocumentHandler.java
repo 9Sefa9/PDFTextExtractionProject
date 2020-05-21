@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DocumentHandler {
-    //Liste mit PDFDocument's.   Die innerclass wird dafür genutzt.
+    //Liste mit PDFDocument's.   Die Klasse Document wird dafür genutzt.
     private List<Document> documentsList;
     public DocumentHandler(){
         documentsList = new ArrayList<>();

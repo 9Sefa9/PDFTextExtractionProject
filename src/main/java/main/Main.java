@@ -18,11 +18,11 @@ public class Main {
     public static void main(String[] args) {
 
         if (args.length == 0)
-            System.out.println("No Argument found!\nUsage: java -jar <dirPath>");
+            System.out.println("No Argument found!\nUsage: java -jar <dir path of PDF Documents>");
         if (args.length > 1)
-            System.out.println("Too many Arguments found!\nUsage: java -jar <dirPath>");
+            System.out.println("Too many Arguments found!\nUsage: java -jar <dir path of PDF Documents>");
         if (args.length == 1) {
-            long jetzt = System.nanoTime();
+            long now = System.nanoTime();
             Extractable imp = new Import();
             DocumentHandler handler = new DocumentHandler();
             imp.importDocument(handler,args[0]);
@@ -30,7 +30,7 @@ public class Main {
             for (Analyzable a : analyzableDocument) {
                 a.start();
             }
-            System.out.println("Main: Time needed: "+(System.nanoTime() - jetzt)/1000000000);
+            System.out.println("Completion Time: "+(System.nanoTime() - now)/1000000000);
         }
     }
 

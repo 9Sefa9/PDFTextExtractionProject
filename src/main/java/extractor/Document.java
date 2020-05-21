@@ -65,9 +65,9 @@ public class Document {
     public void print(PDFTextStripper stripper){
         try {
             String pdfDocumentText = stripper.getText(pdfDocument);
-            //if (!this.pdfDocument.isEncrypted())
+            if (!this.pdfDocument.isEncrypted())
                 System.out.println(pdfDocumentText);
-            //else throw new Exception("PDFDocument is encrypted! - can't print PDFDocument");
+            else throw new Exception("PDFDocument is encrypted! - can't print PDFDocument");
         }catch (Exception e) {
             e.printStackTrace();
         }
