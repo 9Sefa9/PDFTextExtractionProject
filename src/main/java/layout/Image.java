@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class Image implements Analyzable {
     private DocumentHandler handler;
-
+    private int imageCount;
     public Image(DocumentHandler handler) {
         this.handler = handler;
     }
@@ -32,14 +32,14 @@ public class Image implements Analyzable {
                     for (COSName c : pdResources.getXObjectNames()) {
                         PDXObject po = pdResources.getXObject(c);
                         PDImageXObject pio= (PDImageXObject) po;
-                        long timestamp = System.nanoTime();
                         //Die breite und höhe beträgt 20. Bei kleineren werten kommen winzige Bilder hinzu, die
-                        //kein Sinn haben.
+                        //sinngemäß kein Teil des wissenschaftlichen Dokuments sind.
                           if (pio != null && pio.getWidth()>20f && pio.getHeight()>20f) {
                              // System.out.println("G:/Users/Progamer/Desktop/TEST/" + System.nanoTime() + ".p"+" width: "+pio.getWidth() +"  height: "+pio.getHeight());
-                            File file = new File("G:/Users/Progamer/Desktop/TEST/" + timestamp + ".png");
+                            File file = new File("G:/Users/Progamer/Desktop/TEST/" + System.nanoTime() + ".png");
                             ImageIO.write(pio.getImage(), "png", file);
-                        }
+                            imageCount+=1;
+                          }
                     }
                 }
             } catch (IOException e) {

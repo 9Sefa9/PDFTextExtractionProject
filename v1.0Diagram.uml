@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>utilities.Helper</OriginalElement>
+  <nodes>
+    <node x="218.0" y="255.0">exception.ImportException</node>
+    <node x="354.5" y="85.0">java.lang.Throwable</node>
+    <node x="0.0" y="595.0">extractor.DocumentHandler</node>
+    <node x="39.0" y="420.0">interfaces.Extractable</node>
+    <node x="904.5" y="420.0">utilities.Helper</node>
+    <node x="644.0" y="255.0">exception.DrawException</node>
+    <node x="550.8333333333333" y="335.0">interfaces.PDFX</node>
+    <node x="808.0" y="515.0">layout.Character</node>
+    <node x="436.0" y="255.0">exception.EmptyException</node>
+    <node x="700.0" y="515.0">layout.Word</node>
+    <node x="562.0" y="515.0">layout.Section</node>
+    <node x="416.0" y="595.0">main.Main</node>
+    <node x="736.5" y="420.0">interfaces.Analyzable</node>
+    <node x="256.0" y="515.0">figure.Rectangle</node>
+    <node x="354.5" y="170.0">java.lang.Exception</node>
+    <node x="966.0" y="515.0">layout.Literature</node>
+    <node x="261.0" y="420.0">interfaces.Drawable</node>
+    <node x="339.5" y="0.0">java.io.Serializable</node>
+    <node x="243.0" y="595.0">extractor.Document</node>
+    <node x="128.0" y="515.0">io.Import</node>
+    <node x="1134.0" y="515.0">layout.Image</node>
+    <node x="0.0" y="255.0">exception.ExportException</node>
+    <node x="0.0" y="515.0">io.Export</node>
+    <node x="414.0" y="515.0">layout.Metadata</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="layout.Metadata" target="interfaces.Analyzable">
+      <point x="0.0" y="-17.5" />
+      <point x="478.0" y="475.0" />
+      <point x="748.8333333333334" y="475.0" />
+      <point x="-61.66666666666663" y="17.5" />
+    </edge>
+    <edge source="layout.Character" target="interfaces.Analyzable">
+      <point x="0.0" y="-17.5" />
+      <point x="877.0" y="495.0" />
+      <point x="822.8333333333334" y="495.0" />
+      <point x="12.333333333333371" y="17.5" />
+    </edge>
+    <edge source="exception.EmptyException" target="java.lang.Exception">
+      <point x="0.0" y="-17.5" />
+      <point x="530.0" y="235.0" />
+      <point x="440.75" y="235.0" />
+      <point x="17.25" y="17.5" />
+    </edge>
+    <edge source="layout.Literature" target="interfaces.Analyzable">
+      <point x="0.0" y="-17.5" />
+      <point x="1040.0" y="485.0" />
+      <point x="847.5" y="485.0" />
+      <point x="37.0" y="17.5" />
+    </edge>
+    <edge source="utilities.Helper" target="interfaces.PDFX">
+      <point x="0.0" y="-17.5" />
+      <point x="958.5" y="390.0" />
+      <point x="627.8333333333333" y="390.0" />
+      <point x="33.0" y="17.5" />
+    </edge>
+    <edge source="layout.Section" target="interfaces.Analyzable">
+      <point x="0.0" y="-17.5" />
+      <point x="621.0" y="485.0" />
+      <point x="773.5" y="485.0" />
+      <point x="-37.0" y="17.5" />
+    </edge>
+    <edge source="java.lang.Throwable" target="java.io.Serializable">
+      <point x="0.0" y="-17.5" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="interfaces.Analyzable" target="interfaces.PDFX">
+      <point x="0.0" y="-17.5" />
+      <point x="810.5" y="400.0" />
+      <point x="605.8333333333333" y="400.0" />
+      <point x="11.0" y="17.5" />
+    </edge>
+    <edge source="layout.Image" target="interfaces.Analyzable">
+      <point x="0.0" y="-17.5" />
+      <point x="1183.0" y="475.0" />
+      <point x="872.1666666666667" y="475.0" />
+      <point x="61.66666666666674" y="17.5" />
+    </edge>
+    <edge source="exception.ImportException" target="java.lang.Exception">
+      <point x="0.0" y="-17.5" />
+      <point x="317.0" y="235.0" />
+      <point x="406.25" y="235.0" />
+      <point x="-17.25" y="17.5" />
+    </edge>
+    <edge source="io.Import" target="interfaces.Extractable">
+      <point x="0.0" y="-17.5" />
+      <point x="182.0" y="495.0" />
+      <point x="157.5" y="495.0" />
+      <point x="39.5" y="17.5" />
+    </edge>
+    <edge source="figure.Rectangle" target="interfaces.Drawable">
+      <point x="0.0" y="-17.5" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="interfaces.Extractable" target="interfaces.PDFX">
+      <point x="0.0" y="-17.5" />
+      <point x="118.0" y="390.0" />
+      <point x="561.8333333333333" y="390.0" />
+      <point x="-33.0" y="17.5" />
+    </edge>
+    <edge source="java.lang.Exception" target="java.lang.Throwable">
+      <point x="0.0" y="-17.5" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="exception.DrawException" target="java.lang.Exception">
+      <point x="0.0" y="-17.5" />
+      <point x="733.0" y="225.0" />
+      <point x="475.25" y="225.0" />
+      <point x="51.75" y="17.5" />
+    </edge>
+    <edge source="layout.Word" target="interfaces.Analyzable">
+      <point x="0.0" y="-17.5" />
+      <point x="744.0" y="495.0" />
+      <point x="798.1666666666666" y="495.0" />
+      <point x="-12.333333333333371" y="17.5" />
+    </edge>
+    <edge source="exception.ExportException" target="java.lang.Exception">
+      <point x="0.0" y="-17.5" />
+      <point x="99.0" y="225.0" />
+      <point x="371.75" y="225.0" />
+      <point x="-51.75" y="17.5" />
+    </edge>
+    <edge source="interfaces.Drawable" target="interfaces.PDFX">
+      <point x="0.0" y="-17.5" />
+      <point x="325.0" y="400.0" />
+      <point x="583.8333333333333" y="400.0" />
+      <point x="-11.0" y="17.5" />
+    </edge>
+    <edge source="io.Export" target="interfaces.Extractable">
+      <point x="0.0" y="-17.5" />
+      <point x="54.0" y="495.0" />
+      <point x="78.5" y="495.0" />
+      <point x="-39.5" y="17.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="616.0" y="315.0" />
+  <SelectedNodes>
+    <node>extractor.DocumentHandler</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

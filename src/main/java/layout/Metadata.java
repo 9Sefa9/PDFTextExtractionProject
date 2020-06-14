@@ -29,6 +29,9 @@ public class Metadata implements Analyzable {
         this.documentHandler = handler;
     }
 
+    /**
+     * Analysiert die Metadaten eines bestimmten Dokuments. Falls Titel nicht existiert, wird mit PDFBox extrahiert
+     */
     @Override
     public void analyze() {
 
@@ -47,16 +50,25 @@ public class Metadata implements Analyzable {
 
     }
 
+    /**
+     * Titel Extraktion  mit PDFBox durch Bounding Area Analyse
+     * @see #boundingArea()
+     * @param document Das eigentliche Document, welches extrahiert werden soll.
+     * @return Titel
+     */
     private String extract(Document document) {
         fontSizeList = new ArrayList<Float>();
         firstPage = document.getPdfDocument().getPage(0);
         width = firstPage.getMediaBox().getWidth();
         height = firstPage.getMediaBox().getHeight();
         top = new Rectangle2D.Float(0, 0, width, height / 4.5f);
+        //identifiziere alle Schriftgrößen oberhalb der ersten Seite
         createFontSizeList();
+        //Suche die größte Schrfitgröße aus der FontSizeList.
         highestSize = getHighestFontSize(fontSizeList);
         Helper.delimiter();
-        return boundingArea(document);
+        //boundArea extrahiert nun den Titel mit FontSizeList.
+        return boundingArea();
 
     }
 
@@ -66,7 +78,7 @@ public class Metadata implements Analyzable {
     }
 
 
-    private String boundingArea(Document document) {
+    private String boundingArea() {
         try {
             //Erst wird der fontSizecheck gemacht. Im anschluss dann der Bound gesetzt.
             PDFTextStripperByArea stripper = new PDFTextStripperByArea() {

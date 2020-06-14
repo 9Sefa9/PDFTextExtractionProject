@@ -20,7 +20,7 @@ public class Word implements Analyzable {
     }
 
     /**
-     * Analysiert die vorhanden Wörter innerhalb des PDF Dokuments.
+     * Analysiert die vorhanden Wörter innerhalb des PDF Dokuments und speichert die häufigen Buchstaben in eine Liste.
      */
     @Override
     public void analyze() {

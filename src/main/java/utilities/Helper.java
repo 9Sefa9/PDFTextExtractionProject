@@ -8,15 +8,19 @@ import extractor.Document;
 import interfaces.PDFX;
 
 import java.awt.*;
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.util.Map.*;
+import java.util.Set;
 
 //Statische Klasse als Hilfe für bestimmte Funktionalitäten.
 public class Helper<E> implements PDFX {
+    private static String OS;
+
     /**
      * Liest eine *.csv Datei bezüglich csvFile
      *
@@ -66,12 +70,12 @@ public class Helper<E> implements PDFX {
     }
 
     /**
-     * Startet PDF Document
+     * Startet PDF Document (Windows)
      *
      * @param path Pfad eines PDF Documents, der gestartet werden soll.
      */
     public static void startPDF(String path) {
-        if (Desktop.isDesktopSupported()) {
+        if (Desktop.isDesktopSupported() && isWindows()) {
             try {
                 File myFile = new File(path/*"src\\main\\resources\\colored08662658.pdf"*/);
                 Desktop.getDesktop().open(myFile);
@@ -86,12 +90,17 @@ public class Helper<E> implements PDFX {
             }
         }
     }
-
+    /**
+     * Stoppt den Acrobat Reader Process (Windows) "taskkill /F /IM AcroRd32.exe"
+     *
+     */
     public static void stopPDF() {
-        try {
-            Runtime.getRuntime().exec("taskkill /F /IM AcroRd32.exe");
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(isWindows()) {
+            try {
+                Runtime.getRuntime().exec("taskkill /F /IM AcroRd32.exe");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -107,9 +116,9 @@ public class Helper<E> implements PDFX {
     }
 
     /**
-     * printed etwas
-     *
-     * @param document wird geprinted.
+     * @deprecated Muss erneuert werden.Beinhaltet aber nützliche String operationen für andere Zwecke!
+     * Benutze stattdessen {@link #print(HashMap)} oder {@link #print(List)}.
+     * @param document Dokument, welches ausgegeben wird.
      */
     //@TODO Forschleife muss noch abgecheckt werden. was passiert da in der RegEx ?
     public static void print(Document document) {
@@ -141,7 +150,10 @@ public class Helper<E> implements PDFX {
             i.printStackTrace();
         }
     }
-
+    /**
+     * Gibt Elemente aus
+     * @param list Java.util.List
+     */
     public static void print(List list) {
         try {
             if (list == null)
@@ -152,7 +164,10 @@ public class Helper<E> implements PDFX {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Gibt Elemente in K,V Form aus
+     * @param list Eine HashMap mit K un V
+     */
     public static void print(HashMap list) {
         try {
             if (list == null)
@@ -163,7 +178,10 @@ public class Helper<E> implements PDFX {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Löscht duplikate in einer HashMap<Float,String>
+     * @param list Hashmap mit Float und String
+     */
     public static void deleteDuplicates(HashMap<Float, String> list) {
         Set<Float> keys = list.keySet(); // The set of keys in the map.
 
@@ -174,6 +192,19 @@ public class Helper<E> implements PDFX {
             String value = list.get(key);
             list.put(key, value);
         }
+    }
+    public static String getOsName()
+    {
+        if(OS == null) { OS = System.getProperty("os.name"); }
+        return OS;
+    }
+    public static boolean isWindows()
+    {
+        return getOsName().startsWith("Windows");
+    }
+
+    public static boolean isUnix(){
+        return getOsName().startsWith("Linux");
     }
 }
 

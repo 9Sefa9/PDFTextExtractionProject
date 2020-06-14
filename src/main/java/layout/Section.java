@@ -8,7 +8,7 @@ public class Section implements Analyzable {
      * Analysiert die vorhanden sections innerhalb des PDF Dokuments.
      */
     @Override
-    //hier werden zudem charactersBoxCoordinatesMap gefüllt um es später mit der Methode drawCharactersBoundingBox zeichnen zu können.
+    //@TODO Sextion komplett erkennen
     //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     public void analyze() {
       /*

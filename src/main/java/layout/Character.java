@@ -27,7 +27,7 @@ public class Character implements Analyzable {
     }
 
     /**
-     * Analysiert die vorhanden characters innerhalb des PDF Dokuments.
+     * Analysiert die vorhanden characters innerhalb des PDF Dokuments und speichert die am häufig vorkommenden Zeichen in eine Liste.
      */
     @Override
     public void analyze() {

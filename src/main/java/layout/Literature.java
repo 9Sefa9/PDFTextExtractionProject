@@ -57,12 +57,14 @@ public class Literature implements Analyzable {
                 String []documentText = docText.split(" ");
                 int first =0;
                 int second =documentText.length-1;
+                //Anfangen soll man ab "referen"ces.
                 for(int i = 0; i<documentText.length;i++){
                     if(documentText[i].startsWith("\r\nreferen")){
                         first = i;
                         break;
                     }
                 }
+                //bis zu der letzten Seite soll untersucht werden. (Erstmal normal printen)
                 StringBuilder b = new StringBuilder();
                 for (int i = first ; i<=second;i++){
                     b.append(b.append(documentText[i]));
