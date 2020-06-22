@@ -12,68 +12,46 @@ import utilities.Helper;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Literature implements Analyzable {
     private DocumentHandler handler;
-   // private List<Float> test;
+
     public Literature(DocumentHandler handler) {
         this.handler = handler;
-      //  test = new ArrayList<>();
     }
 
     @Override
     public void analyze() {
         for (Document document : this.handler.getDocumentsList()) {
-            //test = new HashMap<Float,String>();
+
             int lastPage1= document.getPdfDocument().getNumberOfPages()-1;
             int lastPage2= document.getPdfDocument().getNumberOfPages();
             try {
-                PageExtractor testt = new PageExtractor(document.getPdfDocument(),lastPage1,lastPage2);
-                PDDocument newDocument = testt.extract();
+                PageExtractor extract = new PageExtractor(document.getPdfDocument(),lastPage1,lastPage2);
+                PDDocument newDocument = extract.extract();
                 document.setPdfDocument(newDocument);
-                document.setPdfTextStripper(new PDFTextStripper() {
-
-                    @Override
-                    protected void writeString(String text, List<TextPosition> textPositions) {
-                        try {
-                            //letzte Seite soll analysiert werden,
-
-                            for(TextPosition t : textPositions) {
-                                //test.add(t.getFontSizeInPt());
-                              //  System.out.println(t.getFontSizeInPt());
-                            }
-
-                           // System.out.println(textPositions.get(0).getFontSizeInPt() + " "+text);
-                            super.writeString(text, textPositions);
-                        }catch (IOException i){
-                            i.printStackTrace();
-                        }
-                    }
-                });
-               // System.out.println(document.getPdfText());
-              //  float minFontSize = test.indexOf(Collections.min(test));
+                document.setPdfTextStripper(new PDFTextStripper());
                 String docText = document.getPdfText().toLowerCase();
-                String []documentText = docText.split(" ");
+                //Regex => logisches oder, mit characters, die nicht zwangsweise angenommen werden müssen, aber können.
+                // [abc] => a oder b oder c
+                String []documentText = docText.split("[-\\\\t,;.?!:@\\\\[\\\\](){}_*/]");
                 int first =0;
                 int second =documentText.length-1;
-              //  System.out.println(docText);
+
                 //Anfangen soll man ab "referen"ces.
                 for(int i = 0; i<documentText.length;i++){
                     if(documentText[i].length()>0) {
-
+                        //System.out.println("blabliblub:"+documentText[i]);
                         if (documentText[i].contains("\nref") || documentText[i].contains("\rref")
-                                && documentText[i].startsWith("ref") && documentText[i].endsWith("es\n")
-                                && (documentText[i + 1].substring(0, documentText[i + 1].length() - 1).endsWith("]"))
-                                && !documentText[i].startsWith(".")
-                                && !documentText[i].startsWith(" ") && !documentText[i].contains("\n")) {
+                                && documentText[i].endsWith("es\n")
+                                && !documentText[i].endsWith(".")) {
                             //   System.out.println(""+documentText[i]+"i_"+i);
                             first = i;
                             // break;
                         }
                     }
                 }
-                //System.out.println(first);
+
                 //bis zu der letzten Seite soll untersucht werden. (Erstmal normal printen)
                 StringBuilder b = new StringBuilder();
                 for (int i = first ; i<=second;i++){
@@ -81,7 +59,7 @@ public class Literature implements Analyzable {
                 }
 
                 System.out.println(b.toString());
-               // this.test = test.stream().distinct().collect(Collectors.toList());
+
                // Helper.print(document);
                 Helper.delimiter();
 

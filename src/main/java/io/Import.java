@@ -30,10 +30,19 @@ public class Import extends Extractable {
                  //falls nur 1 PDF Dokument:
                 if(file.getName().endsWith(".pdf"))
                     handler.setDocumentsList(new File[]{file});
-                else
-                //setze den Ordner mit den PDF Dokumenten in die DocumentsList.
-                handler.setDocumentsList(file.listFiles((dir, name) -> name.endsWith(".pdf") ? true : false));
-            }
+                else {
+                    //setze den Ordner mit den PDF Dokumenten in die DocumentsList.
+                 for(File ff: file.listFiles()) {
+                     if (ff.isDirectory() && !ff.getAbsolutePath().equals(file.getAbsolutePath()) ) {
+                       System.out.println(ff.getAbsolutePath());
+                         handler.setDocumentsList(ff.listFiles((dir, name) -> name.endsWith(".pdf") ? true : false));
+                         //String newPath =  file.getAbsoluteFile();
+                     }
+
+                 }
+                    handler.setDocumentsList(file.listFiles((dir, name) -> name.endsWith(".pdf") ? true : false));
+                }
+                }
         } catch (ImportException e) {
             e.printStackTrace();
         }
