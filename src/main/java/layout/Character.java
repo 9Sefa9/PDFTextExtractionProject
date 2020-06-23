@@ -48,8 +48,8 @@ public class Character implements Analyzable {
                         super.writeString(text, textPositions);
                     }
                 });
-                System.out.println(this.charactersOccurenceMap.size());
-                Helper.print(this.charactersOccurenceMap);
+               // System.out.println(this.charactersOccurenceMap.size());
+              //  Helper.print(this.charactersOccurenceMap);
                 //charactersOccurenceMap.forEach((c,i) -> System.out.println("C:"+c+"  I:"+i));
 
             } catch (IOException e) {

@@ -24,7 +24,7 @@ public class Literature implements Analyzable {
     public void analyze() {
         for (Document document : this.handler.getDocumentsList()) {
 
-            int lastPage1= document.getPdfDocument().getNumberOfPages()-1;
+            int lastPage1= document.getPdfDocument().getNumberOfPages()-1 == 0 ? 1:document.getPdfDocument().getNumberOfPages()-1;
             int lastPage2= document.getPdfDocument().getNumberOfPages();
             try {
                 PageExtractor extract = new PageExtractor(document.getPdfDocument(),lastPage1,lastPage2);
@@ -42,9 +42,7 @@ public class Literature implements Analyzable {
                 for(int i = 0; i<documentText.length;i++){
                     if(documentText[i].length()>0) {
                         //System.out.println("blabliblub:"+documentText[i]);
-                        if (documentText[i].contains("\nref") || documentText[i].contains("\rref")
-                                && documentText[i].endsWith("es\n")
-                                && !documentText[i].endsWith(".")) {
+                        if (documentText[i].contains("\nref") || documentText[i].contains("\rref") && documentText[i].endsWith("es\n") && !documentText[i].endsWith(".")) {
                             //   System.out.println(""+documentText[i]+"i_"+i);
                             first = i;
                             // break;
@@ -58,10 +56,10 @@ public class Literature implements Analyzable {
                     b.append(documentText[i]);
                 }
 
-                System.out.println(b.toString());
+              //  System.out.println(b.toString());
 
                // Helper.print(document);
-                Helper.delimiter();
+              //  Helper.delimiter();
 
 
             } catch (IOException e) {

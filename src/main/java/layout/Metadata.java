@@ -41,11 +41,11 @@ public class Metadata implements Analyzable {
             PDDocumentInformation info = document.getPdfDocument().getDocumentInformation();
             if (info.getTitle() == null || info.getTitle().isEmpty()) {
                 String fixedTitle = extract(document);
-                System.out.println(fixedTitle);
+             //   System.out.println(fixedTitle);
             } else {
-                System.out.println("Page Count=" + document.getPdfDocument().getNumberOfPages() + "\n" + "Title=" + info.getTitle() + "\n" + "Author=" + info.getAuthor() + "\n" + "Subject=" + info.getSubject() + "\n" + "Keywords=" + info.getKeywords() + "\n" + "Creator=" + info.getCreator() + "\n" + "Producer=" + info.getProducer() + "\n" + "Creation Date=" + formatter.format(info.getCreationDate().getTime()) + "\n" + "Modification Date=" + formatter.format(info.getModificationDate().getTime()) + "\n" + "Trapped=" + info.getTrapped());
+            //    System.out.println("Page Count=" + document.getPdfDocument().getNumberOfPages() + "\n" + "Title=" + info.getTitle() + "\n" + "Author=" + info.getAuthor() + "\n" + "Subject=" + info.getSubject() + "\n" + "Keywords=" + info.getKeywords() + "\n" + "Creator=" + info.getCreator() + "\n" + "Producer=" + info.getProducer() + "\n" + "Creation Date=" + formatter.format(info.getCreationDate().getTime()) + "\n" + "Modification Date=" + formatter.format(info.getModificationDate().getTime()) + "\n" + "Trapped=" + info.getTrapped());
             }
-            Helper.delimiter();
+         //   Helper.delimiter();
         }
 
     }
