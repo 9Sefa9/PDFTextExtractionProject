@@ -7,8 +7,11 @@ import interfaces.Extractable;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Import extends Extractable {
+    List<File> temp = new ArrayList<File>();
     /**
      * PDF Dockumente werden importiert und unter der Klasse Document in eine List abgespeichert.
      *
@@ -23,14 +26,18 @@ public class Import extends Extractable {
             file = new File(absolutePath);
             if (!file.isDirectory() && !file.exists()) {
                 throw new ImportException("Document kann nicht importiert werden!");
-            } else {
-                 //falls nur 1 PDF Dokument:
-                if(file.getName().endsWith(".pdf"))
-                    handler.setDocumentsList(new File[]{file});
-                else
-                    //setze den Ordner mit den PDF Dokumenten in die DocumentsList.
-                   handler.setDocumentsList(file.listFiles((dir, name) -> name.endsWith(".pdf") ? true : false));
-                }
+            }
+            if (file.getName().endsWith(".pdf")){
+                //falls nur 1 PDF Dokument:
+                temp.add(file);
+                // handler.setDocumentsList(new File[]{file});
+            }
+            else{
+                //setze den Ordner mit den PDF Dokumenten in die DocumentsList.
+                importDocument(handler, file.getAbsolutePath()+/*Hier steht datensammlung. Muss aber der nächste Name stehen.*/);
+                //   handler.setDocumentsList(file.listFiles((dir, name) -> name.endsWith(".pdf") ? true : false));
+
+            }
         } catch (ImportException e) {
             e.printStackTrace();
         }
