@@ -150,6 +150,20 @@ public class Helper<E> implements PDFX {
             i.printStackTrace();
         }
     }
+
+    /**
+     * System out println von Parameter
+     * @param text String
+     */
+    public static void print(String text){
+        try {
+            if (text != null)
+                System.out.println(text);
+            else throw new EmptyException("text ist  null");
+        }catch (EmptyException e){
+            e.printStackTrace();
+        }
+    }
     /**
      * Gibt Elemente aus
      * @param list Java.util.List

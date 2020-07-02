@@ -1,9 +1,22 @@
 package layout;
 
+import extractor.Document;
+import extractor.DocumentHandler;
 import interfaces.Analyzable;
+import org.apache.pdfbox.multipdf.PageExtractor;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+import utilities.Helper;
+
+import java.io.IOException;
 
 
 public class Section implements Analyzable {
+    private DocumentHandler handler;
+
+    public Section(DocumentHandler handler) {
+        this.handler = handler;
+    }
     /**
      * Analysiert die vorhanden sections innerhalb des PDF Dokuments.
      */
@@ -11,6 +24,15 @@ public class Section implements Analyzable {
     //@TODO Sextion komplett erkennen
     //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     public void analyze() {
+        for(Document document : this.handler.getDocumentsList()) {
+            try {
+                document.setPdfTextStripper(new PDFTextStripper());
+                String s = document.getPdfText();
+                Helper.print(document.getPdfName());
+            }catch (Exception i){
+                i.printStackTrace();
+            }
+            }
       /*
         try {
             Document.getPdfDocument().pdfTextStripper = new PDFTextStripper() {

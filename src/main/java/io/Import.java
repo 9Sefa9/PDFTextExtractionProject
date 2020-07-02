@@ -7,7 +7,6 @@ import interfaces.Extractable;
 
 import java.io.File;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 public class Import extends Extractable {
     /**
@@ -28,23 +27,7 @@ public class Import extends Extractable {
                  //falls nur 1 PDF Dokument:
                 if(file.getName().endsWith(".pdf"))
                     handler.setDocumentsList(new File[]{file});
-                else if(file.isDirectory()){
-                   // int count=0;
-
-                    ArrayList<File> temp = new ArrayList<>();
-                    //Die einzelnen Konferenz-Ordner
-                    for(File conferencesDir: file.listFiles()){
-                        //Die PDF Daten innerhalb eines Konferenzes
-                        for(File files: conferencesDir.listFiles()){
-                            temp.add(files);
-                        }
-                    }
-                    File[] newFiles = new File[temp.size()];
-                    for (int i = 0; i < temp.size(); i++) {
-                        newFiles[i] = temp.get(i);
-                    }
-                    handler.setDocumentsList(newFiles);
-                }else
+                else
                     //setze den Ordner mit den PDF Dokumenten in die DocumentsList.
                    handler.setDocumentsList(file.listFiles((dir, name) -> name.endsWith(".pdf") ? true : false));
                 }
@@ -60,3 +43,21 @@ public class Import extends Extractable {
     public void exportDocument(Document document, String path) {
     }
 }
+/*                else if(file.isDirectory()){
+                   // int count=0;
+
+                    ArrayList<File> temp = new ArrayList<>();
+                    //Die einzelnen Konferenz-Ordner
+                    for(File conferencesDir: file.listFiles()){
+                        //Die PDF Daten innerhalb eines Konferenzes
+                        for(File files: conferencesDir.listFiles()){
+                            temp.add(files);
+                        }
+                    }
+                    File[] newFiles = new File[temp.size()];
+                    for (int i = 0; i < temp.size(); i++) {
+                        newFiles[i] = temp.get(i);
+                    }
+                    handler.setDocumentsList(newFiles);
+                }
+                */
