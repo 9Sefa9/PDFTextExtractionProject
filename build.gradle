@@ -19,3 +19,9 @@ dependencies {
     compile group: 'com.opencsv', name: 'opencsv', version: '5.1'
 
 }
+task(RUN, dependsOn: 'classes', type: JavaExec) {
+   main = 'main.Main'
+   classpath = sourceSets.main.runtimeClasspath
+   args('src/main/resources/original/08662658.pdf')
+   
+}

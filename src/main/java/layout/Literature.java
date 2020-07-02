@@ -56,7 +56,7 @@ public class Literature implements Analyzable {
                     b.append(documentText[i]);
                 }
 
-              //  System.out.println(b.toString());
+                System.out.println(b.toString());
 
                // Helper.print(document);
               //  Helper.delimiter();
