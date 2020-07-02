@@ -17,6 +17,10 @@ public class Section implements Analyzable {
     public Section(DocumentHandler handler) {
         this.handler = handler;
     }
+    @Override
+    public void start() {
+        analyze();
+    }
     /**
      * Analysiert die vorhanden sections innerhalb des PDF Dokuments.
      */
@@ -25,10 +29,33 @@ public class Section implements Analyzable {
     //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     public void analyze() {
         for(Document document : this.handler.getDocumentsList()) {
+            int middlePage = (int)Math.floor(document.getPdfDocument().getNumberOfPages()/2f)+1;
+            int lastPage= document.getPdfDocument().getNumberOfPages();
             try {
+                PageExtractor extractorObject = new PageExtractor(document.getPdfDocument(),middlePage,lastPage-1);
+                PDDocument doc = extractorObject.extract();
+                document.setPdfDocument(doc);
                 document.setPdfTextStripper(new PDFTextStripper());
+                document.getPdfTextStripper().setPageStart("\n");
+                document.getPdfTextStripper().setSortByPosition(true);
                 String s = document.getPdfText();
-                Helper.print(document.getPdfName());
+                String[] str = s.split(document.getPdfTextStripper().getParagraphStart());
+             //   for(int i = 0 ; i<str.length;i++) {
+                String ss="";
+                for (String line: s.split(document.getPdfTextStripper().getParagraphStart())){
+                    ss+=line;
+                }
+                System.out.println(ss);
+                    //        System.out.print(str[i]+"-----------");
+
+               // }
+
+              //  for(int i = 0 ; i<str.length; i++) {
+              //      if (str[i].co){
+
+              //      }
+              //  }
+               // Helper.print(s);
             }catch (Exception i){
                 i.printStackTrace();
             }
@@ -80,10 +107,6 @@ public class Section implements Analyzable {
         }*/
     }
 
-    @Override
-    public void start() {
-
-    }
 
     //Überlegung:  Es existieren wörter, die in der Mitte kein Sinn ergeben. z.b But:  Bu    t
     //ERste Vorüberlegung wäre: wenn die anzahl an brüchigen Wörtern ab einem bestimmten Faktor hoch sind => zwei abschnitte vorhanden.
