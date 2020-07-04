@@ -25,7 +25,7 @@ public class Section implements Analyzable {
      * Analysiert die vorhanden sections innerhalb des PDF Dokuments.
      */
     @Override
-    //@TODO Sextion komplett erkennen
+    //@TODO Section komplett erkennen
     //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     public void analyze() {
         for(Document document : this.handler.getDocumentsList()) {
@@ -36,26 +36,16 @@ public class Section implements Analyzable {
                 PDDocument doc = extractorObject.extract();
                 document.setPdfDocument(doc);
                 document.setPdfTextStripper(new PDFTextStripper());
-                document.getPdfTextStripper().setPageStart("\n");
-                document.getPdfTextStripper().setSortByPosition(true);
                 String s = document.getPdfText();
-                String[] str = s.split(document.getPdfTextStripper().getParagraphStart());
-             //   for(int i = 0 ; i<str.length;i++) {
-                String ss="";
-                for (String line: s.split(document.getPdfTextStripper().getParagraphStart())){
-                    ss+=line;
+
+                String newStr = "";
+                for(int i = 0; i<s.length();i++){
+                    if(java.lang.Character.isUpperCase(s.charAt(i))){
+                        newStr+=s.charAt(i);
+                    }
+                    else  newStr+=" ";
                 }
-                System.out.println(ss);
-                    //        System.out.print(str[i]+"-----------");
-
-               // }
-
-              //  for(int i = 0 ; i<str.length; i++) {
-              //      if (str[i].co){
-
-              //      }
-              //  }
-               // Helper.print(s);
+                System.out.println(newStr);
             }catch (Exception i){
                 i.printStackTrace();
             }
