@@ -37,15 +37,16 @@ public class Section implements Analyzable {
                 document.setPdfDocument(doc);
                 document.setPdfTextStripper(new PDFTextStripper());
                 String s = document.getPdfText();
-
+                String [] str = s.split("(\r\n|\r|\n)");
                 String newStr = "";
-                for(int i = 0; i<s.length();i++){
-                    if(java.lang.Character.isUpperCase(s.charAt(i))){
-                        newStr+=s.charAt(i);
+                for(String st : str){
+                    if(st != null){
+                    if(st.length()<50 && st.length()>10 && st.matches(".*[^-,.]$")&& !st.isEmpty() && java.lang.Character.isUpperCase(st.charAt(0))){
+                    System.out.println(st);
+                    Helper.delimiter();
                     }
-                    else  newStr+=" ";
+                    }
                 }
-                System.out.println(newStr);
             }catch (Exception i){
                 i.printStackTrace();
             }
