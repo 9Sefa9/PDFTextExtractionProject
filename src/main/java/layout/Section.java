@@ -21,9 +21,10 @@ import java.util.stream.Collectors;
 public class Section implements Analyzable {
     private DocumentHandler handler;
     private List<Float> fontSizeList;
-    private String[] sectionHeaders = {"I.","II.", "III.", "IV.", "V.", "VI.", "VII.","VIII.","IX.","X.",
-                                       "INTROD","REL","RES","DISC"};
-
+    private String[] headersDefines = {"I.","II.", "III.", "IV.", "V.", "VI.", "VII.","VIII.","IX.","X.",
+                                       "i.","ii.", "iii.", "iv.", "v.", "vi.", "vii.","viii.","ix.","x.",
+                                       "INTROD","REL","RES","DISC","ACKN","REFE","FUT"};
+    private List<String> detectedHeaders = new ArrayList<>();
     public Section(DocumentHandler handler) {
         this.handler = handler;
     }
@@ -54,9 +55,11 @@ public class Section implements Analyzable {
 
                 for (int i = 0; i < str.length; i++) {
                     if (str[i].length() < 60 && str[i].length() > 10 && str[i].matches(".*[^-,.]$")) {
-                       for(int j = 0 ; j<sectionHeaders.length; j++)
-                       if(str[i].startsWith(sectionHeaders[j])){
+                       for(int j = 0 ; j<headersDefines.length; j++)
+                       if(str[i].startsWith(headersDefines[j])){
+                            detectedHeaders.add(str[i]);
                             System.out.println(str[i]+"\n******");
+                            break;
                         }
                     }
                 }
