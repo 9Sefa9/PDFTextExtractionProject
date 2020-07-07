@@ -86,10 +86,16 @@ public class Section implements Analyzable {
                 }
             }
         }
+
+    //DURCHBRUCH !! ICh habs geschafft !!!
+            System.out.println(fullText.substring(detectedSectionPositions.get(0),detectedSectionPositions.get(1)));
+        }
+
+
         //Einfacher test, ob wirklich das geprintet wird, was vorher berechnet wurde-TODO Printet nicht ganz ordentlich..
 // Es passt nicht zusammen: detected Section Position hat sein eigenes array length, section hat auch, fulltext auch...
 
-        int j = -1;
+  /*      int j = -1;
         for(int i = 0; i<fullText.length();i++){
           //  for(int j = 0; j<detectedSectionHeaders.size();j++) {
 
@@ -98,8 +104,9 @@ public class Section implements Analyzable {
                 System.out.println(fullText.substring(detectedSectionPositions.get(i), detectedSectionPositions.get(i) + detectedSectionHeaders.get(j).length()));
 
                 //break;
-            }
-    }
+            }*/
+
+
 
 
     private void findSectionHeaders(String fullText) {
