@@ -5,52 +5,126 @@ import extractor.DocumentHandler;
 import interfaces.Analyzable;
 import org.apache.pdfbox.multipdf.PageExtractor;
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.PDFTextStripperByArea;
+import org.apache.pdfbox.text.TextPosition;
 import utilities.Helper;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Section implements Analyzable {
     private DocumentHandler handler;
+    private List<Float> fontSizeList;
+    private String[] sectionHeaders = {"I.","II.", "III.", "IV.", "V.", "VI.", "VII.","VIII.","IX.","X.",
+                                       "INTROD","REL","RES","DISC"};
 
     public Section(DocumentHandler handler) {
         this.handler = handler;
     }
+
     @Override
     public void start() {
         analyze();
     }
+
     /**
      * Analysiert die vorhanden sections innerhalb des PDF Dokuments.
      */
     @Override
-    //@TODO Section komplett erkennen
-    //@TODO schleife nötig, der in Document handler, alle PDFs durchgreift und analysiert.
     public void analyze() {
-        for(Document document : this.handler.getDocumentsList()) {
-            int middlePage = (int)Math.floor(document.getPdfDocument().getNumberOfPages()/2f)+1;
-            int lastPage= document.getPdfDocument().getNumberOfPages();
+        for (Document document : this.handler.getDocumentsList()) {
+           // int middlePage = (int) Math.floor(document.getPdfDocument().getNumberOfPages() / 2f) + 1;
+            int lastPage = document.getPdfDocument().getNumberOfPages();
             try {
-                PageExtractor extractorObject = new PageExtractor(document.getPdfDocument(),middlePage,lastPage-1);
+                fontSizeList = new ArrayList<Float>();
+                PageExtractor extractorObject = new PageExtractor(document.getPdfDocument(), 1, lastPage);
                 PDDocument doc = extractorObject.extract();
                 document.setPdfDocument(doc);
                 document.setPdfTextStripper(new PDFTextStripper());
                 String s = document.getPdfText();
-                String [] str = s.split("(\r\n|\r|\n)");
-                String newStr = "";
-                for(String st : str){
-                    if(st != null){
-                    if(st.length()<50 && st.length()>10 && st.matches(".*[^-,.]$")&& !st.isEmpty() && java.lang.Character.isUpperCase(st.charAt(0))){
-                    System.out.println(st);
-                    Helper.delimiter();
-                    }
+                
+                String[] str = s.split("(\r\n|\r|\n)");
+
+
+                for (int i = 0; i < str.length; i++) {
+                    if (str[i].length() < 60 && str[i].length() > 10 && str[i].matches(".*[^-,.]$")) {
+                       for(int j = 0 ; j<sectionHeaders.length; j++)
+                       if(str[i].startsWith(sectionHeaders[j])){
+                            System.out.println(str[i]+"\n******");
+                        }
                     }
                 }
-            }catch (Exception i){
+            } catch (Exception i) {
                 i.printStackTrace();
             }
+        }
+
+    }
+
+    private void createFontSizeList(Document document) {
+
+        try {
+            PDFTextStripper stripper = new PDFTextStripper() {
+
+                @Override
+                protected void writeString(String text, List<TextPosition> textPositions) {
+                    for (TextPosition t : textPositions) {
+                        //der text.length>1 soll Fälle mit nur 1 Buchstaben ausschließe, die richtig groß sind.
+                        if (!text.isEmpty()) {
+                            fontSizeList.add(t.getFontSizeInPt());
+                        }
+                    }
+                }
+            };
+            stripper.getText(document.getPdfDocument());
+            //stripper.extractRegions(firstPage);
+            //löscht duplikate. z.B.  6.0 6.0 6.0 ...
+            this.fontSizeList = fontSizeList.stream().distinct().collect(Collectors.toList());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private float getHighestFontSize(List<Float> textSizes) {
+        float minValue = 0;
+        for (float f : textSizes) {
+            if (f > minValue) {
+                minValue = f;
             }
+        }
+        return minValue;
+    }
+
+    private boolean upper(String str) {
+        //convert String to char array
+        char[] charArray = str.toCharArray();
+
+        for (int i = 0; i < charArray.length; i++) {
+
+            //if any character is not in upper case, return false
+            if (!java.lang.Character.isUpperCase(charArray[i]))
+                return false;
+        }
+
+        return true;
+    }
+}
+//  System.out.println(s);
+//   for (int i = 0; i < str.length; i++) {
+//      if (str[i] != null && !str[i].isEmpty()) {
+//           if (str[i].length() < 60 && str[i].length() > 10 && str[i].startsWith("I")&&str[i].matches(".*[^-,.]$")) {
+//       sectionCandidates.add(str[i]);
+//            }
+//        }
+//  }
+
       /*
         try {
             Document.getPdfDocument().pdfTextStripper = new PDFTextStripper() {
@@ -96,15 +170,14 @@ public class Section implements Analyzable {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-    }
 
 
-    //Überlegung:  Es existieren wörter, die in der Mitte kein Sinn ergeben. z.b But:  Bu    t
-    //ERste Vorüberlegung wäre: wenn die anzahl an brüchigen Wörtern ab einem bestimmten Faktor hoch sind => zwei abschnitte vorhanden.
-    //Ansonsten handelt es sich um Fließtext.
-    //Ich könnte aber auch teorethisch untersuchen ob es silben trennungen gibt wie :   pedestri-
-    //keine ahnung. Muss ich noch mal schauen...
-    private void linksRechtsSectionBoundingArea() {
+//Überlegung:  Es existieren wörter, die in der Mitte kein Sinn ergeben. z.b But:  Bu    t
+//ERste Vorüberlegung wäre: wenn die anzahl an brüchigen Wörtern ab einem bestimmten Faktor hoch sind => zwei abschnitte vorhanden.
+//Ansonsten handelt es sich um Fließtext.
+//Ich könnte aber auch teorethisch untersuchen ob es silben trennungen gibt wie :   pedestri-
+//keine ahnung. Muss ich noch mal schauen...
+//  private void linksRechtsSectionBoundingArea() {
       /*
         try {
             float width = Document.getPdfDocument().getPage(0).getMediaBox().getWidth();
@@ -145,5 +218,5 @@ public class Section implements Analyzable {
             e.printStackTrace();
         }
     }*/
-    }
-}
+//  }
+

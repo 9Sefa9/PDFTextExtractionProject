@@ -12,7 +12,6 @@ import java.io.IOException;
 public class Export extends Extractable {
     /**Exportiert PDF in ein festgelegtes Verzeichnis
      * TODO muss noch implementiert werden.
-     * @deprecated muss noch implementiert werden.
      * @param document beherbergt die liste mit allen PDF'
      * @param path Gibt an, wohin das Dokument abgspeichert werden soll.
      */

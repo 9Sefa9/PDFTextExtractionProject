@@ -34,7 +34,7 @@ public class Import extends Extractable {
         // da setDocumentsList nur File[] akzeptiert.
         File[] myPDFFiles = new File[detectedFiles.size()];
         for(int i = 0;i<detectedFiles.size();i++)
-            myPDFFiles[i] = detectedFiles.get(0).getValue();
+            myPDFFiles[i] = detectedFiles.get(i).getValue();
 
         //setze den Ordner mit den PDF Dokumenten in die DocumentsList.
         handler.setDocumentsList(myPDFFiles);
