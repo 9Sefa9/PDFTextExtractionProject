@@ -24,7 +24,7 @@ public class Section implements Analyzable {
     private String[] headersDefines = {"I.","II.", "III.", "IV.", "V.", "VI.", "VII.","VIII.","IX.","X.",
                                        "i.","ii.", "iii.", "iv.", "v.", "vi.", "vii.","viii.","ix.","x.",
                                        "INTROD","REL","RES","DISC","ACKN","REFE","FUT"};
-    private List<String> detectedHeaders = new ArrayList<>();
+    private List<String> detectedSectionHeaders = new ArrayList<>();
     public Section(DocumentHandler handler) {
         this.handler = handler;
     }
@@ -43,31 +43,44 @@ public class Section implements Analyzable {
            // int middlePage = (int) Math.floor(document.getPdfDocument().getNumberOfPages() / 2f) + 1;
             int lastPage = document.getPdfDocument().getNumberOfPages();
             try {
-                fontSizeList = new ArrayList<Float>();
+
                 PageExtractor extractorObject = new PageExtractor(document.getPdfDocument(), 1, lastPage);
                 PDDocument doc = extractorObject.extract();
                 document.setPdfDocument(doc);
                 document.setPdfTextStripper(new PDFTextStripper());
-                String s = document.getPdfText();
-                
-                String[] str = s.split("(\r\n|\r|\n)");
+                String fullText = document.getPdfText();
+                findSectionHeaders(fullText);
+                calculateSectionLength(fullText);
 
-
-                for (int i = 0; i < str.length; i++) {
-                    if (str[i].length() < 60 && str[i].length() > 10 && str[i].matches(".*[^-,.]$")) {
-                       for(int j = 0 ; j<headersDefines.length; j++)
-                       if(str[i].startsWith(headersDefines[j])){
-                            detectedHeaders.add(str[i]);
-                            System.out.println(str[i]+"\n******");
-                            break;
-                        }
-                    }
-                }
             } catch (Exception i) {
                 i.printStackTrace();
             }
         }
 
+    }
+
+    private void calculateSectionLength(String fullText) {
+        char [] fullTextCharArray = fullText.toCharArray();
+        int count=0;
+        for (int i = 0; i <fullText.length() ; i++) {
+          //TODO: INDEX OF VERWENDEN, STRING vergleich mit headers aus oberen array --..
+        }
+    }
+
+
+    private void findSectionHeaders(String fullText) {
+        String[] str = fullText.split("(\r\n|\r|\n)");
+
+        for (int i = 0; i < str.length; i++) {
+            if (str[i].length() < 60 && str[i].length() > 10 && str[i].matches(".*[^-,.]$")) {
+                for(int j = 0 ; j<headersDefines.length; j++)
+                    if(str[i].startsWith(headersDefines[j])){
+                        detectedSectionHeaders.add(str[i]);
+                     //   System.out.println(str[i]+"\n******");
+                        break;
+                    }
+            }
+        }
     }
 
     private void createFontSizeList(Document document) {
