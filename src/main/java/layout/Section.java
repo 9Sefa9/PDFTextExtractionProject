@@ -21,10 +21,12 @@ import java.util.stream.Collectors;
 public class Section implements Analyzable {
     private DocumentHandler handler;
     private List<Float> fontSizeList;
-    private String[] headersDefines = {"I.","II.", "III.", "IV.", "V.", "VI.", "VII.","VIII.","IX.","X.",
-                                       "i.","ii.", "iii.", "iv.", "v.", "vi.", "vii.","viii.","ix.","x.",
-                                       "INTROD","REL","RES","DISC","ACKN","REFE","FUT"};
-    private List<String> detectedSectionHeaders = new ArrayList<>();
+    private String[] headersDefines = {"I.", "II.", "III.", "IV.", "V.", "VI.", "VII.", "VIII.", "IX.", "X.",
+            "i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x.",
+            "INTROD", "REL", "RES", "DISC", "ACKN", "REFE", "FUT"};
+    private List<String> detectedSectionHeaders;
+    private List<Integer> detectedSectionPositions;
+
     public Section(DocumentHandler handler) {
         this.handler = handler;
     }
@@ -40,7 +42,7 @@ public class Section implements Analyzable {
     @Override
     public void analyze() {
         for (Document document : this.handler.getDocumentsList()) {
-           // int middlePage = (int) Math.floor(document.getPdfDocument().getNumberOfPages() / 2f) + 1;
+            // int middlePage = (int) Math.floor(document.getPdfDocument().getNumberOfPages() / 2f) + 1;
             int lastPage = document.getPdfDocument().getNumberOfPages();
             try {
 
@@ -59,28 +61,63 @@ public class Section implements Analyzable {
 
     }
 
-    private void calculateSectionLength(String fullText) {
-        char [] fullTextCharArray = fullText.toCharArray();
-        int count=0;
-        for (int i = 0; i <fullText.length() ; i++) {
-          //TODO: INDEX OF VERWENDEN, STRING vergleich mit headers aus oberen array --..
+    int wordcount(String string) {
+        int count = 0;
+
+        char ch[] = new char[string.length()];
+        for (int i = 0; i < string.length(); i++) {
+            ch[i] = string.charAt(i);
+            if (((i > 0) && (ch[i] != ' ') && (ch[i - 1] == ' ')) || ((ch[0] != ' ') && (i == 0)))
+                count++;
         }
+        return count;
+    }
+
+    private void calculateSectionLength(String fullText) {
+        detectedSectionPositions = new ArrayList<>();
+        // soutwordcount(fullText);
+        for (int i = 0; i < fullText.length(); i++) {
+            for (int j = 0; j < detectedSectionHeaders.size(); j++) {
+                int index = fullText.indexOf(detectedSectionHeaders.get(j));
+
+                if (index != -1) {
+                    // System.out.println(index);
+                    detectedSectionPositions.add(index);
+                }
+            }
+        }
+        //Einfacher test, ob wirklich das geprintet wird, was vorher berechnet wurde-TODO Printet nicht ganz ordentlich..
+// Es passt nicht zusammen: detected Section Position hat sein eigenes array length, section hat auch, fulltext auch...
+
+        int j = -1;
+        for(int i = 0; i<fullText.length();i++){
+          //  for(int j = 0; j<detectedSectionHeaders.size();j++) {
+
+                j= (j+1) % detectedSectionHeaders.size();
+
+                System.out.println(fullText.substring(detectedSectionPositions.get(i), detectedSectionPositions.get(i) + detectedSectionHeaders.get(j).length()));
+
+                //break;
+            }
     }
 
 
     private void findSectionHeaders(String fullText) {
+        detectedSectionHeaders = new ArrayList<>();
         String[] str = fullText.split("(\r\n|\r|\n)");
 
         for (int i = 0; i < str.length; i++) {
             if (str[i].length() < 60 && str[i].length() > 10 && str[i].matches(".*[^-,.]$")) {
-                for(int j = 0 ; j<headersDefines.length; j++)
-                    if(str[i].startsWith(headersDefines[j])){
+                for (int j = 0; j < headersDefines.length; j++)
+                    if (str[i].startsWith(headersDefines[j])) {
+                        //  System.out.println(fullText.indexOf(i)+ "text: "+str[i]);
                         detectedSectionHeaders.add(str[i]);
-                     //   System.out.println(str[i]+"\n******");
+                        //   System.out.println(str[i]+"\n******");
                         break;
                     }
             }
         }
+
     }
 
     private void createFontSizeList(Document document) {
