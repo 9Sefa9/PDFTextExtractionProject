@@ -21,10 +21,14 @@ import java.util.stream.Collectors;
 public class Section implements Analyzable {
     private DocumentHandler handler;
     private List<Float> fontSizeList;
+    //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Kapitel beginnen kann. Könnte erweitert werden.
     private String[] headersDefines = {"I.", "II.", "III.", "IV.", "V.", "VI.", "VII.", "VIII.", "IX.", "X.",
             "i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x.",
             "INTROD", "REL", "RES", "DISC", "ACKN", "REFE", "FUT"};
+
+    //In der List stehen Kapitel mit: Nummerierung + Titel
     private List<String> detectedSectionHeaders;
+    //die jeweilige Position des gefundenen Headers.
     private List<Integer> detectedSectionPositions;
 
     public Section(DocumentHandler handler) {
@@ -42,7 +46,6 @@ public class Section implements Analyzable {
     @Override
     public void analyze() {
         for (Document document : this.handler.getDocumentsList()) {
-            // int middlePage = (int) Math.floor(document.getPdfDocument().getNumberOfPages() / 2f) + 1;
             int lastPage = document.getPdfDocument().getNumberOfPages();
             try {
 
@@ -52,7 +55,7 @@ public class Section implements Analyzable {
                 document.setPdfTextStripper(new PDFTextStripper());
                 String fullText = document.getPdfText();
                 findSectionHeaders(fullText);
-                calculateSectionLength(fullText);
+                calculateSectionPosition(fullText);
 
             } catch (Exception i) {
                 i.printStackTrace();
@@ -61,54 +64,34 @@ public class Section implements Analyzable {
 
     }
 
-    int wordcount(String string) {
-        int count = 0;
-
-        char ch[] = new char[string.length()];
-        for (int i = 0; i < string.length(); i++) {
-            ch[i] = string.charAt(i);
-            if (((i > 0) && (ch[i] != ' ') && (ch[i - 1] == ' ')) || ((ch[0] != ' ') && (i == 0)))
-                count++;
-        }
-        return count;
-    }
-
-    private void calculateSectionLength(String fullText) {
+    /***
+     *Die Positionen der einzelnen gefunden headers aus detectedSectionheaders wird in relation
+     *zum gesammten Text (fulltext) gebracht. Die gefundenen Positionen der einzelnen Kapitel werden in eine liste abgespeichert.
+     *
+     *@see #analyze()
+     *@param fullText der gesammte Text, ohne jegliche Einschränkungen
+     */
+    private void calculateSectionPosition(String fullText) {
         detectedSectionPositions = new ArrayList<>();
-        // soutwordcount(fullText);
         for (int i = 0; i < fullText.length(); i++) {
             for (int j = 0; j < detectedSectionHeaders.size(); j++) {
                 int index = fullText.indexOf(detectedSectionHeaders.get(j));
 
                 if (index != -1) {
-                    // System.out.println(index);
                     detectedSectionPositions.add(index);
                 }
             }
         }
 
-    //DURCHBRUCH !! ICh habs geschafft !!!
-            System.out.println(fullText.substring(detectedSectionPositions.get(0),detectedSectionPositions.get(1)));
+    //TODO DURCHBRUCH !! ICh habs geschafft !! System.out.println(fullText.substring(detectedSectionPositions.get(0),detectedSectionPositions.get(1)));
+
         }
 
 
-        //Einfacher test, ob wirklich das geprintet wird, was vorher berechnet wurde-TODO Printet nicht ganz ordentlich..
-// Es passt nicht zusammen: detected Section Position hat sein eigenes array length, section hat auch, fulltext auch...
-
-  /*      int j = -1;
-        for(int i = 0; i<fullText.length();i++){
-          //  for(int j = 0; j<detectedSectionHeaders.size();j++) {
-
-                j= (j+1) % detectedSectionHeaders.size();
-
-                System.out.println(fullText.substring(detectedSectionPositions.get(i), detectedSectionPositions.get(i) + detectedSectionHeaders.get(j).length()));
-
-                //break;
-            }*/
-
-
-
-
+    /***
+     * Identifiziert die Nummer + Titel eines Kapitels und speichert Sie in die detectedSectionHeaders Liste ein.
+      * @param fullText der gesammte Text, ohne jegliche Einschränkungen
+     */
     private void findSectionHeaders(String fullText) {
         detectedSectionHeaders = new ArrayList<>();
         String[] str = fullText.split("(\r\n|\r|\n)");
@@ -125,55 +108,6 @@ public class Section implements Analyzable {
             }
         }
 
-    }
-
-    private void createFontSizeList(Document document) {
-
-        try {
-            PDFTextStripper stripper = new PDFTextStripper() {
-
-                @Override
-                protected void writeString(String text, List<TextPosition> textPositions) {
-                    for (TextPosition t : textPositions) {
-                        //der text.length>1 soll Fälle mit nur 1 Buchstaben ausschließe, die richtig groß sind.
-                        if (!text.isEmpty()) {
-                            fontSizeList.add(t.getFontSizeInPt());
-                        }
-                    }
-                }
-            };
-            stripper.getText(document.getPdfDocument());
-            //stripper.extractRegions(firstPage);
-            //löscht duplikate. z.B.  6.0 6.0 6.0 ...
-            this.fontSizeList = fontSizeList.stream().distinct().collect(Collectors.toList());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private float getHighestFontSize(List<Float> textSizes) {
-        float minValue = 0;
-        for (float f : textSizes) {
-            if (f > minValue) {
-                minValue = f;
-            }
-        }
-        return minValue;
-    }
-
-    private boolean upper(String str) {
-        //convert String to char array
-        char[] charArray = str.toCharArray();
-
-        for (int i = 0; i < charArray.length; i++) {
-
-            //if any character is not in upper case, return false
-            if (!java.lang.Character.isUpperCase(charArray[i]))
-                return false;
-        }
-
-        return true;
     }
 }
 //  System.out.println(s);

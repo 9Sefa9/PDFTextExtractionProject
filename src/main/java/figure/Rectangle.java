@@ -21,6 +21,18 @@ public class Rectangle extends Drawable {
     }
     /**
      * Zeichnet ein rechteck in ein PDF Document.
+     * Vorgehensweise:
+     * 1.) Erstelle soviele Rectangle Objekte wie nur nötig und füge alle Konstruktor Parameter ein.
+     * 2.)  draw() Methode ausführen.
+     * 3.) Wenn fertig => Export Objekt erstellen und Dokument mit save() exportieren.
+     * bsp:
+     *     Rectangle a = new Rectangle(200,500,100,100,Color.blue,document,0);
+     *     Rectangle a1 = new Rectangle(220,530,100,100,Color.blue,document,0);
+     *     a.draw();
+     *     a1.draw();
+     *     File f = new File("src\\main\\resources\\colored08662658.pdf");
+     *     Export export = new Export();
+     *     export.exportDocument(document,f.getPath());
      */
     @Override
     //Malt etwas entsprechend der Koordinaten, die in super Klasse gesetzt wurden.

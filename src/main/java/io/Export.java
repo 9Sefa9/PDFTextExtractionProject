@@ -32,7 +32,7 @@ public class Export extends Extractable {
 
     }
     /**
-     * NullFunction
+     * NullFunction, keine Funktion.
      */
     @Override
     public void importDocument(DocumentHandler handler, String path) {

@@ -77,7 +77,11 @@ public class Metadata implements Analyzable {
         analyze();
     }
 
-
+    /**
+     * boundArea analysiert die tatsächliche Überschrift, in abhängigkeit der höchsten Schrift.
+     * @see #boundingArea()
+     * @return Titel
+     */
     private String boundingArea() {
         try {
             //Erst wird der fontSizecheck gemacht. Im anschluss dann der Bound gesetzt.
@@ -112,7 +116,10 @@ public class Metadata implements Analyzable {
         return null;
     }
 
-
+    /**
+     * Identifiziere aller Schriftgrößen oberhalb der ersten Seite und abspeicherung dessen größe.
+     *
+     */
     private void createFontSizeList() {
         try {
             PDFTextStripperByArea stripper = new PDFTextStripperByArea() {
@@ -146,6 +153,11 @@ public class Metadata implements Analyzable {
     }
 
 
+    /***
+     * Triviale Funktion, die einfach das Maximum innerhalb einer Liste ausgiebt.
+     * @param textSizes
+     * @return
+     */
     private float getHighestFontSize(List<Float> textSizes) {
         float minValue = 0;
         for (float f : textSizes) {

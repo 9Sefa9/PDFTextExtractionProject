@@ -2,7 +2,9 @@ package layout;
 
 import extractor.Document;
 import extractor.DocumentHandler;
+import figure.Rectangle;
 import interfaces.Analyzable;
+import io.Export;
 import org.apache.fontbox.util.BoundingBox;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -12,6 +14,7 @@ import utilities.Helper;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -51,6 +54,7 @@ public class Character implements Analyzable {
                // System.out.println(this.charactersOccurenceMap.size());
               //  Helper.print(this.charactersOccurenceMap);
                 //charactersOccurenceMap.forEach((c,i) -> System.out.println("C:"+c+"  I:"+i));
+
 
             } catch (IOException e) {
                 e.printStackTrace();
