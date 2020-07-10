@@ -12,12 +12,14 @@ import java.util.Locale;
 
 
 public class Word implements Analyzable {
-    public static HashMap<String, Integer> wordOccurenceMap = new HashMap<>();
+    private HashMap<String, Integer> wordOccurenceMap;
     private DocumentHandler handler;
 
     public Word(DocumentHandler handler) {
         this.handler = handler;
+        this.wordOccurenceMap= new HashMap<>();
     }
+
 
     /**
      * Analysiert die vorhanden Wörter innerhalb des PDF Dokuments und speichert die häufigen Buchstaben in eine Liste.
@@ -32,7 +34,7 @@ public class Word implements Analyzable {
                         String []res = text.split(" ");
                         for (String str:res) {
 
-                            wordOccurenceMap.merge(str.replaceAll("\\W","").toLowerCase(Locale.ENGLISH), 1, Integer::sum);
+                            getWordOccurenceMap().merge(str.replaceAll("\\W","").toLowerCase(Locale.ENGLISH), 1, Integer::sum);
                         }
                         super.writeString(text);
                     }
@@ -40,8 +42,14 @@ public class Word implements Analyzable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Helper.print(wordOccurenceMap);
+            Helper.print(getWordOccurenceMap());
         }
+
+    }
+    public HashMap<String, Integer> getWordOccurenceMap() {
+        return this.wordOccurenceMap;
+    }
+}
 
     /*
         try {
@@ -88,10 +96,3 @@ public class Word implements Analyzable {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-    }
-
-    @Override
-    public void start() {
-        analyze();
-    }
-}

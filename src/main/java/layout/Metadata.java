@@ -25,8 +25,10 @@ public class Metadata implements Analyzable {
     private float width,height,highestSize;
     private Rectangle2D top;
     private List<Float> fontSizeList;
+    private List<String> titlesList;
     public Metadata(DocumentHandler handler) {
         this.documentHandler = handler;
+        titlesList = new ArrayList<>();
     }
 
     /**
@@ -41,11 +43,14 @@ public class Metadata implements Analyzable {
             PDDocumentInformation info = document.getPdfDocument().getDocumentInformation();
             if (info.getTitle() == null || info.getTitle().isEmpty()) {
                 String fixedTitle = extract(document);
-             //   System.out.println(fixedTitle);
+                titlesList.add(fixedTitle);
+
             } else {
-            //    System.out.println("Page Count=" + document.getPdfDocument().getNumberOfPages() + "\n" + "Title=" + info.getTitle() + "\n" + "Author=" + info.getAuthor() + "\n" + "Subject=" + info.getSubject() + "\n" + "Keywords=" + info.getKeywords() + "\n" + "Creator=" + info.getCreator() + "\n" + "Producer=" + info.getProducer() + "\n" + "Creation Date=" + formatter.format(info.getCreationDate().getTime()) + "\n" + "Modification Date=" + formatter.format(info.getModificationDate().getTime()) + "\n" + "Trapped=" + info.getTrapped());
+                String fixedTitle = info.getTitle();
+                titlesList.add(fixedTitle);
+                  //    System.out.println("Page Count=" + document.getPdfDocument().getNumberOfPages() + "\n" + "Title=" + info.getTitle() + "\n" + "Author=" + info.getAuthor() + "\n" + "Subject=" + info.getSubject() + "\n" + "Keywords=" + info.getKeywords() + "\n" + "Creator=" + info.getCreator() + "\n" + "Producer=" + info.getProducer() + "\n" + "Creation Date=" + formatter.format(info.getCreationDate().getTime()) + "\n" + "Modification Date=" + formatter.format(info.getModificationDate().getTime()) + "\n" + "Trapped=" + info.getTrapped());
             }
-         //   Helper.delimiter();
+
         }
 
     }
@@ -70,11 +75,6 @@ public class Metadata implements Analyzable {
         //boundArea extrahiert nun den Titel mit FontSizeList.
         return boundingArea();
 
-    }
-
-    @Override
-    public void start() {
-        analyze();
     }
 
     /**
@@ -167,6 +167,8 @@ public class Metadata implements Analyzable {
         }
         return minValue;
     }
-
+    public List<String> getTitlesList(){
+        return this.titlesList;
+    }
 }
 

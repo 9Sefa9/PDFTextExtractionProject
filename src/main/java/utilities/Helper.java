@@ -21,53 +21,7 @@ import java.util.Set;
 public class Helper<E> implements PDFX {
     private static String OS;
 
-    /**
-     * Liest eine *.csv Datei bezüglich csvFile
-     *
-     * @param csvFile Der Pfad einer *.csv der abgelesen werden soll.
-     */
-    public static void csvReader(String csvFile) {
-        try (CSVReader reader = new CSVReader(new FileReader(csvFile))) {
-            String[] line;
-            while ((line = reader.readNext()) != null) {
-                System.out.println("Country [id= " + line[0] + ", code= " + line[1] + " , name=" + line[2] + "]");
-            }
-        } catch (IOException | CsvValidationException e) {
-            e.printStackTrace();
-        }
 
-    }
-
-    /**
-     * Erstellt mithilfe csvFile eine neue *.csv Datei.
-     *
-     * @param path                  Pfad wo *.csv abgespeichert werden soll.
-     * @param wordsAndOccurencesMap Hashmap mit Wörtern(key) und wie oft diese auftauchen(value).
-     */
-    public static void csvWriter(String path, HashMap<String, Integer> wordsAndOccurencesMap) {
-
-        try (CSVWriter writer = new CSVWriter(new FileWriter(path))) {
-            // feed in your array (or convert your data to an array)
-            //String[] entries = "sefa#lol#ha#selamun#aleyküm".split("#");
-            //Erst die Wörter => Keys.
-            String[] keys = wordsAndOccurencesMap.keySet().toArray(new String[wordsAndOccurencesMap.keySet().size()]);
-
-
-            Integer[] valuesInt = wordsAndOccurencesMap.values().toArray(new Integer[wordsAndOccurencesMap.values().size()]);
-
-            //Dann die Buchstaben Häufigkeiten => Values
-            String[] values = new String[valuesInt.length];
-            for (int i = 0; i < keys.length; i++) {
-                values[i] = valuesInt[i] + "";
-            }
-
-            writer.writeNext(keys);
-            writer.writeNext(values);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Startet PDF Document (Windows)

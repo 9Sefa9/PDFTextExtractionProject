@@ -3,6 +3,7 @@ package layout;
 import extractor.Document;
 import extractor.DocumentHandler;
 import interfaces.Analyzable;
+import jdk.internal.jimage.ImageStrings;
 import org.apache.pdfbox.multipdf.PageExtractor;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -10,14 +11,17 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.TextPosition;
 import utilities.Helper;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.*;
 
 public class Literature implements Analyzable {
     private DocumentHandler handler;
+    private List<String> literatureList;
 
     public Literature(DocumentHandler handler) {
         this.handler = handler;
+        this.literatureList = new ArrayList<>();
     }
 
     @Override
@@ -55,8 +59,8 @@ public class Literature implements Analyzable {
                 for (int i = first ; i<=second;i++){
                     b.append(documentText[i]);
                 }
-
-                System.out.println(b.toString());
+                literatureList.add(b.toString());
+             //   System.out.println(b.toString());
 
                // Helper.print(document);
               //  Helper.delimiter();
@@ -67,9 +71,8 @@ public class Literature implements Analyzable {
             }
         }
     }
-
-    @Override
-    public void start() {
-        analyze();
+    public List<String> getLiteratureList(){
+        return this.literatureList;
     }
+
 }

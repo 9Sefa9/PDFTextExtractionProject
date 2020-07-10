@@ -3,6 +3,7 @@ package layout;
 import extractor.Document;
 import extractor.DocumentHandler;
 import interfaces.Analyzable;
+import io.CSV;
 import org.apache.pdfbox.multipdf.PageExtractor;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -14,8 +15,6 @@ import java.util.List;
 
 public class Section implements Analyzable {
     private DocumentHandler handler;
-    private List<Float> fontSizeList;
-
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -26,9 +25,9 @@ public class Section implements Analyzable {
             "INTROD", "REL", "RES", "DISC", "ACKN", "REFE", "FUT"};
 
     //In der List stehen Kapitel mit: Nummerierung + Titel
-    private List<String> detectedChapterHeaders;
+    private List<String> detectedChapterHeadersList;
     //die jeweilige Position des gefundenen Headers.
-    private List<Integer> detectedChapterPositions;
+    private List<Integer> detectedChapterPositionsList;
 
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -38,9 +37,9 @@ public class Section implements Analyzable {
     private final String[] sectionHeaderDefines = {"A. ", "B. ", "C. ", "D. ", "E. ", "F. ", "G. ", "H. ", "J. ", "K. ",
             "L. ", "M. ", "N. ", "O. ", "P. ", "Q. ", "R. ", "S. ", "T. ", "U. ", "W. ", "Y. ", "Z. "};
     //In der List stehen Abschnitte mit: Nummerierung + Titel
-    private List<String> detectedSectionHeaders;
+    private List<String> detectedSectionHeadersList;
     //die jeweilige Position des gefundenen Headers.
-    private List<Integer> detectedSectionPositions;
+    private List<Integer> detectedSectionPositionsList;
 
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -48,11 +47,6 @@ public class Section implements Analyzable {
 
     public Section(DocumentHandler handler) {
         this.handler = handler;
-    }
-
-    @Override
-    public void start() {
-        analyze();
     }
 
     /**
@@ -75,9 +69,9 @@ public class Section implements Analyzable {
                 calculatePositions(fullText);
 
                 //Zugegriffen kann auf folgende weise:  (vielleicht auch mit substring)
-                Helper.print(detectedChapterHeaders);
+                Helper.print(detectedChapterHeadersList);
                 Helper.delimiter();
-                Helper.print(detectedSectionHeaders);
+                Helper.print(detectedSectionHeadersList);
 
             } catch (Exception i) {
                 i.printStackTrace();
@@ -94,23 +88,23 @@ public class Section implements Analyzable {
      *@param fullText der gesammte Text, ohne jegliche Einschränkungen
      */
     private void calculatePositions(String fullText) {
-        detectedChapterPositions = new ArrayList<>();
-        detectedSectionPositions = new ArrayList<>();
+        detectedChapterPositionsList = new ArrayList<>();
+        detectedSectionPositionsList = new ArrayList<>();
         for (int i = 0; i < fullText.length(); i++) {
             //Chapter position bestimmung
-            for (int j = 0; j < detectedChapterHeaders.size(); j++) {
-                int index = fullText.indexOf(detectedChapterHeaders.get(j));
+            for (int j = 0; j < detectedChapterHeadersList.size(); j++) {
+                int index = fullText.indexOf(detectedChapterHeadersList.get(j));
 
                 if (index != -1) {
-                    detectedChapterPositions.add(index);
+                    detectedChapterPositionsList.add(index);
                 }
             }
             //Section position bestimmung
-            for (int j = 0; j < detectedSectionHeaders.size(); j++) {
-                int index = fullText.indexOf(detectedSectionHeaders.get(j));
+            for (int j = 0; j < detectedSectionHeadersList.size(); j++) {
+                int index = fullText.indexOf(detectedSectionHeadersList.get(j));
 
                 if (index != -1) {
-                    detectedSectionPositions.add(index);
+                    detectedSectionPositionsList.add(index);
                 }
             }
         }
@@ -126,8 +120,8 @@ public class Section implements Analyzable {
      * @param fullText der gesammte Text, ohne jegliche Einschränkungen
      */
     private void findHeaders(String fullText) {
-        detectedChapterHeaders = new ArrayList<>();
-        detectedSectionHeaders = new ArrayList<>();
+        detectedChapterHeadersList = new ArrayList<>();
+        detectedSectionHeadersList = new ArrayList<>();
 
         String[] str = fullText.split("(\r\n|\r|\n)");
 
@@ -135,21 +129,32 @@ public class Section implements Analyzable {
             if (str[i].length() < 60 && str[i].length() > 10 && str[i].matches(".*[^-,.]$")) {
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
                     if (str[i].startsWith(chapterHeaderDefines[j])) {
-                        detectedChapterHeaders.add(str[i]);
+                        detectedChapterHeadersList.add(str[i]);
                         break;
                     }
 
                 }
                 for (int j = 0; j < sectionHeaderDefines.length; j++) {
-                    if(str[i].startsWith(sectionHeaderDefines[j])){
-                        detectedSectionHeaders.add(str[i]);
+                    if (str[i].startsWith(sectionHeaderDefines[j])) {
+                        detectedSectionHeadersList.add(str[i]);
                         break;
                     }
                 }
 
             }
         }
-
+    }
+    public List<String> getDetectedChapterHeadersList(){
+        return this.detectedChapterHeadersList;
+    }
+    public List<Integer> getDetectedChapterPositionsList(){
+        return this.detectedChapterPositionsList;
+    }
+    public List<String> getDetectedSectionHeadersList(){
+        return this.detectedSectionHeadersList;
+    }
+    public List<Integer> getDetectedSectionPositionsList(){
+        return this.detectedSectionPositionsList;
     }
 }
 

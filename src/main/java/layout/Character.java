@@ -4,6 +4,7 @@ import extractor.Document;
 import extractor.DocumentHandler;
 import figure.Rectangle;
 import interfaces.Analyzable;
+import io.CSV;
 import io.Export;
 import org.apache.fontbox.util.BoundingBox;
 import org.apache.pdfbox.pdmodel.font.PDFont;
@@ -23,10 +24,11 @@ import java.util.function.BiConsumer;
 
 public class Character implements Analyzable {
 
-    private HashMap<java.lang.Character, Integer> charactersOccurenceMap = new HashMap<>();
+    private HashMap<java.lang.Character, Integer> charactersOccurenceMap;
     private DocumentHandler documentHandler;
     public Character(DocumentHandler handler) {
         this.documentHandler = handler;
+        charactersOccurenceMap = new HashMap<>();
     }
 
     /**
@@ -62,10 +64,8 @@ public class Character implements Analyzable {
 
         }
     }
-
-    @Override
-    public void start() {
-        analyze();
-
+    public  HashMap<java.lang.Character, Integer> getCharactersOccurenceMap(){
+        return this.charactersOccurenceMap;
     }
+
 }

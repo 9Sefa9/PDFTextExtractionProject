@@ -13,14 +13,19 @@ import org.apache.pdfbox.pdmodel.graphics.PDXObject;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Image implements Analyzable {
     private DocumentHandler handler;
-    private int imageCount;
+    public List<BufferedImage> imagesList;
     public Image(DocumentHandler handler) {
         this.handler = handler;
+        imagesList = new ArrayList<>();
     }
 
     @Override
@@ -38,7 +43,7 @@ public class Image implements Analyzable {
                              // System.out.println("G:/Users/Progamer/Desktop/TEST/" + System.nanoTime() + ".p"+" width: "+pio.getWidth() +"  height: "+pio.getHeight());
                             File file = new File("G:/Users/Progamer/Desktop/TEST/" + System.nanoTime() + ".png");
                             ImageIO.write(pio.getImage(), "png", file);
-                            imageCount+=1;
+                              imagesList.add(pio.getImage());
                           }
                     }
                 }
@@ -47,9 +52,8 @@ public class Image implements Analyzable {
             }
         }
     }
-
-    @Override
-    public void start() {
-        analyze();
+    public List<BufferedImage> getImagesList(){
+        return this.imagesList;
     }
+
 }
