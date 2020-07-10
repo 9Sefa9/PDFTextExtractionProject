@@ -71,7 +71,6 @@ public class Metadata implements Analyzable {
         createFontSizeList();
         //Suche die größte Schrfitgröße aus der FontSizeList.
         highestSize = getHighestFontSize(fontSizeList);
-        Helper.delimiter();
         //boundArea extrahiert nun den Titel mit FontSizeList.
         return boundingArea();
 

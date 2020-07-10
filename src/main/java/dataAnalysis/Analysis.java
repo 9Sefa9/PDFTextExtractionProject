@@ -7,6 +7,7 @@ import io.CSV;
 import io.Import;
 import layout.*;
 import layout.Character;
+import utilities.Helper;
 
 public class Analysis implements Analyzable {
 
@@ -44,16 +45,35 @@ public class Analysis implements Analyzable {
         analysis1();
         analysis2();
     }
-
+    //beinhaltet die erste Analyse: Konferenzen in Abhängigkeit zu Anzahl an Abbildungen
     private void analysis1() {
+
         csv = new CSV(args[1].concat("\\analysisOne"+(System.nanoTime()/1000)+".csv"));
-        //beinhaltet die erste Analyse z.B Anzahl an Abbildungen in Konferenzen
-        for(String s: metadata.getTitlesList())
-            System.out.println(s);
+        //Die Konkatenation ist wichitg, da die erste Zelle in der ersten Saplte leer sein muss.
+        csv.writeCSV((String[])Helper.concatenate(new String[]{""},Helper.toStringArray(metadata.getTitlesList())));
+
+        String []imageCountArray = new String[image.getImageCountList().size()];
+        for (int i = 0; i < image.getImageCountList().size(); i++)
+            imageCountArray[i] = image.getImageCountList().get(i).toString();
+
+        csv.writeCSV((String[])Helper.concatenate(new String[]{"Anzahl Abbildungen"},imageCountArray));
+
+        csv.closeWriter();
+
     }
-
+    //beinhaltet die zweite Analyse: Maximale Wörter und Buchstaben in einer Konferenz
     private void analysis2() {
+        csv = new CSV(args[1].concat("\\analysisTwo"+(System.nanoTime()/1000)+".csv"));
+        //Die Konkatenation ist wichitg, da die erste Zelle in der ersten Saplte leer sein muss.
+        csv.writeCSV((String[])Helper.concatenate(new String[]{""},Helper.toStringArray(metadata.getTitlesList())));
 
+      //  String []imageCountArray = new String[image.getImageCountList().size()];
+     //   for (int i = 0; i < image.getImageCountList().size(); i++)
+      //      imageCountArray[i] = image.getImageCountList().get(i).toString();
+//TODO Brauch ich dass denn überhaupt das mit dem Wörtern ?
+        csv.writeCSV((String[])Helper.concatenate(new String[]{"Anzahl der Wörter"},word.));
+
+        csv.closeWriter();
     }
 
 }

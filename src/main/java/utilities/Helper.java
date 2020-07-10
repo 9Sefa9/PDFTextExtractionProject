@@ -12,10 +12,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Stream;
 
 //Statische Klasse als Hilfe für bestimmte Funktionalitäten.
 public class Helper<E> implements PDFX {
@@ -67,42 +66,6 @@ public class Helper<E> implements PDFX {
             System.out.print("#");
         }
         System.out.println();
-    }
-
-    /**
-     * @deprecated Muss erneuert werden.Beinhaltet aber nützliche String operationen für andere Zwecke!
-     * Benutze stattdessen {@link #print(HashMap)} oder {@link #print(List)}.
-     * @param document Dokument, welches ausgegeben wird.
-     */
-    //@TODO Forschleife muss noch abgecheckt werden. was passiert da in der RegEx ?
-    public static void print(Document document) {
-        try {
-            document.setPdfText(document.getPdfTextStripper().getText(document.getPdfDocument()));
-            if (!document.getPdfDocument().isEncrypted())
-                System.out.println(document.getPdfText());
-             else throw new Exception("PDFDocument is encrypted! - can't print PDFDocument");
-                    /*  String[] words = line.split(" ");
-                      String firstWord = words[0].trim();
-                      String lastWord = words[words.length - 1].trim();
-                       System.out.println("FirstWord:" + firstWord);
-
-
-                    Diese If Bedingung sorgt dafür, dass z.B "localization\nof" gesplittet wird.
-                       if (lastWord.contains("\n")) {
-                            String[] lastWordCorrection = lastWord.split("\n");
-                           lastWord = lastWordCorrection[lastWordCorrection.length - 1];
-                        }
-
-                         System.out.println("lastWord:" + lastWord);
-
-                    Printed den ganzen Line.
-
-                    System.out.println("********************************************************************");
-                      */
-
-        } catch (Exception i) {
-            i.printStackTrace();
-        }
     }
 
     /**
@@ -173,6 +136,18 @@ public class Helper<E> implements PDFX {
 
     public static boolean isUnix(){
         return getOsName().startsWith("Linux");
+    }
+
+    public static Integer[] toIntegerArray(List<Integer> list) {
+        Integer[]titlesArray = new Integer[list.size()];
+        return list.toArray(titlesArray);
+    }
+    public static String[] toStringArray(List<String> list) {
+        String[]titlesArray = new String[list.size()];
+        return list.toArray(titlesArray);
+    }
+    public static Object concatenate(String[] a, String[] b) {
+        return Stream.concat(Arrays.stream(a), Arrays.stream(b)).toArray(String[]::new);
     }
 }
 

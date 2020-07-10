@@ -61,13 +61,13 @@ public class CSV {
     public void writeCSV(String[] values) {
         writer.writeNext(values,true);
     }
-
+/*
     /**
      * Liest eine *.csv Datei bezüglich csvFile
-     * TODO muss noch gemacht werden..
+     * TODO könnte gemacht werden.
      *
      * @param csvFile Der Pfad einer *.csv der abgelesen werden soll.
-     */
+
 
     public void readCSV(String csvFile) {
         try {
@@ -81,7 +81,7 @@ public class CSV {
             i.printStackTrace();
         }
     }
-
+*/
     public void closeWriter() {
         try {
             if (this.writer != null) {

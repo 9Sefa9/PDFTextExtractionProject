@@ -42,7 +42,6 @@ public class Word implements Analyzable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Helper.print(getWordOccurenceMap());
         }
 
     }

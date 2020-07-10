@@ -23,15 +23,18 @@ import java.util.List;
 public class Image implements Analyzable {
     private DocumentHandler handler;
     public List<BufferedImage> imagesList;
+    public List<Integer> imageCountList;
     public Image(DocumentHandler handler) {
         this.handler = handler;
         imagesList = new ArrayList<>();
+        imageCountList = new ArrayList<>();
     }
 
     @Override
     public void analyze() {
         for (Document document : this.handler.getDocumentsList()) {
             try {
+                int imageCount = 0;
                 for (PDPage page : document.getPdfDocument().getPages()) {
                     PDResources pdResources = page.getResources();
                     for (COSName c : pdResources.getXObjectNames()) {
@@ -40,13 +43,16 @@ public class Image implements Analyzable {
                         //Die breite und höhe beträgt 20. Bei kleineren werten kommen winzige Bilder hinzu, die
                         //sinngemäß kein Teil des wissenschaftlichen Dokuments sind.
                           if (pio != null && pio.getWidth()>20f && pio.getHeight()>20f) {
-                             // System.out.println("G:/Users/Progamer/Desktop/TEST/" + System.nanoTime() + ".p"+" width: "+pio.getWidth() +"  height: "+pio.getHeight());
-                            File file = new File("G:/Users/Progamer/Desktop/TEST/" + System.nanoTime() + ".png");
+                             // nbedingt beide kommentare auskommentieren, wenn die Bilder abgespeichert werden sollen auf Desktop.
+                            File file = new File("G:/Users/Sefa/Desktop/TEST/" + document.getPdfName() + ".png");
                             ImageIO.write(pio.getImage(), "png", file);
                               imagesList.add(pio.getImage());
+                              imageCount+=1;
+
                           }
                     }
                 }
+                imageCountList.add(imageCount);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -55,5 +61,7 @@ public class Image implements Analyzable {
     public List<BufferedImage> getImagesList(){
         return this.imagesList;
     }
-
+    public List<Integer> getImageCountList(){
+        return this.imageCountList;
+    }
 }

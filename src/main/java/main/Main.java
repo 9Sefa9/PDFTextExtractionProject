@@ -18,8 +18,7 @@ import layout.Character;
 public class Main {
     //"src\\main\\resources\\08662658.pdf";
     public static void main(String[] args) {
-        long now;
-        System.out.println("Completion Time: "+(now = System.nanoTime()));
+        long now = System.nanoTime();
         switch (args.length){
             case 0:{System.out.println("No arguments found!\nUsage: java -jar <DIR PATH OF FOLDER CONTAINING DOCUMENTS or DIR PATH OF ONLY 1 PDF DOCUMENT> <SAVEPATH FOR CSV EXPORT>");break;}
             case 1:{System.out.println("Only 1 argument found!\nUsage: java -jar <DIR PATH OF FOLDER CONTAINING DOCUMENTS or DIR PATH OF ONLY 1 PDF DOCUMENT> <SAVEPATH FOR CSV EXPORT>");break; }

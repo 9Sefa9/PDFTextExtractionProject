@@ -69,9 +69,9 @@ public class Section implements Analyzable {
                 calculatePositions(fullText);
 
                 //Zugegriffen kann auf folgende weise:  (vielleicht auch mit substring)
-                Helper.print(detectedChapterHeadersList);
-                Helper.delimiter();
-                Helper.print(detectedSectionHeadersList);
+              //  Helper.print(detectedChapterHeadersList);
+              //  Helper.delimiter();
+              //  Helper.print(detectedSectionHeadersList);
 
             } catch (Exception i) {
                 i.printStackTrace();
