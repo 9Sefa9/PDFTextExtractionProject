@@ -26,7 +26,7 @@ public class Main {
             Extractable imp = new Import();
             DocumentHandler handler = new DocumentHandler();
             imp.importDocument(handler,args[0]);
-            Analyzable [] analyzableDocument = {/*new Section(handler),new Metadata(handler),*/ new Character(handler)};
+            Analyzable [] analyzableDocument = {new Section(handler)/*,new Metadata(handler), new Character(handler)*/};
             for (Analyzable a : analyzableDocument) {
                 a.start();
             }

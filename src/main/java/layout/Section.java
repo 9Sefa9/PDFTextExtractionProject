@@ -5,31 +5,46 @@ import extractor.DocumentHandler;
 import interfaces.Analyzable;
 import org.apache.pdfbox.multipdf.PageExtractor;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.pdfbox.text.PDFTextStripperByArea;
-import org.apache.pdfbox.text.TextPosition;
 import utilities.Helper;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class Section implements Analyzable {
     private DocumentHandler handler;
     private List<Float> fontSizeList;
+
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
     //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Kapitel beginnen kann. Könnte erweitert werden.
-    private String[] headersDefines = {"I.", "II.", "III.", "IV.", "V.", "VI.", "VII.", "VIII.", "IX.", "X.",
+    private final String[] chapterHeaderDefines = {"I.", "II.", "III.", "IV.", "V.", "VI.", "VII.", "VIII.", "IX.", "X.",
             "i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x.",
             "INTROD", "REL", "RES", "DISC", "ACKN", "REFE", "FUT"};
 
     //In der List stehen Kapitel mit: Nummerierung + Titel
+    private List<String> detectedChapterHeaders;
+    //die jeweilige Position des gefundenen Headers.
+    private List<Integer> detectedChapterPositions;
+
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+    //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Abschnitt beginnen kann. Könnte erweitert werden.
+    private final String[] sectionHeaderDefines = {"A. ", "B. ", "C. ", "D. ", "E. ", "F. ", "G. ", "H. ", "J. ", "K. ",
+            "L. ", "M. ", "N. ", "O. ", "P. ", "Q. ", "R. ", "S. ", "T. ", "U. ", "W. ", "Y. ", "Z. "};
+    //In der List stehen Abschnitte mit: Nummerierung + Titel
     private List<String> detectedSectionHeaders;
     //die jeweilige Position des gefundenen Headers.
     private List<Integer> detectedSectionPositions;
+
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
     public Section(DocumentHandler handler) {
         this.handler = handler;
@@ -54,8 +69,15 @@ public class Section implements Analyzable {
                 document.setPdfDocument(doc);
                 document.setPdfTextStripper(new PDFTextStripper());
                 String fullText = document.getPdfText();
-                findSectionHeaders(fullText);
-                calculateSectionPosition(fullText);
+
+                //Überschriften, Abschnitte und ihre Positionen ausfindig machen in Abhängigkeit zum fullText.
+                findHeaders(fullText);
+                calculatePositions(fullText);
+
+                //Zugegriffen kann auf folgende weise:  (vielleicht auch mit substring)
+                Helper.print(detectedChapterHeaders);
+                Helper.delimiter();
+                Helper.print(detectedSectionHeaders);
 
             } catch (Exception i) {
                 i.printStackTrace();
@@ -65,15 +87,25 @@ public class Section implements Analyzable {
     }
 
     /***
-     *Die Positionen der einzelnen gefunden headers aus detectedSectionheaders wird in relation
+     *Die Positionen der einzelnen gefunden headers aus detectedSectionHeaders und detectedChapterHeaders wird in relation
      *zum gesammten Text (fulltext) gebracht. Die gefundenen Positionen der einzelnen Kapitel werden in eine liste abgespeichert.
      *
      *@see #analyze()
      *@param fullText der gesammte Text, ohne jegliche Einschränkungen
      */
-    private void calculateSectionPosition(String fullText) {
+    private void calculatePositions(String fullText) {
+        detectedChapterPositions = new ArrayList<>();
         detectedSectionPositions = new ArrayList<>();
         for (int i = 0; i < fullText.length(); i++) {
+            //Chapter position bestimmung
+            for (int j = 0; j < detectedChapterHeaders.size(); j++) {
+                int index = fullText.indexOf(detectedChapterHeaders.get(j));
+
+                if (index != -1) {
+                    detectedChapterPositions.add(index);
+                }
+            }
+            //Section position bestimmung
             for (int j = 0; j < detectedSectionHeaders.size(); j++) {
                 int index = fullText.indexOf(detectedSectionHeaders.get(j));
 
@@ -83,33 +115,45 @@ public class Section implements Analyzable {
             }
         }
 
-    //TODO DURCHBRUCH !! ICh habs geschafft !! System.out.println(fullText.substring(detectedSectionPositions.get(0),detectedSectionPositions.get(1)));
+        //TODO DURCHBRUCH !! ICh habs geschafft !! System.out.println(fullText.substring(detectedSectionPositions.get(0),detectedSectionPositions.get(1)));
+        // System.out.println(fullText.substring(detectedSectionPositions.get(0),detectedSectionPositions.get(1)));
 
-        }
+    }
 
 
     /***
-     * Identifiziert die Nummer + Titel eines Kapitels und speichert Sie in die detectedSectionHeaders Liste ein.
-      * @param fullText der gesammte Text, ohne jegliche Einschränkungen
+     * Identifiziert die Nummer + Titel eines Kapitels und eines Abschnittes und speichert Sie in die jeweiligen detected Listen ein.
+     * @param fullText der gesammte Text, ohne jegliche Einschränkungen
      */
-    private void findSectionHeaders(String fullText) {
+    private void findHeaders(String fullText) {
+        detectedChapterHeaders = new ArrayList<>();
         detectedSectionHeaders = new ArrayList<>();
+
         String[] str = fullText.split("(\r\n|\r|\n)");
 
         for (int i = 0; i < str.length; i++) {
             if (str[i].length() < 60 && str[i].length() > 10 && str[i].matches(".*[^-,.]$")) {
-                for (int j = 0; j < headersDefines.length; j++)
-                    if (str[i].startsWith(headersDefines[j])) {
-                        //  System.out.println(fullText.indexOf(i)+ "text: "+str[i]);
-                        detectedSectionHeaders.add(str[i]);
-                        //   System.out.println(str[i]+"\n******");
+                for (int j = 0; j < chapterHeaderDefines.length; j++) {
+                    if (str[i].startsWith(chapterHeaderDefines[j])) {
+                        detectedChapterHeaders.add(str[i]);
                         break;
                     }
+
+                }
+                for (int j = 0; j < sectionHeaderDefines.length; j++) {
+                    if(str[i].startsWith(sectionHeaderDefines[j])){
+                        detectedSectionHeaders.add(str[i]);
+                        break;
+                    }
+                }
+
             }
         }
 
     }
 }
+
+
 //  System.out.println(s);
 //   for (int i = 0; i < str.length; i++) {
 //      if (str[i] != null && !str[i].isEmpty()) {
