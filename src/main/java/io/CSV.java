@@ -28,7 +28,7 @@ public class CSV {
             this.fileWriter = new FileWriter(commonPath);
             this.fileReader = new FileReader(commonPath);
 
-            this.writer = new CSVWriter(fileWriter,CSVWriter.DEFAULT_SEPARATOR,
+            this.writer = new CSVWriter(fileWriter,'\t',
                     CSVWriter.NO_QUOTE_CHARACTER,
                     CSVWriter.DEFAULT_ESCAPE_CHARACTER,
                     CSVWriter.DEFAULT_LINE_END);
