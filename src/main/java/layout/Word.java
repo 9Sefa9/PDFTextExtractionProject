@@ -7,17 +7,19 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import utilities.Helper;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 
 public class Word implements Analyzable {
-    private HashMap<String, Integer> wordOccurenceMap;
-    private DocumentHandler handler;
 
+    private DocumentHandler handler;
+    private List<HashMap<String,Integer>> wordOccurenceList;
     public Word(DocumentHandler handler) {
         this.handler = handler;
-        this.wordOccurenceMap= new HashMap<>();
+        wordOccurenceList = new ArrayList<>();
     }
 
 
@@ -27,26 +29,31 @@ public class Word implements Analyzable {
     @Override
     public void analyze() {
         for (Document document : handler.getDocumentsList()) {
+            HashMap<String, Integer> wordOccurenceMap;
             try {
+                wordOccurenceMap = new HashMap<>();
                 document.setPdfTextStripper(new PDFTextStripper(){
                     @Override
                     protected void writeString(String text) throws IOException {
                         String []res = text.split(" ");
                         for (String str:res) {
-
-                            getWordOccurenceMap().merge(str.replaceAll("\\W","").toLowerCase(Locale.ENGLISH), 1, Integer::sum);
+                            wordOccurenceMap.merge(str.replaceAll("\\W","").toLowerCase(Locale.ENGLISH), 1, Integer::sum);
                         }
                         super.writeString(text);
                     }
                 });
+                //Wichtig um die Forloop durchzzuführen
+                document.getPdfName();
+                wordOccurenceList.add(wordOccurenceMap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
         }
 
     }
-    public HashMap<String, Integer> getWordOccurenceMap() {
-        return this.wordOccurenceMap;
+    public List<HashMap<String, Integer>> getWordOccurenceList() {
+        return this.wordOccurenceList;
     }
 }
 
