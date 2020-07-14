@@ -14,11 +14,13 @@ public class Document {
     private String conferenceName;
     private String pdfName;
     private String pdfPath;
-
+    private int pageNumbers;
     public Document(String conferenceName, String pdfName, String absolutePath) {
         this.conferenceName = conferenceName;
         this.pdfName = pdfName;
         this.pdfPath = absolutePath;
+        //speicher die Anzahl an Seiten ab.
+
     }
 
     public void setPdfPath(String pdfPath) {
@@ -31,6 +33,7 @@ public class Document {
 
     public void setPdfDocument(PDDocument pdfDoc) {
         this.pdfDocument = pdfDoc;
+
     }
 
     public PDDocument getPdfDocument() {
@@ -48,8 +51,8 @@ public class Document {
     //wird verwendet, um den string zu bearbeiten.
     public void setPdfTextStripper(PDFTextStripper strippper) {
         this.pdfTextStripper = strippper;
-        //Wenn pdfTextStripper gesetzt wurde, soll der entsprechende Text auch gepseichert werden!
-        //spart uns Zeit, wenn wir printen wollen.
+
+
         try {
             setPdfText(strippper.getText(getPdfDocument()));
         } catch (IOException e) {
@@ -102,5 +105,9 @@ public class Document {
 
     public String getParentName() {
         return new File(this.pdfPath).getParentFile().getName();
+    }
+
+    public int getPageNumbers() {
+        return getPdfDocument().getNumberOfPages();
     }
 }

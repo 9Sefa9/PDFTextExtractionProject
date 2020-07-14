@@ -45,10 +45,6 @@ public class Character implements Analyzable {
                     }
                 });
                 document.getPdfText();
-               // System.out.println(this.charactersOccurenceMap.size());
-              //  Helper.print(this.charactersOccurenceMap);
-                //charactersOccurenceMap.forEach((c,i) -> System.out.println("C:"+c+"  I:"+i));
-
 
             } catch (IOException e) {
                 e.printStackTrace();

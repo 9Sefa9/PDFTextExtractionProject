@@ -23,11 +23,7 @@ public class DocumentParser {
         conferenceNames = new HashSet<>();
     }
 
-    /**
-     * mit setDocumentsList werden PDF files den Konferenzen zugeordnet und in die documentsList abgespeichert.
-     *
-     * @param documentFiles beinhaltet eine Liste mit PDF Files.
-     */
+
    /* public void prepareList(File[] documentFiles) {
         try {
             for (File docFile : documentFiles) {
@@ -46,7 +42,11 @@ public class DocumentParser {
         }
     }*/
 
-
+    /**
+     * mit prepareList werden PDF files den Konferenzen zugeordnet und in die documentsList abgespeichert.
+     *
+     * @param documentFiles beinhaltet eine Liste mit dem Namen des zugehörigen Konferenz und PDF File.
+     */
     public void prepareList(ArrayList<KeyValueObject<String, File>> documentFiles) {
         try {
             for(KeyValueObject<String,File> docFile : documentFiles){
@@ -58,7 +58,6 @@ public class DocumentParser {
                 String conferenceName = docFile.getKey();
                 String pdfName = docFile.getValue().getName();
                 String pdfPath = docFile.getValue().getAbsolutePath();
-
                 //Erstelle ein Document mit den Informationen und lade den Dokument.
                 Document newDocument = new Document(conferenceName,pdfName, pdfPath);
                 newDocument.setPdfDocument(PDDocument.load(docFile.getValue()));

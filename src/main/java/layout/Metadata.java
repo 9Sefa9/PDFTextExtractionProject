@@ -25,10 +25,14 @@ public class Metadata implements Analyzable {
     private Rectangle2D top;
     private List<Float> fontSizeList;
     private List<String> titlesList;
+    private List<Integer> pageSizesList;
+    private int numberPages;
+
     public Metadata(DocumentParser handler) {
 
         this.documentParser = handler;
         titlesList = new ArrayList<>();
+        pageSizesList = new ArrayList<>();
     }
 
     /**
@@ -39,7 +43,7 @@ public class Metadata implements Analyzable {
         System.out.println("Entering Metadata Extraction...");
         //iteriert über alle PDF die vorher importiert wurden.
         for (Document document : documentParser.getDocumentsList()) {
-            DateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
+          //  DateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
             PDDocumentInformation info = document.getPdfDocument().getDocumentInformation();
             if (info.getTitle() == null || info.getTitle().isEmpty()) {
                 String fixedTitle = extract(document);
@@ -47,7 +51,8 @@ public class Metadata implements Analyzable {
 
             } else {
                 String fixedTitle = info.getTitle();
-                titlesList.add(fixedTitle);
+               this.pageSizesList.add(document.getPdfDocument().getNumberOfPages());
+               this.titlesList.add(fixedTitle);
                   //    System.out.println("Page Count=" + document.getPdfDocument().getNumberOfPages() + "\n" + "Title=" + info.getTitle() + "\n" + "Author=" + info.getAuthor() + "\n" + "Subject=" + info.getSubject() + "\n" + "Keywords=" + info.getKeywords() + "\n" + "Creator=" + info.getCreator() + "\n" + "Producer=" + info.getProducer() + "\n" + "Creation Date=" + formatter.format(info.getCreationDate().getTime()) + "\n" + "Modification Date=" + formatter.format(info.getModificationDate().getTime()) + "\n" + "Trapped=" + info.getTrapped());
             }
 
@@ -168,6 +173,9 @@ public class Metadata implements Analyzable {
     }
     public List<String> getTitlesList(){
         return this.titlesList;
+    }
+    public List<Integer> getPageSizesList(){
+        return this.pageSizesList;
     }
 }
 

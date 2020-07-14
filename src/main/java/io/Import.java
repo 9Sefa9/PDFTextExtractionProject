@@ -28,16 +28,7 @@ public class Import extends Extractable {
     public void importDocument(DocumentParser handler, String dirPath) {
         findPDFrecursiv(handler, dirPath);
         System.out.println("Conferences: " + countConferences + " PDFs: " + getDetectedFiles().size());
-
-        //Überträgt ArrayList<KeyValueOBject<String,File>> zu einem File-Array,
-        // da setDocumentsList nur File[] akzeptiert.
-     //   File[] myPDFFiles = new File[getDetectedFiles().size()];
-    //    for (int i = 0; i < getDetectedFiles().size(); i++) {
-    //        myPDFFiles[i] = getDetectedFiles().get(i).getValue();
-     //   }
-        //setze den Ordner mit den PDF Dokumenten in die DocumentsList.
-         handler.prepareList(detectedFiles);
-     //   handler.setDocumentsList(myPDFFiles);
+        handler.prepareList(detectedFiles);
 
     }
 

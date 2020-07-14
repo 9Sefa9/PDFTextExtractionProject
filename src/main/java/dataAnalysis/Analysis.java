@@ -42,30 +42,18 @@ public class Analysis implements Analyzable {
         word = new Word(handler);
         image = new Image(handler);
         literature = new Literature(handler);
-//TODO irgendwie funktionieren image und literature nicht gemeinsam...
-        Analyzable[] analyzableDocument = {literature,image,section,metadata,character,word};
+
+        Analyzable[] analyzableDocument = {metadata,literature,image,section,character,word};
         for (Analyzable a : analyzableDocument) {
             a.analyze();
         }
 
         analysis1();
-        //  analysis2();
-
-      //  closeAllPDF();
+        analysis2();
+        analysis3();
     }
 
-    private void closeAllPDF() {
-    for(Document doc : this.handler.getDocumentsList()){
-        try {
-            if (doc != null)
-                doc.getPdfDocument().close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    }
-
-    //TODO beinhaltet die erste Analyse:  Anzahl an Abbildungen in Abhängigkeit zu Konferenzen
+    //Beinhaltet die erste Analyse:  Anzahl an Abbildungen in Abhängigkeit zu Konferenzen
     private void analysis1() {
 
         //Erstelle *.csv Datei mit einzigartiger Benennung
@@ -78,7 +66,7 @@ public class Analysis implements Analyzable {
         int[] countListPerConference = new int[handler.getConferenceNames().length];
         for (int i = 0; i < handler.getConferenceNames().length; i++) {
             String conferenceName = handler.getConferenceNames()[i];
-            for (int j = 0; j <image.getImageCountList().size(); j++) {
+            for (int j = 0; j <handler.getDocumentsList().size(); j++) {
                 String imgConferenceName = image.getImageCountList().get(j).getValue().getConferenceName();
                 Integer imgCounts = image.getImageCountList().get(j).getKey();
                 if(imgConferenceName.equals(conferenceName)){
@@ -96,76 +84,52 @@ public class Analysis implements Analyzable {
 
     }
 
-    //beinhaltet die zweite Analyse: Maximale Wörter und Buchstaben in einer Konferenz
+    //beinhaltet die zweite Analyse: Maximale Anzahl an seiten in abhängigkeit zu den Konferenzen.
     private void analysis2() {
+        //Erstelle *.csv Datei mit einzigartiger Benennung
         csv = new CSV(args[1].concat("\\analysisTwo" + (System.nanoTime() / 1000) + ".csv"));
-        //Die Konkatenation ist wichitg, da die erste Zelle in der ersten Saplte leer sein muss.
-        csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, Helper.toStringArray(metadata.getTitlesList())));
 
-        //Einzelne Wörter samt ihrer vorkommen
-        String[] newEntry = new String[metadata.getTitlesList().size()];
-        int index = 1;
-        for (HashMap<String, Integer> currentDocumentWordOccurence : word.getWordOccurenceList()) {
-            newEntry[0] = "Wissenschaftliches Dokument " + index;
-            index += 1;
-            for (String w : currentDocumentWordOccurence.keySet()) {
-                //    newEntry
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, handler.getConferenceNames()));
+
+        //Berechne das Maximum aller Seiten je Konferenz und trage diese ein.
+        // int count=0;
+        int[] countListPerConference = new int[handler.getConferenceNames().length];
+        for (int i = 0; i < handler.getConferenceNames().length; i++) {
+            //Die Konferenzen
+            String conferenceName = handler.getConferenceNames()[i];
+            for (int j = 0; j <handler.getDocumentsList().size(); j++) {
+                //vergleich ob die Liste aus Handler dem gleichen konferenz entspricht des dokuments.
+                String conferenceNameFromHandler = handler.getDocumentsList().get(j).getConferenceName();
+                int docCounts = metadata.getPageSizesList().get(j);
+                //falls ja, summiere die anzahl vorhandener Seiten einzelner Dokumente und speichere es zur bearbeitung in die Array.
+                if(conferenceNameFromHandler.equals(conferenceName)){
+                    countListPerConference[i]+= docCounts;
+                }
             }
         }
-        //  String []imageCountArray = new String[image.getImageCountList().size()];
-        //   for (int i = 0; i < image.getImageCountList().size(); i++)
-        //      imageCountArray[i] = image.getImageCountList().get(i).toString();
-//TODO Brauch ich dass denn überhaupt das mit dem Wörtern ?
-        // csv.writeCSV((String[])Helper.concatenate(new String[]{"Anzahl der Wörter"},word.));
-
-        //    csv.closeWriter();
+        //Integer Array zu String array umwandeln, da opencsv nur arrays haben möchte.
+        String[] finalArray = new String[countListPerConference.length];
+        for (int i = 0; i <countListPerConference.length; i++) {
+            finalArray[i] = (countListPerConference[i]+"");
+        }
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{"Anzahl Seiten"}, finalArray));
+        csv.closeWriter();
     }
 
+    //TODO beinhaltet die dritte Analyse: Berechnung der Kapitellängen einzelner Konferenzen. (substring?)
+    private void analysis3(){
+
+    }
+    //TODO beinhaltet die vierte Analyse: Berechnung der maximalen buchstaben bzw. Wörter einzelner Konferenzen.(zwei zeilen + konfeerenz namen..) (substring?)
+    private void analysis4(){
+
+    }
+    //TODO beinhaltet die fünfte Analyse: Berechnung der Abschnittslänge von einem Abschnitt zum anderen(Kapüitelübergreifen) (substring?)
+    private void analysis5(){
+
+    }
+    //TODO beinhaltet die sechste Analyse: statistische Berechnung wie z.B Berechnung der prozentualen Anteil.
+    private void analysis6(){
+
+    }
 }
-/*
-     String[]titlesArray = new String[this.titles.size()];
-        titles.toArray(titlesArray);
-
-        csv.writeCSV(titlesArray);
-        csv.closeWriter();
-
- */
-
-
-
-
-/*
-String [] detectedChapterHeadersArray = new String[detectedSectionHeaders.size()];
-            String [] test = (String[]) detectedChapterHeaders.toArray(detectedChapterHeadersArray);
-            csv.writeCSV(test);
-            csv.closeWriter();
- */
-//plus 1, weil die 0te Stelle den Namen des Dokumenten hat.
-     /*   String[] preparedString = new String[image.getImagesList().size() + 1];
-        preparedString[0] = "Anzahl Abbildungen";
-
-        for (int i = 0; i < image.getImageCountList().size(); i++) {
-            for (int j = 1; j < image.getImageCountList().size(); j++) {
-                if(image.getImageCountList().get(j).getValue().equals(preparedString[0])){
-                    preparedString[j] = image.getImageCountList().get(j).getKey().toString();
-                    i+=1;
-                }
-
-            }
-            csv.writeCSV(preparedString);
-            preparedString = new String[image.getImagesList().size() + 1];
-            // Helper.concatenate(new String[]{image.getImageCountList().get(j).getValue()},image.getImageCountList().get(i).getKey());
-        }
-
-      */
-//Die Konkatenation ist wichitg, da die erste Zelle in der ersten Saplte leer sein muss.
-      /*  csv.writeCSV((String[])Helper.concatenate(new String[]{""},Helper.toStringArray(metadata.getTitlesList())));
-
-        String []imageCountArray = new String[image.getImageCountList().size()];
-        for (int i = 0; i < image.getImageCountList().size(); i++)
-            imageCountArray[i] = image.getImageCountList().get(i).toString();
-
-        csv.writeCSV((String[])Helper.concatenate(new String[]{"Anzahl Abbildungen"},imageCountArray));
-
-       csv.closeWriter();
-*/
