@@ -149,5 +149,7 @@ public class Helper<E> implements PDFX {
     public static Object concatenate(String[] a, String[] b) {
         return Stream.concat(Arrays.stream(a), Arrays.stream(b)).toArray(String[]::new);
     }
+
+
 }
 
