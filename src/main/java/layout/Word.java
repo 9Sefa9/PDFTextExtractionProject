@@ -1,10 +1,9 @@
 package layout;
 
 import extractor.Document;
-import extractor.DocumentHandler;
+import extractor.DocumentParser;
 import interfaces.Analyzable;
 import org.apache.pdfbox.text.PDFTextStripper;
-import utilities.Helper;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,9 +14,10 @@ import java.util.Locale;
 
 public class Word implements Analyzable {
 
-    private DocumentHandler handler;
+    private DocumentParser handler;
     private List<HashMap<String,Integer>> wordOccurenceList;
-    public Word(DocumentHandler handler) {
+    public Word(DocumentParser handler) {
+
         this.handler = handler;
         wordOccurenceList = new ArrayList<>();
     }
@@ -28,6 +28,7 @@ public class Word implements Analyzable {
      */
     @Override
     public void analyze() {
+        System.out.println("Entering Word Extraction...");
         for (Document document : handler.getDocumentsList()) {
             HashMap<String, Integer> wordOccurenceMap;
             try {

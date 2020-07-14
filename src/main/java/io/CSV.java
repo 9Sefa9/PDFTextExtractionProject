@@ -2,16 +2,10 @@ package io;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
-import com.opencsv.exceptions.CsvValidationException;
-import extractor.Document;
-import extractor.DocumentHandler;
-import interfaces.Extractable;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 public class CSV {
@@ -60,6 +54,9 @@ public class CSV {
 
     public void writeCSV(String[] values) {
         writer.writeNext(values,true);
+    }
+    public void writeCSV(List<String[]> values) {
+        writer.writeAll(values,true);
     }
 /*
     /**

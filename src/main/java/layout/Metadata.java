@@ -1,7 +1,7 @@
 package layout;
 
 import extractor.Document;
-import extractor.DocumentHandler;
+import extractor.DocumentParser;
 
 import interfaces.Analyzable;
 
@@ -9,7 +9,6 @@ import org.apache.pdfbox.pdmodel.*;
 
 import org.apache.pdfbox.text.PDFTextStripperByArea;
 import org.apache.pdfbox.text.TextPosition;
-import utilities.Helper;
 
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
@@ -20,14 +19,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Metadata implements Analyzable {
-    private DocumentHandler documentHandler;
+    private DocumentParser documentParser;
     private PDPage firstPage;
     private float width,height,highestSize;
     private Rectangle2D top;
     private List<Float> fontSizeList;
     private List<String> titlesList;
-    public Metadata(DocumentHandler handler) {
-        this.documentHandler = handler;
+    public Metadata(DocumentParser handler) {
+
+        this.documentParser = handler;
         titlesList = new ArrayList<>();
     }
 
@@ -36,9 +36,9 @@ public class Metadata implements Analyzable {
      */
     @Override
     public void analyze() {
-
+        System.out.println("Entering Metadata Extraction...");
         //iteriert über alle PDF die vorher importiert wurden.
-        for (Document document : documentHandler.getDocumentsList()) {
+        for (Document document : documentParser.getDocumentsList()) {
             DateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
             PDDocumentInformation info = document.getPdfDocument().getDocumentInformation();
             if (info.getTitle() == null || info.getTitle().isEmpty()) {

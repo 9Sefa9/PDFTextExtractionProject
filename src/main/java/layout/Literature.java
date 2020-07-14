@@ -1,31 +1,28 @@
 package layout;
 
 import extractor.Document;
-import extractor.DocumentHandler;
+import extractor.DocumentParser;
 import interfaces.Analyzable;
-import jdk.internal.jimage.ImageStrings;
 import org.apache.pdfbox.multipdf.PageExtractor;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.pdfbox.text.TextPosition;
-import utilities.Helper;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.*;
 
 public class Literature implements Analyzable {
-    private DocumentHandler handler;
+    private DocumentParser handler;
     private List<String> literatureList;
 
-    public Literature(DocumentHandler handler) {
+    public Literature(DocumentParser handler) {
+
         this.handler = handler;
         this.literatureList = new ArrayList<>();
     }
 
     @Override
     public void analyze() {
+        System.out.println("Entering Literature Extraction...");
         for (Document document : this.handler.getDocumentsList()) {
 
             int lastPage1= document.getPdfDocument().getNumberOfPages()-1 == 0 ? 1:document.getPdfDocument().getNumberOfPages()-1;
@@ -60,11 +57,6 @@ public class Literature implements Analyzable {
                     b.append(documentText[i]);
                 }
                 literatureList.add(b.toString());
-             //   System.out.println(b.toString());
-
-               // Helper.print(document);
-              //  Helper.delimiter();
-
 
             } catch (IOException e) {
                 e.printStackTrace();

@@ -1,13 +1,7 @@
 package main;
 
 import dataAnalysis.Analysis;
-import extractor.DocumentHandler;
 import interfaces.Analyzable;
-import interfaces.Extractable;
-import io.CSV;
-import io.Import;
-import layout.*;
-import layout.Character;
 
 /**
  * Author Credentials
@@ -18,6 +12,7 @@ import layout.Character;
 public class Main {
     //"src\\main\\resources\\08662658.pdf";
     public static void main(String[] args) {
+        java.util.logging.Logger.getLogger("org.apache.pdfbox").setLevel(java.util.logging.Level.SEVERE);
         long now = System.nanoTime();
         switch (args.length){
             case 0:{System.out.println("No arguments found!\nUsage: java -jar <DIR PATH OF FOLDER CONTAINING DOCUMENTS or DIR PATH OF ONLY 1 PDF DOCUMENT> <SAVEPATH FOR CSV EXPORT>");break;}

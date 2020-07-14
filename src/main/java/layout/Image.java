@@ -1,7 +1,7 @@
 package layout;
 
 import extractor.Document;
-import extractor.DocumentHandler;
+import extractor.DocumentParser;
 import interfaces.Analyzable;
 import org.apache.pdfbox.cos.COSName;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -10,26 +10,26 @@ import org.apache.pdfbox.pdmodel.graphics.PDXObject;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import utilities.KeyValueObject;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Image implements Analyzable {
-    private DocumentHandler handler;
-    private List<KeyValueObject<BufferedImage, String>> imagesList;
-    private List<KeyValueObject<Integer, String>> imageCountList;
+    private DocumentParser handler;
+  //  private List<KeyValueObject<BufferedImage, Document>> imagesList;
+    private List<KeyValueObject<Integer, Document>> imageCountList;
 
-    public Image(DocumentHandler handler) {
+    public Image(DocumentParser handler) {
+
         this.handler = handler;
-        imagesList = new ArrayList<>();
-        imageCountList = new ArrayList<>();
+      //  imagesList = new ArrayList<>();
+        this.imageCountList = new ArrayList<>();
     }
 
     @Override
     public void analyze() {
+        System.out.println("Entering Image Extraction...");
         for (Document document : this.handler.getDocumentsList()) {
             try {
                 int imageCount = 0;
@@ -46,10 +46,10 @@ public class Image implements Analyzable {
                                 if (pio.getWidth() > 50f && pio.getHeight() > 50f) {
                                     // nbedingt beide kommentare auskommentieren, wenn die Bilder abgespeichert werden sollen auf Desktop.
                                 //    File file = new File("G:/Users/Sefa/Desktop/TEST/" + System.nanoTime() / 1000 + ".png");
-                                    BufferedImage img = pio.getImage();
+                                //    BufferedImage img = pio.getImage();
                                //     ImageIO.write(img, "png", file);
 
-                                    this.imagesList.add(new KeyValueObject<BufferedImage, String>(img, document.getPdfName()));
+                                  //  this.imagesList.add(new KeyValueObject<BufferedImage, Document>(img, document));
                                     imageCount += 1;
 
                                 }
@@ -58,18 +58,18 @@ public class Image implements Analyzable {
                     }
 
                 }
-                this.imageCountList.add(new KeyValueObject<Integer, String>(imageCount, document.getPdfName()));
+                this.imageCountList.add(new KeyValueObject<Integer, Document>(imageCount, document));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public List<KeyValueObject<BufferedImage, String>> getImagesList() {
-        return this.imagesList;
-    }
+  //  public List<KeyValueObject<BufferedImage, Document>> getImagesList() {
+   //     return this.imagesList;
+ //   }
 
-    public List<KeyValueObject<Integer, String>> getImageCountList() {
+    public List<KeyValueObject<Integer, Document>> getImageCountList() {
         return this.imageCountList;
     }
 }

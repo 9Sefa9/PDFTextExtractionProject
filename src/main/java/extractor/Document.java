@@ -11,18 +11,24 @@ public class Document {
     private PDDocument pdfDocument;
     private PDFTextStripper pdfTextStripper;
     private String pdfText;
+    private String conferenceName;
     private String pdfName;
     private String pdfPath;
-    public Document(String name, String absolutePath) {
-        this.pdfName =name;
+
+    public Document(String conferenceName, String pdfName, String absolutePath) {
+        this.conferenceName = conferenceName;
+        this.pdfName = pdfName;
         this.pdfPath = absolutePath;
     }
-    public void setPdfPath(String pdfPath){
+
+    public void setPdfPath(String pdfPath) {
         this.pdfPath = pdfPath;
     }
-    public String getPdfPath(){
+
+    public String getPdfPath() {
         return this.pdfPath;
     }
+
     public void setPdfDocument(PDDocument pdfDoc) {
         this.pdfDocument = pdfDoc;
     }
@@ -63,15 +69,23 @@ public class Document {
         return null;
     }
 
-    public void print(PDFTextStripper stripper){
+    public void print(PDFTextStripper stripper) {
         try {
             String pdfDocumentText = stripper.getText(pdfDocument);
             if (!this.pdfDocument.isEncrypted())
                 System.out.println(pdfDocumentText);
             else throw new Exception("PDFDocument is encrypted! - can't print PDFDocument");
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String getConferenceName() {
+        return this.conferenceName;
+    }
+
+    public void setConferenceName(String conferenceName) {
+        this.conferenceName = conferenceName;
     }
 
     public String getPdfText() {
@@ -81,10 +95,12 @@ public class Document {
     public void setPdfText(String pdfText) {
         this.pdfText = pdfText;
     }
-    public String getPdfName(){
+
+    public String getPdfName() {
         return this.pdfName;
     }
-    public String getParentName(){
+
+    public String getParentName() {
         return new File(this.pdfPath).getParentFile().getName();
     }
 }

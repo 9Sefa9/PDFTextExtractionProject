@@ -1,33 +1,23 @@
 package layout;
 
 import extractor.Document;
-import extractor.DocumentHandler;
-import figure.Rectangle;
+import extractor.DocumentParser;
 import interfaces.Analyzable;
-import io.CSV;
-import io.Export;
-import org.apache.fontbox.util.BoundingBox;
-import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.TextPosition;
-import utilities.Helper;
 
-import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.function.BiConsumer;
 
 public class Character implements Analyzable {
 
     private HashMap<java.lang.Character, Integer> charactersOccurenceMap;
-    private DocumentHandler documentHandler;
-    public Character(DocumentHandler handler) {
-        this.documentHandler = handler;
+    private DocumentParser documentParser;
+    public Character(DocumentParser handler) {
+
+        this.documentParser = handler;
         charactersOccurenceMap = new HashMap<>();
     }
 
@@ -36,7 +26,8 @@ public class Character implements Analyzable {
      */
     @Override
     public void analyze() {
-        for(Document document: this.documentHandler.getDocumentsList()){
+        System.out.println("Entering Character Extraction...");
+        for(Document document: this.documentParser.getDocumentsList()){
         try {
 
                 document.setPdfTextStripper(new PDFTextStripper() {
@@ -53,6 +44,7 @@ public class Character implements Analyzable {
                         super.writeString(text, textPositions);
                     }
                 });
+                document.getPdfText();
                // System.out.println(this.charactersOccurenceMap.size());
               //  Helper.print(this.charactersOccurenceMap);
                 //charactersOccurenceMap.forEach((c,i) -> System.out.println("C:"+c+"  I:"+i));

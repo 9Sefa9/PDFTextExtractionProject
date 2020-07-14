@@ -1,20 +1,18 @@
 package layout;
 
 import extractor.Document;
-import extractor.DocumentHandler;
+import extractor.DocumentParser;
 import interfaces.Analyzable;
-import io.CSV;
 import org.apache.pdfbox.multipdf.PageExtractor;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
-import utilities.Helper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Section implements Analyzable {
-    private DocumentHandler handler;
+    private DocumentParser handler;
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -45,7 +43,8 @@ public class Section implements Analyzable {
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-    public Section(DocumentHandler handler) {
+    public Section(DocumentParser handler) {
+
         this.handler = handler;
     }
 
@@ -54,6 +53,7 @@ public class Section implements Analyzable {
      */
     @Override
     public void analyze() {
+        System.out.println("Entering Section Extraction...");
         for (Document document : this.handler.getDocumentsList()) {
             int lastPage = document.getPdfDocument().getNumberOfPages();
             try {

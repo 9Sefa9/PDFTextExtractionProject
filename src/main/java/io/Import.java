@@ -2,7 +2,7 @@ package io;
 
 import exception.ImportException;
 import extractor.Document;
-import extractor.DocumentHandler;
+import extractor.DocumentParser;
 import interfaces.Extractable;
 import utilities.KeyValueObject;
 
@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Import extends Extractable {
-    //Alle PDF Dateien werden in detectedFiles abgespeichert
+    //Alle PDF Dateien werden in detectedFiles abgespeichert. getKey() = Konferenzname, getValue() = Name des PDF Dokuments.)
     private ArrayList<KeyValueObject<String, File>> detectedFiles = new ArrayList<>();
 
 
@@ -25,29 +25,30 @@ public class Import extends Extractable {
      * @param dirPath Pfad wo sich ein PDF befindet
      */
     @Override
-    public void importDocument(DocumentHandler handler, String dirPath) {
+    public void importDocument(DocumentParser handler, String dirPath) {
         findPDFrecursiv(handler, dirPath);
         System.out.println("Conferences: " + countConferences + " PDFs: " + getDetectedFiles().size());
 
         //Überträgt ArrayList<KeyValueOBject<String,File>> zu einem File-Array,
         // da setDocumentsList nur File[] akzeptiert.
-        File[] myPDFFiles = new File[getDetectedFiles().size()];
-        for (int i = 0; i < getDetectedFiles().size(); i++)
-            myPDFFiles[i] = getDetectedFiles().get(i).getValue();
-
+     //   File[] myPDFFiles = new File[getDetectedFiles().size()];
+    //    for (int i = 0; i < getDetectedFiles().size(); i++) {
+    //        myPDFFiles[i] = getDetectedFiles().get(i).getValue();
+     //   }
         //setze den Ordner mit den PDF Dokumenten in die DocumentsList.
-        handler.setDocumentsList(myPDFFiles);
+         handler.prepareList(detectedFiles);
+     //   handler.setDocumentsList(myPDFFiles);
 
     }
 
     /**
-     * Die Methode wird in {@link #importDocument(DocumentHandler, String)} aufgerufen und
+     * Die Methode wird in {@link #importDocument(DocumentParser, String)} aufgerufen und
      * durchsucht rekursiv alle tieferliegende PDF Dokumente / Ordner / Unterordner usw.
      *
      * @param handler Der Dokument handler
      * @param dirPath Pfad wo sich ein PDF / Ordner / Unterordner usw. befindet
      */
-    private void findPDFrecursiv(DocumentHandler handler, String dirPath) {
+    private void findPDFrecursiv(DocumentParser handler, String dirPath) {
         File file;
         String absolutePath;
         try {
@@ -110,45 +111,8 @@ public class Import extends Extractable {
         return documentNames;
     }
 
-    public String[] getConferenceNames() {
-        //der size gefällt mir nicht. ist nicht korrekt. Sollte aber kein problem sein.
-        String[] conferencesName = new String[getDetectedFiles().size()];
-        String lastConferenceName ="";
-        //wichtig, da sonst lücken entstehen.
-        int j=0;
-        for (int i = 0; i < getDetectedFiles().size(); i++) {
-            File parentFile = getDetectedFiles().get(i).getValue().getParentFile();
-            //wenn Elternpfad noch existiert
-            if (parentFile != null)
-                //und falls der nicht vorher eingetragen wurde,
-                if(!parentFile.getName().equals(lastConferenceName)) {
-                    conferencesName[j] = parentFile.getName();
-                    lastConferenceName = parentFile.getName();
-                    j+=1;
-                }
-        }
-        return conferencesName;
-    }
 
     public ArrayList<KeyValueObject<String, File>> getDetectedFiles() {
         return detectedFiles;
     }
 }
-/*                else if(file.isDirectory()){
-                   // int count=0;
-
-                    ArrayList<File> temp = new ArrayList<>();
-                    //Die einzelnen Konferenz-Ordner
-                    for(File conferencesDir: file.listFiles()){
-                        //Die PDF Daten innerhalb eines Konferenzes
-                        for(File files: conferencesDir.listFiles()){
-                            temp.add(files);
-                        }
-                    }
-                    File[] newFiles = new File[temp.size()];
-                    for (int i = 0; i < temp.size(); i++) {
-                        newFiles[i] = temp.get(i);
-                    }
-                    handler.setDocumentsList(newFiles);
-                }
-                */
