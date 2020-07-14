@@ -4,6 +4,7 @@ import exception.ImportException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Document {
@@ -82,5 +83,8 @@ public class Document {
     }
     public String getPdfName(){
         return this.pdfName;
+    }
+    public String getParentName(){
+        return new File(this.pdfPath).getParentFile().getName();
     }
 }

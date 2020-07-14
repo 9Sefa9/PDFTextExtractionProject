@@ -49,7 +49,7 @@ public class Image implements Analyzable {
                                     BufferedImage img = pio.getImage();
                                //     ImageIO.write(img, "png", file);
 
-                                    this.imagesList.add(new KeyValueObject<BufferedImage, String>(img, document.getParentName()));
+                                    this.imagesList.add(new KeyValueObject<BufferedImage, String>(img, document.getPdfName()));
                                     imageCount += 1;
 
                                 }
@@ -58,7 +58,7 @@ public class Image implements Analyzable {
                     }
 
                 }
-                this.imageCountList.add(new KeyValueObject<Integer, String>(imageCount, document.getParentName()));
+                this.imageCountList.add(new KeyValueObject<Integer, String>(imageCount, document.getPdfName()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
