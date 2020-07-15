@@ -3,9 +3,12 @@ package layout;
 import extractor.Document;
 import extractor.DocumentParser;
 import interfaces.Analyzable;
+import jdk.internal.jimage.ImageStrings;
 import org.apache.pdfbox.multipdf.PageExtractor;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
+import utilities.Helper;
+import utilities.KeyValueObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +17,7 @@ import java.util.List;
 public class Section implements Analyzable {
     private DocumentParser handler;
 
+    //private Listen, wichtig zur Berechnung.
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -32,8 +36,8 @@ public class Section implements Analyzable {
 
 
     //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Abschnitt beginnen kann. Könnte erweitert werden.
-    private final String[] sectionHeaderDefines = {"A. ", "B. ", "C. ", "D. ", "E. ", "F. ", "G. ", "H. ", "J. ", "K. ",
-            "L. ", "M. ", "N. ", "O. ", "P. ", "Q. ", "R. ", "S. ", "T. ", "U. ", "W. ", "Y. ", "Z. "};
+    private final String[] sectionHeaderDefines = {"A. ", "B. ", "C. ", "D. ", "E. ", "F. ", "G. ", "H. ", "J. ", "K. "
+           /* "L. ", "M. ", "N. ", "O. ", "P. ", "Q. ", "R. ", "S. ", "T. ", "U. ", "W. ", "Y. ", "Z. "*/};
     //In der List stehen Abschnitte mit: Nummerierung + Titel
     private List<String> detectedSectionHeadersList;
     //die jeweilige Position des gefundenen Headers.
@@ -41,11 +45,17 @@ public class Section implements Analyzable {
 
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
+    //Öffentlich zugänglich:
+    private List<KeyValueObject<List<String>, Document>> chapterList;
+    private List<KeyValueObject<List<String>, Document>> sectionList;
+    private List<KeyValueObject<List<Integer>, Document>> chapterPositionsList;
+    private List<KeyValueObject<List<Integer>, Document>> sectionPositionsList;
     public Section(DocumentParser handler) {
-
         this.handler = handler;
+        chapterList = new ArrayList<>();
+        sectionList = new ArrayList<>();
+        chapterPositionsList = new ArrayList<>();
+        sectionPositionsList = new ArrayList<>();
     }
 
     /**
@@ -69,10 +79,14 @@ public class Section implements Analyzable {
                 calculatePositions(fullText);
 
                 //Zugegriffen kann auf folgende weise:  (vielleicht auch mit substring)
-              //  Helper.print(detectedChapterHeadersList);
-              //  Helper.delimiter();
-              //  Helper.print(detectedSectionHeadersList);
+            //    Helper.print(detectedChapterHeadersList);
+            //    Helper.delimiter();
+           //     Helper.print(detectedSectionHeadersList);
 
+                this.chapterList.add(new KeyValueObject<>(detectedChapterHeadersList,document));
+                this.sectionList.add(new KeyValueObject<>(detectedSectionHeadersList,document));
+                this.sectionPositionsList.add(new KeyValueObject<>(detectedSectionPositionsList,document));
+                this.chapterPositionsList.add(new KeyValueObject<>(detectedChapterPositionsList,document));
             } catch (Exception i) {
                 i.printStackTrace();
             }
@@ -144,17 +158,18 @@ public class Section implements Analyzable {
             }
         }
     }
-    public List<String> getDetectedChapterHeadersList(){
-        return this.detectedChapterHeadersList;
+    public List<KeyValueObject<List<String>,Document>> getChapterList(){
+        return this.chapterList;
     }
-    public List<Integer> getDetectedChapterPositionsList(){
-        return this.detectedChapterPositionsList;
+
+    public  List<KeyValueObject<List<Integer>,Document>> getChapterPositionsList(){
+        return this.chapterPositionsList;
     }
-    public List<String> getDetectedSectionHeadersList(){
-        return this.detectedSectionHeadersList;
+    public  List<KeyValueObject<List<String>,Document>> getSectionList(){
+        return this.sectionList;
     }
-    public List<Integer> getDetectedSectionPositionsList(){
-        return this.detectedSectionPositionsList;
+    public  List<KeyValueObject<List<Integer>,Document>> getSectionPositionsList(){
+        return this.sectionPositionsList;
     }
 }
 
