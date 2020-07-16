@@ -131,39 +131,44 @@ public class Analysis implements Analyzable {
 
         //Berechne das Maximum aller Seiten je Konferenz und trage diese ein.
         // int count=0;
+        System.out.println("section.getChapterPositionsList().size(): "+section.getChapterPositionsList().size());
+
         int[] sectionLengthPerConference = new int[handler.getConferenceNames().length];
-        for (int i = 0; i < handler.getConferenceNames().length; i++) {
-            //Die Konferenzen
-            String conferenceName = handler.getConferenceNames()[i];
-            for (int j = 0; j < section.getChapterPositionsList().get(i).getKey().size(); j++) {
-
-                //     if((j+1) <= section.getChapterPositionsList().get(i).getKey().size()) {
-                //        String conferenceNameFromChapterListA = section.getChapterPositionsList().get(j).getValue().getConferenceName();
-
-                //Falls am Ende der Liste gelangt und mit der nächsten ( out of bounds) Abschnitt verglichen werden mächte :
-                //bleibt nur 1 Konferenz übrig: j.   also setze j+1 auch auf j's conference Name.
-                //             String conferenceNameFromChapterListB = section.getChapterPositionsList().get(j + 1).getValue().getConferenceName();
-
-                // int docCounts = metadata.getPageSizesList().get(j);
-                //falls ja, summiere die anzahl vorhandener Seiten einzelner Dokumente und speichere es zur bearbeitung in die Array.
-                //              if (conferenceNameFromChapterListA.equals(conferenceName) && conferenceNameFromChapterListB.equals(conferenceName)) {
-                //System.out.println(fullText.substring(detectedSectionPositions.get(0),detectedSectionPositions.get(1)));
-                //TODO klappt nicht ganz... er subtrahiert nur ständig den ersten index aus sectionLengthPerConference...
-                if ((j + 1) >= section.getChapterPositionsList().get(i).getKey().size()) {
-                    sectionLengthPerConference[i] = section.getChapterPositionsList().get(j).getKey().get(j);
-                } else {
-                    sectionLengthPerConference[i] = section.getChapterPositionsList().get(j + 1).getKey().get(j + 1) - section.getChapterPositionsList().get(j).getKey().get(j);
-                    //                  }
-                }
-
+        for(int i = 0; i<section.getChapterList().size();i++){
+            for (int j = 0; j < section.g; j++) {
+                
             }
         }
+        //~++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        /*
+        for (int i = 0; i < handler.getConferenceNames().length; i++) {
+
+            String conferenceName = handler.getConferenceNames()[i];
+            
+
+            for (int j = 0; j < section.getChapterPositionsList().size(); j++) {
+
+                if (j + 1 < section.getChapterPositionsList().get(j).getKey().size()) {
+                    if (conferenceName.equals(section.getChapterPositionsList().get(j).getValue().getConferenceName()) && conferenceName.equals(section.getChapterPositionsList().get(j + 1).getValue().getConferenceName())) {
+
+                        sectionLengthPerConference[i] = section.getChapterPositionsList().get(j + 1).getKey().get(j + 1) - section.getChapterPositionsList().get(j).getKey().get(j);
+                        break;
+                    }
+                } else {
+                    sectionLengthPerConference[i] = section.getChapterPositionsList().get(j).getKey().get(j);
+                    break;
+                }
+            }
+        }
+        */
+         */
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //Integer Array zu String array umwandeln, da opencsv nur arrays haben möchte.
         String[] finalArray = new String[sectionLengthPerConference.length];
         for (int i = 0; i < sectionLengthPerConference.length; i++) {
             finalArray[i] = (sectionLengthPerConference[i] + "");
         }
-        csv.writeCSV((String[]) Helper.concatenate(new String[]{"Kapitellänge durch Charakterposition"}, finalArray));
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{"Kapitel 1"}, finalArray));
         csv.closeWriter();
     }
 

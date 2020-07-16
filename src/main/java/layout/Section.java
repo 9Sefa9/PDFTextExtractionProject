@@ -171,6 +171,8 @@ public class Section implements Analyzable {
     public  List<KeyValueObject<List<Integer>,Document>> getSectionPositionsList(){
         return this.sectionPositionsList;
     }
+    public List<Integer> getDetectedChapterPositionsList(){return this.detectedChapterPositionsList;}
+    public List<Integer> getDetectedSectionPositionsList(){return this.detectedSectionPositionsList;}
 }
 
 
