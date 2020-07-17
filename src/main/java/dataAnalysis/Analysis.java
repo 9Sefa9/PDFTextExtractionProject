@@ -127,18 +127,36 @@ public class Analysis implements Analyzable {
         //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
         csv = new CSV(args[1].concat("\\analysisThree" + (System.nanoTime() / 1000) + ".csv"));
 
-        csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, handler.getConferenceNames()));
+        String[] documentNameArray = new String[handler.getDocumentsList().size()];
+        //jeden Dokumentnamen in ein Array abspeichern
+        for (int i = 0; i < handler.getDocumentsList().size(); i++) {
+            documentNameArray[i] = handler.getDocumentsList().get(i).getPdfName()+" "+handler.getDocumentsList().get(i).getConferenceName();
+        }
+        //schreibe jeden Namen des Dokuments + des Konferenzen in der ersten Zeile. Zeile 1 Spalte 1 bleibt leer wie üblich.
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{""},documentNameArray ));
 
+        //Nun in jede Zeile : den position des Kapitels (I) des ersten Dokuments, des zweiten des dritten usw.
+        String []testArr = new String[section.getChapterList().size()];
+
+        for (int i = 0; i < section.getChapterPositionsList().get(i).getKey().size(); i++) {
+            testArr[i] = ""+section.getChapterPositionsList().get(i).getKey().get(i);
+        }
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{"Dokument 1"},testArr));
+        csv.closeWriter();
+
+        for (int i = 0; i < section.getChapterPositionsList().get(i).getKey().size(); i++) {
+            System.out.println(section.getChapterPositionsList().get(i).getValue().getPdfName()+" "+section.getChapterPositionsList().get(i).getKey().get(i));
+        }
         //Berechne das Maximum aller Seiten je Konferenz und trage diese ein.
         // int count=0;
-        System.out.println("section.getChapterPositionsList().size(): "+section.getChapterPositionsList().size());
+    //    System.out.println("section.getChapterPositionsList().size(): "+section.getChapterPositionsList().size());
 
-        int[] sectionLengthPerConference = new int[handler.getConferenceNames().length];
-        for(int i = 0; i<section.getChapterList().size();i++){
-            for (int j = 0; j < section.g; j++) {
-                
-            }
-        }
+     //   int[] sectionLengthPerConference = new int[handler.getConferenceNames().length];
+     //   for(int i = 0; i<section.getChapterList().size();i++){
+    //        for (int j = 0; j < section.g; j++) {
+
+    //        }
+    //    }
         //~++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         /*
         for (int i = 0; i < handler.getConferenceNames().length; i++) {
@@ -161,15 +179,15 @@ public class Analysis implements Analyzable {
             }
         }
         */
-         */
+
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //Integer Array zu String array umwandeln, da opencsv nur arrays haben möchte.
-        String[] finalArray = new String[sectionLengthPerConference.length];
-        for (int i = 0; i < sectionLengthPerConference.length; i++) {
-            finalArray[i] = (sectionLengthPerConference[i] + "");
-        }
-        csv.writeCSV((String[]) Helper.concatenate(new String[]{"Kapitel 1"}, finalArray));
-        csv.closeWriter();
+    //    String[] finalArray = new String[sectionLengthPerConference.length];
+    //    for (int i = 0; i < sectionLengthPerConference.length; i++) {
+    //        finalArray[i] = (sectionLengthPerConference[i] + "");
+     //   }
+    //    csv.writeCSV((String[]) Helper.concatenate(new String[]{"Kapitel 1"}, finalArray));
+     //   csv.closeWriter();
     }
 
     //TODO beinhaltet die vierte Analyse: Berechnung der maximalen buchstaben bzw. Wörter einzelner Konferenzen.(zwei zeilen + konfeerenz namen..) (substring?)
