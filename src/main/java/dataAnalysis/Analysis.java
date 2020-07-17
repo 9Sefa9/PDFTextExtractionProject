@@ -125,7 +125,7 @@ public class Analysis implements Analyzable {
     }
 
 
-    //TODO beinhaltet die dritte Analyse: Berechnung der Kapitellängen einzelner Konferenzen. (substring?)
+    //TODO beinhaltet die dritte Analyse: Berechnung der Kapitellängen einzelner Dokumente   von einem Kapitel zum Anderen. (substring?)
     private void analysis3() {
         section = new Section(handler);
         section.analyze();
@@ -133,12 +133,7 @@ public class Analysis implements Analyzable {
         //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
         csv = new CSV(args[1].concat("\\analysisThree" + (System.nanoTime() / 1000) + ".csv"));
         List<String> chapterNameList = new ArrayList<>();
-        List<String> intList = new ArrayList<>();
-
-
-        //Dokumenten aufschreiben in die nachfolgenden Zeilen:
-          //Dokument 0 :
-
+        List<Integer> intList = new ArrayList<>();
 
         for (int i = 0; i < handler.getDocumentsList().size(); i++) {
 
@@ -146,35 +141,40 @@ public class Analysis implements Analyzable {
             // positionen der Chapters in Dokument 0:
             List<Integer> positions = eachDocument.getKey();
             for (int j = 0; j < positions.size(); j++) {
-                //Position der Einleitung:
-                int introductionPos = positions.get(j);
-
-                intList.add(introductionPos+"");
+                //wenn bis Reference erreicht wurde, dann soll die Position auch nur bis dahin kalkulieren.
+                if (j < section.getChapterList().get(i).getKey().size()) {
+                    int introductionPos = positions.get(j);
+                    //Der index des nächsten Kapitels ist immer größer als der vorherige. Die Bedingung muss daher gelten.
+                    if (j + 1 < positions.size() && positions.get(j + 1) > positions.get(j))
+                        introductionPos = positions.get(j + 1) - positions.get(j);
+                    //else
+                    intList.add(introductionPos);
+                }
             }
             //chapter name List
             for (int k = 0; k < section.getChapterList().get(i).getKey().size(); k++) {
                 chapterNameList.add(section.getChapterList().get(i).getKey().get(k));
             }
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{""},Helper.toStringArray(chapterNameList)));
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, Helper.toStringArray(intList)));
+            //int lsit to string array
+            String[] tmpIntArr = new String[intList.size()];
+            for (int j = 0; j < intList.size(); j++) {
+                tmpIntArr[j] = intList.get(j) + "";
+            }
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, Helper.toStringArray(chapterNameList)));
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, tmpIntArr));
             csv.writeCSV(new String[]{""});
             chapterNameList.clear();
             intList.clear();
         }
 
 
+        csv.closeWriter();
 
 
-
-
-          csv.closeWriter();
-
-
-          //  String[] finalPreparedChapterPositions = new String[preparedChapterPositions.size()];
-          //  for (int i = 0; i < preparedChapterPositions.size(); i++) {
-         //       finalPreparedChapterPositions[i] = preparedChapterPositions.get(i);
-         //   }
-
+        //  String[] finalPreparedChapterPositions = new String[preparedChapterPositions.size()];
+        //  for (int i = 0; i < preparedChapterPositions.size(); i++) {
+        //       finalPreparedChapterPositions[i] = preparedChapterPositions.get(i);
+        //   }
 
 
         //Kapitelzahlen - Erste Zeile...
