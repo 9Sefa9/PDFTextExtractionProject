@@ -8,9 +8,12 @@ import io.Import;
 import layout.*;
 import layout.Character;
 import utilities.Helper;
+import utilities.KeyValueObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Analysis implements Analyzable {
 
@@ -53,6 +56,7 @@ public class Analysis implements Analyzable {
         analysis3();
     }
 
+
     //Beinhaltet die erste Analyse:  Anzahl an Abbildungen in Abhängigkeit zu Konferenzen
     private void analysis1() {
         image = new Image(handler);
@@ -84,6 +88,7 @@ public class Analysis implements Analyzable {
         csv.closeWriter();
 
     }
+
 
     //beinhaltet die zweite Analyse: Maximale Anzahl an seiten in abhängigkeit zu den Konferenzen.
     private void analysis2() {
@@ -119,6 +124,7 @@ public class Analysis implements Analyzable {
         csv.closeWriter();
     }
 
+
     //TODO beinhaltet die dritte Analyse: Berechnung der Kapitellängen einzelner Konferenzen. (substring?)
     private void analysis3() {
         section = new Section(handler);
@@ -126,7 +132,79 @@ public class Analysis implements Analyzable {
 
         //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
         csv = new CSV(args[1].concat("\\analysisThree" + (System.nanoTime() / 1000) + ".csv"));
+        List<String> chapterNameList = new ArrayList<>();
+        List<String> intList = new ArrayList<>();
 
+
+        //Dokumenten aufschreiben in die nachfolgenden Zeilen:
+          //Dokument 0 :
+
+
+        for (int i = 0; i < handler.getDocumentsList().size(); i++) {
+
+            KeyValueObject<List<Integer>, Document> eachDocument = section.getChapterPositionsList().get(i);
+            // positionen der Chapters in Dokument 0:
+            List<Integer> positions = eachDocument.getKey();
+            for (int j = 0; j < positions.size(); j++) {
+                //Position der Einleitung:
+                int introductionPos = positions.get(j);
+
+                intList.add(introductionPos+"");
+            }
+            //chapter name List
+            for (int k = 0; k < section.getChapterList().get(i).getKey().size(); k++) {
+                chapterNameList.add(section.getChapterList().get(i).getKey().get(k));
+            }
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{""},Helper.toStringArray(chapterNameList)));
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, Helper.toStringArray(intList)));
+            csv.writeCSV(new String[]{""});
+            chapterNameList.clear();
+            intList.clear();
+        }
+
+
+
+
+
+
+          csv.closeWriter();
+
+
+          //  String[] finalPreparedChapterPositions = new String[preparedChapterPositions.size()];
+          //  for (int i = 0; i < preparedChapterPositions.size(); i++) {
+         //       finalPreparedChapterPositions[i] = preparedChapterPositions.get(i);
+         //   }
+
+
+
+        //Kapitelzahlen - Erste Zeile...
+        //String currentConferenceName = handler.getConferenceNames()[i];
+        /*
+            ArrayList<String> documentNamesList = new ArrayList<>();
+            //ALle Dokumente mit jeweiliger KonferenName - zweite Zeile...
+            for (int j = 0; j < handler.getDocumentsList().size(); j++) {
+                if(currentConferenceName.equals(handler.getDocumentsList().get(j).getConferenceName())){
+                    documentNamesList.add(handler.getDocumentsList().get(j).getPdfName());
+                }
+            }
+
+
+            String[] finalDocumentNames = new String[documentNamesList.size()];
+            //ArrayList in ein StringArray umwandeln
+            for (int j = 0; j < documentNamesList.size(); j++) {
+                finalDocumentNames[j] = documentNamesList.get(j);
+            }
+
+            //Das entspricht der zweiten Zeile. Also Leerzeile, Dok1, Dok2, Dok 3.. von dem jeweiligen Konferenz.
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{""},finalDocumentNames));
+
+            //jetzt die dritte und die nachfolgenden Zeilen.. Also I., II., usw.
+
+
+            //csv.writeCSV((String[]) Helper.concatenate(new String[]{"Kapitelname"},new String[]{currentConferenceName}));
+      //  }
+        csv.closeWriter();
+/*
         String[] documentNameArray = new String[handler.getDocumentsList().size()];
         //jeden Dokumentnamen in ein Array abspeichern
         for (int i = 0; i < handler.getDocumentsList().size(); i++) {
@@ -182,12 +260,13 @@ public class Analysis implements Analyzable {
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //Integer Array zu String array umwandeln, da opencsv nur arrays haben möchte.
-    //    String[] finalArray = new String[sectionLengthPerConference.length];
-    //    for (int i = 0; i < sectionLengthPerConference.length; i++) {
-    //        finalArray[i] = (sectionLengthPerConference[i] + "");
-     //   }
-    //    csv.writeCSV((String[]) Helper.concatenate(new String[]{"Kapitel 1"}, finalArray));
-     //   csv.closeWriter();
+        //    String[] finalArray = new String[sectionLengthPerConference.length];
+        //    for (int i = 0; i < sectionLengthPerConference.length; i++) {
+        //        finalArray[i] = (sectionLengthPerConference[i] + "");
+        //   }
+        //    csv.writeCSV((String[]) Helper.concatenate(new String[]{"Kapitel 1"}, finalArray));
+        //   csv.closeWriter();
+
     }
 
     //TODO beinhaltet die vierte Analyse: Berechnung der maximalen buchstaben bzw. Wörter einzelner Konferenzen.(zwei zeilen + konfeerenz namen..) (substring?)
