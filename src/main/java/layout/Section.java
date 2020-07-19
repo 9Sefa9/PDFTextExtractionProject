@@ -104,7 +104,8 @@ public class Section implements Analyzable {
     private void calculatePositions(String fullText) {
         detectedChapterPositionsList = new ArrayList<>();
         detectedSectionPositionsList = new ArrayList<>();
-        for (int i = 0; i < fullText.length(); i++) {
+
+      //  for (int i = 0; i < fullText.length(); i++) {
             //Chapter position bestimmung
             for (int j = 0; j < detectedChapterHeadersList.size(); j++) {
                 int index = fullText.indexOf(detectedChapterHeadersList.get(j));
@@ -121,7 +122,8 @@ public class Section implements Analyzable {
                     detectedSectionPositionsList.add(index);
                 }
             }
-        }
+      // }
+
 
         //TODO DURCHBRUCH !! ICh habs geschafft !! System.out.println(fullText.substring(detectedSectionPositions.get(0),detectedSectionPositions.get(1)));
         // System.out.println(fullText.substring(detectedSectionPositions.get(0),detectedSectionPositions.get(1)));

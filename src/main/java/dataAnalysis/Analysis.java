@@ -12,6 +12,7 @@ import utilities.KeyValueObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,7 +54,11 @@ public class Analysis implements Analyzable {
 
         //   analysis1();
         //   analysis2();
-        analysis3();
+       // analysis3();
+        section = new Section(handler);
+        section.analyze();
+        section.getChapterList().forEach(e->e.getKey().forEach(System.out::println));
+        section.getChapterList().forEach(e-> System.out.println(e.getKey().size()));
     }
 
 
@@ -170,7 +175,25 @@ public class Analysis implements Analyzable {
 
         csv.closeWriter();
 
+    }
 
+    //TODO beinhaltet die vierte Analyse: Berechnung der maximalen buchstaben bzw. Wörter einzelner Konferenzen.(zwei zeilen + konfeerenz namen..) (substring?)
+    private void analysis4() {
+
+    }
+
+    //TODO beinhaltet die fünfte Analyse: Berechnung der Abschnittslänge von einem Abschnitt zum anderen(Kapüitelübergreifen) (substring?)
+    private void analysis5() {
+
+    }
+
+    //TODO beinhaltet die sechste Analyse: statistische Berechnung wie z.B Berechnung der prozentualen Anteil.
+    private void analysis6() {
+
+    }
+}
+
+ /*
         //  String[] finalPreparedChapterPositions = new String[preparedChapterPositions.size()];
         //  for (int i = 0; i < preparedChapterPositions.size(); i++) {
         //       finalPreparedChapterPositions[i] = preparedChapterPositions.get(i);
@@ -179,7 +202,7 @@ public class Analysis implements Analyzable {
 
         //Kapitelzahlen - Erste Zeile...
         //String currentConferenceName = handler.getConferenceNames()[i];
-        /*
+
             ArrayList<String> documentNamesList = new ArrayList<>();
             //ALle Dokumente mit jeweiliger KonferenName - zweite Zeile...
             for (int j = 0; j < handler.getDocumentsList().size(); j++) {
@@ -204,7 +227,7 @@ public class Analysis implements Analyzable {
             //csv.writeCSV((String[]) Helper.concatenate(new String[]{"Kapitelname"},new String[]{currentConferenceName}));
       //  }
         csv.closeWriter();
-/*
+
         String[] documentNameArray = new String[handler.getDocumentsList().size()];
         //jeden Dokumentnamen in ein Array abspeichern
         for (int i = 0; i < handler.getDocumentsList().size(); i++) {
@@ -236,7 +259,7 @@ public class Analysis implements Analyzable {
     //        }
     //    }
         //~++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        /*
+
         for (int i = 0; i < handler.getConferenceNames().length; i++) {
 
             String conferenceName = handler.getConferenceNames()[i];
@@ -256,7 +279,7 @@ public class Analysis implements Analyzable {
                 }
             }
         }
-        */
+
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //Integer Array zu String array umwandeln, da opencsv nur arrays haben möchte.
@@ -266,21 +289,4 @@ public class Analysis implements Analyzable {
         //   }
         //    csv.writeCSV((String[]) Helper.concatenate(new String[]{"Kapitel 1"}, finalArray));
         //   csv.closeWriter();
-
-    }
-
-    //TODO beinhaltet die vierte Analyse: Berechnung der maximalen buchstaben bzw. Wörter einzelner Konferenzen.(zwei zeilen + konfeerenz namen..) (substring?)
-    private void analysis4() {
-
-    }
-
-    //TODO beinhaltet die fünfte Analyse: Berechnung der Abschnittslänge von einem Abschnitt zum anderen(Kapüitelübergreifen) (substring?)
-    private void analysis5() {
-
-    }
-
-    //TODO beinhaltet die sechste Analyse: statistische Berechnung wie z.B Berechnung der prozentualen Anteil.
-    private void analysis6() {
-
-    }
-}
+*/
