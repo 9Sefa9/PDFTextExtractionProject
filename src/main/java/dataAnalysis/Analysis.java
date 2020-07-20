@@ -52,13 +52,10 @@ public class Analysis implements Analyzable {
         //           a.analyze();
         //      }
 
-        //   analysis1();
-        //   analysis2();
-       // analysis3();
-        section = new Section(handler);
-        section.analyze();
-        section.getChapterList().forEach(e->e.getKey().forEach(System.out::println));
-        section.getChapterList().forEach(e-> System.out.println(e.getKey().size()));
+    //    analysis1();
+     //   analysis2();
+        analysis3();
+
     }
 
 
@@ -149,17 +146,23 @@ public class Analysis implements Analyzable {
                 //wenn bis Reference erreicht wurde, dann soll die Position auch nur bis dahin kalkulieren.
                 if (j < section.getChapterList().get(i).getKey().size()) {
                     int introductionPos = positions.get(j);
+
+                    //Wenn am Ende der Zeile erreicht, subtrahiere mit Ende der Zeile.
+                    if(j == section.getChapterList().get(i).getKey().size()-1){
+                        introductionPos = eachDocument.getValue().getPdfText().length()-positions.get(j);
+                    }
                     //Der index des nächsten Kapitels ist immer größer als der vorherige. Die Bedingung muss daher gelten.
                     if (j + 1 < positions.size() && positions.get(j + 1) > positions.get(j))
                         introductionPos = positions.get(j + 1) - positions.get(j);
+
+
                     //else
                     intList.add(introductionPos);
                 }
             }
             //chapter name List
-            for (int k = 0; k < section.getChapterList().get(i).getKey().size(); k++) {
-                chapterNameList.add(section.getChapterList().get(i).getKey().get(k));
-            }
+            //Äquivalent zur Iteration von k< section.getChapterList().get(i).getKey().size ...  chapterNameList.add(section.getChapterList().get(i).getKey().get(k));
+            chapterNameList.addAll(section.getChapterList().get(i).getKey());
             //int lsit to string array
             String[] tmpIntArr = new String[intList.size()];
             for (int j = 0; j < intList.size(); j++) {
@@ -171,8 +174,6 @@ public class Analysis implements Analyzable {
             chapterNameList.clear();
             intList.clear();
         }
-
-
         csv.closeWriter();
 
     }
