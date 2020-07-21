@@ -22,8 +22,8 @@ public class Section implements Analyzable {
 
 
     //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Kapitel beginnen kann. Könnte erweitert werden.
-    private final String[] chapterHeaderDefines = {"I.", "II.", "III.", "IV.", "V.", "VI.", "VII.", "VIII.", "IX.", "X.",
-            "i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x.",
+    private final String[] chapterHeaderDefines = {"I. ", "II. ", "III. ", "IV. ", "V. ", "VI. ", "VII. ", "VIII. ", "IX. ", "X. ",
+            "i. ", "ii. ", "iii. ", "iv. ", "v. ", "vi. ", "vii. ", "viii. ", "ix. ", "x. ",
             "INTROD", "REL", "RES", "DISC", "ACKN", "REFE", "FUT"};
 
     //In der List stehen Kapitel mit: Nummerierung + Titel
@@ -78,10 +78,6 @@ public class Section implements Analyzable {
                 findHeaders(fullText);
                 calculatePositions(fullText);
 
-                //Zugegriffen kann auf folgende weise:  (vielleicht auch mit substring)
-            //    Helper.print(detectedChapterHeadersList);
-            //    Helper.delimiter();
-           //     Helper.print(detectedSectionHeadersList);
 
                 this.chapterList.add(new KeyValueObject<>(detectedChapterHeadersList,document));
                 this.sectionList.add(new KeyValueObject<>(detectedSectionHeadersList,document));
