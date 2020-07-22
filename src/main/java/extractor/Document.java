@@ -14,7 +14,6 @@ public class    Document {
     private String conferenceName;
     private String pdfName;
     private String pdfPath;
-    private int pageNumbers;
     public Document(String conferenceName, String pdfName, String absolutePath) {
         this.conferenceName = conferenceName;
         this.pdfName = pdfName;

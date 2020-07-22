@@ -24,7 +24,7 @@ public class Section implements Analyzable {
     //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Kapitel beginnen kann. Könnte erweitert werden.
     private final String[] chapterHeaderDefines = {"I. ", "II. ", "III. ", "IV. ", "V. ", "VI. ", "VII. ", "VIII. ", "IX. ", "X. ",
             "i. ", "ii. ", "iii. ", "iv. ", "v. ", "vi. ", "vii. ", "viii. ", "ix. ", "x. ",
-            "INTROD", "REL", "RES", "DISC", "ACKN", "REFE", "FUT"};
+            "INTROD", "REL", "RES", "DISC", "ACKN", "REFE", "FUT"}; 
 
     //In der List stehen Kapitel mit: Nummerierung + Titel
     private List<String> detectedChapterHeadersList;

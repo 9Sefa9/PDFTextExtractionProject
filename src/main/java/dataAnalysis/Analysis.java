@@ -52,10 +52,9 @@ public class Analysis implements Analyzable {
         //           a.analyze();
         //      }
 
-    //    analysis1();
-     //   analysis2();
+        analysis1();
+        analysis2();
         analysis3();
-
     }
 
 
