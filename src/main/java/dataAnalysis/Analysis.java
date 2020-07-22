@@ -7,6 +7,7 @@ import io.CSV;
 import io.Import;
 import layout.*;
 import layout.Character;
+import org.graalvm.compiler.debug.CSVUtil;
 import utilities.Helper;
 import utilities.KeyValueObject;
 
@@ -69,22 +70,32 @@ public class Analysis implements Analyzable {
 
         //Berechne das Maximum aller Abbildung je Konferenz und trage den Maximum in je konferenz ein.
         // int count=0;
-        int[] countListPerConference = new int[handler.getConferenceNames().length];
+        float[] countListPerConference = new float[handler.getConferenceNames().length];
         for (int i = 0; i < handler.getConferenceNames().length; i++) {
             String conferenceName = handler.getConferenceNames()[i];
+            //Die Anzahl an Bilder im jeweiligen Konferenz
+            float imgCounts=0;
+            //die length einer Konferenz minus 1, weil Durchschnitt berechent werden muss..
+            float sizeOfAConference=0;
             for (int j = 0; j < handler.getDocumentsList().size(); j++) {
-                String imgConferenceName = image.getImageCountList().get(j).getValue().getConferenceName();
-                Integer imgCounts = image.getImageCountList().get(j).getKey();
-                if (imgConferenceName.equals(conferenceName)) {
-                    countListPerConference[i] += imgCounts;
+               String imgConferenceName = image.getImageCountList().get(j).getValue().getConferenceName();
+               int imgCountsCurrent = image.getImageCountList().get(j).getKey();
+
+               if (imgConferenceName.equals(conferenceName)) {
+                    imgCounts+=imgCountsCurrent;
+                    sizeOfAConference+=1;
                 }
             }
+            //Trage den Durschnitt aller Bilder eines Konferenzes in die Liste.
+            countListPerConference[i] += (imgCounts/sizeOfAConference);
         }
         //Integer Array zu String array umwandeln
         String[] finalArray = new String[countListPerConference.length];
         for (int i = 0; i < countListPerConference.length; i++) {
             finalArray[i] = (countListPerConference[i] + "");
+            finalArray[i] =  finalArray[i].replace('.',',');
         }
+     //   csv.writeCSV((String[]) Helper.concatenate(new String[]{"Anzahl Abbildungen"}, finalArray),'\t', '\\');
         csv.writeCSV((String[]) Helper.concatenate(new String[]{"Anzahl Abbildungen"}, finalArray));
         csv.closeWriter();
 
@@ -119,7 +130,7 @@ public class Analysis implements Analyzable {
         //Integer Array zu String array umwandeln, da opencsv nur arrays haben möchte.
         String[] finalArray = new String[countListPerConference.length];
         for (int i = 0; i < countListPerConference.length; i++) {
-            finalArray[i] = (countListPerConference[i] + "");
+            finalArray[i] = (countListPerConference[i] + ",0");
         }
         csv.writeCSV((String[]) Helper.concatenate(new String[]{"Anzahl Seiten"}, finalArray));
         csv.closeWriter();
@@ -162,11 +173,12 @@ public class Analysis implements Analyzable {
             //chapter name List
             //Äquivalent zur Iteration von k< section.getChapterList().get(i).getKey().size ...  chapterNameList.add(section.getChapterList().get(i).getKey().get(k));
             chapterNameList.addAll(section.getChapterList().get(i).getKey());
-            //int lsit to string array
+            //int list to string array
             String[] tmpIntArr = new String[intList.size()];
             for (int j = 0; j < intList.size(); j++) {
-                tmpIntArr[j] = intList.get(j) + "";
+                tmpIntArr[j] = (((int)intList.get(j))+ ",0");
             }
+
             csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, Helper.toStringArray(chapterNameList)));
             csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, tmpIntArr));
             csv.writeCSV(new String[]{""});
