@@ -22,9 +22,19 @@ public class Section implements Analyzable {
 
 
     //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Kapitel beginnen kann. Könnte erweitert werden.
-    private final String[] chapterHeaderDefines = {"I. ", "II. ", "III. ", "IV. ", "V. ", "VI. ", "VII. ", "VIII. ", "IX. ", "X. ",
+    private final String[] chapterHeaderDefines = {
+            "I. ", "II. ", "III. ", "IV. ", "V. ", "VI. ", "VII. ", "VIII. ", "IX. ", "X. ",
             "i. ", "ii. ", "iii. ", "iv. ", "v. ", "vi. ", "vii. ", "viii. ", "ix. ", "x. ",
-            "INTROD", "REL", "RES", "DISC", "ACKN", "REFE", "FUT"}; 
+            "ABSTRACT","ABSTRACT-","ABSTRACT -", "ABSTRACT - ",
+            "Abstr","Abstr ", "Abstr -","Abstr - ", "Abstr —", "Abstr — ",
+           // "abstract","abstract-","abstract -","abstract - ",
+            "Abstract","Abstract-","Abstract -","Abstract - ",
+            "ABSTRACT","ABSTRACT—","ABSTRACT —", "ABSTRACT — ",
+           // "abstract","abstract—","abstract —","abstract — ",
+            "Abstract","Abstract—","Abstract —","Abstract — ",
+            //mit speziellem nicht sichtbarem Zeichen:
+            "Abstract","Abstract—","Abstract —","Abstract — ",
+            "INTROD", "REL", "RES", "DISC", "ACKN", "REFE", "FUT"};
 
     //In der List stehen Kapitel mit: Nummerierung + Titel
     private List<String> detectedChapterHeadersList;
@@ -83,6 +93,8 @@ public class Section implements Analyzable {
                 this.sectionList.add(new KeyValueObject<>(detectedSectionHeadersList,document));
                 this.sectionPositionsList.add(new KeyValueObject<>(detectedSectionPositionsList,document));
                 this.chapterPositionsList.add(new KeyValueObject<>(detectedChapterPositionsList,document));
+
+                System.out.println(fullText+"\n*******************************************************************");
             } catch (Exception i) {
                 i.printStackTrace();
             }
@@ -138,7 +150,9 @@ public class Section implements Analyzable {
         String[] str = fullText.split("(\r\n|\r|\n)");
 
         for (int i = 0; i < str.length; i++) {
-            if (str[i].length() < 60 && str[i].length() > 10 && str[i].matches(".*[^-,.]$")) {
+            if (str[i].length() < 100 && str[i].length() > 10 && str[i].matches(".*[^,.]$")) {
+               // System.out.println(str[i]+"\n+*+++**+++***+");
+
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
                     if (str[i].startsWith(chapterHeaderDefines[j])) {
                         detectedChapterHeadersList.add(str[i]);
