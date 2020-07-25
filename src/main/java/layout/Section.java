@@ -94,7 +94,7 @@ public class Section implements Analyzable {
                 this.sectionPositionsList.add(new KeyValueObject<>(detectedSectionPositionsList,document));
                 this.chapterPositionsList.add(new KeyValueObject<>(detectedChapterPositionsList,document));
 
-                System.out.println(fullText+"\n*******************************************************************");
+               // System.out.println(fullText+"\n*******************************************************************");
             } catch (Exception i) {
                 i.printStackTrace();
             }
