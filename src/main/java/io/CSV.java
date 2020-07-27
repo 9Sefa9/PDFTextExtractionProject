@@ -79,7 +79,7 @@ public class CSV {
         }
     }
 */
-    public void closeWriter() {
+    public synchronized void closeWriter() {
         try {
             if (this.writer != null) {
                 this.writer.close();

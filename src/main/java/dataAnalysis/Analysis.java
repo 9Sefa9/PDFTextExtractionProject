@@ -12,23 +12,13 @@ import utilities.Helper;
 import utilities.KeyValueObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Analysis implements Analyzable {
 
     private String[] args;
     private DocumentParser handler;
     private Import imp;
-    private Metadata metadata;
-    private CSV csv;
-    private Section section;
-    private Character character;
-    private Word word;
-    private Image image;
-    private Literature literature;
 
 
     public Analysis(String[] args) {
@@ -52,7 +42,9 @@ public class Analysis implements Analyzable {
         //      for (Analyzable a : analyzableDocument) {
         //           a.analyze();
         //      }
-
+        Thread t4 = new Thread(() -> {
+            analysis4();
+        });
         Thread t3 = new Thread(() -> {
             analysis3();
         });
@@ -63,164 +55,258 @@ public class Analysis implements Analyzable {
             analysis1();
         });
         try {
-
+            t1.start();
+            t2.start();
             t3.start();
             t3.join();
-            t2.start();
-            t2.join();
-            t1.start();
+            t4.start();
+            t4.join();
 
-        } catch (
-                InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
     }
 
-        //Beinhaltet die erste Analyse:  Anzahl an Abbildungen in Abhängigkeit zu Konferenzen
-        private void analysis1 () {
-            image = new Image(handler);
-            image.analyze();
-            //Erstelle *.csv Datei mit einzigartiger Benennung
-            csv = new CSV(args[1].concat("\\analysisOne" + (System.nanoTime() / 1000) + ".csv"));
+    //Beinhaltet die erste Analyse:  Anzahl an Abbildungen in Abhängigkeit zu Konferenzen
+    private void analysis1() {
+        Image image = new Image(handler);
+        image.analyze();
+        //Erstelle *.csv Datei mit einzigartiger Benennung
+        CSV csv = new CSV(args[1].concat("\\analysisOne" + (System.nanoTime() / 100000) + ".csv"));
 
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, handler.getConferenceNames()));
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, handler.getConferenceNames()));
 
-            //Berechne das Maximum aller Abbildung je Konferenz und trage den Maximum in je konferenz ein.
-            // int count=0;
-            float[] countListPerConference = new float[handler.getConferenceNames().length];
-            for (int i = 0; i < handler.getConferenceNames().length; i++) {
-                String conferenceName = handler.getConferenceNames()[i];
-                //Die Anzahl an Bilder im jeweiligen Konferenz
-                float imgCounts = 0;
-                //die length einer Konferenz minus 1, weil Durchschnitt berechent werden muss..
-                float sizeOfAConference = 0;
-                for (int j = 0; j < handler.getDocumentsList().size(); j++) {
-                    String imgConferenceName = image.getImageCountList().get(j).getValue().getConferenceName();
-                    int imgCountsCurrent = image.getImageCountList().get(j).getKey();
+        //Berechne das Maximum aller Abbildung je Konferenz und trage den Maximum in je konferenz ein.
+        // int count=0;
+        float[] countListPerConference = new float[handler.getConferenceNames().length];
+        for (int i = 0; i < handler.getConferenceNames().length; i++) {
+            String conferenceName = handler.getConferenceNames()[i];
+            //Die Anzahl an Bilder im jeweiligen Konferenz
+            float imgCounts = 0;
+            //die length einer Konferenz minus 1, weil Durchschnitt berechent werden muss..
+            float sizeOfAConference = 0;
+            for (int j = 0; j < handler.getDocumentsList().size(); j++) {
+                String imgConferenceName = image.getImageCountList().get(j).getValue().getConferenceName();
+                int imgCountsCurrent = image.getImageCountList().get(j).getKey();
 
-                    if (imgConferenceName.equals(conferenceName)) {
-                        imgCounts += imgCountsCurrent;
-                        sizeOfAConference += 1;
-                    }
-                }
-                //Trage den Durschnitt aller Bilder eines Konferenzes in die Liste.
-                countListPerConference[i] += (imgCounts / sizeOfAConference);
-            }
-            //Integer Array zu String array umwandeln
-            String[] finalArray = new String[countListPerConference.length];
-            for (int i = 0; i < countListPerConference.length; i++) {
-                finalArray[i] = (countListPerConference[i] + "");
-                finalArray[i] = finalArray[i].replace('.', ',');
-            }
-            //   csv.writeCSV((String[]) Helper.concatenate(new String[]{"Anzahl Abbildungen"}, finalArray),'\t', '\\');
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{"Anzahl Abbildungen"}, finalArray));
-            csv.closeWriter();
-
-        }
-
-
-        //beinhaltet die zweite Analyse: Maximale Anzahl an seiten in abhängigkeit zu den Konferenzen.
-        private void analysis2 () {
-            metadata = new Metadata(handler);
-            metadata.analyze();
-            //Erstelle *.csv Datei mit einzigartiger Benennung
-            csv = new CSV(args[1].concat("\\analysisTwo" + (System.nanoTime() / 1000) + ".csv"));
-
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, handler.getConferenceNames()));
-
-            //Berechne das Maximum aller Seiten je Konferenz und trage diese ein.
-            // int count=0;
-            int[] countListPerConference = new int[handler.getConferenceNames().length];
-            for (int i = 0; i < handler.getConferenceNames().length; i++) {
-                //Die Konferenzen
-                String conferenceName = handler.getConferenceNames()[i];
-                for (int j = 0; j < handler.getDocumentsList().size(); j++) {
-                    //vergleich ob die Liste aus Handler dem gleichen konferenz entspricht des dokuments.
-                    String conferenceNameFromHandler = handler.getDocumentsList().get(j).getConferenceName();
-                    int docCounts = metadata.getPageSizesList().get(j);
-                    //falls ja, summiere die anzahl vorhandener Seiten einzelner Dokumente und speichere es zur bearbeitung in die Array.
-                    if (conferenceNameFromHandler.equals(conferenceName)) {
-                        countListPerConference[i] += docCounts;
-                    }
+                if (imgConferenceName.equals(conferenceName)) {
+                    imgCounts += imgCountsCurrent;
+                    sizeOfAConference += 1;
                 }
             }
-            //Integer Array zu String array umwandeln, da opencsv nur arrays haben möchte.
-            String[] finalArray = new String[countListPerConference.length];
-            for (int i = 0; i < countListPerConference.length; i++) {
-                finalArray[i] = (countListPerConference[i] + ",0");
-            }
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{"Anzahl Seiten"}, finalArray));
-            csv.closeWriter();
+            //Trage den Durschnitt aller Bilder eines Konferenzes in die Liste.
+            countListPerConference[i] += (imgCounts / sizeOfAConference);
         }
-
-
-        //TODO beinhaltet die dritte Analyse: Berechnung der Kapitellängen einzelner Dokumente   von einem Kapitel zum Anderen. (substring?)
-        private void analysis3 () {
-            section = new Section(handler);
-            section.analyze();
-
-            //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
-            csv = new CSV(args[1].concat("\\analysisThree" + (System.nanoTime() / 1000) + ".csv"));
-            List<String> chapterNameList = new ArrayList<>();
-            List<Integer> intList = new ArrayList<>();
-
-            for (int i = 0; i < handler.getDocumentsList().size(); i++) {
-
-                KeyValueObject<List<Integer>, Document> eachDocument = section.getChapterPositionsList().get(i);
-                // positionen der Chapters in Dokument 0:
-                List<Integer> positions = eachDocument.getKey();
-                for (int j = 0; j < positions.size(); j++) {
-                    //wenn bis Reference erreicht wurde, dann soll die Position auch nur bis dahin kalkulieren.
-                    if (j < section.getChapterList().get(i).getKey().size()) {
-                        int introductionPos = positions.get(j);
-
-                        //Wenn am Ende der Zeile erreicht, subtrahiere mit Ende der Zeile.
-                        if (j == section.getChapterList().get(i).getKey().size() - 1) {
-                            introductionPos = eachDocument.getValue().getPdfText().length() - positions.get(j);
-                        }
-                        //Der index des nächsten Kapitels ist immer größer als der vorherige. Die Bedingung muss daher gelten.
-                        if (j + 1 < positions.size() && positions.get(j + 1) > positions.get(j))
-                            introductionPos = positions.get(j + 1) - positions.get(j);
-
-
-                        //else
-                        intList.add(introductionPos);
-                    }
-                }
-                //chapter name List
-                //Äquivalent zur Iteration von k< section.getChapterList().get(i).getKey().size ...  chapterNameList.add(section.getChapterList().get(i).getKey().get(k));
-                chapterNameList.addAll(section.getChapterList().get(i).getKey());
-                //int list to string array
-                String[] tmpIntArr = new String[intList.size()];
-                for (int j = 0; j < intList.size(); j++) {
-                    tmpIntArr[j] = (((int) intList.get(j)) + ",0");
-                }
-
-                csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, Helper.toStringArray(chapterNameList)));
-                csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, tmpIntArr));
-                csv.writeCSV(new String[]{""});
-                chapterNameList.clear();
-                intList.clear();
-            }
-            csv.closeWriter();
-
+        //Integer Array zu String array umwandeln
+        String[] finalArray = new String[countListPerConference.length];
+        for (int i = 0; i < countListPerConference.length; i++) {
+            finalArray[i] = (countListPerConference[i] + "");
+            finalArray[i] = finalArray[i].replace('.', ',');
         }
+        //   csv.writeCSV((String[]) Helper.concatenate(new String[]{"Anzahl Abbildungen"}, finalArray),'\t', '\\');
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{"Anzahl Abbildungen"}, finalArray));
+        csv.closeWriter();
 
-        //TODO beinhaltet die vierte Analyse: Berechnung der maximalen buchstaben bzw. Wörter einzelner Konferenzen.(zwei zeilen + konfeerenz namen..) (substring?)
-        private void analysis4 () {
-
-        }
-
-        //TODO beinhaltet die fünfte Analyse: Berechnung der Abschnittslänge von einem Abschnitt zum anderen(Kapüitelübergreifen) (substring?)
-        private void analysis5 () {
-
-        }
-
-        //TODO beinhaltet die sechste Analyse: statistische Berechnung wie z.B Berechnung der prozentualen Anteil.
-        private void analysis6 () {
-
-        }
     }
+
+
+    //beinhaltet die zweite Analyse: Maximale Anzahl an seiten in abhängigkeit zu den Konferenzen.
+    private void analysis2() {
+        Metadata metadata = new Metadata(handler);
+        metadata.analyze();
+        //Erstelle *.csv Datei mit einzigartiger Benennung
+        CSV csv = new CSV(args[1].concat("\\analysisTwo" + (System.nanoTime() / 100000) + ".csv"));
+
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, handler.getConferenceNames()));
+
+        //Berechne das Maximum aller Seiten je Konferenz und trage diese ein.
+        // int count=0;
+        int[] countListPerConference = new int[handler.getConferenceNames().length];
+        for (int i = 0; i < handler.getConferenceNames().length; i++) {
+            //Die Konferenzen
+            String conferenceName = handler.getConferenceNames()[i];
+            for (int j = 0; j < handler.getDocumentsList().size(); j++) {
+                //vergleich ob die Liste aus Handler dem gleichen konferenz entspricht des dokuments.
+                String conferenceNameFromHandler = handler.getDocumentsList().get(j).getConferenceName();
+                int docCounts = metadata.getPageSizesList().get(j);
+                //falls ja, summiere die anzahl vorhandener Seiten einzelner Dokumente und speichere es zur bearbeitung in die Array.
+                if (conferenceNameFromHandler.equals(conferenceName)) {
+                    countListPerConference[i] += docCounts;
+                }
+            }
+        }
+        //Integer Array zu String array umwandeln, da opencsv nur arrays haben möchte.
+        String[] finalArray = new String[countListPerConference.length];
+        for (int i = 0; i < countListPerConference.length; i++) {
+            finalArray[i] = (countListPerConference[i] + ",0");
+        }
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{"Anzahl Seiten"}, finalArray));
+        csv.closeWriter();
+    }
+
+
+    //TODO beinhaltet die dritte Analyse: Berechnung der Kapitellängen einzelner Dokumente   von einem Kapitel zum Anderen. (substring?)
+    private void analysis3() {
+        Section section = new Section(handler);
+        section.analyze();
+
+        //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
+        CSV csv = new CSV(args[1].concat("\\analysisThree" + (System.nanoTime() / 100000) + ".csv"));
+        List<String> chapterNameList = new ArrayList<>();
+        List<Integer> intList = new ArrayList<>();
+
+        for (int i = 0; i < handler.getDocumentsList().size(); i++) {
+
+            KeyValueObject<List<Integer>, Document> eachDocument = section.getChapterPositionsList().get(i);
+            // positionen der Chapters in Dokument 0:
+            List<Integer> positions = eachDocument.getKey();
+            for (int j = 0; j < positions.size(); j++) {
+                //wenn bis Reference erreicht wurde, dann soll die Position auch nur bis dahin kalkulieren.
+                if (j < section.getChapterList().get(i).getKey().size()) {
+                    int introductionPos = positions.get(j);
+
+                    //Wenn am Ende der Zeile erreicht, subtrahiere mit Ende der Zeile.
+                    if (j == section.getChapterList().get(i).getKey().size() - 1) {
+                        introductionPos = eachDocument.getValue().getPdfText().length() - positions.get(j);
+                    }
+                    //Der index des nächsten Kapitels ist immer größer als der vorherige. Die Bedingung muss daher gelten.
+                    if (j + 1 < positions.size() && positions.get(j + 1) > positions.get(j))
+                        introductionPos = positions.get(j + 1) - positions.get(j);
+
+
+                    //else
+                    intList.add(introductionPos);
+                }
+            }
+            //chapter name List
+            //Äquivalent zur Iteration von k< section.getChapterList().get(i).getKey().size ...  chapterNameList.add(section.getChapterList().get(i).getKey().get(k));
+            chapterNameList.addAll(section.getChapterList().get(i).getKey());
+            //int list to string array
+            String[] tmpIntArr = new String[intList.size()];
+            for (int j = 0; j < intList.size(); j++) {
+                tmpIntArr[j] = (((int) intList.get(j)) + ",0");
+            }
+
+            //Speichert die einzelnen Kapitel Namen.
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, Helper.toStringArray(chapterNameList)));
+            //Speichert den Namen des PDF's und seine Positionen.
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, tmpIntArr));
+            csv.writeCSV(new String[]{""});
+            chapterNameList.clear();
+            intList.clear();
+        }
+        csv.closeWriter();
+
+    }
+
+    //beinhaltet die vierte Analyse: Wie die dritte Analyse 3 jedoch mit Unterteilung in relevante bzwq. Irrelevante Kapitel.
+    //Die relevanten Kapitel:
+    public void analysis4() {
+        Section section = new Section(handler);
+        section.analyze();
+
+        //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
+        CSV csv = new CSV(args[1].concat("\\analysisFour" + (System.nanoTime() / 100000) + ".csv"));
+        //Erste Zeile direkt mal definieren..
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, new String[]{"Primaere Kapitel", "Sekundaere Kapitel"}));
+        List<String> chapterNameList = new ArrayList<>();
+        List<Integer> intList = new ArrayList<>();
+
+        for (int i = 0; i < handler.getDocumentsList().size(); i++) {
+
+            KeyValueObject<List<Integer>, Document> eachDocument = section.getChapterPositionsList().get(i);
+            // positionen der Chapters in Dokument 0:
+            List<Integer> positions = eachDocument.getKey();
+            for (int j = 0; j < positions.size(); j++) {
+                //wenn bis Reference erreicht wurde, dann soll die Position auch nur bis dahin kalkulieren.
+                if (j < section.getChapterList().get(i).getKey().size()) {
+                    int introductionPos = positions.get(j);
+
+                    //Wenn am Ende der Zeile erreicht, subtrahiere mit Ende der Zeile.
+                    if (j == section.getChapterList().get(i).getKey().size() - 1) {
+                        introductionPos = eachDocument.getValue().getPdfText().length() - positions.get(j);
+                    }
+                    //Der index des nächsten Kapitels ist immer größer als der vorherige. Die Bedingung muss daher gelten.
+                    if (j + 1 < positions.size() && positions.get(j + 1) > positions.get(j))
+                        introductionPos = positions.get(j + 1) - positions.get(j);
+
+
+                    //else
+                    intList.add(introductionPos);
+                }
+            }
+            //chapter name List
+            //Äquivalent zur Iteration von k< section.getChapterList().get(i).getKey().size ...  chapterNameList.add(section.getChapterList().get(i).getKey().get(k));
+            chapterNameList.addAll(section.getChapterList().get(i).getKey());
+            //int list to string array
+            String[] tmpIntArr = new String[intList.size()];
+            for (int j = 0; j < intList.size(); j++) {
+                tmpIntArr[j] = (((int) intList.get(j)) + ",0");
+            }
+            //Hier wird die Positionsausfindigung fertig gestellt-
+
+            //Jetzt wird unterteilt zwischen gut und schlecht.
+            String[] relevantHeaderDefines = {"Abstr", "INTROD", "CONCL", "ACKNOWLED", "REFEREN", "RELATE", "EVALUA", "RESUL", "DISCUSS"};
+            float irrelevantHeaderPosAll = 0;
+            //Wichtig für die Durschschnittsberechnung
+            int irrelevantCount = 0;
+            float relevantHeaderPosAll = 0;
+            //wichtig für die Durschnitssberechnung
+            int relevantCount = 0;
+            for (int j = 0; j < chapterNameList.size(); j++) {
+                boolean foundRelevant = false;
+                for (int k = 0; k < relevantHeaderDefines.length; k++) {
+
+                    //Wenn der ChapterName irrelevant ist:
+                    if (!chapterNameList.get(j).trim().contains(relevantHeaderDefines[k])) {
+                        foundRelevant = false;
+                    }
+                    //Ansonsten ist es ein relevanter ChapterName.
+                    else {
+                        foundRelevant = true;
+                        break;
+                    }
+
+                }
+                if (foundRelevant) {
+                    //    System.out.println("RELEVANTER KAPITEL: "+ chapterNameList.get(j).trim());
+                    relevantCount += 1;
+                    relevantHeaderPosAll += intList.get(j);
+
+                } else {
+                    irrelevantCount += 1;
+                    irrelevantHeaderPosAll += intList.get(j);
+                    //  System.out.println("IRRELEVANTER KAPITEL: "+ chapterNameList.get(j).trim());
+                }
+            }
+            //Der Durschnitt aller summierten, irrelevanten Daten!.
+            irrelevantHeaderPosAll = (irrelevantHeaderPosAll / irrelevantCount);
+            relevantHeaderPosAll = (relevantHeaderPosAll / relevantCount);
+
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, new String[]{relevantHeaderPosAll+"".replace(".",","), irrelevantHeaderPosAll+"".replace(".",",")}));
+            chapterNameList.clear();
+            intList.clear();
+        }
+        csv.closeWriter();
+    }
+
+    //TODO beinhaltet die vierte Analyse: Berechnung der maximalen buchstaben bzw. Wörter einzelner Konferenzen.(zwei zeilen + konfeerenz namen..) (substring?)
+    private void analysis5() {
+
+    }
+
+    //TODO beinhaltet die fünfte Analyse: Berechnung der Abschnittslänge von einem Abschnitt zum anderen(Kapüitelübergreifen) (substring?)
+    private void analysis6() {
+
+    }
+
+    //TODO beinhaltet die sechste Analyse: statistische Berechnung wie z.B Berechnung der prozentualen Anteil.
+    private void analysis7() {
+
+    }
+}
 
  /*
         //  String[] finalPreparedChapterPositions = new String[preparedChapterPositions.size()];

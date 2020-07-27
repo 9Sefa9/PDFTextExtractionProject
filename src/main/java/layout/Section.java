@@ -88,12 +88,12 @@ public class Section implements Analyzable {
                 findHeaders(fullText);
                 calculatePositions(fullText);
 
-
-                this.chapterList.add(new KeyValueObject<>(detectedChapterHeadersList,document));
-                this.sectionList.add(new KeyValueObject<>(detectedSectionHeadersList,document));
-                this.sectionPositionsList.add(new KeyValueObject<>(detectedSectionPositionsList,document));
-                this.chapterPositionsList.add(new KeyValueObject<>(detectedChapterPositionsList,document));
-
+                synchronized (this) {
+                    this.chapterList.add(new KeyValueObject<>(detectedChapterHeadersList, document));
+                    this.sectionList.add(new KeyValueObject<>(detectedSectionHeadersList, document));
+                    this.sectionPositionsList.add(new KeyValueObject<>(detectedSectionPositionsList, document));
+                    this.chapterPositionsList.add(new KeyValueObject<>(detectedChapterPositionsList, document));
+                }
                // System.out.println(fullText+"\n*******************************************************************");
             } catch (Exception i) {
                 i.printStackTrace();
@@ -109,7 +109,7 @@ public class Section implements Analyzable {
      *@see #analyze()
      *@param fullText der gesammte Text, ohne jegliche Einschränkungen
      */
-    private void calculatePositions(String fullText) {
+    private synchronized void calculatePositions(String fullText) {
         detectedChapterPositionsList = new ArrayList<>();
         detectedSectionPositionsList = new ArrayList<>();
 
@@ -143,7 +143,7 @@ public class Section implements Analyzable {
      * Identifiziert die Nummer + Titel eines Kapitels und eines Abschnittes und speichert Sie in die jeweiligen detected Listen ein.
      * @param fullText der gesammte Text, ohne jegliche Einschränkungen
      */
-    private void findHeaders(String fullText) {
+    private synchronized void findHeaders(String fullText) {
         detectedChapterHeadersList = new ArrayList<>();
         detectedSectionHeadersList = new ArrayList<>();
 
