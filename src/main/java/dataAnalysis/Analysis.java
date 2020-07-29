@@ -70,7 +70,7 @@ public class Analysis implements Analyzable {
             e.printStackTrace();
         }
 
-
+//TODO Analysis 4 gibt vermutlich einen falschen durchschnitt an. Schau dir das an.
     }
 
     //Beinhaltet die erste Analyse:  Anzahl an Abbildungen in Abhängigkeit zu Konferenzen
