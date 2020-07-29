@@ -30,8 +30,11 @@ public class Literature implements Analyzable {
             try {
                 PageExtractor extract = new PageExtractor(document.getPdfDocument(),lastPage1,lastPage2);
                 PDDocument newDocument = extract.extract();
+                //der vorherige Dokument wird durch einen neuen PDDocument überladen.
                 document.setPdfDocument(newDocument);
+                //neuen PDFTextStripper zu initialisieren ist ein wichtiger schritt und darf nicht ausgelassen werden.
                 document.setPdfTextStripper(new PDFTextStripper());
+
                 String docText = document.getPdfText().toLowerCase();
                 //Regex => logisches oder, mit characters, die nicht zwangsweise angenommen werden müssen, aber können.
                 // [abc] => a oder b oder c
@@ -62,6 +65,7 @@ public class Literature implements Analyzable {
                 e.printStackTrace();
             }
         }
+        System.out.println("Literature Extraction Done...");
     }
     public List<String> getLiteratureList(){
         return this.literatureList;

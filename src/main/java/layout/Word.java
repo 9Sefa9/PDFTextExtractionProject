@@ -51,6 +51,7 @@ public class Word implements Analyzable {
             }
 
         }
+        System.out.println("Word Extraction Done...");
 
     }
     public List<HashMap<String, Integer>> getWordOccurenceList() {

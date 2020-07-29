@@ -51,6 +51,7 @@ public class Character implements Analyzable {
             }
 
         }
+        System.out.println("Character Extraction Done...");
     }
     public  HashMap<java.lang.Character, Integer> getCharactersOccurenceMap(){
         return this.charactersOccurenceMap;

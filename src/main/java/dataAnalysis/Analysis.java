@@ -55,11 +55,15 @@ public class Analysis implements Analyzable {
             analysis1();
         });
         try {
+
             t1.start();
             t2.start();
             t3.start();
-            t3.join();
             t4.start();
+
+            t1.join();
+            t2.join();
+            t3.join();
             t4.join();
 
         } catch (InterruptedException e) {
@@ -285,7 +289,7 @@ public class Analysis implements Analyzable {
             irrelevantHeaderPosAll = (irrelevantHeaderPosAll / irrelevantCount);
             relevantHeaderPosAll = (relevantHeaderPosAll / relevantCount);
 
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, new String[]{relevantHeaderPosAll+"".replace(".",","), irrelevantHeaderPosAll+"".replace(".",",")}));
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, new String[]{relevantHeaderPosAll + "".replace(".", ","), irrelevantHeaderPosAll + "".replace(".", ",")}));
             chapterNameList.clear();
             intList.clear();
         }

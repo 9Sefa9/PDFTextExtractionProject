@@ -57,7 +57,7 @@ public class Metadata implements Analyzable {
             }
 
         }
-
+        System.out.println("Metadata Extraction Done...");
     }
 
     /**

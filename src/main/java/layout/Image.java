@@ -63,6 +63,7 @@ public class Image implements Analyzable {
                 e.printStackTrace();
             }
         }
+        System.out.println("Image Extraction Done...");
     }
 
   //  public List<KeyValueObject<BufferedImage, Document>> getImagesList() {

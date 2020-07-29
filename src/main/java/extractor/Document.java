@@ -51,9 +51,9 @@ public class    Document {
     public void setPdfTextStripper(PDFTextStripper strippper) {
         this.pdfTextStripper = strippper;
 
-
         try {
-            setPdfText(strippper.getText(getPdfDocument()));
+            String fullText = this.pdfTextStripper.getText(getPdfDocument());
+            setPdfText(fullText);
         } catch (IOException e) {
             e.printStackTrace();
         }

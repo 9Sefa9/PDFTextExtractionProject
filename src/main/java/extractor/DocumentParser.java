@@ -58,9 +58,12 @@ public class DocumentParser {
                 String conferenceName = docFile.getKey();
                 String pdfName = docFile.getValue().getName();
                 String pdfPath = docFile.getValue().getAbsolutePath();
+
                 //Erstelle ein Document mit den Informationen und lade den Dokument.
                 Document newDocument = new Document(conferenceName,pdfName, pdfPath);
+                //Weitere Informationen speichern(wichtig für Extraktion..Wird voraussichtlich überladen in den Analyzable unterklassen.)
                 newDocument.setPdfDocument(PDDocument.load(docFile.getValue()));
+                newDocument.setPdfTextStripper(new PDFTextStripper());
 
                 //Zuletzt werden die Konferenz Namen in eine List gespeichert
                 this.conferenceNames.add(conferenceName);
