@@ -29,7 +29,7 @@ public class Image implements Analyzable {
 
     @Override
     public void analyze() {
-        System.out.println("Entering Image Extraction...");
+        System.out.println("Entering Image Extraction on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
         for (Document document : this.handler.getDocumentsList()) {
             try {
                 int imageCount = 0;
@@ -63,7 +63,7 @@ public class Image implements Analyzable {
                 e.printStackTrace();
             }
         }
-        System.out.println("Image Extraction Done...");
+        System.out.println("Entering Image Extraction on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
     }
 
   //  public List<KeyValueObject<BufferedImage, Document>> getImagesList() {

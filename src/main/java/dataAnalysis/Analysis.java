@@ -55,6 +55,10 @@ public class Analysis implements Analyzable {
             analysis1();
         });
         try {
+            t1.setName("ANALYSIS 1");
+            t2.setName("ANALYSIS 2");
+            t3.setName("ANALYSIS 3");
+            t4.setName("ANALYSIS 4");
 
             t1.start();
             t2.start();

@@ -26,7 +26,7 @@ public class Character implements Analyzable {
      */
     @Override
     public void analyze() {
-        System.out.println("Entering Character Extraction...");
+        System.out.println("Entering Character Extraction on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
         for(Document document: this.documentParser.getDocumentsList()){
         try {
 
@@ -51,7 +51,7 @@ public class Character implements Analyzable {
             }
 
         }
-        System.out.println("Character Extraction Done...");
+        System.out.println("Character Extraction done on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
     }
     public  HashMap<java.lang.Character, Integer> getCharactersOccurenceMap(){
         return this.charactersOccurenceMap;

@@ -52,7 +52,7 @@ public class Import extends Extractable {
             //falls in Gradle, nur ein PDF als Argument angegeben wurde:
             if (file.getName().endsWith(".pdf")) {
 
-                getDetectedFiles().add(new KeyValueObject<>(null, file));
+                getDetectedFiles().add(new KeyValueObject<>("_SINGLE PDF_", file));
             }
             //falls in Gradle, ein Ordner als Argument angegeben wurde:
             else if (file.isDirectory()) {

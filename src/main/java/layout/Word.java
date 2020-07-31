@@ -28,7 +28,7 @@ public class Word implements Analyzable {
      */
     @Override
     public void analyze() {
-        System.out.println("Entering Word Extraction...");
+        System.out.println("Entering Word Extraction on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
         for (Document document : handler.getDocumentsList()) {
             HashMap<String, Integer> wordOccurenceMap;
             try {
@@ -51,7 +51,7 @@ public class Word implements Analyzable {
             }
 
         }
-        System.out.println("Word Extraction Done...");
+        System.out.println("Word Extraction done on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
 
     }
     public List<HashMap<String, Integer>> getWordOccurenceList() {

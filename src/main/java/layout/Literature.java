@@ -22,7 +22,7 @@ public class Literature implements Analyzable {
 
     @Override
     public void analyze() {
-        System.out.println("Entering Literature Extraction...");
+        System.out.println("Entering Literature Extraction on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
         for (Document document : this.handler.getDocumentsList()) {
 
             int lastPage1= document.getPdfDocument().getNumberOfPages()-1 == 0 ? 1:document.getPdfDocument().getNumberOfPages()-1;
@@ -65,7 +65,7 @@ public class Literature implements Analyzable {
                 e.printStackTrace();
             }
         }
-        System.out.println("Literature Extraction Done...");
+        System.out.println("Literature Extraction done on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
     }
     public List<String> getLiteratureList(){
         return this.literatureList;

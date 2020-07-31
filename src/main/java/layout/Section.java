@@ -74,7 +74,7 @@ public class Section implements Analyzable {
      */
     @Override
     public void analyze() {
-        System.out.println("Entering Section Extraction...");
+        System.out.println("Entering Section Extraction on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
         for (Document document : this.handler.getDocumentsList()) {
            // int lastPage = document.getPdfDocument().getNumberOfPages();
             try {
@@ -99,7 +99,7 @@ public class Section implements Analyzable {
                 i.printStackTrace();
             }
         }
-        System.out.println("Section Extraction Done...");
+        System.out.println("Section Extraction done on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
     }
 
     /***

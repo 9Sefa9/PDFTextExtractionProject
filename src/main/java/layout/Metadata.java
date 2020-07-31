@@ -40,7 +40,7 @@ public class Metadata implements Analyzable {
      */
     @Override
     public void analyze() {
-        System.out.println("Entering Metadata Extraction...");
+        System.out.println("Entering Metadata Extraction on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
         //iteriert über alle PDF die vorher importiert wurden.
         for (Document document : documentParser.getDocumentsList()) {
           //  DateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
@@ -57,7 +57,7 @@ public class Metadata implements Analyzable {
             }
 
         }
-        System.out.println("Metadata Extraction Done...");
+        System.out.println("Metadata Extraction done on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
     }
 
     /**
