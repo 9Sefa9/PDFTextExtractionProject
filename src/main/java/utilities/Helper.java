@@ -149,7 +149,13 @@ public class Helper<E> implements PDFX {
     public static Object concatenate(String[] a, String[] b) {
         return Stream.concat(Arrays.stream(a), Arrays.stream(b)).toArray(String[]::new);
     }
+    public static Object concatenate(String[] a, String[] b,String[] c) {
+        String[] firstSecond = Stream.concat(Arrays.stream(a), Arrays.stream(b)).toArray(String[]::new);
 
+        return Stream.concat(Arrays.stream(firstSecond),  Arrays.stream(c)).toArray(String[]::new);
+        //Stream.of(Stream::concat).reduce().or
+
+    }
 
 }
 
