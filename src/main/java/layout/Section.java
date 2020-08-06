@@ -165,12 +165,12 @@ public class Section implements Analyzable {
         int count=0;
         for (int i = 0; i < str.length; i++) {
 
-            if (str[i].length() < 100 && str[i].length() > 9 && str[i].matches(".*[^,.{}:^~#/]$")) {
+            if (str[i].length() < 90 && str[i].length() > 9 && str[i].matches(".*[^,.{}:^~/#]$")) {
                  //System.out.println(str[i]+"\n+*+++**+++***+");
 
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
 //TODO IDEE: 1 A zu 1A umwandeln, und anfangsbuchstebn is Uppercase testen.
-                    if (str[i].startsWith(chapterHeaderDefines[j]) && (java.lang.Character.isUpperCase(str[i].charAt(2)) || java.lang.Character.isUpperCase(str[i].charAt(3) ) || java.lang.Character.isUpperCase(str[i].charAt(4)))) {
+                    if (str[i].startsWith(chapterHeaderDefines[j]) & (java.lang.Character.isUpperCase(str[i].charAt(2)) || java.lang.Character.isUpperCase(str[i].charAt(3) ) || java.lang.Character.isUpperCase(str[i].charAt(4)))) {
                        System.out.println(str[i]+" length: "+str[i].length()+"\n+*+++**+++***+");
                         detectedChapterHeadersList.add(str[i]);
                         count+=1;
