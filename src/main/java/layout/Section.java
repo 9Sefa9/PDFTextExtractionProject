@@ -40,7 +40,11 @@ public class Section implements Analyzable {
             "INTROD", "REL", "RES", "DISC", "ACKN", "REFERENCE",
             "REFERENCES","REFERENCE\n","REFERENCE \n", "REFERENCES \n", "FUT",
             "1 ","2 ","3 ","4 ","5 ","6 ","7 ","8 ","9 ","10 ","11 ","12 "};
-
+/*
+"1 A","1 B","1 C","1 D","1 E","1 F","1 G","1 H","1 I","1 J","1 K","1 L",
+            "1 M","1 N","1 O","1 P","1 Q","1 R","1 S","1 T","1 U","1 V","1 W","1 X",
+            "1 Y","1 Z",
+ */
     //In der List stehen Kapitel mit: Nummerierung + Titel
     private List<String> detectedChapterHeadersList;
     //die jeweilige Position des gefundenen Headers.
@@ -165,8 +169,9 @@ public class Section implements Analyzable {
                  //System.out.println(str[i]+"\n+*+++**+++***+");
 
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
-                    if (str[i].startsWith(chapterHeaderDefines[j]) && ) {
-                       System.out.println(str[i]+"\n+*+++**+++***+");
+//TODO IDEE: 1 A zu 1A umwandeln, und anfangsbuchstebn is Uppercase testen.
+                    if (str[i].startsWith(chapterHeaderDefines[j]) && (java.lang.Character.isUpperCase(str[i].charAt(2)) || java.lang.Character.isUpperCase(str[i].charAt(3) ) || java.lang.Character.isUpperCase(str[i].charAt(4)))) {
+                       System.out.println(str[i]+" length: "+str[i].length()+"\n+*+++**+++***+");
                         detectedChapterHeadersList.add(str[i]);
                         count+=1;
                         break;
