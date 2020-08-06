@@ -4,12 +4,15 @@ import extractor.Document;
 import extractor.DocumentParser;
 import interfaces.Analyzable;
 import jdk.internal.jimage.ImageStrings;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.pdfbox.multipdf.PageExtractor;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.TextPosition;
 import utilities.Helper;
 import utilities.KeyValueObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +37,9 @@ public class Section implements Analyzable {
             "Abstract", "Abstract—", "Abstract —", "Abstract — ",
             //mit speziellem nicht sichtbarem Zeichen:
             "Abstract", "Abstract—", "Abstract —", "Abstract — ",
-            "INTROD", "REL", "RES", "DISC", "ACKN", "REFE", "FUT"};
+            "INTROD", "REL", "RES", "DISC", "ACKN", "REFERENCE",
+            "REFERENCES","REFERENCE\n","REFERENCE \n", "REFERENCES \n", "FUT",
+            "1 ","2 ","3 ","4 ","5 ","6 ","7 ","8 ","9 ","10 ","11 ","12 "};
 
     //In der List stehen Kapitel mit: Nummerierung + Titel
     private List<String> detectedChapterHeadersList;
@@ -82,7 +87,16 @@ public class Section implements Analyzable {
             //    PageExtractor extractorObject = new PageExtractor(document.getPdfDocument(), 1, lastPage);
                // PDDocument doc = extractorObject.extract();
               //  document.setPdfDocument(doc);
-
+                System.out.println(document.getPdfName());
+                document.setPdfTextStripper(new PDFTextStripper(){
+                    @Override
+                    protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
+                        StringBuilder br = new StringBuilder();
+                        br.append(text);
+                       // br.append("FONTSIZEPTR:"+ textPositions.get(0).getFontSizeInPt()+" :: FONTSIZE:"+textPositions.get(0).getFontSize()+"]\n");
+                        super.writeString(br.toString(), textPositions);
+                    }
+                });
                 String fullText = document.getPdfText();
 
                 //Überschriften, Abschnitte und ihre Positionen ausfindig machen in Abhängigkeit zum fullText.
@@ -132,10 +146,6 @@ public class Section implements Analyzable {
         }
         // }
 
-
-        //TODO DURCHBRUCH !! ICh habs geschafft !! System.out.println(fullText.substring(detectedSectionPositions.get(0),detectedSectionPositions.get(1)));
-        // System.out.println(fullText.substring(detectedSectionPositions.get(0),detectedSectionPositions.get(1)));
-
     }
 
 
@@ -146,16 +156,19 @@ public class Section implements Analyzable {
     private synchronized void findHeaders(String fullText) {
         detectedChapterHeadersList = new ArrayList<>();
         detectedSectionHeadersList = new ArrayList<>();
-
-        String[] str = fullText.split("(\r\n|\r|\n)");
-
+       // System.out.println(fullText);
+        String[] str = fullText.split("(\r\n|\r|\n|\n\r)");
+        int count=0;
         for (int i = 0; i < str.length; i++) {
-            if (str[i].length() < 100 && str[i].length() > 10 && str[i].matches(".*[^,.]$")) {
-                // System.out.println(str[i]+"\n+*+++**+++***+");
+
+            if (str[i].length() < 100 && str[i].length() > 9 && str[i].matches(".*[^,.{}:^~#/]$")) {
+                 //System.out.println(str[i]+"\n+*+++**+++***+");
 
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
-                    if (str[i].startsWith(chapterHeaderDefines[j])) {
+                    if (str[i].startsWith(chapterHeaderDefines[j]) && ) {
+                       System.out.println(str[i]+"\n+*+++**+++***+");
                         detectedChapterHeadersList.add(str[i]);
+                        count+=1;
                         break;
                     }
 
@@ -169,6 +182,7 @@ public class Section implements Analyzable {
 
             }
         }
+        System.out.println(count);
     }
 
     public List<KeyValueObject<List<String>, Document>> getChapterList() {

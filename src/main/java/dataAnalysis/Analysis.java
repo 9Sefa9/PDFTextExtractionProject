@@ -64,11 +64,11 @@ public class Analysis implements Analyzable {
             t4.setName("ANALYSIS 4");
             t5.setName("ANALYSIS 5");
 
-            t1.start();
-            t2.start();
+         //   t1.start();
+         //   t2.start();
             t3.start();
-            t4.start();
-            t5.start();
+         //   t4.start();
+         //   t5.start();
 
             t1.join();
             t2.join();
