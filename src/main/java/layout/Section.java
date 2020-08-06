@@ -164,13 +164,13 @@ public class Section implements Analyzable {
         String[] str = fullText.split("(\r\n|\r|\n|\n\r)");
         int count = 0;
         for (int i = 0; i < str.length; i++) {
-
+            str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=:;*\"\\[\\]\n\t]", " ").trim();
             if (str[i].length() < 90 && str[i].length() > 9 && str[i].matches(".*[^,.{}:^~/#]$")) {
                 //System.out.println(str[i]+"\n+*+++**+++***+");
 
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
 //TODO IDEE: 1 A zu 1A umwandeln, und anfangsbuchstebn is Uppercase testen.
-                    str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=:;*\"\\[\\]\n\t]", " ").trim();
+
                     if (str[i].startsWith(chapterHeaderDefines[j])) {
                         if (java.lang.Character.isDigit(str[i].charAt(0))) {
                             if (java.lang.Character.isUpperCase(str[i].charAt(2))) {
