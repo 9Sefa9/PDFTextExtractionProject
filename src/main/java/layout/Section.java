@@ -92,41 +92,7 @@ public class Section implements Analyzable {
             try {
 
                 System.out.println(document.getPdfName());
-                document.setPdfTextStripper(new PDFTextStripper() {
-                    @Override
-                    protected void writeLineSeparator() throws IOException {
-                        //   System.out.println("---------");
-
-                        //this.setLineSeparator("TTTT");
-                        super.writeLineSeparator();
-                    }
-
-                    @Override
-                    protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
-                        StringBuilder br = new StringBuilder();
-
-
-                        //  if(!text.isEmpty() && text.contains("Abstr")) {
-
-                        //if (text != null) {
-                            //if (Character.isDigit(text.trim().charAt(0)) || (Character.isAlphabetic(text.trim().charAt(0)) && Character.isUpperCase(text.trim().charAt(0)))) {
-                                if(StringUtils.isAllLowerCase(text))
-                                    return;
-                                else br.append(text);
-                            
-                        //}
-                        //br.append(text);
-                        //   for (int i = 0; i < textPositions; i++) {
-
-                        //   }
-                        //    br.append();
-                        //br.a
-                        //System.out.println(br.toString());
-                        
-                        super.writeString(br.toString(), textPositions);
-                    }
-                });
-
+                document.setPdfTextStripper(new PDFTextStripper());
 
 
               /*  document.getPdfTextStripper().setParagraphStart("\t");
@@ -206,14 +172,14 @@ public class Section implements Analyzable {
         int count = 0;
         for (int i = 0; i < str.length; i++) {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
-            // System.out.println(str[i]+"\n******");
-            if (str[i].length() < 90 && str[i].length() > 3 && !str[i].matches(".*[,.\\-{}@\\\\$;()°=\\[\\]:^~/#]")) {
-           //     System.out.println(str[i] + "\n+*+++**+++***+");
-
+            //[,.\-{}@\\$;()°=\[\]:^~/#]
+            if (str[i].length() < 90 && str[i].length() > 3 && str[i].matches(".*^\\s*[A-Z0-9].\\s*[A-Z0-9]*")) {
+                //     System.out.println(str[i] + "\n+*+++**+++***+");
+                System.out.println( str[i] + "\n******");
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
                     if (str[i].startsWith(chapterHeaderDefines[j])) {
                         detectedChapterHeadersList.add(str[i]);
-                        System.out.println(str[i] + "\n+*+++**+++***+");
+                        //    System.out.println(str[i] + "\n+*+++**+++***+");
                         break;
                     }
                 }
