@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Character;
+import java.util.function.Predicate;
 
 public class Section implements Analyzable {
     private DocumentParser handler;
@@ -32,6 +33,8 @@ public class Section implements Analyzable {
     private final String[] chapterHeaderDefines = {
             "I. ", "II. ", "III. ", "IV. ", "V. ", "VI. ", "VII. ", "VIII. ", "IX. ", "X. ",
             "i. ", "ii. ", "iii. ", "iv. ", "v. ", "vi. ", "vii. ", "viii. ", "ix. ", "x. ",
+            "I.", "II.", "III.", "IV.", "V.", "VI.", "VII.", "VIII.", "IX.", "X.",
+            "i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x.",
             "ABSTRACT", "ABSTRACT ", "ABSTRACT-", "ABSTRACT -", "ABSTRACT - ",
             "Abstr", "Abstr ", "Abstr -", "Abstr - ", "Abstr —", "Abstr — ",
             "Abstract ", "Abstract-", "Abstract -", "Abstract - ",
@@ -71,6 +74,7 @@ public class Section implements Analyzable {
     private List<KeyValueObject<List<Integer>, Document>> chapterPositionsList;
     private List<KeyValueObject<List<Integer>, Document>> sectionPositionsList;
 
+
     public Section(DocumentParser handler) {
         this.handler = handler;
         chapterList = new ArrayList<>();
@@ -91,16 +95,39 @@ public class Section implements Analyzable {
                 System.out.println(document.getPdfName());
                 document.setPdfTextStripper(new PDFTextStripper() {
                     @Override
+                    protected void writeLineSeparator() throws IOException {
+                        //   System.out.println("---------");
+
+                        //this.setLineSeparator("TTTT");
+                        super.writeLineSeparator();
+                    }
+
+                    @Override
                     protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
                         StringBuilder br = new StringBuilder();
+
+
                         //  if(!text.isEmpty() && text.contains("Abstr")) {
-                        br.append(text);
-                        // br.append(textPositions.get(0).getFont().getFontDescriptor().getCapHeight() + "  " + textPositions.get(0).getFontSizeInPt());
-                        //  }
-                        // br.append("FONTSIZEPTR:"+ textPositions.get(0).getFontSizeInPt()+" :: FONTSIZE:"+textPositions.get(0).getFontSize()+"]\n");
+
+                        if (text != null) {
+                            if (Character.isDigit(text.trim().charAt(0)) || (Character.isAlphabetic(text.trim().charAt(0)) && Character.isUpperCase(text.trim().charAt(0)))) {
+                                br.append(text);
+                            }
+                        }
+                        //br.append(text);
+                        //   for (int i = 0; i < textPositions; i++) {
+
+                        //   }
+                        //    br.append();
+                        //br.a
+                        //System.out.println(br.toString());
+                        ;
                         super.writeString(br.toString(), textPositions);
                     }
                 });
+
+
+
               /*  document.getPdfTextStripper().setParagraphStart("\t");
                 document.getPdfTextStripper().setSortByPosition(false);
                 for (String line:  document.getPdfTextStripper().getText(document.getPdfDocument()).split( document.getPdfTextStripper().getParagraphStart())) {
@@ -111,8 +138,11 @@ public class Section implements Analyzable {
                 }
                */
                 String fullText = document.getPdfText();
+                System.out.println(fullText);
+                //  System.out.println(fullText);
+                //  System.out.println(fullText);
                 //     System.out.println(fullText);
-                //Überschriften, Abschnitte und ihre Positionen ausfindig machen in Abhängigkeit zum fullText.
+
                 findHeaders(fullText);
                 calculatePositions(fullText);
 
@@ -175,58 +205,60 @@ public class Section implements Analyzable {
         int count = 0;
         for (int i = 0; i < str.length; i++) {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
-           // System.out.println(str[i]+"\n******");
-            if (str[i].length() < 90 && str[i].length() > 3 && !str[i].matches("[,.\\-{}@\\\\$;()°=\\[\\]:^~/#]")) {
-                //    System.out.println(str[i]+"\n+*+++**+++***+");
+            // System.out.println(str[i]+"\n******");
+            if (str[i].length() < 90 && str[i].length() > 3 && !str[i].matches(".*[,.\\-{}@\\\\$;()°=\\[\\]:^~/#]")) {
+           //     System.out.println(str[i] + "\n+*+++**+++***+");
 
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
-//Funktion erstellen, der Alle texte ausgibt mit anfangsgroßbuchstaben.. dannach chapter Header DEfines machen ?
                     if (str[i].startsWith(chapterHeaderDefines[j])) {
-                       String [] test = str[i].split(" ");
-                       boolean containsUppercase=false;
-                       if(test != null) {
-                           for (int k = 0; k < test.length; k++) {
-                               if (test[k].length() > 4) {
-                                   System.out.println("TEST: " + k + ": " + test[k]);
-                                   containsUppercase = StringUtils.isAllUpperCase(test[k]);
-                                   if(Character.isUpperCase(test[k].trim().charAt(0)) && StringUtils.isAllLowerCase(test[k].trim().substring(1))){
-                                      // System.out.println("CHARACTERUPPERCASE:  "+test[k]);
-                                   }
-                               }
-                           }
-                       }
-                       if(containsUppercase)
-                      //  System.out.println(str[i]+"\n+*+++**+++***+");
-                       // if (java.lang.Character.isDigit(str[i].charAt(0))) {
-                        //     if (java.lang.Character.isUpperCase(str[i].charAt(2))) {
-                        //     System.out.println("1    " + str[i] + "\n+*+++**+++***+");
                         detectedChapterHeadersList.add(str[i]);
-
+                      //  System.out.println(str[i] + "\n+*+++**+++***+");
                         break;
-                        //    count += 1;
-
                     }
                 }
-                //  System.out.println("2      " + str[i] + "\n+*+++**+++***+");
-                //   break;
 
-                //  }
-            }
-
-                 /*   if(str[i].startsWith(chapterHeaderDefines[j]) && (java.lang.Character.isUpperCase(str[i].charAt(1)) || java.lang.Character.isUpperCase(str[i].charAt(2)))){
-                        System.out.println("zweiter IF:"+str[i]+""+" length: "+str[i].length()+"\n+*+++**+++***+");
-                        detectedChapterHeadersList.add(str[i]);
-                    }*/
-
-
-            for (int j = 0; j < sectionHeaderDefines.length; j++) {
-                if (str[i].startsWith(sectionHeaderDefines[j])) {
-                    detectedSectionHeadersList.add(str[i]);
-                    break;
+                for (int j = 0; j < sectionHeaderDefines.length; j++) {
+                    if (str[i].startsWith(sectionHeaderDefines[j])) {
+                        detectedSectionHeadersList.add(str[i]);
+                        break;
+                    }
                 }
             }
         }
     }
+            /*
+
+                    //  System.out.println(str[i]+"\n+*+++**+++***+");
+                    // if (java.lang.Character.isDigit(str[i].charAt(0))) {
+                    //     if (java.lang.Character.isUpperCase(str[i].charAt(2))) {
+                    //     System.out.println("1    " + str[i] + "\n+*+++**+++***+");
+                    if (str[i].startsWith(chapterHeaderDefines[j])) {
+                        String[] test = str[i].split(" ");
+                        boolean containsUppercase = false;
+                        if (test != null) {
+                            for (int k = 0; k < test.length; k++) {
+                                if (test[k].length() > 4) {
+                                    //System.out.println("TEST: " + k + ": " + test[k]);
+                                    containsUppercase = (StringUtils.isAllUpperCase(test[k]) || str[i].startsWith(chapterHeaderDefines[j]));
+                                    if (Character.isUpperCase(test[k].trim().charAt(0)) && StringUtils.isAllLowerCase(test[k].trim().substring(1))) {
+                                        // System.out.println("CHARACTERUPPERCASE:  "+test[k]);
+                                    }
+                                }
+                            }
+                        }
+                        if (containsUppercase)
+             */
+    //  System.out.println("2      " + str[i] + "\n+*+++**+++***+");
+    //   break;
+
+    //  }
+
+
+                 /*   if(str[i].startsWith(chapterHeaderDefines[j]) && (java.lang.Character.isUpperCase(str[i].charAt(1)) || java.lang.Character.isUpperCase(str[i].charAt(2)))){
+                        System.out.println("zweiter IF:"+str[i]+""+" length: "+str[i].length()+"\n+*+++**+++***+");
+                        detectedChapterHeadersList.add(str[i]);
+             ]       }*/
+
 
     // System.out.println(count);
 
