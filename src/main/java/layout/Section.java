@@ -5,8 +5,12 @@ import extractor.DocumentParser;
 import interfaces.Analyzable;
 import jdk.internal.jimage.ImageStrings;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.pdfbox.cos.COSArray;
+import org.apache.pdfbox.cos.COSDictionary;
 import org.apache.pdfbox.multipdf.PageExtractor;
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.TextPosition;
 import utilities.Helper;
@@ -28,12 +32,9 @@ public class Section implements Analyzable {
     private final String[] chapterHeaderDefines = {
             "I. ", "II. ", "III. ", "IV. ", "V. ", "VI. ", "VII. ", "VIII. ", "IX. ", "X. ",
             "i. ", "ii. ", "iii. ", "iv. ", "v. ", "vi. ", "vii. ", "viii. ", "ix. ", "x. ",
-            "ABSTRACT", "ABSTRACT-", "ABSTRACT -", "ABSTRACT - ",
+            "ABSTRACT","ABSTRACT ","ABSTRACT-", "ABSTRACT -", "ABSTRACT - ",
             "Abstr", "Abstr ", "Abstr -", "Abstr - ", "Abstr —", "Abstr — ",
-            // "abstract","abstract-","abstract -","abstract - ",
-            "Abstract", "Abstract-", "Abstract -", "Abstract - ",
-            "ABSTRACT", "ABSTRACT—", "ABSTRACT —", "ABSTRACT — ",
-            // "abstract","abstract—","abstract —","abstract — ",
+            "Abstract ", "Abstract-", "Abstract -", "Abstract - ",
             "Abstract", "Abstract—", "Abstract —", "Abstract — ",
             //mit speziellem nicht sichtbarem Zeichen:
             "Abstract", "Abstract—", "Abstract —", "Abstract — ",
@@ -85,24 +86,23 @@ public class Section implements Analyzable {
     public void analyze() {
         System.out.println("Entering Section Extraction on " + Thread.currentThread().getName() + " :: " + Thread.currentThread().getId());
         for (Document document : this.handler.getDocumentsList()) {
-            // int lastPage = document.getPdfDocument().getNumberOfPages();
             try {
 
-                //    PageExtractor extractorObject = new PageExtractor(document.getPdfDocument(), 1, lastPage);
-                // PDDocument doc = extractorObject.extract();
-                //  document.setPdfDocument(doc);
                 System.out.println(document.getPdfName());
                 document.setPdfTextStripper(new PDFTextStripper() {
                     @Override
                     protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
                         StringBuilder br = new StringBuilder();
-                        br.append(text);
+                        //  if(!text.isEmpty() && text.contains("Abstr")) {
+                            br.append(text);
+                        //  }
                         // br.append("FONTSIZEPTR:"+ textPositions.get(0).getFontSizeInPt()+" :: FONTSIZE:"+textPositions.get(0).getFontSize()+"]\n");
                         super.writeString(br.toString(), textPositions);
                     }
                 });
-                String fullText = document.getPdfText();
 
+                String fullText = document.getPdfText();
+           //     System.out.println(fullText);
                 //Überschriften, Abschnitte und ihre Positionen ausfindig machen in Abhängigkeit zum fullText.
                 findHeaders(fullText);
                 calculatePositions(fullText);
@@ -169,12 +169,11 @@ public class Section implements Analyzable {
                 //System.out.println(str[i]+"\n+*+++**+++***+");
 
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
-//TODO IDEE: 1 A zu 1A umwandeln, und anfangsbuchstebn is Uppercase testen.
 
                     if (str[i].startsWith(chapterHeaderDefines[j])) {
                         if (java.lang.Character.isDigit(str[i].charAt(0))) {
                             if (java.lang.Character.isUpperCase(str[i].charAt(2))) {
-                                System.out.println(str[i] + "" + " length: " + str[i].length() + "\n+*+++**+++***+");
+                                System.out.println("1    "+ str[i]+ "\n+*+++**+++***+");
                                 detectedChapterHeadersList.add(str[i]);
                                 break;
                             //    count += 1;
@@ -182,7 +181,7 @@ public class Section implements Analyzable {
                             }
                         } else if (java.lang.Character.isUpperCase(str[i].charAt(0))) {
 
-                                    System.out.println(str[i] + "" + " length: " + str[i].length() + "\n+*+++**+++***+");
+                                    System.out.println("2      "+str[i]+"\n+*+++**+++***+");
                                     break;
 
                             }
