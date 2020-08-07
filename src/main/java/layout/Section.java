@@ -180,7 +180,7 @@ public class Section implements Analyzable {
                 //    System.out.println(str[i]+"\n+*+++**+++***+");
 
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
-
+//Funktion erstellen, der Alle texte ausgibt mit anfangsgroßbuchstaben.. dannach chapter Header DEfines machen ?
                     if (str[i].startsWith(chapterHeaderDefines[j])) {
                        String [] test = str[i].split(" ");
                        boolean containsUppercase=false;
