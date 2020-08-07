@@ -25,6 +25,6 @@ dependencies {
 task(RUN, dependsOn: 'classes', type: JavaExec) {
    main = 'main.Main'
    classpath = sourceSets.main.runtimeClasspath
-   //args('src/main/resources/original/08662658.pdf')
+   args('../../Schreibtisch/DatenAnsammlung/', 'src/main/resources/')
    
 }

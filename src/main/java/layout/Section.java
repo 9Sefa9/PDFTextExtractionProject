@@ -3,7 +3,6 @@ package layout;
 import extractor.Document;
 import extractor.DocumentParser;
 import interfaces.Analyzable;
-import jdk.internal.jimage.ImageStrings;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.pdfbox.cos.COSArray;
 import org.apache.pdfbox.cos.COSDictionary;
@@ -109,11 +108,13 @@ public class Section implements Analyzable {
 
                         //  if(!text.isEmpty() && text.contains("Abstr")) {
 
-                        if (text != null) {
-                            if (Character.isDigit(text.trim().charAt(0)) || (Character.isAlphabetic(text.trim().charAt(0)) && Character.isUpperCase(text.trim().charAt(0)))) {
-                                br.append(text);
-                            }
-                        }
+                        //if (text != null) {
+                            //if (Character.isDigit(text.trim().charAt(0)) || (Character.isAlphabetic(text.trim().charAt(0)) && Character.isUpperCase(text.trim().charAt(0)))) {
+                                if(StringUtils.isAllLowerCase(text))
+                                    return;
+                                else br.append(text);
+                            
+                        //}
                         //br.append(text);
                         //   for (int i = 0; i < textPositions; i++) {
 
@@ -121,7 +122,7 @@ public class Section implements Analyzable {
                         //    br.append();
                         //br.a
                         //System.out.println(br.toString());
-                        ;
+                        
                         super.writeString(br.toString(), textPositions);
                     }
                 });
@@ -138,7 +139,7 @@ public class Section implements Analyzable {
                 }
                */
                 String fullText = document.getPdfText();
-                System.out.println(fullText);
+                //System.out.println(fullText);
                 //  System.out.println(fullText);
                 //  System.out.println(fullText);
                 //     System.out.println(fullText);
@@ -201,7 +202,7 @@ public class Section implements Analyzable {
         detectedSectionHeadersList = new ArrayList<>();
         // System.out.println(fullText);
         String[] str = fullText.split("(\r\n|\r|\n|\n\r|\t)");
-        System.out.println(str.length);
+        //System.out.println(str.length);
         int count = 0;
         for (int i = 0; i < str.length; i++) {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
@@ -212,7 +213,7 @@ public class Section implements Analyzable {
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
                     if (str[i].startsWith(chapterHeaderDefines[j])) {
                         detectedChapterHeadersList.add(str[i]);
-                      //  System.out.println(str[i] + "\n+*+++**+++***+");
+                        System.out.println(str[i] + "\n+*+++**+++***+");
                         break;
                     }
                 }
