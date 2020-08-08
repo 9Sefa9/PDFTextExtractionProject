@@ -38,7 +38,7 @@ public class Section implements Analyzable {
             " Abstract", " Abstract—"," Abstract— ", " Abstract —", " Abstract — ","Abstract— ",
             "I. ", "II. ", "III. ", "IV. ", "V. ", "VI. ", "VII. ", "VIII. ", "IX. ", "X. ",
           //  "i. ", "ii. ", "iii. ", "iv. ", "v. ", "vi. ", "vii. ", "viii. ", "ix. ", "x. ",
-          //  "I.", "II.", "III.", "IV.", "V.", "VI.", "VII.", "VIII.", "IX.", "X.",
+            /*"I.",*/ "II.", "III.", "IV.", "V.", "VI.", "VII.", "VIII.", "IX.", "X.",
             //"i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x.",
             "INTROD", "REL", "RES", "DISC", "ACKN", "REFERENCE","REF",
             "REFERENCES", "REFERENCE\n", "REFERENCE \n", "REFERENCES \n", "FUT",
@@ -171,15 +171,16 @@ public class Section implements Analyzable {
         String[] str = fullText.split("(\r\n|\r|\n|\n\r|\t)");
         //System.out.println(str.length);
         int count = 0;
-        for (int i = 0; i < str.length; i++) {
+        for (int i = 0; i+1 < str.length; i++) {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
             //[,.\-{}@\\$;()°=\[\]:^~/#]
             // Funktionierende Version. ALlerdings werden i.e. mit aufgenommen und die chapter werden nciht akzeptiert von anderen papern: .*^[^\[0-9\]].*([A-Z]|[0-9])*[^,\-.]$
-            if (str[i].length() < 125&& str[i].length() > 3 && str[i].matches(".*^[^\\[0-9\\]].*([A-Z]|[0-9])*[^,.;%$()=/:\\u0015\n]$") ) {
-                  //  System.out.println(str[i] + "\n+*+++**+++***+");
+
+            if (!str[i].isEmpty() && str[i].length() < 125&& str[i].length() > 3 && str[i].matches(".*^[^\\[0-9\\]].*([A-Z]|[0-9])*[^,.;%$()=/:\\u0015\n]$")) {
+                 //  System.out.println(str[i] + "\n+*+++**+++***+");
                // System.out.println( str[i] + "\n******");
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
-                        if (str[i].startsWith(chapterHeaderDefines[j])||str[i].equals(chapterHeaderDefines[j])) {
+                        if (str[i].startsWith(chapterHeaderDefines[j])||str[i].equals(chapterHeaderDefines[j]) ) {
                             detectedChapterHeadersList.add(str[i]);
                             System.out.println(str[i] + "\n+*+++**+++***+");
                             break;
