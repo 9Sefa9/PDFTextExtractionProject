@@ -175,13 +175,13 @@ public class Section implements Analyzable {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
             //[,.\-{}@\\$;()°=\[\]:^~/#]
             // Funktionierende Version. ALlerdings werden i.e. mit aufgenommen und die chapter werden nciht akzeptiert von anderen papern: .*^[^\[0-9\]].*([A-Z]|[0-9])*[^,\-.]$
-            if (str[i].length() < 125&& str[i].length() > 3 && str[i].matches(".*^[^\\[0-9\\]].*([A-Z]|[0-9])*[^,\\-.;%$()=/:\n]$") ) {
-                    System.out.println(str[i] + "\n+*+++**+++***+");
+            if (str[i].length() < 125&& str[i].length() > 3 && str[i].matches(".*^[^\\[0-9\\]].*([A-Z]|[0-9])*[^,.;%$()=/:\\u0015\n]$") ) {
+                  //  System.out.println(str[i] + "\n+*+++**+++***+");
                // System.out.println( str[i] + "\n******");
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
                         if (str[i].startsWith(chapterHeaderDefines[j])||str[i].equals(chapterHeaderDefines[j])) {
                             detectedChapterHeadersList.add(str[i]);
-                          //  System.out.println(str[i] + "\n+*+++**+++***+");
+                            System.out.println(str[i] + "\n+*+++**+++***+");
                             break;
                         }
 
