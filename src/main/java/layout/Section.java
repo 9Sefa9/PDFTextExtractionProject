@@ -40,7 +40,7 @@ public class Section implements Analyzable {
             "Abstract", "Abstract—", "Abstract —", "Abstract — ",
             //mit speziellem nicht sichtbarem Zeichen:
             "Abstract", "Abstract—", "Abstract —", "Abstract — ",
-            "INTROD", "REL", "RES", "DISC", "ACKN", "REFERENCE",
+            "INTROD", "REL", "RES", "DISC", "ACKN", "REFERENCE","REF",
             "REFERENCES", "REFERENCE\n", "REFERENCE \n", "REFERENCES \n", "FUT",
             "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "10 ", "11 ", "12 "};
     /*
@@ -173,13 +173,13 @@ public class Section implements Analyzable {
         for (int i = 0; i < str.length; i++) {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
             //[,.\-{}@\\$;()°=\[\]:^~/#]
-            if (str[i].length() < 90 && str[i].length() > 3 && str[i].matches(".*^\\s*[A-Z0-9].\\s*[A-Z0-9]*")) {
+            if (str[i].length() < 90 && str[i].length() > 3 && str[i].matches(".*^[^\\[0-9\\]].*([A-Z]|[0-9])*[^,\\-.]$")) {
                 //     System.out.println(str[i] + "\n+*+++**+++***+");
-                System.out.println( str[i] + "\n******");
+               // System.out.println( str[i] + "\n******");
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
                     if (str[i].startsWith(chapterHeaderDefines[j])) {
                         detectedChapterHeadersList.add(str[i]);
-                        //    System.out.println(str[i] + "\n+*+++**+++***+");
+                            System.out.println(str[i] + "\n+*+++**+++***+");
                         break;
                     }
                 }
