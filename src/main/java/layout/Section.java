@@ -30,16 +30,16 @@ public class Section implements Analyzable {
 
     //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Kapitel beginnen kann. Könnte erweitert werden.
     private final String[] chapterHeaderDefines = {
-            "I. ", "II. ", "III. ", "IV. ", "V. ", "VI. ", "VII. ", "VIII. ", "IX. ", "X. ",
-            "i. ", "ii. ", "iii. ", "iv. ", "v. ", "vi. ", "vii. ", "viii. ", "ix. ", "x. ",
-            "I.", "II.", "III.", "IV.", "V.", "VI.", "VII.", "VIII.", "IX.", "X.",
-            "i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x.",
             "ABSTRACT", "ABSTRACT ", "ABSTRACT-", "ABSTRACT -", "ABSTRACT - ",
-            "Abstr", "Abstr ", "Abstr -", "Abstr - ", "Abstr —", "Abstr — ",
+          //  "Abstr", "Abstr -", "Abstr - ", "Abstr —", "Abstr — ",
             "Abstract ", "Abstract-", "Abstract -", "Abstract - ",
-            "Abstract", "Abstract—", "Abstract —", "Abstract — ",
+            "Abstract", "Abstract—","Abstract— ", "Abstract —", "Abstract — ",
             //mit speziellem nicht sichtbarem Zeichen:
-            "Abstract", "Abstract—", "Abstract —", "Abstract — ",
+            " Abstract", " Abstract—"," Abstract— ", " Abstract —", " Abstract — ","Abstract— ",
+            "I. ", "II. ", "III. ", "IV. ", "V. ", "VI. ", "VII. ", "VIII. ", "IX. ", "X. ",
+          //  "i. ", "ii. ", "iii. ", "iv. ", "v. ", "vi. ", "vii. ", "viii. ", "ix. ", "x. ",
+          //  "I.", "II.", "III.", "IV.", "V.", "VI.", "VII.", "VIII.", "IX.", "X.",
+            //"i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x.",
             "INTROD", "REL", "RES", "DISC", "ACKN", "REFERENCE","REF",
             "REFERENCES", "REFERENCE\n", "REFERENCE \n", "REFERENCES \n", "FUT",
             "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "10 ", "11 ", "12 "};
@@ -72,6 +72,7 @@ public class Section implements Analyzable {
     private List<KeyValueObject<List<String>, Document>> sectionList;
     private List<KeyValueObject<List<Integer>, Document>> chapterPositionsList;
     private List<KeyValueObject<List<Integer>, Document>> sectionPositionsList;
+    private String docName;
 
 
     public Section(DocumentParser handler) {
@@ -90,7 +91,7 @@ public class Section implements Analyzable {
         System.out.println("Entering Section Extraction on " + Thread.currentThread().getName() + " :: " + Thread.currentThread().getId());
         for (Document document : this.handler.getDocumentsList()) {
             try {
-
+                this.docName = document.getPdfName();
                 System.out.println(document.getPdfName());
                 document.setPdfTextStripper(new PDFTextStripper());
 
@@ -173,15 +174,17 @@ public class Section implements Analyzable {
         for (int i = 0; i < str.length; i++) {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
             //[,.\-{}@\\$;()°=\[\]:^~/#]
-            if (str[i].length() < 90 && str[i].length() > 3 && str[i].matches(".*^[^\\[0-9\\]].*([A-Z]|[0-9])*[^,\\-.]$")) {
-                //     System.out.println(str[i] + "\n+*+++**+++***+");
+            // Funktionierende Version. ALlerdings werden i.e. mit aufgenommen und die chapter werden nciht akzeptiert von anderen papern: .*^[^\[0-9\]].*([A-Z]|[0-9])*[^,\-.]$
+            if (str[i].length() < 125&& str[i].length() > 3 && str[i].matches(".*^[^\\[0-9\\]].*([A-Z]|[0-9])*[^,\\-.;%$()=/:\n]$") ) {
+                    System.out.println(str[i] + "\n+*+++**+++***+");
                // System.out.println( str[i] + "\n******");
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
-                    if (str[i].startsWith(chapterHeaderDefines[j])) {
-                        detectedChapterHeadersList.add(str[i]);
-                            System.out.println(str[i] + "\n+*+++**+++***+");
-                        break;
-                    }
+                        if (str[i].startsWith(chapterHeaderDefines[j])||str[i].equals(chapterHeaderDefines[j])) {
+                            detectedChapterHeadersList.add(str[i]);
+                          //  System.out.println(str[i] + "\n+*+++**+++***+");
+                            break;
+                        }
+
                 }
 
                 for (int j = 0; j < sectionHeaderDefines.length; j++) {
