@@ -177,18 +177,20 @@ public class Section implements Analyzable {
         for (int i = 0; i+1 < str.length; i++) {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
             //[,.\-{}@\\$;()°=\[\]:^~/#]
+
             // Funktionierende Version. ALlerdings werden i.e. mit aufgenommen und die chapter werden nciht akzeptiert von anderen papern: .*^[^\[0-9\]].*([A-Z]|[0-9])*[^,\-.]$
             str[i] = str[i].replaceFirst("\\s+","");
-            if (!str[i].isEmpty() && str[i].length() < 90&& str[i].length() > 3 && (Character.isUpperCase(str[i].charAt(0)) || Character.isDigit(str[i].charAt(0))) && str[i].matches("(.*^[^\\[0-9\\]].*([A-Z]|[0-9])*[^,.;%$()=:]$|.*^[0-9]+\\s*[A-Z]+)")) {
+          //  System.out.println(str[i] + "\n+*+++**+++***+");
+            if (!str[i].isEmpty() && str[i].length() < 90&& str[i].length() > 3 && (Character.isUpperCase(str[i].charAt(0)) || Character.isDigit(str[i].charAt(0))) && str[i].matches("(.*^[^\\[0-9\\]].*(\\w|[0-9])*[^,.;%$()=:]$|.*^[0-9]+\\s*[A-Z]+)")) {
                 //str[i] = StringUtils.deleteWhitespace(str[i]);
-             //   System.out.println(str[i] + "\n+*+++**+++***+");
-              //  System.out.println( str[i] + "\n******");
-                for (int j = 0; j < chapterHeaderDefines.length; j++) {
+
+               // System.out.println( str[i] + "\n******");
+                for (int j = oldFoundedJ; j < chapterHeaderDefines.length; j++) {
 
                   //  if(this.docName.equals("08052717.pdf")) {
                         if (str[i].startsWith(chapterHeaderDefines[j]) || str[i].equals(chapterHeaderDefines[j])) {
                             detectedChapterHeadersList.add(str[i]);
-                           // oldFoundedJ = j;
+                            oldFoundedJ = oldFoundedJ >= 5 ? oldFoundedJ-5:0;
                             System.out.println(str[i] + "\n+*+++**+++***+");
                             break;
                         }
