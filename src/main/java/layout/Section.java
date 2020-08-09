@@ -36,13 +36,16 @@ public class Section implements Analyzable {
             "Abstract", "Abstract—","Abstract— ", "Abstract —", "Abstract — ",
             //mit speziellem nicht sichtbarem Zeichen:
             " Abstract", " Abstract—"," Abstract— ", " Abstract —", " Abstract — ","Abstract— ",
-            "I. ", "II. ", "III. ", "IV. ", "V. ", "VI. ", "VII. ", "VIII. ", "IX. ", "X. ",
+
+            "I. Intro","I. intro", "I.Intro","I.intro", "I.INTRO","I. INTRO", "II. ", "II.", "III. ", "III.", "IV. ", "V. ", "V.", "VI. ",  "VI.",
+            "VII. ",  "VII.", "VIII.", "VIII. ", "IX.", "IX. ", "X.", "X. ",
           //  "i. ", "ii. ", "iii. ", "iv. ", "v. ", "vi. ", "vii. ", "viii. ", "ix. ", "x. ",
-            "I.", "II.", "III.", "IV.", "V.", "VI.", "VII.", "VIII.", "IX.", "X.",
+
             //"i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x.",
-            "INTROD", "REL", "RES", "DISC", "ACKN", "REFERENCE","REF",
-            "REFERENCES", "REFERENCE\n", "REFERENCE \n", "REFERENCES \n", "FUT",
-            "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "10 ", "11 ", "12 "};
+            "INTROD", "REL", "RES", "DISC", "ACKN", "FUT", "REFERENCE","REF",
+            "REFERENCES", "REFERENCE\n", "REFERENCE \n", "REFERENCES \n",
+            "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "10 ", "11 ", "12 ",
+            "1", "2","3","4", "5", "6", "7", "8", "9", "10", "11", "12"};
     /*
     "1 A","1 B","1 C","1 D","1 E","1 F","1 G","1 H","1 I","1 J","1 K","1 L",
                 "1 M","1 N","1 O","1 P","1 Q","1 R","1 S","1 T","1 U","1 V","1 W","1 X",
@@ -170,22 +173,23 @@ public class Section implements Analyzable {
         // System.out.println(fullText);
         String[] str = fullText.split("(\r\n|\r|\n|\n\r|\t)");
         //System.out.println(str.length);
-        int oldFoundedJ=0;
+        int oldFoundedJ= 0;
         for (int i = 0; i+1 < str.length; i++) {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
             //[,.\-{}@\\$;()°=\[\]:^~/#]
             // Funktionierende Version. ALlerdings werden i.e. mit aufgenommen und die chapter werden nciht akzeptiert von anderen papern: .*^[^\[0-9\]].*([A-Z]|[0-9])*[^,\-.]$
             str[i] = str[i].replaceFirst("\\s+","");
-            if (!str[i].isEmpty() && str[i].length() < 125&& str[i].length() > 3 && str[i].matches(".*^[^\\[0-9\\]].*([A-Z]|[0-9])*[^,.;%$()=/:\\u0015\n]$")) {
+            if (!str[i].isEmpty() && str[i].length() < 90&& str[i].length() > 3 && (Character.isUpperCase(str[i].charAt(0)) || Character.isDigit(str[i].charAt(0))) && str[i].matches("(.*^[^\\[0-9\\]].*([A-Z]|[0-9])*[^,.;%$()=:]$|.*^[0-9]+\\s*[A-Z]+)")) {
                 //str[i] = StringUtils.deleteWhitespace(str[i]);
-                System.out.println(str[i] + "\n+*+++**+++***+");
-               // System.out.println( str[i] + "\n******");
+             //   System.out.println(str[i] + "\n+*+++**+++***+");
+              //  System.out.println( str[i] + "\n******");
                 for (int j = 0; j < chapterHeaderDefines.length; j++) {
 
                   //  if(this.docName.equals("08052717.pdf")) {
                         if (str[i].startsWith(chapterHeaderDefines[j]) || str[i].equals(chapterHeaderDefines[j])) {
                             detectedChapterHeadersList.add(str[i]);
-                            //System.out.println(str[i] + "\n+*+++**+++***+");
+                           // oldFoundedJ = j;
+                            System.out.println(str[i] + "\n+*+++**+++***+");
                             break;
                         }
                  //   }
