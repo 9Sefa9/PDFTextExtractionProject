@@ -61,7 +61,10 @@ public class Section implements Analyzable {
 
 
     //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Abschnitt beginnen kann. Könnte erweitert werden.
-    private final String[] sectionHeaderDefines = {"A. ", "B. ", "C. ", "D. ", "E. ", "F. ", "G. ", "H. ", "J. ", "K. "
+    private final String[] sectionHeaderDefines = {
+        "A. ","A.", "B. ", "B.", "C. ","C.", "D. ", "D.",  "E. ","E.","F. ", "F.", "G. ", "G.","H. ", "H.", "J.", "J. ", "K. ", "K.",
+           
+        
             /* "L. ", "M. ", "N. ", "O. ", "P. ", "Q. ", "R. ", "S. ", "T. ", "U. ", "W. ", "Y. ", "Z. "*/};
     //In der List stehen Abschnitte mit: Nummerierung + Titel
     private List<String> detectedSectionHeadersList;
@@ -173,7 +176,8 @@ public class Section implements Analyzable {
         // System.out.println(fullText);
         String[] str = fullText.split("(\r\n|\r|\n|\n\r|\t)");
         //System.out.println(str.length);
-        int oldFoundedJ= 0;
+        int oldFoundedJChapter= 0;
+        int oldFoundedJSection =0;
         for (int i = 0; i+1 < str.length; i++) {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
             //[,.\-{}@\\$;()°=\[\]:^~/#]
@@ -189,21 +193,23 @@ public class Section implements Analyzable {
                 //str[i] = StringUtils.deleteWhitespace(str[i]);
 
                 //System.out.println( str[i] + "\n******");
-                for (int j = oldFoundedJ; j < chapterHeaderDefines.length; j++) {
+                for (int j = oldFoundedJChapter; j < chapterHeaderDefines.length; j++) {
 
                     //if(this.docName.equals("Fyr.pdf")) {
                         if (str[i].startsWith(chapterHeaderDefines[j]) || str[i].equals(chapterHeaderDefines[j])) {
                             detectedChapterHeadersList.add(str[i]);
-                            oldFoundedJ = oldFoundedJ >= 5 ? oldFoundedJ-5:0;
-                            System.out.println(str[i] + "\n+*+++**+++***+");
+                            oldFoundedJChapter = oldFoundedJChapter >= 5 ? oldFoundedJChapter-5:0;
+                           //System.out.println(str[i] + "\n+*+++**+++***+");
                             break;
                         }
                   //  }
                 }
 
-                for (int j = 0; j < sectionHeaderDefines.length; j++) {
+                for (int j = oldFoundedJSection ; j < sectionHeaderDefines.length; j++) {
                     if (str[i].startsWith(sectionHeaderDefines[j])) {
                         detectedSectionHeadersList.add(str[i]);
+                        oldFoundedJSection = oldFoundedJSection == 0 ? 0: oldFoundedJSection;
+                        System.out.println(str[i] + "\n+*+++**+++***+");
                         break;
                     }
                 }
