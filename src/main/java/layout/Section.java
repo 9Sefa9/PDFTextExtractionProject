@@ -180,6 +180,7 @@ public class Section implements Analyzable {
 
             // Funktionierende Version. ALlerdings werden i.e. mit aufgenommen und die chapter werden nciht akzeptiert von anderen papern: .*^[^\[0-9\]].*([A-Z]|[0-9])*[^,\-.]$
             str[i] = str[i].replaceFirst("\\s+","");
+         //   str[i] = str[i].replaceAll("\\w", " ");
             //TODO Hardgecoded... FYR's hat apostroph probleme... dann würde es safe funktionieren..
            // str[i] = str[i].replaceAll("’","");
             //System.out.println(str[i] + "\n+*+++**+++***+");
