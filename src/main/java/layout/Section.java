@@ -31,21 +31,21 @@ public class Section implements Analyzable {
     //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Kapitel beginnen kann. Könnte erweitert werden.
     private final String[] chapterHeaderDefines = {
             "ABSTRACT", "ABSTRACT ", "ABSTRACT-", "ABSTRACT -", "ABSTRACT - ",
-          //  "Abstr", "Abstr -", "Abstr - ", "Abstr —", "Abstr — ",
+            //  "Abstr", "Abstr -", "Abstr - ", "Abstr —", "Abstr — ",
             "Abstract ", "Abstract-", "Abstract -", "Abstract - ",
-            "Abstract", "Abstract—","Abstract— ", "Abstract —", "Abstract — ",
+            "Abstract", "Abstract—", "Abstract— ", "Abstract —", "Abstract — ",
             //mit speziellem nicht sichtbarem Zeichen:
-            " Abstract", " Abstract—"," Abstract— ", " Abstract —", " Abstract — ","Abstract— ",
+            " Abstract", " Abstract—", " Abstract— ", " Abstract —", " Abstract — ", "Abstract— ",
 
-            "I. Intro","I. intro", "I.Intro","I.intro", "I.INTRO","I. INTRO", "II. ", "II.", "III. ", "III.", "IV. ", "V. ", "V.", "VI. ",  "VI.",
-            "VII. ",  "VII.", "VIII.", "VIII. ", "IX.", "IX. ", "X.", "X. ",
-          //  "i. ", "ii. ", "iii. ", "iv. ", "v. ", "vi. ", "vii. ", "viii. ", "ix. ", "x. ",
+            "I. Intro", "I. intro", "I.Intro", "I.intro", "I.INTRO", "I. INTRO", "II. ", "II.", "III. ", "III.", "IV. ", "V. ", "V.", "VI. ", "VI.",
+            "VII. ", "VII.", "VIII.", "VIII. ", "IX.", "IX. ", "X.", "X. ",
+            //  "i. ", "ii. ", "iii. ", "iv. ", "v. ", "vi. ", "vii. ", "viii. ", "ix. ", "x. ",
 
             //"i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix.", "x.",
-            "INTROD", "REL", "RES", "DISC", "ACKN", "FUT", "REFERENCE","REF",
+            "INTROD", "REL", "RES", "DISC", "ACKN", "FUT", "REFERENCE", "REF",
             "REFERENCES", "REFERENCE\n", "REFERENCE \n", "REFERENCES \n",
             "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "10 ", "11 ", "12 ",
-            "1", "2","3","4", "5", "6", "7", "8", "9", "10", "11", "12"};
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
     /*
     "1 A","1 B","1 C","1 D","1 E","1 F","1 G","1 H","1 I","1 J","1 K","1 L",
                 "1 M","1 N","1 O","1 P","1 Q","1 R","1 S","1 T","1 U","1 V","1 W","1 X",
@@ -62,10 +62,11 @@ public class Section implements Analyzable {
 
     //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Abschnitt beginnen kann. Könnte erweitert werden.
     private final String[] sectionHeaderDefines = {
-        "A. ","A.", "B. ", "B.", "C. ","C.", "D. ", "D.",  "E. ","E.","F. ", "F.", "G. ", "G.","H. ", "H.", "J.", "J. ", "K. ", "K.",
-           
-        
-            /* "L. ", "M. ", "N. ", "O. ", "P. ", "Q. ", "R. ", "S. ", "T. ", "U. ", "W. ", "Y. ", "Z. "*/};
+            "A. ", "A.", "B. ", "B.", "C. ", "C.", "D. ", "D.", "E. ", "E.", "F. ", "F.", "G. ", "G.", "H. ", "H.", "J.", "J. ", "K. ", "K.",};
+    private final String[] blacklistSectionHeaderDefines = {"REFERENCE", "REF",
+            "REFERENCES", "REFERENCE\n", "REFERENCE \n", "REFERENCES \n",};
+
+    /* "L. ", "M. ", "N. ", "O. ", "P. ", "Q. ", "R. ", "S. ", "T. ", "U. ", "W. ", "Y. ", "Z. "*/
     //In der List stehen Abschnitte mit: Nummerierung + Titel
     private List<String> detectedSectionHeadersList;
     //die jeweilige Position des gefundenen Headers.
@@ -176,44 +177,56 @@ public class Section implements Analyzable {
         // System.out.println(fullText);
         String[] str = fullText.split("(\r\n|\r|\n|\n\r|\t)");
         //System.out.println(str.length);
-        int oldFoundedJChapter= 0;
-        int oldFoundedJSection =0;
-        for (int i = 0; i+1 < str.length; i++) {
+        int oldFoundedJChapter = 0;
+        int oldFoundedJSection = 0;
+        for (int i = 0; i + 1 < str.length; i++) {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
             //[,.\-{}@\\$;()°=\[\]:^~/#]
 
             // Funktionierende Version. ALlerdings werden i.e. mit aufgenommen und die chapter werden nciht akzeptiert von anderen papern: .*^[^\[0-9\]].*([A-Z]|[0-9])*[^,\-.]$
-            str[i] = str[i].replaceFirst("\\s+","");
-         //   str[i] = str[i].replaceAll("\\w", " ");
+            str[i] = str[i].replaceFirst("\\s+", "");
+            //   str[i] = str[i].replaceAll("\\w", " ");
             //TODO Hardgecoded... FYR's hat apostroph probleme... dann würde es safe funktionieren..
             //TODO all exxcept first few letters regex
-           // str[i] = str[i].replaceAll("’","");
+            // str[i] = str[i].replaceAll("’","");
             //System.out.println(str[i] + "\n+*+++**+++***+");
-            if (!str[i].isEmpty() && str[i].length() < 90&& str[i].length() > 3 && (Character.isUpperCase(str[i].charAt(0)) || Character.isDigit(str[i].charAt(0))) && str[i].matches("(.*^[^\\[0-9\\]].*(\\w|[0-9])*[^,.;%$()=:]$|.*^[0-9]+\\s*[A-Z]+)")) {
+            if (!str[i].isEmpty() && str[i].length() < 90 && str[i].length() > 3 && (Character.isUpperCase(str[i].charAt(0)) || Character.isDigit(str[i].charAt(0))) && str[i].matches("(.*^[^\\[0-9\\]].*(\\w|[0-9])*[^,.;%$=:]$|.*^[0-9]+\\s*[A-Z]+)")) {
                 //str[i] = StringUtils.deleteWhitespace(str[i]);
 
                 //System.out.println( str[i] + "\n******");
                 for (int j = oldFoundedJChapter; j < chapterHeaderDefines.length; j++) {
 
                     //if(this.docName.equals("Fyr.pdf")) {
-                        if (str[i].startsWith(chapterHeaderDefines[j]) || str[i].equals(chapterHeaderDefines[j])) {
-                            detectedChapterHeadersList.add(str[i]);
-                            oldFoundedJChapter = oldFoundedJChapter >= 5 ? oldFoundedJChapter-5:0;
-                           //System.out.println(str[i] + "\n+*+++**+++***+");
-                            break;
-                        }
-                  //  }
-                }
-
-                for (int j = oldFoundedJSection ; j < sectionHeaderDefines.length; j++) {
-                    if (str[i].startsWith(sectionHeaderDefines[j])) {
-                        detectedSectionHeadersList.add(str[i]);
-                        oldFoundedJSection = oldFoundedJSection == 0 ? 0: oldFoundedJSection;
+                    if (str[i].startsWith(chapterHeaderDefines[j]) || str[i].equals(chapterHeaderDefines[j])) {
+                        detectedChapterHeadersList.add(str[i]);
+                        oldFoundedJChapter = oldFoundedJChapter >= 5 ? oldFoundedJChapter - 5 : 0;
                         System.out.println(str[i] + "\n+*+++**+++***+");
                         break;
                     }
+                    //  }
                 }
             }
+        }
+        //VariableLimit sorgt dafür, dass immer nur bis zur Reference nach Abschnitten gesucht werden. Falls kein Reference extrahiert werden konnte, bleibt es bei der normalen Dokumenten Länge str.length.
+        int variableLimit = str.length;
+        for (int i = 0; i + 1 < variableLimit; i++) {
+            //A.Skowron (Eds.).
+            //  System.out.println(str[i] + "\n+*+++**+++***+");
+            if (i > 20 && !str[i].isEmpty() && str[i].length() < 80 && str[i].length() > 3 && str[i].matches(".*^[^\\[0-9\\]]*[^,\\[\\].]$")) {
+                //    System.out.println(str[i] + "\n+*+++**+++***+");
+                variableLimit = (str[i].startsWith("REFE") ? i : str.length);
+                for (int j = 0; j < sectionHeaderDefines.length; j++) {
+
+                    if ((str[i].startsWith(sectionHeaderDefines[j]) || str[i].equals(sectionHeaderDefines[j])) /*&& this.docName.equals("05942046.pdf")*/) {
+                        detectedSectionHeadersList.add(str[i]);
+                        //   oldFoundedJSection = oldFoundedJSection == 0 ? 0 : oldFoundedJSection;
+                        System.out.println(str[i] + "\n+*+++**+++***+");
+                        break;
+
+                    }
+                }
+            }
+
         }
     }
             /*
