@@ -182,6 +182,7 @@ public class Section implements Analyzable {
             str[i] = str[i].replaceFirst("\\s+","");
          //   str[i] = str[i].replaceAll("\\w", " ");
             //TODO Hardgecoded... FYR's hat apostroph probleme... dann würde es safe funktionieren..
+            //TODO all exxcept first few letters regex
            // str[i] = str[i].replaceAll("’","");
             //System.out.println(str[i] + "\n+*+++**+++***+");
             if (!str[i].isEmpty() && str[i].length() < 90&& str[i].length() > 3 && (Character.isUpperCase(str[i].charAt(0)) || Character.isDigit(str[i].charAt(0))) && str[i].matches("(.*^[^\\[0-9\\]].*(\\w|[0-9])*[^,.;%$()=:]$|.*^[0-9]+\\s*[A-Z]+)")) {
