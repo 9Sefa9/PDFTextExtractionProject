@@ -98,7 +98,7 @@ public class Section implements Analyzable {
         for (Document document : this.handler.getDocumentsList()) {
             try {
 
-                System.out.println(document.getPdfName());
+               // System.out.println(document.getPdfName());
                 document.setPdfTextStripper(new PDFTextStripper());
 
 
@@ -203,7 +203,7 @@ public class Section implements Analyzable {
                         detectedChapterHeadersList.add(str[i]);
                         oldFoundedJChapter = oldFoundedJChapter >= 5 ? oldFoundedJChapter - 5 : 0;
                         //TODO Abschnittspositionierung klappt nicht.
-                        System.out.println(str[i]);
+                      //  System.out.println(str[i]);
                         break;
                     }
                     //  }
@@ -223,7 +223,7 @@ public class Section implements Analyzable {
                     if ((str[i].startsWith(sectionHeaderDefines[j]) || str[i].equals(sectionHeaderDefines[j])) /*&& this.docName.equals("05942046.pdf")*/) {
                         detectedSectionHeadersList.add(str[i]);
                         //   oldFoundedJSection = oldFoundedJSection == 0 ? 0 : oldFoundedJSection;
-                        System.out.println(str[i]);
+                        //System.out.println(str[i]);
                         break;
 
                     }
