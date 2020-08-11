@@ -186,7 +186,7 @@ public class Section implements Analyzable {
             //[,.\-{}@\\$;()°=\[\]:^~/#]
 
             // Funktionierende Version. ALlerdings werden i.e. mit aufgenommen und die chapter werden nciht akzeptiert von anderen papern: .*^[^\[0-9\]].*([A-Z]|[0-9])*[^,\-.]$
-            str[i] = str[i].replaceFirst("\\s+", "");
+          //  str[i] = str[i].replaceFirst("\\s+", "");
             //   str[i] = str[i].replaceAll("\\w", " ");
             //TODO Hardgecoded... FYR's hat apostroph probleme... dann würde es safe funktionieren..
             //TODO all exxcept first few letters regex
@@ -203,7 +203,7 @@ public class Section implements Analyzable {
                         detectedChapterHeadersList.add(str[i]);
                         oldFoundedJChapter = oldFoundedJChapter >= 5 ? oldFoundedJChapter - 5 : 0;
                         //TODO Abschnittspositionierung klappt nicht.
-                        System.out.println( (fullText.startsWith(str[i]) ? fullText.indexOf(str[i]):-1)+" +++ "+str[i] + "\n+*+++**+++***+");
+                        System.out.println(str[i]);
                         break;
                     }
                     //  }
@@ -223,7 +223,7 @@ public class Section implements Analyzable {
                     if ((str[i].startsWith(sectionHeaderDefines[j]) || str[i].equals(sectionHeaderDefines[j])) /*&& this.docName.equals("05942046.pdf")*/) {
                         detectedSectionHeadersList.add(str[i]);
                         //   oldFoundedJSection = oldFoundedJSection == 0 ? 0 : oldFoundedJSection;
-                    //    System.out.println(str[i] + "\n+*+++**+++***+");
+                        System.out.println(str[i]);
                         break;
 
                     }
@@ -231,6 +231,7 @@ public class Section implements Analyzable {
             }
 
         }
+        Helper.delimiter();
     }
             /*
 
