@@ -79,7 +79,6 @@ public class Section implements Analyzable {
     private List<KeyValueObject<List<String>, Document>> sectionList;
     private List<KeyValueObject<List<Integer>, Document>> chapterPositionsList;
     private List<KeyValueObject<List<Integer>, Document>> sectionPositionsList;
-    private String docName;
 
 
     public Section(DocumentParser handler) {
@@ -98,7 +97,7 @@ public class Section implements Analyzable {
         System.out.println("Entering Section Extraction on " + Thread.currentThread().getName() + " :: " + Thread.currentThread().getId());
         for (Document document : this.handler.getDocumentsList()) {
             try {
-                this.docName = document.getPdfName();
+
                 System.out.println(document.getPdfName());
                 document.setPdfTextStripper(new PDFTextStripper());
 
@@ -148,6 +147,8 @@ public class Section implements Analyzable {
         //  for (int i = 0; i < fullText.length(); i++) {
         //Chapter position bestimmung
         for (int j = 0; j < detectedChapterHeadersList.size(); j++) {
+            //TODO Positionen werden nicht ordentlich bestimmt.
+
             int index = fullText.indexOf(detectedChapterHeadersList.get(j));
 
             if (index != -1) {
@@ -156,13 +157,15 @@ public class Section implements Analyzable {
         }
         //Section position bestimmung
         for (int j = 0; j < detectedSectionHeadersList.size(); j++) {
+            //TODO Positionen werden nicht ordentlich bestimmt.
+
             int index = fullText.indexOf(detectedSectionHeadersList.get(j));
 
             if (index != -1) {
                 detectedSectionPositionsList.add(index);
             }
         }
-        // }
+
 
     }
 
@@ -178,7 +181,6 @@ public class Section implements Analyzable {
         String[] str = fullText.split("(\r\n|\r|\n|\n\r|\t)");
         //System.out.println(str.length);
         int oldFoundedJChapter = 0;
-        int oldFoundedJSection = 0;
         for (int i = 0; i + 1 < str.length; i++) {
             //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
             //[,.\-{}@\\$;()°=\[\]:^~/#]
@@ -200,7 +202,8 @@ public class Section implements Analyzable {
                     if (str[i].startsWith(chapterHeaderDefines[j]) || str[i].equals(chapterHeaderDefines[j])) {
                         detectedChapterHeadersList.add(str[i]);
                         oldFoundedJChapter = oldFoundedJChapter >= 5 ? oldFoundedJChapter - 5 : 0;
-                        System.out.println(str[i] + "\n+*+++**+++***+");
+                        //TODO Abschnittspositionierung klappt nicht.
+                        System.out.println( (fullText.startsWith(str[i]) ? fullText.indexOf(str[i]):-1)+" +++ "+str[i] + "\n+*+++**+++***+");
                         break;
                     }
                     //  }
@@ -220,7 +223,7 @@ public class Section implements Analyzable {
                     if ((str[i].startsWith(sectionHeaderDefines[j]) || str[i].equals(sectionHeaderDefines[j])) /*&& this.docName.equals("05942046.pdf")*/) {
                         detectedSectionHeadersList.add(str[i]);
                         //   oldFoundedJSection = oldFoundedJSection == 0 ? 0 : oldFoundedJSection;
-                        System.out.println(str[i] + "\n+*+++**+++***+");
+                    //    System.out.println(str[i] + "\n+*+++**+++***+");
                         break;
 
                     }
