@@ -231,7 +231,7 @@ public class Section implements Analyzable {
             }
 
         }
-        Helper.delimiter();
+
     }
             /*
 
