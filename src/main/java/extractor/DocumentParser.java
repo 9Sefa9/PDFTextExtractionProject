@@ -74,11 +74,11 @@ public class DocumentParser {
         }
     }
 
-    public List<Document> getDocumentsList() {
+    public synchronized List<Document> getDocumentsList() {
         return this.documentsList;
     }
 
-    public String[] getConferenceNames() {
+    public synchronized String[] getConferenceNames() {
         String[]tmp = new String[this.conferenceNames.size()];
         return this.conferenceNames.toArray(tmp);
     }

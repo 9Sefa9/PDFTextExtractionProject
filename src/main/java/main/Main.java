@@ -10,7 +10,7 @@ import interfaces.Analyzable;
  * @version 1.0
  */
 public class Main {
-    //I:\Informatik\10.Semester\Bachelorarbeit\DatenAnsammlung
+    //I:\Informatik\10.Semester\Bachelorarbeit\DatenAnsammlung src\\main\\resources\\08662658.pdf
     //"src\\main\\resources\\08662658.pdf";
     public static void main(String[] args) {
         java.util.logging.Logger.getLogger("org.apache.pdfbox").setLevel(java.util.logging.Level.SEVERE);

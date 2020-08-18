@@ -316,7 +316,7 @@ public class Analysis implements Analyzable {
         CSV csv = new CSV(args[1].concat("\\analysisFive" + (System.nanoTime() / 100000) + ".csv"));
         List<String> sectionNameList = new ArrayList<>();
         List<Integer> intList = new ArrayList<>();
-
+        int oneTime=1;
         for (int i = 0; i < handler.getDocumentsList().size(); i++) {
 
             KeyValueObject<List<Integer>, Document> eachDocument = section.getSectionPositionsList().get(i);
@@ -354,7 +354,8 @@ public class Analysis implements Analyzable {
             //Speichere den Durchschnitte aller berechneten Abschnitte die zum nächsten Abschnitt gehen und pack es als 1. spalte.
             averageSection/= tmpIntArr.length;
             //Speichert die einzelnen Abschnitts Namen.
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{""},new String[]{"Durschnitt"},Helper.toStringArray(sectionNameList)));
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{""},oneTime == 1 ? new String[]{"Durschnitt"}:new String[]{""},Helper.toStringArray(sectionNameList)));
+            oneTime = 0;
             //Speichert den Namen des PDF's und seine Positionen.
             csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, new String[]{((int)averageSection)+""}, tmpIntArr));
             csv.writeCSV(new String[]{""});
