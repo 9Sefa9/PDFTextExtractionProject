@@ -10,7 +10,9 @@ import org.apache.pdfbox.pdmodel.graphics.PDXObject;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import utilities.KeyValueObject;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,9 +47,9 @@ public class Image implements Analyzable {
                                 //Die breite und höhe beträgt 20. Bei kleineren werten kommen winzige Bilder hinzu
                                 if (pio.getWidth() > 50f && pio.getHeight() > 50f) {
                                     // nbedingt beide kommentare auskommentieren, wenn die Bilder abgespeichert werden sollen auf Desktop.
-                                //    File file = new File("G:/Users/Sefa/Desktop/TEST/" + System.nanoTime() / 1000 + ".png");
-                                //    BufferedImage img = pio.getImage();
-                               //     ImageIO.write(img, "png", file);
+                                 //   File file = new File("G:/Users/Sefa/Desktop/TEST/" + System.nanoTime() / 1000 + ".png");
+                                 //   BufferedImage img = pio.getImage();
+                                 //   ImageIO.write(img, "png", file);
 
                                   //  this.imagesList.add(new KeyValueObject<BufferedImage, Document>(img, document));
                                     imageCount += 1;
