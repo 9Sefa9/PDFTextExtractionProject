@@ -64,11 +64,15 @@ public class Analysis implements Analyzable {
             t5.setName("ANALYSIS 5");
 
             t1.start();
-          //  t1.join();
-          //  t2.start();
-          //  t3.start();
-          //  t4.start();
-         //   t5.start();
+            Thread.sleep(200);
+            t1.join();
+            t2.start();
+            Thread.sleep(200);
+            t3.start();
+            Thread.sleep(200);
+            t4.start();
+            Thread.sleep(200);
+            t5.start();
 
 
             t2.join();
@@ -88,7 +92,7 @@ public class Analysis implements Analyzable {
         Image image = new Image(handler);
         image.analyze();
         //Erstelle *.csv Datei mit einzigartiger Benennung
-        CSV csv = new CSV(args[1].concat("\\analysisOne" + (System.nanoTime() / 100000) + ".csv"));
+        CSV csv = new CSV(args[1].concat("\\analysisAnzahlBilder" + (System.nanoTime() / 100000) + ".csv"));
 
         csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, handler.getConferenceNames()));
 
@@ -131,7 +135,7 @@ public class Analysis implements Analyzable {
         Metadata metadata = new Metadata(handler);
         metadata.analyze();
         //Erstelle *.csv Datei mit einzigartiger Benennung
-        CSV csv = new CSV(args[1].concat("\\analysisTwo" + (System.nanoTime() / 100000) + ".csv"));
+        CSV csv = new CSV(args[1].concat("\\analysisMaximumsSeitenanzahlPublikationen" + (System.nanoTime() / 100000) + ".csv"));
 
         csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, handler.getConferenceNames()));
 
@@ -167,7 +171,7 @@ public class Analysis implements Analyzable {
         section.analyze();
 
         //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
-        CSV csv = new CSV(args[1].concat("\\analysisThree" + (System.nanoTime() / 100000) + ".csv"));
+        CSV csv = new CSV(args[1].concat("\\analysisKapitellängeKapitelZuKapitel" + (System.nanoTime() / 100000) + ".csv"));
         List<String> chapterNameList = new ArrayList<>();
         List<Integer> intList = new ArrayList<>();
 
@@ -222,7 +226,7 @@ public class Analysis implements Analyzable {
         section.analyze();
 
         //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
-        CSV csv = new CSV(args[1].concat("\\analysisFour" + (System.nanoTime() / 100000) + ".csv"));
+        CSV csv = new CSV(args[1].concat("\\analysisAllgemeinSpezifischKapitel" + (System.nanoTime() / 100000) + ".csv"));
         //Erste Zeile direkt mal definieren..
         csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, new String[]{"Primaere Kapitel", "Sekundaere Kapitel"}));
         List<String> chapterNameList = new ArrayList<>();
@@ -308,13 +312,13 @@ public class Analysis implements Analyzable {
     }
 
 
-    //TODO beinhaltet die dritte Analyse: Berechnung der Abschnittslängen einzelner Dokumente   von einem Abschnitt zum Anderen.
+    //TODO beinhaltet die dritte Analyse: Berechnung der Absatzsslängen einzelner Dokumente   von einem Abschnitt zum Anderen.
     private void analysis5() {
         Section section = new Section(handler);
         section.analyze();
 
         //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
-        CSV csv = new CSV(args[1].concat("\\analysisFive" + (System.nanoTime() / 100000) + ".csv"));
+        CSV csv = new CSV(args[1].concat("\\analysisAbsatzlängeAbsatzZuAbsatz" + (System.nanoTime() / 100000) + ".csv"));
         List<String> sectionNameList = new ArrayList<>();
         List<Integer> intList = new ArrayList<>();
         int oneTime=1;
