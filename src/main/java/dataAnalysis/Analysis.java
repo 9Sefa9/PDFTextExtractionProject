@@ -41,6 +41,9 @@ public class Analysis implements Analyzable {
         //      for (Analyzable a : analyzableDocument) {
         //           a.analyze();
         //      }
+        Thread t6 = new Thread(() -> {
+            analysis6();
+        });
         Thread t5 = new Thread(() -> {
             analysis5();
         });
@@ -62,23 +65,25 @@ public class Analysis implements Analyzable {
             t3.setName("ANALYSIS 3");
             t4.setName("ANALYSIS 4");
             t5.setName("ANALYSIS 5");
-
-            t1.start();
-            Thread.sleep(200);
-            t1.join();
-            t2.start();
-            Thread.sleep(200);
-            t3.start();
-            Thread.sleep(200);
-            t4.start();
-            Thread.sleep(200);
-            t5.start();
-
+            t6.setName("ANALYSIS 6");
+            //   t1.start();
+            //   Thread.sleep(200);
+            //   t1.join();
+            //  t2.start();
+            //  Thread.sleep(200);
+            // t3.start();
+            //  Thread.sleep(200);
+            //  t4.start();
+            //  Thread.sleep(200);
+            // t5.start();
+            //  Thread.sleep(200);
+            t6.start();
 
             t2.join();
             t3.join();
             t4.join();
             t5.join();
+            t6.join();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -267,7 +272,7 @@ public class Analysis implements Analyzable {
             //Hier wird die Positionsausfindigung fertig gestellt-
 
             //Jetzt wird unterteilt zwischen gut und schlecht.
-            String[] relevantHeaderDefines = {"Abstr", "INTROD", "CONCL", "ACKNOWLED", "REFEREN", "RELATE", "EVALUA", "RESUL", "DISCUSS"};
+            String[] relevantHeaderDefines = {"Abstr", "INTROD", "INTRID", "CONCL", "ACKNOWLED", "REFEREN", "RELATE", "EVALUA", "RESUL", "DISCUSS"};
             float irrelevantHeaderPosAll = 0;
             //Wichtig für die Durschschnittsberechnung
             int irrelevantCount = 0;
@@ -304,7 +309,7 @@ public class Analysis implements Analyzable {
             irrelevantHeaderPosAll = (irrelevantHeaderPosAll / irrelevantCount);
             relevantHeaderPosAll = (relevantHeaderPosAll / relevantCount);
 
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, new String[]{((int)relevantHeaderPosAll)+"", ((int)irrelevantHeaderPosAll)+""}));
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, new String[]{((int) relevantHeaderPosAll) + "", ((int) irrelevantHeaderPosAll) + ""}));
             chapterNameList.clear();
             intList.clear();
         }
@@ -321,7 +326,7 @@ public class Analysis implements Analyzable {
         CSV csv = new CSV(args[1].concat("\\analysisAbsatzlängeAbsatzZuAbsatz" + (System.nanoTime() / 100000) + ".csv"));
         List<String> sectionNameList = new ArrayList<>();
         List<Integer> intList = new ArrayList<>();
-        int oneTime=1;
+        int oneTime = 1;
         for (int i = 0; i < handler.getDocumentsList().size(); i++) {
 
             KeyValueObject<List<Integer>, Document> eachDocument = section.getSectionPositionsList().get(i);
@@ -350,19 +355,19 @@ public class Analysis implements Analyzable {
             sectionNameList.addAll(section.getSectionList().get(i).getKey());
             //int list to string array
             String[] tmpIntArr = new String[intList.size()];
-            float averageSection=0;
+            float averageSection = 0;
             for (int j = 0; j < intList.size(); j++) {
                 tmpIntArr[j] = (((int) intList.get(j)) + ",0");
-                averageSection+=intList.get(j);
+                averageSection += intList.get(j);
             }
 
             //Speichere den Durchschnitte aller berechneten Abschnitte die zum nächsten Abschnitt gehen und pack es als 1. spalte.
-            averageSection/= tmpIntArr.length;
+            averageSection /= tmpIntArr.length;
             //Speichert die einzelnen Abschnitts Namen.
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{""},oneTime == 1 ? new String[]{"Durschnitt"}:new String[]{""},Helper.toStringArray(sectionNameList)));
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, oneTime == 1 ? new String[]{"Durschnitt"} : new String[]{""}, Helper.toStringArray(sectionNameList)));
             oneTime = 0;
             //Speichert den Namen des PDF's und seine Positionen.
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, new String[]{((int)averageSection)+""}, tmpIntArr));
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, new String[]{((int) averageSection) + ""}, tmpIntArr));
             csv.writeCSV(new String[]{""});
             sectionNameList.clear();
             intList.clear();
@@ -371,8 +376,119 @@ public class Analysis implements Analyzable {
     }
 
     private void analysis6() {
+        Section section = new Section(handler);
+        section.analyze();
+
+        //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
+        CSV csv = new CSV(args[1].concat("\\analysisAllgemeinSplittedKapitel" + (System.nanoTime() / 100000) + ".csv"));
+        //Erste Zeile direkt mal definieren..
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, new String[]{"Abstract", "Introduction", "Introdiction", "Conclusion", "Acknowledgement", "References", "Related Work", "Evaluation", "Results", "Discussion"}));
+        List<String> chapterNameList = new ArrayList<>();
+        List<Integer> intList = new ArrayList<>();
+        String[] relevantHeaderDefines = {"Abstr", "INTROD", "INTRID", "CONCL", "ACKNOWLED", "REFEREN", "RELATE", "EVALUA", "RESUL", "DISCUSS"};
+        ArrayList<ArrayList<String>> relevantHeaderLengths = new ArrayList<>();
+        for (int i = 0; i < handler.getDocumentsList().size(); i++) {
+            KeyValueObject<List<Integer>, Document> eachDocument = section.getChapterPositionsList().get(i);
+
+            // positionen der Chapters in Dokument 0:
+            List<Integer> positions = eachDocument.getKey();
+            for (int j = 0; j < positions.size(); j++) {
+                //wenn bis Reference erreicht wurde, dann soll die Position auch nur bis dahin kalkulieren.
+                if (j < section.getChapterList().get(i).getKey().size()) {
+                    int introductionPos = positions.get(j);
+
+                    //Wenn am Ende der Zeile erreicht, subtrahiere mit Ende der Zeile.
+                    if (j == section.getChapterList().get(i).getKey().size() - 1) {
+                        introductionPos = eachDocument.getValue().getPdfText().length() - positions.get(j);
+                    }
+                    //Der index des nächsten Kapitels ist immer größer als der vorherige. Die Bedingung muss daher gelten.
+                    if (j + 1 < positions.size() && positions.get(j + 1) > positions.get(j))
+                        introductionPos = positions.get(j + 1) - positions.get(j);
+
+
+                    //else
+                    intList.add(introductionPos);
+                }
+            }
+            //chapter name List
+            //Äquivalent zur Iteration von k< section.getChapterList().get(i).getKey().size ...  chapterNameList.add(section.getChapterList().get(i).getKey().get(k));
+            chapterNameList.addAll(section.getChapterList().get(i).getKey());
+            //int list to string array
+            String[] tmpIntArr = new String[intList.size()];
+            for (int j = 0; j < intList.size(); j++) {
+                tmpIntArr[j] = (((int) intList.get(j)) + ",0");
+
+            }
+            //Hier wird die Positionsausfindigung fertig gestellt-
+
+            //Jetzt wird unterteilt zwischen gut und schlecht.
+
+
+            for (int j = 0; j < chapterNameList.size(); j++) {
+                boolean foundRelevant = false;
+                int foundIndex = 0;
+                for (int k = 0; k < relevantHeaderDefines.length; k++) {
+
+                    //Wenn der ChapterName irrelevant ist:
+                    if (!chapterNameList.get(j).trim().contains(relevantHeaderDefines[k])) {
+                        foundIndex = k;
+                        foundRelevant = false;
+                    }
+                    //Ansonsten ist es ein relevanter ChapterName.
+                    else {
+                        foundIndex = k;
+                        foundRelevant = true;
+                        break;
+                    }
+
+                }
+                if (foundRelevant) {
+                    // relevantHeaderLength.
+                    //    System.out.println("RELEVANTER KAPITEL: "+ chapterNameList.get(j).trim());
+                    //relevantCount += 1;
+                    //relevantHeaderPosAll += intList.get(j);
+                    relevantHeaderLengths.get(foundIndex).add(intList.get(j) + "");
+                  //  Helper.print(foundIndex + " " + relevantHeaderDefines[foundIndex]);
+                } else {
+                  //  relevantHeaderLengths.add("");
+                    //irrelevantCount += 1;
+                    //irrelevantHeaderPosAll += intList.get(j);
+                    //  System.out.println("IRRELEVANTER KAPITEL: "+ chapterNameList.get(j).trim());
+                }
+            }
+
+            /* PDF Table
+                "Abstract", "Introduction","Introdiction","Conclusion","Acknowledgement","References",,..
+      pdfname1     3245    6453     34235   4235        3456324     243         54325   ..
+      pdfname2     345     63       344635  4235        3456324     243         54325   ..
+      pdfname3     32465   645463   34235   4235        3456324     243         54325   ..
+            ...
+            ...
+            ...
+          
+             */
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, Helper.toStringArray(relevantHeaderLengths)));
+
+            //  csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, preparedArray));
+
+        }
+        chapterNameList.clear();
+        intList.clear();
+
+        csv.closeWriter();
+
+        // for (int k = 0; k < relevantHeaderLengths.get(j).size(); k++) {
+        //     for (int j = 0; j < relevantHeaderLengths.size(); j++) {
+        //
+        //         if (!relevantHeaderLengths.get(j).get(k).isEmpty()) {
+        //            preparedString[]
+        //        }
+        //    }
+        // }
+        // csv.writeCSV((String[]) Helper.concatenate(new String[]{eachDocument.getValue().getPdfName()}, new String[]{((int)relevantHeaderPosAll)+"", ((int)irrelevantHeaderPosAll)+""}));
 
     }
+
     //TODO beinhaltet die vierte Analyse: Berechnung der maximalen buchstaben bzw. Wörter einzelner Konferenzen.(zwei zeilen + konfeerenz namen..) (substring?)
     private void analysis7() {
     }

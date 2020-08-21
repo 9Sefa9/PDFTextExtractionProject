@@ -212,7 +212,7 @@ public class Section implements Analyzable {
                         //Optimierungszweck, damit nicht von vorne gesucht werden muss.
                        // oldFoundedJChapter = oldFoundedJChapter >= 2 ? oldFoundedJChapter - 1 : 0;
                         oldFoundedJChapter =j;
-                        System.out.println(str[i]);
+                     //   System.out.println(str[i]);
                         break;
                     }
 
