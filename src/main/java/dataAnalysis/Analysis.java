@@ -382,10 +382,14 @@ public class Analysis implements Analyzable {
         //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
         CSV csv = new CSV(args[1].concat("\\analysisAllgemeinSplittedKapitel" + (System.nanoTime() / 100000) + ".csv"));
         //Erste Zeile direkt mal definieren..
-       // csv.writeCSV(new String[]{"Abstract", "Introduction", "Introdiction", "Conclusion", "Acknowledgement", "References", "Related Work", "Evaluation", "Results", "Discussion"});
+        String[] pdfNames = new String[this.handler.getDocumentsList().size()];
+        for (int i = 0; i <this.handler.getDocumentsList().size(); i++) {
+            pdfNames[i] = this.handler.getDocumentsList().get(i).getPdfName();
+        }
+        csv.writeCSV((String[])Helper.concatenate(new String[]{""},pdfNames));
         List<String> chapterNameList = new ArrayList<>();
         List<Integer> intList = new ArrayList<>();
-        String[] relevantHeaderDefines = {"Abstr", "INTROD", "INTRID", "CONCL", "ACKNOWLED", "REFEREN", "RELATE", "EVALUA", "RESUL", "DISCUSS"};
+        String[] relevantHeaderDefines = {"Abstr", "INTROD", "INTRID", "RELATE", "BACKG", "APPROA", "CONCL", "ACKNOWLED", "REFEREN",  "EVALUA", "RESUL", "DISCUSS"};
 
         ArrayList<ArrayList<String>> relevantHeaderLengths = new ArrayList<>();
         for (int i = 0; i < relevantHeaderDefines.length; i++) {
@@ -463,7 +467,7 @@ public class Analysis implements Analyzable {
                 relevantHeaderLengths.get(foundIndex).add(intList.get(j) + "");
                 //     relevantHeaderLengths.get(k).add
                 // relevantHeaderLength.
-                //    System.out.println("RELEVANTER KAPITEL: "+ chapterNameList.get(j).trim());
+                   // System.out.println("RELEVANTER KAPITEL: "+ chapterNameList.get(j).trim());
                 //relevantCount += 1;
                 //relevantHeaderPosAll += intList.get(j);
                 //  relevantHeaderLengths.add(foundIndex,chapterNameList.get(j)+ "");
