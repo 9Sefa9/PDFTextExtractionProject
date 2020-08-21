@@ -480,14 +480,12 @@ public class Analysis implements Analyzable {
         //Schreibe nun die Daten entsprechend in die Zeilen! nicht in die Spalte!(Wollte mal auch was anderes probieren...
 
         for (int i = 0; i < relevantHeaderLengths.size(); i++) {
-            String[] preparedArray = new String[relevantHeaderLengths.get(i).size()+1];
-            preparedArray[0] = relevantHeaderDefines[i];
-            for (int j = 1; j < relevantHeaderLengths.get(i).size(); j++) {
-                //System.out.println(relevantHeaderLengths.get(j).get(i));
+            String[] preparedArray = new String[relevantHeaderLengths.get(i).size()];
+            for (int j = 0; j < relevantHeaderLengths.get(i).size(); j++) {
                 preparedArray[j] = relevantHeaderLengths.get(i).get(j);
             }
             //  csv.writeCSV(Helper.toStringArray(relevantHeaderLengths.get(0)));
-            csv.writeCSV(preparedArray);
+            csv.writeCSV((String[])Helper.concatenate(new String[]{relevantHeaderDefines[i]},preparedArray));
         }
 
 
