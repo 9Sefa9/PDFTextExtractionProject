@@ -383,19 +383,12 @@ public class Analysis implements Analyzable {
         CSV csv = new CSV(args[1].concat("\\analysisAllgemeinSplittedKapitel" + (System.nanoTime() / 100000) + ".csv"));
         //Erste Zeile direkt mal definieren..
         String[] pdfNames = new String[this.handler.getDocumentsList().size()];
-        for (int i = 0; i <this.handler.getDocumentsList().size(); i++) {
+        for (int i = 0; i < this.handler.getDocumentsList().size(); i++) {
             pdfNames[i] = this.handler.getDocumentsList().get(i).getPdfName();
         }
-        csv.writeCSV((String[])Helper.concatenate(new String[]{""},pdfNames));
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, pdfNames));
         List<String> chapterNameList = new ArrayList<>();
         List<Integer> intList = new ArrayList<>();
-        String[] relevantHeaderDefines = {"Abstr", "INTROD", "INTRID", "RELATE", "BACKG", "APPROA", "CONCL", "ACKNOWLED", "REFEREN",  "EVALUA", "RESUL", "DISCUSS"};
-
-        ArrayList<ArrayList<String>> relevantHeaderLengths = new ArrayList<>();
-        for (int i = 0; i < relevantHeaderDefines.length; i++) {
-            relevantHeaderLengths.add(new ArrayList<String>());
-        }
-
 
         for (int i = 0; i < handler.getDocumentsList().size(); i++) {
             KeyValueObject<List<Integer>, Document> eachDocument = section.getChapterPositionsList().get(i);
@@ -443,53 +436,84 @@ public class Analysis implements Analyzable {
         // ArrayList 2 = Alle Itroduction.
         // ....
         // bis RelevantHeaderDefines.
-        for (int j = 0; j < chapterNameList.size(); j++) {
-            boolean foundRelevant = false;
-            int foundIndex = 0;
+        //  Helper.print(chapterNameList);
+        //Ab hier beginnt die aussortierung von Allgemein zu Sekundär.
+        String[] relevantHeaderDefines = {"Abstr", "INTROD", "INTRID", "RELATE", "BACKG", "APPROA", "CONCL", "ACKNOWLED", "REFEREN", "EVALUA", "RESUL", "DISCUSS"};
+        ArrayList<ArrayList<String>> relevantHeaderLengths = new ArrayList<>();
 
+
+        for (int i = 0; i < relevantHeaderDefines.length; i++) {
+            relevantHeaderLengths.add(new ArrayList<String>());
+        }
+        String[] pattern = new String[relevantHeaderDefines.length];
+        for (int j = 0; j < chapterNameList.size(); j++) {
+
+            boolean found = false;
+            int foundRelevantIndex = 0;
+
+            //selektiere alle irrelevanten und relevanten Daten.
             for (int k = 0; k < relevantHeaderDefines.length; k++) {
 
                 //Wenn der ChapterName irrelevant ist:
                 if (!chapterNameList.get(j).trim().contains(relevantHeaderDefines[k])) {
-                    foundIndex = k;
-                    foundRelevant = false;
+                    foundRelevantIndex = k;
+                    found = false;
+
+                    //   relevantHeaderLengths.get(k).add("0");
                 }
                 //Ansonsten ist es ein relevanter ChapterName.
                 else {
-                    foundIndex = k;
-                    foundRelevant = true;
-                    //   System.out.println("k: "+foundIndex+" "+chapterNameList.get(j));
+                    foundRelevantIndex = k;
+                    found = true;
+
+                    //  relevantHeaderLengths.get(k).add(intList.get(j) + "");
                     break;
                 }
-
+                //     relevantHeaderLengths.get(foundRelevantIndex).add(intList.get(j) + "");
+                //    Helper.print(relevantHeaderLengths.get(foundRelevantIndex));
             }
-            if (foundRelevant) {
-                relevantHeaderLengths.get(foundIndex).add(intList.get(j) + "");
+
+            //Füge zu allen irrelevanten Daten eine 0.
+
+            if (found) {
+                System.out.println("RELEVANT: " + chapterNameList.get(j) + " INDEX:" + foundRelevantIndex + " \n**********");
+                pattern[foundRelevantIndex] = intList.get(j)+"";
+                relevantHeaderLengths.get(foundRelevantIndex).add(intList.get(j) + "");
+                //    relevantHeaderLengths.get(foundRelevantIndex).add(intList.get(j) + "");
                 //     relevantHeaderLengths.get(k).add
                 // relevantHeaderLength.
-                   // System.out.println("RELEVANTER KAPITEL: "+ chapterNameList.get(j).trim());
+                // System.out.println("RELEVANTER KAPITEL: "+ chapterNameList.get(j).trim());
                 //relevantCount += 1;
                 //relevantHeaderPosAll += intList.get(j);
-                //  relevantHeaderLengths.add(foundIndex,chapterNameList.get(j)+ "");
-                //   Helper.print(foundIndex + " " + relevantHeaderLengths.get(foundIndex).get(0));
+                //  relevantHeaderLengths.add(foundRelevantIndex,chapterNameList.get(j)+ "");
+                //   Helper.print(foundRelevantIndex + " " + relevantHeaderLengths.get(foundRelevantIndex).get(0));
             } else {
-                relevantHeaderLengths.get(foundIndex).add("");
-                //irrelevantCount += 1;
+                //  System.out.println("IRRELEVANT: "+chapterNameList.get(j)+ " INDEX:"+foundRelevantIndex+ " \n**********");
+                //          relevantHeaderLengths.get(foundRelevantIndex).add("0");
+                //irelevantCount += 1;
                 //irrelevantHeaderPosAll += intList.get(j);
                 //  System.out.println("IRRELEVANTER KAPITEL: "+ chapterNameList.get(j).trim());
             }
+
+        }
+        // [123,empty,empty,4235,empty.234]
+        for (int i = 0; i < pattern.length; i++) {
+            if(pattern[i].isEmpty()){
+                relevantHeaderLengths.get(i).add("0");
+            }
+
         }
 
-
         //Schreibe nun die Daten entsprechend in die Zeilen! nicht in die Spalte!(Wollte mal auch was anderes probieren...
-
         for (int i = 0; i < relevantHeaderLengths.size(); i++) {
             String[] preparedArray = new String[relevantHeaderLengths.get(i).size()];
             for (int j = 0; j < relevantHeaderLengths.get(i).size(); j++) {
+
+                //bereite preparedArray Vor, um in die csv abzuspeichern
                 preparedArray[j] = relevantHeaderLengths.get(i).get(j);
             }
             //  csv.writeCSV(Helper.toStringArray(relevantHeaderLengths.get(0)));
-            csv.writeCSV((String[])Helper.concatenate(new String[]{relevantHeaderDefines[i]},preparedArray));
+            csv.writeCSV((String[]) Helper.concatenate(new String[]{relevantHeaderDefines[i]}, preparedArray));
         }
 
 
