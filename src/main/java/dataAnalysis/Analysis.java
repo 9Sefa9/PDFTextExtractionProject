@@ -555,7 +555,6 @@ public class Analysis implements Analyzable {
                     if (j + 1 < positions.size() && positions.get(j + 1) > positions.get(j))
                         introductionPos = positions.get(j + 1) - positions.get(j);
 
-
                     //else
                     intList.add(introductionPos);
                 }
