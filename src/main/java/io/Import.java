@@ -63,6 +63,7 @@ public class Import extends Extractable {
                         // System.out.println(firstDir.getName()+ "Count: "+(countPDFs +=1)+ "name: "+firstDir.getName());
                         getDetectedFiles().add(new KeyValueObject<>(firstDir.getName(), firstDir));
 
+
                     } else if (firstDir.isDirectory()) {
                         countConferences += 1;
                         for (File secondDir : firstDir.listFiles()) {
