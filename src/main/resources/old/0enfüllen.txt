@@ -1,0 +1,5 @@
+markiere den Bereich - Strg-G - Inhalte... - Leerzellen - Ok.
+
+Jetzt sollten nur die leeren Zellen markiert sein: 0 tippen und mit Strg-Enter abschließen.
+
+Das sollte es eigentlich gewesen sein.
