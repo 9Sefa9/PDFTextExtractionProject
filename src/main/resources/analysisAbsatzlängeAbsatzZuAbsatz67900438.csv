@@ -1,0 +1,120 @@
+	Durschnitt	A. Model for LoWPAN Management	B. Demonstration Workflow	C. Analysis with Comparison
+08449785.pdf	2827	3528,0	1695,0	3258,0
+
+	
+08713073.pdf	0
+
+		A. NetTest Measurement Methodology	B. RTR Crowdsourced Testing	C. MONROE Controlled Testing	A. Statistical Properties	B. Features	A. Linear Interpolation	B. Curve Fitting with Simple Linear Regression	A. Overview of the Forecasting ML Algorithms	B. Feature Selection	A. Performance Comparison of the Forecasting Models	B. Trade-off Between Data Consumption and Error
+08792968.pdf	4651	2495,0	1353,0	1970,0	1308,0	8790,0	1306,0	2904,0	3854,0	9688,0	2455,0	15038,0
+
+		A. License-Plate-Recognition Camera	B. Measurement Accuracy	C. Measurement Errors	D. Data Cleansing	A. Arrival and Departure Pattern	B. Stay Duration Pattern	C. Parking Behaviour Users	A. Fitting a Poisson Distribution	B. Modeling Car-park Usage as a Queuing System
+08792972.pdf	4929	7868,0	1850,0	5901,0	4206,0	5810,0	1805,0	3052,0	5948,0	7925,0
+
+		A. Prerequisites	B. Example Scenario	C. Coordination Protocol	A. Simulation Setup	B. Lifetime of a Car in a Micro Cloud	C. Channel Utilization	D. Data Availability in Micro Cloud	E. Fraction of Data Available in Micro Cloud	F. Redundancy of Data in Micro Cloud	G. Number of Transmissions per Data Content
+08792973.pdf	3265	1461,0	757,0	7632,0	3613,0	920,0	1912,0	2336,0	2354,0	1378,0	10293,0
+
+		A. System model	B. Threat model	A. Witness advertisement	B. Witness selection	C. Confirmation messages	D. Whitelist filter	E. Network dynamics	F. Example of parameter selection	G. Operations on IoT devices	A. Simulation to evaluate confirmation throughput	B. Performance on IoT devices
+08792979.pdf	3431	3766,0	1446,0	1055,0	4782,0	3921,0	2591,0	1415,0	868,0	4181,0	4051,0	9669,0
+
+		A. System Overview	B. System Notations	C. Quality of Experience and Fairness	D. Backhaul Traffic and Data Processing	A. Retention-based Collaborative Caching (RBCC) Heuristic	B. Computational Complexity	A. Simulation Setup	B. Video Bitrate	C. Video Data Traffic	D. Processed Data	E. Impact of Cache Size	F. Impact of Edge Processing Capacity
+08792981.pdf	4147	2593,0	3781,0	4828,0	10047,0	5606,0	3892,0	3297,0	574,0	933,0	3001,0	1066,0	10152,0
+
+		A. System model	B. Problem formulation	D. Computational complexity	A. Reference scenarios and benchmarks	B. Results: synthetic scenario	C. Results: realistic scenario
+08792983.pdf	6017	2146,0	17671,0	1107,0	3970,0	3207,0	8006,0
+
+		A. Fronthaul-aware Resource Allocation in C-RAN	B. Bandwidth/Energy-efficient Resource Allocation in C-RAN
+08792996.pdf	7444	3529,0	11360,0
+
+		A. System Model	B. Computation Model	C. Problem Formulation	A. Optimal Resource Allocation under Given N	B. Mode Selection Based on Channel Gains	C. Time Sharing for Better Fairness	A. Optimal Resource Allocation under Given N	B. Binary Offloading Performance of TDMA
+08792997.pdf	8243	1668,0	3133,0	2122,0	3119,0	2692,0	20870,0	12920,0	19425,0
+
+		A. Smart Environment 	B. Crowd Measurements 	A. Overall System Architecture 	B. Design of Hardware and Software of Wireless Sensor nodes 	C. Design of the Server 	A. Network Bandwidth 	B. Database Storage 	C. Power Consumption 
+08793006.pdf	4742	3326,0	5789,0	3752,0	3742,0	5241,0	2135,0	2217,0	11739,0
+
+		A. Wireless Communication: The Silver Box	B. Virtual Cycling Environment	A. Considered Scenarios	B. Modeled Road Network	C. Recorded Bicycle Traces	D. Collision Detection	E. Simulation Setup	F. Evaluation
+08793008.pdf	4880	2613,0	7626,0	3633,0	1506,0	1346,0	1995,0	3728,0	16599,0
+
+		A. Procedure of Active Scanning	B. Causes of Active Scanning	C. Need of Machine Learning	A. Controlled Setup	B. Uncontrolled Setup	C. Challenges	A. Unsupervised Learning	B. Supervised Learning	C. Feature Importance
+08793010.pdf	4576	1147,0	2365,0	8059,0	4782,0	1594,0	3419,0	2505,0	2180,0	15135,0
+
+	
+08793011.pdf	0
+
+		A. Two-tier Network Architecture	B. Protocol stack	A. Internet Sharing	A. Phase I: Mesh Generation	B. Phase II: Mesh Discovery	C. Phase III: Mesh Bridging	A. Lower Tier	B. Upper Tier	C. Drone discovery
+08793029.pdf	4240	1568,0	11122,0	1433,0	865,0	9122,0	3404,0	1178,0	1262,0	8213,0
+
+		A. Network Model	B. Problem Formulation	A. Minimizing the makespan	B. Minimizing the average completion time	A. Minimizing the makespan	B. Minimizing the average completion time	A. Settings	B. Results
+08793031.pdf	5243	1871,0	1535,0	1975,0	14161,0	1975,0	13730,0	1656,0	5046,0
+
+		B. RPL Routing Protocol 	C. Constrained Application Protocol 	A. Control plane 	B. Topology Maintenance 	C. Forwarding 	A. SDN Controller 	B. Gateway 	C. SDN Nodes 	D. Forwarding example 	A. SND-Controller Resources 	B. SND-Node Resources 	A. Cooja simulations 	B. Testbed implementation 
+08793044.pdf	3445	2387,0	1648,0	2781,0	2003,0	2770,0	893,0	349,0	6027,0	3736,0	1526,0	2097,0	5398,0	13181,0
+
+		A. Heterogeneous LTE-WiFi Networks (HetNet)	B. Software-Defined Networking (SDN)	A. Centralized control	B. Traffic steering	C. Network reconfiguration	A. Parameter Tuning Heuristics	B. FDM Quick-start	C. Max-min Fairness	A. Mininet-WiFi Emulated Networks	B. SDN Controller	A. Static Network Test Scenario	B. Mobility Management Test Scenario	C. Dynamic Network Test Scenario
+08793045.pdf	3300	4427,0	1742,0	1350,0	2619,0	5198,0	2225,0	565,0	4132,0	2057,0	4068,0	3884,0	1792,0	8852,0
+
+		A. Knowledge Extraction	B. Knowledge Graph	C. Recommender Component	D. BPMN Parser	E. Interactive Graphical User Interface and API	F. User Feedback for Continuous Learning
+08793049.pdf	4476	4942,0	2987,0	2974,0	1028,0	2303,0	12622,0
+
+		A. Urban scenario	B. Rural scenario	C. Semi-rural scenario
+08793051.pdf	3601	1974,0	1359,0	7471,0
+
+		A. Layer-based Segmentation Strategy	B. Adaptive Enhancement Strategy
+08350911.pdf	9490	7682,0	11298,0
+
+		A. DNN: CNN + LSTM 	B. BiometricNET Architecture  	C. Implementation Details 
+08350983.pdf	4686	2547,0	1181,0	10330,0
+
+	
+08351076.pdf	0
+
+	
+08351103.pdf	0
+
+		A. Selection of Stereoscopic Retargeted Images 	B. Subjective Experiment 	A. Disparity Range Feature 	B. Boundary Disparity Feature 	C. Disparity Intensity Distribution Feature 	D. Image Quality Feature 
+08351198.pdf	3999	3776,0	3366,0	1419,0	2724,0	2707,0	10006,0
+
+		A. HDR Pinhole Array Mask	B. Synthesizing LDR Images	C. Constructing HDR Images	A. Processor Design	B. Hardware Performance
+08351257.pdf	3169	2049,0	2831,0	2994,0	2722,0	5252,0
+
+		A. Feature Extraction 	B. Joint Learning Of Gradient Dictionary 	C. Feature Preprocessing  	D. SVR Training  
+08351261.pdf	4194	2700,0	1544,0	1386,0	11147,0
+
+	
+08351264.pdf	0
+
+		A. The ISFET	B. Pixel Topology and Operation	A. Thermal System	B. Electrostatic System
+08351342.pdf	4221	1374,0	3943,0	2077,0	9492,0
+
+	
+08351351.pdf	0
+
+		A. Decimation	B. Drift Removal
+08351424.pdf	7121	2652,0	11590,0
+
+	
+08351454.pdf	0
+
+		A. Linear-Logarithmic Pixel Architecture	B. Logarithmic Mode Operation	C. Linear Mode Operation	D. Tunable Threshold Inverter Comparator	E. Shared Buffer	A. Preliminary Electrical Testing	B. VOC detection with Chemoresponsive Textiles
+08351551.pdf	2247	3190,0	1529,0	1037,0	1063,0	820,0	602,0	7492,0
+
+		A. Flexible Electrode Array	B. Wireless Neural Recording Module	A. Preprocessing	B. HD classifier	A. Generating Dataset	B. Classification Results
+08351613.pdf	2934	1407,0	2989,0	1033,0	2050,0	2170,0	7959,0
+
+		A. SVM with Linear Kernel	B. SVM with Nonlinear Kernels	C. Performance Comparison
+08351647.pdf	2064	694,0	920,0	4578,0
+
+	
+08351664.pdf	0
+
+	
+08351743.pdf	0
+
+		A. Metal Oxide Resistive Random Access Memory 	B. Spin-Transfer-Torque Magnetic Random Access Memory 	C. Phase-Change Random Access Memory 	D. Designing Energy-Efficient On-Chip Memory Systems 	B. In-Memory Computing 
+08351756.pdf	5069	1044,0	1208,0	1192,0	6285,0	15616,0
+
+	
+08351818.pdf	0
+
+		A. Memristor for Computing 	B. Crossbar Array Structure 	A. Sparse Coding  	B. Real-world Image Processing 	A. Online Dictionary Learning Algorithm 	A. Reservoir Computing 	B. Digit Recongition 	C. Solving Dynamic Nonlinear Problems 
+08351831.pdf	2499	899,0	1552,0	2818,0	1987,0	3596,0	1219,0	2793,0	5130,0
+

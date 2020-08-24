@@ -1,0 +1,1140 @@
+	Durschnitt	A. SENSEI Principle 	B. SENSEI Architecture 	A. SENSEI Information Model 	B. Information Representation 	C. Mapping of the submodels 
+05470594.pdf	5436	2829,0	4424,0	4451,0	6437,0	9039,0
+
+		A. Context Middleware 	A. Evaluation 
+05470596.pdf	10278	8991,0	11565,0
+
+		A. Signal oriented features 	B. Body model derived features 	C. Novel Features Describing Trends in Time Series 	A. Woodshop 	B. Car quality inspection 	C. Drink and work 	A. Drink and Work 	B. Woodshop 	C. Car quality inspection 
+05470597.pdf	3587	698,0	1553,0	8239,0	2411,0	789,0	2504,0	864,0	6351,0	8875,0
+
+		A. Sensor publishing 	B. Reasoner subscription 	A. Classifiers 	B. Filters 	C. Integration 	A. Prototype implementation 	B. Experimental setup 	C. Accuracy 	D. Efficiency 
+05470598.pdf	1910	2464,0	1230,0	1518,0	1292,0	1979,0	1958,0	628,0	1827,0	4300,0
+
+		A. Reasoning Selection 	A. Requirement: Modular Components for Reasoning 	B. Requirement: Consistent and dynamic data model 	C. Requirement: Mechanisms for Context Maintenance 	D. Requirement: Distributed Context Reasoning and Collec­	E. Recommended: Quality of Context (QoS) Support 	A. Dynamic Reasoner Selection 
+05470599.pdf	4498	7850,0	1363,0	762,0	2030,0	942,0	8185,0	10357,0
+
+		A. Sensor Measurement and Network Models 	B. Data Fusion Model 	C. Problem Definition 	A. a-Delay under Probabilistic Disc Model 	B. a-Delay under Data Fusion Model 	A. Network Density for Achieving Instant Detection 	B. Application of Results 	A. Simulation Settings and Methodology 	B. Simulation Results 
+05470600.pdf	3339	3536,0	2835,0	2544,0	2733,0	3148,0	3327,0	2650,0	972,0	8307,0
+
+		A. Application Task and Fidelity Specification 	B. Application Fidelity Decomposition 	C. Application's Utility 	D. Performance Index 	A. System's Utility Determination 	B. Choice of the Applications 
+05470601.pdf	4163	2432,0	1350,0	537,0	5381,0	833,0	14448,0
+
+		A. Motivation 	A. State Selection and Stopping Point Criteria 	B. Service personalization of the repartitioning process 	C. Protection Extension 	D. Interface between different Value Ranges 	E. Triggering 	A. Test description 	B. Costs for repartitioning 
+05470602.pdf	3429	7113,0	3621,0	2179,0	3072,0	1700,0	2210,0	2367,0	5171,0
+
+		A. Simulations 	B. Testbed Experiments 
+05470604.pdf	4896	967,0	8826,0
+
+		A. Protocol Overview 	B. Protocol Performance 	E. beacon tracking enabled 	B. Peiformance Analysis 
+05470605.pdf	6953	1637,0	9449,0	503,0	16224,0
+
+		A. Accuracy as Difference of Functions 	B. Accuracy as Mutual Information 	C. Accuracy as Coefficient of Correlation 	A. MAC protocols used for Evaluation 	B. Implementation 	C. Experiment Settings 	D. Results 
+05470606.pdf	3122	4857,0	1509,0	2306,0	1928,0	906,0	1753,0	8598,0
+
+		A. Location components 	B. Location queries 	C. Component Aggregation and Status Networks 
+05470607.pdf	6993	2594,0	2336,0	16050,0
+
+		A. Relevance-based Sensor Query 	A. Simulative Evaluation 	B. Emulative Evaluation 
+05470608.pdf	5460	4542,0	4508,0	7330,0
+
+		A. Target movement model 	B. Calculating posterior from Gaussian prior and measure­	C. Bayesian Cramer-Rao Bound and Bayesian Information 	D. Target tracking with a perfect network 	A. Packet delays only 	B. Packet delays and packet losses 	C. Impact of measurement quality and network quality 	A. Tracking Sustainability 	B. Optimizing J(T, t) with respect to T 	C. Vary T to control th e quality of information 	D. Sensor selection and measurement sch eduling at gateway 
+05470609.pdf	1702	975,0	1037,0	954,0	2077,0	2142,0	1600,0	1810,0	1360,0	1281,0	816,0	4673,0
+
+		A. Using community oriented relay regions 	B. Considering social interactiof(S for collaborative 	C. Epidemic optimistic outsourcing scheme for reliable file 
+05470611.pdf	6573	2698,0	2278,0	14743,0
+
+		A. Building Blocks 	B. Group Charter 	C. Initial Group Formation 	D. Our Admission Control Protocol 	E. Proof of Group Membership 	A. Desirable Security Requirements 	B. Security Analysis of Our Protocol 
+05470612.pdf	2316	2416,0	334,0	835,0	2363,0	1274,0	1972,0	7023,0
+
+		A. Single-Tree Routing 	B. Multiple-Tree Routing 	J. James W. O'Toole, ""Overcast: reliable multicasting with 
+05470613.pdf	5339	3473,0	8183,0	4363,0
+
+		A. The Scavenger Daemon 	B. Developing Scavenger Applications 
+05470614.pdf	10734	3061,0	18408,0
+
+		A. Cluster Construction 	B. Selection of Indexing Agent and Gateway Agent 	A. Selecting indexing agents: agent can­	B. Selecting gateway agents: agent can­	C. Event Detection 	D. Sink Location Registration 	E. Data Forwarding 	A. Simulation Environmental and Metrics 	B. Impact of the Number of Nodes 
+05470615.pdf	1800	924,0	1395,0	382,0	2438,0	1217,0	798,0	2114,0	263,0	6677,0
+
+		A. Definitions 	B. Photo representation and classification 	C. Iriformation sharing in PASMi 	D. Recommendation of Photo Annotation 
+05470616.pdf	6770	7252,0	2105,0	4728,0	12997,0
+
+		B. Derived fields of research 	A. Domain-specific archetypes 	B. Mapping Archetypes to REST resources 	C. Mobile service archetype in REST  	A. Introducing the activity record archetype 	B. Mapping to a REST resource 	C. Offline Strategies 
+05766849.pdf	2981	1148,0	2951,0	3585,0	4551,0	491,0	530,0	7612,0
+
+		A. Thin Clients	B. Data Management	C. Isolation of Systems	A. On the Cloud	B. Migration to Pervasive Systems	C. Storage and Execution on Pervasive Systems
+05766850.pdf	3409	714,0	566,0	3360,0	4880,0	2084,0	8855,0
+
+		A. Defining Fidelity-Based Introspection	B. Defining Fidelity-Based Adaptation	C. Demonstrating the Utility of Fidelity-Based Introspection	D. A Continuous Query Fidelity-Based Adaptation
+05766859.pdf	4935	3469,0	4240,0	2538,0	9495,0
+
+		A. Methodology	B. Real-World Scenario
+05766871.pdf	7443	2271,0	12616,0
+
+		A. ER Problem Definition	B. Relationship-based Data Cleaning	A. Low Level Feature Extraction	B. Event Detection	C. PI Problem Formalization	D. Applying RelDC
+05766881.pdf	4788	1535,0	8351,0	3061,0	2358,0	5266,0	8161,0
+
+	
+05766887.pdf	0
+
+		A. The nature of human behavior	B. States from GPS Traces	A. Spatio-Temporal Activity Extraction	B. Similarity of Spatio-Temporal Activities	C. Spatio-Temporal Activity Clustering
+05766898.pdf	5300	4270,0	4661,0	3333,0	2509,0	11731,0
+
+		A. Resolution	B. Trust Graph	C. Notation	D. Risk of Leakage	E. Formulation	F. Simulation Results
+05766914.pdf	2641	628,0	707,0	389,0	1755,0	1156,0	11211,0
+
+	
+05766915.pdf	0
+
+		A. Problem Description	B. No single node can statistically emulate the spatial and	B. Solution Outline	C. Existing Research	A. System Model	B. Problem Formulation	A. Baseline Decentralized Algorithm	B. Group Algorithm
+05766931.pdf	4212	3631,0	861,0	3294,0	4191,0	841,0	5761,0	3675,0	11447,0
+
+		A. Context Simulators 	B. Interactive Context Simulators  	C. Identifying Context for Simulation and Evaluation 	A. Simulating Interactive Location Context 	A. Evaluation of Contums against Real Sensor Output 	B. Findings 	C. Interpretation 	D. Pesch, ""A testbed for evaluating human interaction with 
+05766943.pdf	2781	2474,0	2121,0	3568,0	4976,0	732,0	946,0	6685,0	747,0
+
+		A. Resource-Constrained Context Inference	B. Bandwidth Limited Vehicle-to-Vehicle Communication	A. Probability-based Utility Functions	B. Decision-based Utility Functions	A. Probability-based Utility Functions	B. Decision-based Utility Functions
+05766954.pdf	7185	1053,0	8687,0	1205,0	15798,0	1205,0	15165,0
+
+		A. Context	B. Scenario	C. Specifications	D. Approach	A. Consistency Issue in Software Development Process	B. Formal Specifications	A. First Increment Specifications and Design	B. Implementation and Analysis Using ALLOY	A. Relevancy of the Proposed Process	B. Evaluation of ALLOY in Pervasive Computing
+05766965.pdf	2728	1108,0	1679,0	1387,0	2405,0	1814,0	3897,0	1811,0	3500,0	1599,0	8080,0
+
+		A. Hotspots Analysis 	B. Hunting or Waiting? 	A. Passenger-Finding Strategy Descriptors 	B. Good/Bad Strategy Discovery 
+05766967.pdf	4936	2054,0	5795,0	3286,0	8611,0
+
+		A. Prediction 	B. User Preferences and Contexts 	A. Pre-fetching Process 	B. ProMWS Architecture 	A. Predicting The Weight of Query  	A. Prediction Scheme Evaluation 	B. Performance Evaluation 
+05766973.pdf	3884	1731,0	1384,0	3594,0	7179,0	3150,0	1489,0	8661,0
+
+		A. Definitions, Assumptions, Research Question	B. Scenario and Architecture	A. The QoS-based Algorithm	B. The QoE-based Algorithm	A. Evaluation Set	B. Metrics and Setup	C. Lessons Learned
+05766975.pdf	3945	2677,0	8102,0	2579,0	3514,0	2788,0	2551,0	5407,0
+
+		A. Finite State Machine 	B. Declarative representation of virtual screens 	C. Transition algorithm 
+05766976.pdf	7273	1489,0	2272,0	18058,0
+
+		A. Data Collection Methodology	B. Dataset Characteristics	C. Privacy Measures	A. Analysis Methodology	B. Ground Truth for Daily Range	C. Spatial Comparisons	D. Temporal Comparisons	E. Voice Calls vs. Text Messages	F. Daily Distance vs. Daily Range
+05766977.pdf	3275	3090,0	783,0	1370,0	2677,0	1509,0	2260,0	4098,0	1866,0	11823,0
+
+		A. The Gur Game	B. The Pay-off Structure	C. The Decision-Making Process
+05766978.pdf	6853	2578,0	3258,0	14725,0
+
+		A. Functionality Discovery 	B. User-centric Service Selection 	C. Intuitive Service Composition 
+05766979.pdf	8568	1967,0	2187,0	21552,0
+
+		A. Heterogeneous and Dynamic Smart Environments	B. Publish-Subscribe Systems	A. Important Notions	B. Platform Independence	C. Representation of Events	D. State Tracking	E. Context Awareness and Filtering
+06197458.pdf	3199	2185,0	3476,0	1048,0	1079,0	1060,0	1828,0	11717,0
+
+		A. Heterogeneity 	B. Pervasion 	C. Scalability 	D. Extensibility and Flexibility 	E. Deployment and Configuration 	F. Limited Computing Resources Consumption  	A. Framework Workflow 	B.  Cerebellum (Application Server) 	C.  Cerebrum (Co-processor) 	A. Performance Evaluation 	B. Usability Evaluation 
+06197460.pdf	2402	353,0	724,0	362,0	359,0	431,0	1768,0	2101,0	5861,0	5678,0	2269,0	6525,0
+
+		A. Pervasive Communities 	B. Context-aware Group for CSCW Applications 	C. Social computing in enterprise 	A. Newspaper Scenario 	B. Health Scenario 	C. Features and Challenges 	A. Context-Aware Groups and Social Integration 	B. Group Learning and Reasoning 	C. Group Recommendation and Pro-active Behavior 
+06197462.pdf	3791	3860,0	2406,0	2938,0	5084,0	3504,0	4104,0	1953,0	2278,0	8000,0
+
+		A. Spatial Strategies	B. Socially-Aware Strategies	A. Smart phones and Ad-hoc Interactions	B. Infrastructural Nodes and User-to-Infrastructure Interac-	C. Infrastructure-to-Infrastructure Interactions	A. The Local Tuple Space	B. Network Topology Manager
+06197465.pdf	3042	1345,0	2911,0	1511,0	1673,0	1053,0	1268,0	11539,0
+
+		A. Context Recognition 	B. Protocol for Exchanging Collective Context 	C. Used Technologies 	A. User study design 	B. Participants 	C. Trial setup 	D. Findings 	E. Implications for design of context-aware social 
+06197466.pdf	2687	2261,0	2663,0	1287,0	1789,0	1452,0	1191,0	1799,0	9055,0
+
+		A. Building the network for measuring social influence	B. Spreading Influence Values over the Social Network	A. Experimental Settings	B. Experimental Results
+06197467.pdf	4745	4728,0	4254,0	3274,0	6725,0
+
+		A. Testbed	B. Evaluating Lookahead vs. Greedy Selection	C. Evaluating Traveling Auction
+06197468.pdf	4736	1245,0	3392,0	9572,0
+
+		A. Dynamic Networks	B. Computational Models	B. Shortest Path Query	A. Random Walk Query
+06197481.pdf	6486	2290,0	5645,0	688,0	17321,0
+
+		A. Flooding for Communication	B. Our Approach	C. Implications	A. Implementation	B. Provided QoS Guarantees	A. Testbeds, Metrics, and Methodology	B. Low data rate, static nodes	C. Medium data rate, static nodes, wireless interference	D. High data rate, mobile nodes
+06197493.pdf	3542	2602,0	1466,0	4724,0	2386,0	1716,0	1811,0	2409,0	2826,0	11943,0
+
+		A. QoI Functions	B. QoI Attributes	A. Baseline Experiments	B. QoI and Timeliness
+06197499.pdf	5693	2679,0	8245,0	2100,0	9750,0
+
+		A. Brute Force Solution	B. Heuristic Solution
+06197505.pdf	8258	1629,0	14888,0
+
+		A. QoI metrics and mobility	A. QoI-Aware Network Configuration	B. QoI-Aware Data Dissemination	A. Design Study of a Publish/Subscribe System
+06197516.pdf	5453	9461,0	1516,0	4027,0	6810,0
+
+		A. Quality and value of information (QoI and VoI)	B. The consumer’s view of trust	C. Obfuscation and the provider’s view of trust	A. Quality distortions	A. Relationship between obfuscation and trust	B. Reasoning under obfuscation	A. Fokoue, L. Kaplan, F. Meneguzzi, N. Oren, and K. Sycara
+06197532.pdf	4341	999,0	4131,0	11963,0	3761,0	2759,0	3355,0	3424,0
+
+		A. Network Connection 	B. User Interface 	C. Connection Handler 	A. Technical Description 
+06197595.pdf	4620	232,0	327,0	4029,0	13895,0
+
+		A. Conflict Detection	B. Conflict Resolution	C. Policy Evolution
+06197606.pdf	6630	3529,0	3731,0	12632,0
+
+	
+06197616.pdf	0
+
+		A. Domain Expert Knowledge Model 	B. Linked Data 	C. Information Up-lifting Layer 	D. Semantic Processing Layer 	E. Visual Representation Layer 	A. Implementation 	B. Evaluation 
+06197627.pdf	3028	2524,0	3481,0	3248,0	1510,0	876,0	1072,0	8488,0
+
+		A. Smart Space Object-Level and Meta-Level Tasks 	B. Events Triggering Meta Level 	C. Framework Overview 	A. Context Model 	B. Tasks of the Simulation 
+06197638.pdf	5493	1869,0	2345,0	4672,0	1901,0	16679,0
+
+	
+06197640.pdf	0
+
+		A. Data and Management Integration 	B. Rules 	A. Monitoring Task 	B. Analysis Task 	C. Planning Task 	D. Execution Task 	A. Management profile instance and rules definition 	B. Management procedure 	A. Clinical Management in Telemonitoring scenarios 	B. Technical Management in Telemonitoring scenarios 
+06197647.pdf	2710	1860,0	2994,0	1683,0	2714,0	640,0	635,0	1324,0	2695,0	2533,0	10024,0
+
+	
+06529447.pdf	0
+
+		A. On-Body Approach: The Basic System	B. Additional Sources of Information	C. Optional Infrastructure Sensors
+06529448.pdf	5954	3475,0	1488,0	12901,0
+
+		A. Setup and procedure	B. Results	C. Discussion	A. Proposed method 1	B. Proposed method 2
+06529449.pdf	3749	996,0	2004,0	3740,0	1083,0	10922,0
+
+		A. Context Recognition Architecture
+06529450.pdf	16219	16219,0
+
+		A. Representation Layer	B. Interpretation Layer	A. Night Sleep Monitoring Use Case
+06529451.pdf	6373	1817,0	7215,0	10088,0
+
+		A. Service Management	B. Modeling the Rebinding Situations	A. Test Data and Reasoning Systems	B. Evaluation
+06529452.pdf	8642	15437,0	4865,0	2648,0	11618,0
+
+	
+06529453.pdf	0
+
+	
+06529454.pdf	0
+
+		A. Concept drift	B. Concept drift simulation toolsets	C. Concept drift in body-sensor based activity recognition
+06529455.pdf	9163	2541,0	6243,0	18705,0
+
+		A. System design	B. Recognition and interpretation	A. Implementation within Odysseus	B. Reconfiguration and maintenance
+06529456.pdf	5462	4872,0	2327,0	4544,0	10105,0
+
+		A. Modules of Unity:	B. Local Networking	C. Collaboration Schemes	A. Download Rate vs Workload Size:	B. Overhead Comparison:	C. Measuring Impact of Unity-Adapt
+06529458.pdf	4243	2571,0	5085,0	2203,0	2532,0	1683,0	11389,0
+
+		A. The web	A. The WA th
+06529459.pdf	9535	6757,0	12313,0
+
+		A. Delay Time	B. Average number of neighbors	C. Message cost	D. Overload rate
+06529460.pdf	2129	927,0	716,0	1154,0	5722,0
+
+		A. T C-MAC Protocol 	A. Settings 	B. Results 
+06529461.pdf	6836	11168,0	799,0	8541,0
+
+		A. Online User Impersonating 	B. Online Server Spoofing 	C. Offline User Impersonating 	A. Chebyshev chaotic map 	B. Proposed protocol 	A. Resistance to attacks Hsu et al.’s protocol might face 	B. Security resistant to Bergamo et al.’s attack 	C. Mutual authentication and key agreement 	D. Resistant to man-in-the-middle attack 	E. Resistant to replay attack 	F. User anonymity 
+06529462.pdf	1593	1261,0	1238,0	1622,0	1925,0	2778,0	754,0	921,0	589,0	497,0	424,0	5522,0
+
+	
+06529464.pdf	0
+
+	
+06529465.pdf	0
+
+		A. Community Context in Pervasive Computing Systems 	B. Context-Awareness in Social Networking Systems 	A. Community Context modelling and management 	B. Intelligent community context history management 	C. Estimation of community context 	D. Context Similarity Evaluation 	E. Context inheritance 	F. Community context prediction 
+06529466.pdf	4293	5092,0	10272,0	1633,0	1144,0	1045,0	1510,0	1383,0	12270,0
+
+		A. Example Future Scenario 	A. Local Contextual Factors 	B. Relational Context Factors 
+06529467.pdf	9524	8799,0	1497,0	18276,0
+
+		A. FootSLAM Map Generation	B. Map Characteristics of Map Aided PDR and FootSLAM	A. Walking Speed	B. Visiting Frequency of Two-dimensional Space	C. Proportion of mapping individuals	D. Time-to-map	A. Computational Effort	B. Memory Requirements	C. Communication Effort	D. Privacy Issues
+06529468.pdf	2293	2924,0	2529,0	342,0	2517,0	1106,0	939,0	2190,0	1380,0	582,0	8421,0
+
+		A. Sample Collection	B. Pilot Sequences	C. Classification Process	A. Evaluation Setup	B. Gaussian Noise	C. Gaussian Noise vs. No Pilot Sequence	D. Comparison Between All Pilot Sequences	E. Sequences of Primes	F. Evaluation Conclusion
+06815157.pdf	3716	1068,0	1346,0	6104,0	2020,0	3349,0	5697,0	1710,0	1410,0	10743,0
+
+		A. Phone Orientation and Location	B. Walking Speed Estimation using Smartphones	C. Personalization of Smartphone based Models	A. Activity Recognition	B. Personalized Walking Speed Estimation	A. Features	B. Smartphone Location Recognition	C. Activity Type Recognition	D. Personalized Walking Speed Estimation	A. Participants	B. Experiment Design	C. Statistics and Performance Measures	A. Smartphone Location Recognition	B. Activity Type Recognition	C. Personalized Walking Speed Estimation	A. Activity Recognition	B. Personalized Walking Speed Estimation	C. Limitations
+06815158.pdf	5672	3193,0	1544,0	4053,0	2559,0	2113,0	2713,0	801,0	1323,0	2729,0	276,0	1644,0	849,0	437,0	4212,0	35061,0	2559,0	27059,0	8979,0
+
+		A. Annotation methods	B. Phone placement and recognition	A. Study participants	B. Recording procedure	C. Expert-verified annotations	D. Feature extraction	E. Feature selection and recognition	A. Agreement of RFID-based and expert annotations	B. Comparison of evaluation configurations	C. Varying training set size
+06815159.pdf	3673	2661,0	6979,0	756,0	1121,0	1146,0	632,0	3528,0	1652,0	4914,0	13346,0
+
+		A. Scheduling interruptions	B. Mitigating interruptions via explicit experience sampling	C. Mitigating interruptions via implicit experience sampling	A. Suitability study	B. Android RingLearn application	C. Learning	A. Post-hoc Survey	B. Discussion
+06815160.pdf	5420	1804,0	2226,0	5984,0	2896,0	3972,0	11019,0	1262,0	14199,0
+
+		A. Related Work	A. Identifying Characteristic Motion Segments	B. Boundary Conditions Based Discriminative Model	C. Segment Based Classification	A. Sensor System and Signals	B. Evaluation Methodology	A. Overall Results	B. Closer Look at Basic Motions
+06815161.pdf	2493	3372,0	4337,0	1878,0	2888,0	1720,0	897,0	768,0	4091,0
+
+		A. Algorithm description	A. Validation on Synthetic Datasets	B. Living Lab Case Study
+06815162.pdf	6970	3664,0	5353,0	11895,0
+
+		A. Power optimisation of inertial measurements	B. Adaptive Kalman filtering	A. EKF processing rate control	B. Proportional controller design	C. Orientation representation	A. Toy dataset	B. Daily life activity dataset	C. Performance evaluation	A. Effect of duty-cycling and motion-adaptive control	B. Performance for toy dataset	C. Performance for daily life activity dataset
+06815163.pdf	3101	2518,0	4380,0	2215,0	2358,0	3387,0	812,0	882,0	939,0	2411,0	2427,0	11790,0
+
+		A. Signal characterization and feature extraction	B. Classification technique	A. Scripted dataset	B. Live study dataset	C. Model and Features Evaluation	D. Timing Evaluation
+06815164.pdf	3580	2003,0	4977,0	2533,0	2044,0	1370,0	8558,0
+
+		A. Information Entropy and Gain	A. Object versus Annotator Centricity	B. Object Centric Staging	C. Annotator Centric Staging	D. Information and Pairing Metrics	E. Selection, Qualification and Pairing
+06815166.pdf	4717	3530,0	2197,0	4906,0	1839,0	4141,0	11694,0
+
+		A. Outdoor Experiment	B. Parameter Sensitivity Analysis in Simulation	C. Evaluation metrics	A. Coverage Area	B. Wasted Effort	C. Effects of participant assignment	D. Effects of participant response time	E. Where are the bees?
+06815167.pdf	2784	951,0	1988,0	817,0	1534,0	2449,0	2439,0	3029,0	9069,0
+
+		A. ipShield	B. Information Fabric	A. Scenarios	B. Expressing Policy	A. Publisher	B. Message Broker	C. Subscriber	D. Network	A. Implementation
+06815168.pdf	2892	1650,0	2640,0	2428,0	6029,0	1389,0	2260,0	564,0	1242,0	7827,0
+
+		A. CrowdOut Overview	B. Example of Scenario	C. CrowdOut Architecture	A. Living Lab Experiments	B. Futur-en-Seine Experiments	C. Tools for Administrators	A. Crowdsourcing mapping applications	B. Mechanisms for crowdsourcing services
+06815170.pdf	3407	1183,0	1230,0	8209,0	1207,0	1450,0	4768,0	2060,0	7153,0
+
+		A. The Reverse Auction Based Dynamic Price Scheme (RADP-	B. Greedy Incentive Algorithm (GIA)	A. Geometric Coverage Model	B. The Algorithm	A. Experimental setup	B. Experiment 1	C. Experiment 2	D. Experiment 3
+06815171.pdf	2374	3654,0	2460,0	934,0	4478,0	530,0	985,0	694,0	5262,0
+
+		A. Incentive Mechanisms	B. Gamification	A. Problem Definition	B. Basic Idea to Solve the Problem	A. Experimental Setup	B. Results	C. Subjective Evaluation	D. Effectiveness of Gamification Schemes
+06815172.pdf	3141	984,0	5797,0	1834,0	2960,0	4443,0	1994,0	2217,0	4903,0
+
+		A. Data Collector system 	B. Data Warehouse - DW 	C. Event Management and Enrichment module –EM&E 	D. Assets and Work Orders Management system- AWOM 	E. Fabric Messaging Middleware 	A. Description of the Usage Scenario 	B. Experimental Setup 	C. Augmented Reality Application for Smart Building 	D. Security Aspects of Combined Smarter Buildings 
+06815174.pdf	2022	489,0	572,0	1225,0	1382,0	2635,0	1650,0	1651,0	1684,0	6913,0
+
+		A. Trust	B. Privacy	C. Vulnerability Assessment
+06815175.pdf	4620	1231,0	871,0	11758,0
+
+		A. Runtime Components	B. Runtime Integration	A. Voiceprint Launcher	B. Linked Weather
+06815176.pdf	6321	8788,0	7689,0	2738,0	6069,0
+
+		A. Linked Data 	B. Representational State Transfer (REST) 	C. A synergy of Linked Data and REST 	A. InterDataNet 	B. Enabling a Web of Things for the Smart City of Santander 	C. Building A Points of Interest  Application 
+06815177.pdf	4304	911,0	1937,0	3509,0	5492,0	6484,0	7494,0
+
+		A. Related work	B. Paper Organization	A. Triangulation with perfect data	B. Triangulation with noisy data	A. The effect of collisions (MAC Layer)	B. The effect of AoA measurement noise
+06815178.pdf	4040	1543,0	3709,0	2557,0	8079,0	1025,0	7331,0
+
+		A. Demo Setup	B. Demo Requirements	C. TrafficInfo Details	D. Data Gathering	E. Advanced Features
+06815181.pdf	2025	1975,0	637,0	1501,0	2342,0	3671,0
+
+		A. WSN data input system	B. The Context	C. Variables for the signal processing approach	D. Variables for the Complex Network Approach	A. Focus on casual social interaction	B. Focus on project collaboration	C. Overall Sensitivity Performance Based on Ground Truth
+07133984.pdf	2763	1971,0	1259,0	1033,0	543,0	952,0	3513,0	10071,0
+
+		A. Environment as a context for e-learning 	B. Physical indicators for IO-detection and their dependency 	C. The core: IO-detection algorithm 
+07133985.pdf	7225	1958,0	6424,0	13294,0
+
+		A. Databases server	B. SQL-to-SPARQL transformation	C. Context modelling	D. Triple store	E. Smart query	F. Reasoning recipes
+07133986.pdf	2670	596,0	2089,0	520,0	1355,0	3355,0	8109,0
+
+		A. Feature Extraction and Clustering Process	B. Break point based approach	C. Validity based approach
+07133987.pdf	5538	2020,0	3853,0	10742,0
+
+		A. Context Ontology 	B. Situation Ontology 	C. Activity Constraint Ontology 	D. Adaptatoin Ontology 	E. Device Ontology 	A. Event-handling Optimization  	B. Semantic Mapping in SAMAF  
+07133988.pdf	3106	997,0	1319,0	677,0	1406,0	621,0	2019,0	14709,0
+
+		A. Workflow-based Production Systems 	B. Workflow-based Cloud Application Management 	C. Workflow-based Simulation Technology 	D. Workflow-based mHealth Systems 	A. Situation Model Management 	B. Situation Recognition  	C. Sensor Adapter 	D. Situation Handler 	E. Situation-Aware Workflow Management System 
+07133989.pdf	2968	1504,0	1985,0	2069,0	6494,0	1548,0	2946,0	929,0	838,0	8407,0
+
+		A. Experimental setup	B. Delay	C. Accuracy	D. Remarks	A. Algorithm	B. Accuracy	C. Prototype and API of ARshell
+07133990.pdf	3550	1613,0	2922,0	7250,0	1759,0	4111,0	2102,0	5093,0
+
+		A. Temporal Correlation of Sensors	B. Non-linear Time Series of Sensors	A. Experiment Setup	B. Results	C. Time Series Only	D. Temporal Correlation and Time Series
+07133991.pdf	3503	4025,0	3466,0	3203,0	1745,0	1604,0	6975,0
+
+		A. Candidate Reduction Using Hypergraph Partitioning	B. Restricted Graphs	C. Meta-graphs	D. Existence of a Hypergraph Partitioning	A. Protocol 1	B. Protocol 2	C. Protocol 3	A. Partitioning Using Mixed Integer Programming	A. Test Methodology	B. Results	C. Results - QoI responsiveness
+07133993.pdf	2179	1093,0	1097,0	946,0	2257,0	1189,0	1987,0	2757,0	3322,0	935,0	1515,0	6875,0
+
+		A. Motivation	B. Related Work	C. Context-Sensitive Edema Monitoring	A. Sensing Hardware	B. Data Processing	A. Circumference Measurement	B. Activity/Posture Identification
+07133994.pdf	3684	2179,0	1844,0	3185,0	2793,0	1248,0	1143,0	13399,0
+
+		A. Utility reward	B. Monetary Cost/Price Function	C. Overall Payoff Expression	A. Single Network Selection	B. Two Network Selection	A. Single Network Selection Scenario	B. Multiple Network Selection Scenario
+07134004.pdf	3269	1590,0	2501,0	2171,0	1826,0	4475,0	1981,0	8343,0
+
+		A. Short-Range Sensor, Presence and Actuation API	B. M-Hub’s main Components	A. Preliminary Performance Tests
+07134005.pdf	7223	3199,0	4817,0	13654,0
+
+		A. Semantic Reasoning  	B. Stream Reasoning 	C. Temporal Reasoning 	A. Twitter Stream Processing 	B. Rule Analyzers 	C. Filter Mechanisms 	D. Temporal Reasoner 	E. Intermediate Time Format 
+07134006.pdf	3101	1565,0	931,0	3302,0	1257,0	2098,0	1313,0	1037,0	13306,0
+
+		A. Service Description	B. Proxy and Stub Code	A. Code Complexity	B. JSON Service Description
+07134007.pdf	4980	4931,0	3338,0	3102,0	8551,0
+
+		A. Datasets Used	B. Investigating patterns and laws that govern encounters	C. Predicting Encounters with SiST networks
+07134009.pdf	5129	1587,0	5343,0	8459,0
+
+		A. Digital TV 	B. Hybrid TV 	C. Second Screen 	D. Context-Awareness 	A. Exploiting TV Service Information 	B. Considering User Preferences and Program 	A. Automatic Delivery of TV Program Web Page 	B. Recommendation of Web Resources 
+07134010.pdf	3588	1266,0	963,0	1030,0	6020,0	2717,0	4859,0	2519,0	9337,0
+
+		A. System Model	B. Informal Description	C. Pseudo-code of the Coordination Protocol
+07134011.pdf	6439	916,0	3765,0	14636,0
+
+		A. Developer Component	B. End-User Components	C. System Model	D. Creating a Citizen Observatory
+07134012.pdf	6228	1639,0	4436,0	2655,0	16183,0
+
+		A. Office trial	B. BBQ trial	A. Discussion
+07134013.pdf	9296	1473,0	12559,0	13857,0
+
+		A. Social Isolation and Loneliness in the Ageing Population	B. Research Objectives	A. Elderly Monitoring Systems	B. Ambient Displays supporting Conscious Explicit Commu-	A. Concept Design	B. System Architecture	C. Feasibility and Risks	A. Participants	B. Procedure
+07134015.pdf	3942	1561,0	3450,0	1122,0	5089,0	2660,0	2469,0	1768,0	558,0	16804,0
+
+		A. System Overview	B. Stop/Pause Detection	C. Pedestrian Motion Classifier	D. Motorized Motion Classifier	A. Hardware Platform	B. Data Collection	A. Pedestrian Detection	B. Motorized Detection
+07457048.pdf	1804	1727,0	1745,0	2384,0	1972,0	877,0	1395,0	976,0	3361,0
+
+		A. Requirements	B. Necessary Tools	A. Role model	B. Process Overview	C. IT asset information collection	D. IT Asset identifier determination	E. Vulnerability information identification	A. Proof-of-concept Implementation	B. Consideration on Determining asset Identifier	C. Consideration on Locating Vulnerability Information
+07457049.pdf	1758	1901,0	2286,0	1746,0	1535,0	431,0	1281,0	846,0	1209,0	3472,0	2880,0
+
+		A. Counting the Number of Tips Published by Each User	B. Scanning the Important Fields of Tips	C. Sentiment Analysis
+07457050.pdf	4890	2869,0	4569,0	7234,0
+
+		A. Physical Device (Hardware)	B. Cloud Service	C. Dashboard	D. Mobile App	A. Participants	B. Procedure	C. Results
+07457051.pdf	2340	1004,0	530,0	707,0	3994,0	504,0	537,0	9107,0
+
+		A. Range estimation. 	B. Deterministic localization. 	C. Probabilistic localization.  	A. Simulation setup 	B. Results 
+07457052.pdf	2689	1775,0	556,0	4056,0	1193,0	5867,0
+
+		A. Activity Recognition	B. Gesture Recognition	A. Overview	B. Features	C. Computation costs	D. Tree Construction and Selection	A. Data Set	B. Evaluation Methodology	C. Results
+07457053.pdf	2089	1744,0	1404,0	796,0	1119,0	436,0	5701,0	501,0	1419,0	5682,0
+
+		A. Building the Base RF Model	A. How Much Change in Color Temperature is Imperceptible?	B. Color Temperature Modulation	A. Modeling of RF Parameters Over Time	B. Varying the Period Between VLP-based Localization
+07457054.pdf	2614	2961,0	1201,0	3055,0	1272,0	4582,0
+
+		A. Localization	B. Tracking
+07457055.pdf	6799	3734,0	9864,0
+
+		A. Overview	B. Operation process model	C. Selection of motif candidates	D. Tracking motifs using particle filter	A. Data set and methodology	B. Results
+07457056.pdf	2474	1440,0	864,0	1983,0	6700,0	1594,0	2268,0
+
+		A. Human activity recognition	B. Ambient environment detection	C. Image classifier module	D. Sensitive subject detector and policy enforcement module
+07457057.pdf	3290	860,0	1504,0	389,0	10407,0
+
+		A. Assumptions and adversary model	B. Implementation and experimental set-up	A. Secret key generation	B. Secure key distribution	A. Security analysis
+07457058.pdf	2997	669,0	1392,0	881,0	7205,0	4842,0
+
+		A. Problem definition	B. Latency functions	C. Mathematical formulation	D. Policies	A. Number of Nodes	B. Threshold
+07457059.pdf	2348	1323,0	991,0	744,0	4372,0	1766,0	4897,0
+
+		A. Information Pipelining	B. Interoperability
+07457060.pdf	4311	2707,0	5916,0
+
+		A. MLSF Architecture
+07457061.pdf	8667	8667,0
+
+	
+07457062.pdf	0
+
+		A. Overview	B. Body part classification	C. Skeleton detection	D. Biometric feature extraction and distance computation	E. Classification with SVM	A. Data set	B. Evaluation methodology	C. Results
+07457063.pdf	2159	1460,0	1533,0	671,0	4956,0	561,0	1110,0	1460,0	5524,0
+
+	
+07457064.pdf	0
+
+		A. Smartphone application	B. Beacon configuration	C. Complete Execution of the application
+07457065.pdf	2421	1325,0	1080,0	4860,0
+
+		A. Technical Terms 	B. Architecture 	C. Frameworks/APIs  
+07457066.pdf	4181	2598,0	1689,0	8258,0
+
+		A. Letter Recognition Module 	B. Object Collection Game Module 	A. UI and Game Mechanics 	B. Recognition with AR 	C. Object Collection Game 
+07457067.pdf	2413	766,0	753,0	491,0	2000,0	8058,0
+
+		A. Collision Probability Due to Sensor Inaccuracy	B. Context Information for Increasing Collision Detection	C. Missed Alarms and False Alarms	A. Dependence of the Missed Alarm Probability on Sensor	B. Increasing Position Accuracy Using Curb Detection
+07917507.pdf	3426	3405,0	836,0	2117,0	3115,0	7660,0
+
+		A. Fog Computing	B. Urban Traffic	A. Mobility-based On-demand Fog Computing	B. Application Scenarios	C. Potential Players of Vehicular Fog Computing	A. Wireless Networking	B. Application Provisioning	C. Security and Privacy
+07917508.pdf	2517	1558,0	5033,0	1105,0	538,0	925,0	1149,0	1640,0	8194,0
+
+		A. Identification of changes in multi-cell signals	B. Classification of body motion: overview
+07917509.pdf	6123	1782,0	10464,0
+
+	
+07917511.pdf	0
+
+	
+07917512.pdf	0
+
+		A. The Problem of Academic Dishonesty	A. Gradual Release of Responsibility Model	B. Attentiveness vs. Engagement	C. Classifiers	A. Data Collector	B. Image Processor	C. Sound Processor	D. Data Aggregator	E. Classifier	A. Data Collection	B. Training and Testing	A. Training Results	B. Testing Results
+07917513.pdf	1492	2107,0	1729,0	681,0	2249,0	597,0	429,0	299,0	924,0	759,0	1502,0	807,0	1172,0	6147,0
+
+		A. Data Collection	B. Data Storage and Extraction	A. App Usage Data in Frequency Domain	A. Synchronizing Data	B. Aligning Data	C. Generating Time Series Data	A. Description of the Dataset	B. Spectral Analysis of App Usage Data	C. Prediction for Demographic Features
+07917514.pdf	1862	2574,0	1782,0	1172,0	832,0	674,0	1717,0	2883,0	2471,0	2657,0
+
+		B.Feature extraction	C.Classification	A. RF sensing	B. Acceleration sensing
+07917515.pdf	3460	646,0	1809,0	1296,0	10090,0
+
+	
+07917516.pdf	0
+
+		A. Shenzhou UCar	B. The Event-log Dataset	C. The Functional Areas	A. Patterns of Passengers’ Reaction	B. Is Multiple Estimation Useful?
+07917517.pdf	3287	418,0	1244,0	1396,0	6685,0	6692,0
+
+		A. Dataset and Pre-processing	B. Feature Extraction and Models
+07917526.pdf	4348	707,0	7990,0
+
+		A. Textile integration	B. Electronics	A. UI design
+07917531.pdf	2354	1837,0	1744,0	3483,0
+
+	
+07917538.pdf	0
+
+	
+07917539.pdf	0
+
+	
+07917541.pdf	0
+
+		A. An overview of the implemented platform 	B. Sensing infrastructure 	C. Annotation requirements 	D. NFC based dataset annotation 	E. Feature extraction and metric generation 	F. Hybrid supervised machine learning and rule based alert 
+07917548.pdf	4305	3283,0	2234,0	2266,0	2574,0	1666,0	13810,0
+
+		A. Locking mechanisms 	B. Autonomic Manager 	C. Service side decision-making 	D. Adaptation 
+07917567.pdf	4788	2357,0	1293,0	2130,0	13372,0
+
+	
+07917574.pdf	0
+
+		A. The Macaco architecture	B. Energy efficiency	A. Statistics on participation	C. Mobile apps statistics
+07917579.pdf	3324	2400,0	3868,0	2838,0	4192,0
+
+		A. Cyclic Redundancy Check (CRC)	B. Convolutional Encoder	C. Viterbi Decoder	D. Interleaver/Deinterleaver	E. Scrambler/Descrambler	F. Controller	G. Interfacing
+07917612.pdf	1913	1087,0	985,0	617,0	1984,0	2165,0	347,0	6208,0
+
+		A. Class-to-class classification	B. Sensor importance	C. Leave one out Analysis	D. Google Activity Recognition
+08480119.pdf	3645	1151,0	2418,0	2237,0	8777,0
+
+	
+08480127.pdf	0
+
+		A. Performance of HEBC Computation	B. Data Clustering Results
+08480134.pdf	6720	1602,0	11838,0
+
+		A. Pervasive Computing 	B. Context Awareness 	C. Indoor Positioning Technologies 	A. UniNav 	B. Campus Guide 	C. LIBRARIES NavApp 
+08480167.pdf	4432	1315,0	1344,0	6165,0	850,0	596,0	16324,0
+
+		A. Cognitive Assistance  	B. Semantic Mark-Up and Web Ontologies 
+08480188.pdf	10968	3066,0	18870,0
+
+		A. Android Application	B. Plotting and Data Mapping Algorithm	C. Outlier Filtering Algorithm	A. Methodology	B. Experimental Evaluation
+08480231.pdf	3499	821,0	3577,0	2655,0	2355,0	8090,0
+
+		A. System Architecture 	B. Workflow 	C. Privacy Properties of IoT Services 	D. User-driven Assessment and Control of Privacy Risks  	A. Scalable Knowledge Base for Privacy Properties  	B. Understanding Users’ Perception of Privacy 	C. Privacy Decision Support 
+08480260.pdf	3699	3425,0	2275,0	7543,0	2491,0	1143,0	2164,0	6852,0
+
+		A. Scheduling Formalization	B. Heuristics	A. Implementation	B. Experimental Setup	C. Results
+08480266.pdf	5183	4167,0	3437,0	1811,0	3015,0	13489,0
+
+		A. Control	B. Transparency	C. Context Awareness	D. Social Context	A. Community context modeling	B. Community formation	C. Opportunistic community	A. Identity Management of Users and Social Roles	B. Partial Sharing of Data and Data Access	C. Responsibility, Regulations and Governance	D. Naming and Addressing Challenges	E. A General Manifesto
+08480273.pdf	1811	680,0	733,0	715,0	3295,0	1191,0	1817,0	3225,0	959,0	1277,0	1085,0	383,0	6375,0
+
+		A. Design Overview	B. Pseudo Controller	C. Virtual Packet	A. Pseudo Controller	B. Advertise	C. Connection	A. Resource Usage	B. Receive Packets	C. Response Time	A. Functionality	B. Effects o f Physical Environment	C. Utilization	A. Bluetooth Emulation	B. Wireless Network Emulation
+08480294.pdf	1813	1295,0	1357,0	1178,0	2082,0	1006,0	1888,0	1107,0	1559,0	1837,0	624,0	1640,0	1258,0	2177,0	6376,0
+
+		A. ProbLog for Activity Recognition	B. Implementation	B.I. Extracting prior probabilities	B.II. Segmentation	B.III. ProbLog Program Generation	B.IV. Online Activity Recognition
+08480299.pdf	4515	10222,0	324,0	631,0	547,0	828,0	14543,0
+
+		A. Requirements	B. Architecture	C. Cognitive ESM	D. Implementation	A. Study setup	B. Methods	C. Results
+08480310.pdf	3601	1631,0	1457,0	1717,0	4803,0	1781,0	1250,0	12570,0
+
+		A. Device Management Basic Functions	B. CWMP Protocol	B. Leshan Setup	C. Implementation of Upgrade Feature	D. Choice of Hardware: Raspberry Pi Board	E. Influence of Hardware Choice in Software Implementation	G. Final Result: IoT Device Archetype	A. Study Target: HawkBit Software Update Solution	B. HawkBit Multi-protocol Property	C. Leshan Server Cluster – Northbound API	D. LHHL Connector: Leshan-HawkBit Communication	E. Node-RED Framework	F. LHHL Connector Implementation	G. Final Result: Firmware Upgrade Architecture	A. Final Scenario Architecture	B. Campaign Execution
+08480313.pdf	1923	2364,0	6016,0	1197,0	522,0	454,0	1856,0	1614,0	2903,0	527,0	1396,0	1635,0	894,0	548,0	859,0	348,0	7636,0
+
+		A. UIs leveraging similar acoustic actions 	B. UIs using different acoustic actions 	C. UIs in wet environments 	A. Duration time 	B. Number of rubbing fingers 	C. Reciprocating motions 	D. Combination pattern 	A. Initial detection of squeak sound 	B. Identification of number of fingers 	C. Reciprocating hand motion detection 	A. Identification accuracy perceived by users 	B. Comfort from latency 	C. Ease-of-use 
+08480335.pdf	1784	1013,0	1172,0	1034,0	391,0	652,0	1102,0	1428,0	2849,0	4024,0	1461,0	881,0	326,0	6864,0
+
+		A. Overview of Our Proposal	B. Basic Theory	C. Method	A. Experiment in Real Environment	B. Simulation
+08480336.pdf	5158	2014,0	2166,0	4420,0	5126,0	12065,0
+
+		A. Experimental Setup	B. Impact of Different Machine Learning Models	C. Impact of Selection Strategies to Identify Unneeded Sen-	A. Calculation Complexity of Different Unneeded Sensor Se-
+08480343.pdf	3780	2776,0	1971,0	4396,0	5978,0
+
+		A. Participants 	B. The Driving Tasks 	C. Data Pre-Processing 	D. Feature Extraction 	E. Data Labelling 	F. Feature Selection 
+08480369.pdf	4950	1102,0	3837,0	3581,0	2595,0	2248,0	16342,0
+
+		A. Overview of the CMU-MMAC	A. Experimental Setup	B. Results
+08480380.pdf	5753	1094,0	1832,0	14334,0
+
+		A. Evalution Metrics 	B. Experimental Results 
+08480397.pdf	4760	1189,0	8332,0
+
+		A. Food preparation and planning	B. Budgeting and shopping	C. Eating environment	D. Service providers	A. Service design	B. Meal recommender overview	C. Mobile application
+08480404.pdf	3329	1687,0	915,0	1044,0	1858,0	4927,0	3803,0	9073,0
+
+		A. Related Work	A. Basic Principle	B. Prototype	A. Touch Sensing	B. Proximity Sensing	C. Activity Sensing
+08730581.pdf	4599	2394,0	2374,0	3235,0	1721,0	1343,0	16531,0
+
+		A. Bike share data	B. Network graph, routing, and cost function	C. Induced path changes	D. Infrastructure upgrades	A. Pilot program	B. Descriptive trip statistics	C. Campus network graph	A. Base case	B. Induced path change cases	C. Computational requirements
+08730590.pdf	2617	678,0	3399,0	952,0	1507,0	1219,0	1525,0	3383,0	2379,0	1872,0	9259,0
+
+		A. Participants 	B. Data Acquisition 	C. Experimental Measures 	A. Input Membership Functions (fuzzification) 	B. Fuzzy Inference Process (rules) and Defuzzificaiton 	C. Data Analysis and Visualization 
+08730600.pdf	3641	589,0	1304,0	2786,0	2174,0	1750,0	13247,0
+
+		A. Overview	B. Expanding activity name	C. Recognizing objects	D. Filtering objects	E. Computing semantic similarity	F. Smoothing	A. Data set	B. Evaluation methodology	C. Results
+08730673.pdf	2834	1048,0	2273,0	3478,0	470,0	1627,0	1020,0	1361,0	4094,0	10142,0
+
+		A. Personality Psychology  	B. Clinical Psychology  	C. Psychological-Behavioral Model  	A. Research Participants (TableⅠ)  	B.  Research Design (Table Ⅱ)  	C.  Analysis  	D.  Results (Table Ⅲ, Table Ⅳ)  	E.  Discussion  	A. Behavioral Change by Controlling the Context 	B. Behavioral Change by Controlling the Personality 
+08730722.pdf	2223	934,0	936,0	2886,0	2712,0	1639,0	1067,0	4490,0	1941,0	589,0	5038,0
+
+		A. Scenarios	A. Data Pre-processing	B. Window Size	C. Features
+08730725.pdf	5528	2452,0	1505,0	455,0	17701,0
+
+		A. Mobile application	B. Touch event results	A. Model	B. Results
+08730731.pdf	5237	3612,0	2775,0	4733,0	9830,0
+
+		A. Global reviewer database 	B. Gamification in peer review 	A. Authors 	B. Editors 	C. Reviewers 
+08730737.pdf	4591	1205,0	2832,0	782,0	1995,0	16141,0
+
+		A. Frequency of Bus Route Use	B. Average Travel Times	C. Stop-Specific Wait Time Frequency	A. Protecting Privacy	B. MAC Address Randomization
+08730746.pdf	3606	2439,0	1832,0	987,0	3798,0	8977,0
+
+	
+08730758.pdf	0
+
+		A. Preprocessing	B. Subspace Decomposition	C. Subspace Decomposition of Accelerometer Signal	D. Selection Of Principal Components	E. Heart Rate Estimation Using Frequency Analysis	A. Performance Metrics	B. Results
+08730797.pdf	2533	828,0	2137,0	645,0	4811,0	1932,0	1485,0	5896,0
+
+		A. Tracking the animal’s head location with markers 	B. Tracking using conventional image processing 	C. Markerless posture tracking based on deep learning 	D. Beyond the DeepLabCut 	A. Bayesain decoder 	B. Animal’s trajectory predicted by the Bayesian decoder 	C. Beyond the Bayesian decoder 
+08730808.pdf	2168	1014,0	539,0	2346,0	1677,0	2247,0	1478,0	5877,0
+
+	
+08730818.pdf	0
+
+	
+08730829.pdf	0
+
+		A. Functional Components of a Single Robotic Agent	B. Description of Knowledge bases	C. Implementation	D. Workflow
+08730841.pdf	6610	2790,0	1482,0	1156,0	21015,0
+
+		A. Concept	B. Activation sequence	C. Activation algorithm	A. Area demand satisfaction	B. Multi-area demand satisfaction	C. Discussion and future work
+08730842.pdf	1842	1648,0	1181,0	1360,0	1883,0	1132,0	3853,0
+
+		A. Maximizing the Number of Covered Users	B. Full Coverage with a Minimum Number of Drones	C. Minimizing Flight Time of Drones in Serving Users
+08730845.pdf	8139	1676,0	1745,0	20996,0
+
+		A. Research Question	B. Method	C. Hypotheses	D. Setup and Sample Data	E. Variables	F. Analysis	G. Results
+08730850.pdf	3226	159,0	1324,0	563,0	2138,0	862,0	1428,0	16108,0
+
+		A. Network Model	B. User Behavior Patterns Model	C. Impact of Social Networks on Behavior Patterns	A. Problem Formulation	B. Context-Aware Caching With Social Behavior Algorithm
+08730879.pdf	4095	1148,0	2136,0	4704,0	2502,0	9987,0
+
+		A. Stress Assessment Methods	B. Public Human Stress Datasets	A. Demographics and size of sample population of the dataset	B. Characteristics of the stress stimuli	C. Multiple reliable modalities	D. Self-reported information	E. Data acquisition devices and software
+08730884.pdf	5006	3829,0	8481,0	1035,0	753,0	654,0	1911,0	18379,0
+
+		A. The problem 	B. Reinforcement Learning 	C. Q-Learning and delayed reward 	A. Choose a reward variable 	B. Separate data into groups that may experience short-term 	C. Compute features that convey the most information related 	D. Cluster the features into a reasonable number of clusters 	E. Discretize the actions. 	F. Compute the value function and policy using Q-Learning. 	A. Choosing a reward variable 	B. Separating into groups 	C. Computing features 	D. Clustering 	E. Discretization of the actions 	F. Q-Learning 	A. Data imputation 	B. Preprocessing 	A. Sacrificing in the short-term for greater long-term 	B. Shortcomings of our method 
+09127358.pdf	2854	698,0	2004,0	4301,0	30,0	92,0	90,0	184,0	29,0	113,0	1501,0	1513,0	3788,0	2111,0	917,0	3209,0	934,0	19171,0	3133,0	10412,0
+
+		A. Keyboard Logger	B. Ground Truth Collection Unit	C. Privacy and Trust Concerns during Keystroke Logging	A. Typing Patterns for Tracking Mobility Context	B. Opportunities	C. Challenges	A. Developing the ConType Server-Side	B. Sessionizing Typing Data	D. Prediction of the Mobility Context	A. Data Collection & Preparation	B. Context Detection Accuracy	C. Profiling ConType
+09127359.pdf	2855	643,0	2216,0	988,0	804,0	1206,0	3001,0	752,0	6534,0	1931,0	3103,0	2972,0	10110,0
+
+		A. Ambient light sensor	B. Attack model	C. Feasibility study	D. Challenges	A. Coarse-grained PIN input detection	B. Fine-grained starting and ending points detection	A. Feature extraction	B. Classification based on multiple additive regression tree	A. Experimental prototype	B. Data collection	C. System performance for normal users	D. System performance against two types of PIN replay attack	E. Authentication time	F. Influence of the size of training dataset	G. Influence of light conditions	H. Influence of gloves and wet hands
+09127361.pdf	3239	3216,0	1192,0	3423,0	3593,0	4028,0	1655,0	5768,0	2825,0	1057,0	2401,0	879,0	2297,0	928,0	1752,0	898,0	15923,0
+
+		A. Hand Movement’s Anatomy	B. Feasibility Study	C. Motion Signal Correlation with EMG	A. Objective and Design Scope	B. Overview of System	A. Data Regulation & Denoising	B. Detection and Segmentation	C. Spectrogram Generating	A. BiLSTM Layer	B. Attention Layer	C. Classifier	A. Self Calibration	B. Transfer Learning	A. Implementation	B. Identification Accuracy	C. Authentication Robustness	D. Delay and Power Consumption	E. User Study and Discussion
+09127367.pdf	2767	1383,0	2990,0	2453,0	2632,0	879,0	752,0	1811,0	2282,0	2156,0	1816,0	804,0	828,0	1362,0	793,0	6982,0	2288,0	884,0	16720,0
+
+		A. Opportunity for CTC within One WiFi Packet	B. Opportunity for Symbol-Level Energy Modulation	C. Opportunity for Concurrent Data Transmission	A. SLEM Design at the Transmitter Side	B. SLEM Design at ZigBee Receiver Side	C. SLEM Design at WiFi Receiver Side	A. Analysis for CTC Transmission	B. Analysis for WiFi Transmission	C. Data Rate	A. Experimental Settings	B. Performance of CTC Transmission	C. Performance of WiFi Transmission
+09127370.pdf	3543	1702,0	1055,0	3099,0	7421,0	3381,0	3297,0	3187,0	2615,0	1167,0	1441,0	3418,0	10740,0
+
+		A. Experiments	B. The array response can be constructed by multiplying	D. However, as both D & E are occupied by humans, they are	E. The trends among the streams where humans are present	A. Detecting vacant spatial streams	B. Human Count Estimation	D. HAC correctly identifies the similarities of A, B and D, E	A. Testbed Description	B. Experiment Setup	A. People Counting Confusion Matrix	B. Accuracy vs the Number of Antennas	C. Accuracy vs Dispersion in the Data	D. Comparison with the State of the Art	E. Device-free Activity Extraction
+09127374.pdf	3290	3053,0	2808,0	1914,0	3093,0	1502,0	5133,0	2737,0	2972,0	4967,0	1499,0	1751,0	1593,0	1491,0	11548,0
+
+		A. Cryptography-based Approaches	B. Location-based Approaches	C. Hardware-based Fingerprinting Approaches	B. Extracting PA Non-linearity Fingerprint	C. Fingerprint Validation	A. Experimental Setup	B. Overall Performance	C. Impact of Clients	D. Impact of Environments	E. System Overhead
+09127375.pdf	5392	780,0	1082,0	6005,0	6675,0	15001,0	4044,0	3927,0	2815,0	3489,0	10103,0
+
+		A. One-handed Target Acquisition with Unreachable Targets	B. Objects Manipulation on Smartglasses	C. Force Interactions on mobile devices	A. Participants and Apparatus	B. Techniques	C. Task	D. Results	A. Apparatus and Tasks	B. Results	C. Discussion
+09127378.pdf	5064	2447,0	1894,0	2393,0	1165,0	4897,0	747,0	13038,0	1868,0	6084,0	16113,0
+
+		A. Design Goals and Challenges	A. Initial Validation Study	B. Real World Study	A. Accelerometer Sensor Analysis	B. Magnetic Sensor Analysis	C. Sensor Data Analysis: Key Takeaways and Features	E. Initial Validation Results	A. Counting Repetitions	B. Identify the Amount of Weight Lifted	C. Identify the Exercise Performed	D. Identify Exercise “Mistakes”	E. Identify Users Performing Exercises	A. Incremental Learning	B. Performance Results with Incremental Learning Strategy
+09127379.pdf	3453	4356,0	1121,0	3914,0	4743,0	4573,0	3810,0	1972,0	1047,0	1440,0	2587,0	943,0	5163,0	1714,0	10959,0
+
+		A. Preliminary of Participant Selection	B. Overview of RL-Recruiter	A. Formulation of State, Action, Reward, and Decision Model	B. Decision Model Learning	C. Iterative Participant Selection	A. Metrics and Comparison Methods	B. Datasets and Experiment Settings	C. Experiment Results
+09127383.pdf	5313	1591,0	2161,0	3624,0	5127,0	1160,0	3797,0	8112,0	16938,0
+
+		A. GESTURE DETECTION	B. FEATURE EXTRACTION	C. Classfication	A. Data Collection	B. Gesture Recognition Performance	C. Gesture Details Profiling Performance	D. Influence of Different Radar Positions	E. Results of Different Classification Approaches	F. Application
+09156109.pdf	2249	2780,0	2727,0	2501,0	970,0	2714,0	965,0	1019,0	1341,0	5227,0
+
+		A. Generation of the synthetic data	B. Machine Learning algorithms	C. Neural Network for predicting interactions	D. Prototype	A. Scenarios definition	B. Results
+09156111.pdf	3983	3379,0	2344,0	2650,0	2033,0	2108,0	11388,0
+
+		A. Infrastructure - Wearable Data	B. Types of Data Collected	A. Computing Wearable Compliance	B. Compliance Results	C. Temporal Patterns of Wearing Behavior	D. Charging the Wearable	E. Accuracy of the Wearable	F. Study maintenance
+09156113.pdf	3071	3936,0	3878,0	3205,0	2840,0	976,0	1587,0	1063,0	7089,0
+
+	
+09156129.pdf	0
+
+	
+09156135.pdf	0
+
+		A. Mobile Phone and Application	B. Web Application Interface and Annotation	C. Server and Database	A. Automated Dietary Monitoring	B. Activity Recognition from First-Person Images	A. Battery Life & Performance	B. Data Resolution	C. Multiple Labels	D. Privacy Considerations	E. Comfort and Perception
+09156161.pdf	2270	4203,0	1384,0	771,0	801,0	1272,0	1099,0	1426,0	1176,0	1630,0	8938,0
+
+		A. Wireless-(network-)based IDS	B. Detection methodologies	C. Fraud Detection Approaches
+09156168.pdf	7326	1394,0	309,0	20275,0
+
+		A. Effort Assessment	B. Human annotation consistency
+09156170.pdf	10560	3710,0	17410,0
+
+		A. Camera Function	B. Camera Problems	A. The ’distance to sensor’ pattern for height measurements	B. The ’data correction’ pattern for line count improvement	A. Improving the accuracy of height measurements	B. Improving the accuracy of counting lines
+09156173.pdf	3994	1586,0	6111,0	1365,0	938,0	997,0	12972,0
+
+		A. Keypoint detection	B. Keypoint localization	C. Keypoints aggregation	A. Dataset	B. Sound event decomposition and localization	C. Sound event classification
+09156174.pdf	4196	2588,0	4769,0	6261,0	684,0	2158,0	8721,0
+
+		A. Extracted Relations 	B. Referenced attribute Functional Dependency database 	A. B+ Trees  	B. Correlations 
+05942039.pdf	3870	1802,0	1103,0	1523,0	11052,0
+
+		A. Packet Switched Network 	B. Proxy of WWW Server 	A. Theorem 	B. Theorem 	C. Theorem 	D. Special Cases 
+05942041.pdf	2489	1224,0	3204,0	1314,0	1939,0	1200,0	6053,0
+
+		A. UNDERSTANDING ANT BEHAVIOUR 	B. ROUTING ALGORITHMS 	A. UNDERSTANDING BEE BEHAVIOUR 	B. ROUTING ALGORITHM 	A. UNDERSTANDING THE HILL BUILDING 	B. ROUTING ALGORITHM 	A. UNDERSTANDING BIRD BEHAVIOUR 	B. ROUTING ALGORITHM 
+05942042.pdf	16621	1477,0	6252,0	608,0	12541,0	25339,0	19259,0	32057,0	35439,0
+
+	
+05942043.pdf	0
+
+		A. Elements used for discretisation 	A. Retrofitting of the Reinforced Concrete Beam  by 
+05942044.pdf	3724	2542,0	4907,0
+
+		A. DSR  	B.  AODV 	C.  DSDV 	A. Throughput of Received Packets 	B. Throughput of Dropped Packets 	C. End to End Delays 	D. Packet Delivery Fraction 	E. Routing Load 
+05942047.pdf	1937	1136,0	1119,0	1259,0	1146,0	989,0	1543,0	1225,0	7079,0
+
+		A. Business Perspective Model:- 	B. Economic Perspective Model: - 
+05942048.pdf	4009	2819,0	5199,0
+
+		A. LANMAR 	C.   Expected Zone 	D.   Request Zone 	E. DYMO 	F.  ZRP 	H.   BRP  	A.   Random Waypoint mobility model 	B.   Average End to End Delay 	C.   Throughput 
+05942051.pdf	1981	3208,0	409,0	1572,0	1801,0	2299,0	1257,0	760,0	1499,0	5028,0
+
+		A. Text Based CAPTCHAs 	B. Image Based CAPTCHAs 	A.  Resistance to Segmentation through Edge Detection 	B. Resistance to Segmentation through Thresholding 	C. Resistance to shape matching 	D. Resistance to blind attack 
+05942052.pdf	3266	636,0	10396,0	583,0	596,0	426,0	6961,0
+
+		A. Cost calculation 	B. Routing algorithm in brief 	C.  Routing algorithm in detail 
+05942053.pdf	3689	1039,0	1467,0	8562,0
+
+		A. Complete Overview Of Proposed Algorithm 	A. Simulation Results 	B. Query Delay 	C. The Query Delay Evaluation with Mean Update Arrival 	D. A Comparison of the Cache Hit Ratio under Different 	E. Performance Analysis in the Number of Uplink 	B.S.Abdur Rahman University, Chennai, India and is supervising doctoral 
+05942054.pdf	2459	4715,0	678,0	1954,0	1106,0	1904,0	6486,0	371,0
+
+		A. Quantitative Introspective Learning 	B. Expert Previous case Sub Network 	A. Basic Architecture 	B.  Problem Formulation 	C. Training 	D. Input Representation 	E. Weights 	F. Processing Elements 	G. Output Representation 	H. Algorithm 	A.  Testing Performance 	B. Error Stabilization 
+05942055.pdf	1362	1663,0	2129,0	1742,0	1188,0	399,0	376,0	466,0	339,0	613,0	2284,0	1487,0	3667,0
+
+	
+05942056.pdf	0
+
+		C. Fitness Equation 	D. Evolutionary Process Of RGSGCS 	A. Performance Analysis 
+05942057.pdf	4794	899,0	4886,0	8598,0
+
+		A. Image Acquisition 	B. Pre-Processing 	C. Features 
+05942058.pdf	6288	599,0	1136,0	17129,0
+
+		A. Delay 	B. The Kleinrock Independence Approximation  	C. Queuing Delay Based OSPF  	A. Experimental Setup 	B. Results 
+05942059.pdf	2252	1456,0	829,0	1590,0	914,0	6474,0
+
+		A.  Our Contribution: 	B. Road Map:  	A. Bilinear pairing:  	B. Computational Diffie-Hellman Problem(CDHP): 	C. Inverse Computational Diffie-Hellman Problem (Inv-	D. k-Plus Problem: 	A.  Setup Phase: 	B. Extract Phase: 	C. Sign Phase: 	D. Verification Phase: 	A.  Setup phase: 	B.  Extract phase: 	C.  Sign phase: 	D.  Verification phase:  	A.  Correctness of verification of our scheme  	B.  Security analysis 
+05942060.pdf	817	319,0	462,0	528,0	113,0	121,0	564,0	224,0	133,0	166,0	310,0	611,0	305,0	235,0	411,0	337,0	8237,0
+
+		A. Call Hold 	B. Call Forward 	C. Call Transfer 	D. Call Pickup 	E. Find me/Follow me 	F. Music on Hold 	G. Ring Group 	H. Call Park 
+05942085.pdf	1634	890,0	1065,0	810,0	1742,0	1945,0	641,0	900,0	5083,0
+
+		A. Ontology 	B. Personalization 	A. System Description 	A.  Automatic Construction Of User Profiles 
+05942090.pdf	4338	1599,0	2821,0	2044,0	10891,0
+
+		A. Amplify and Forward Relaying 	B. Decode and Forward Relaying 	C. Compress and Forward Relaying 	D. Adaptive Forward Relaying 	A. Simulation Scenario-I:  	B.  Simulation Scenario-II: 	C. Simulation Scenario-III: 	D. Procedure for network entry for a new RS:  
+05942094.pdf	1804	573,0	866,0	646,0	2940,0	2459,0	971,0	1805,0	4175,0
+
+		A. Background	B. Motivation	A. Hardware Design and Implementation	B. Time Synchronization	C. PSS Harvesting Circuit Design	A. Correlation Models	A. Frequency & Voltage & Phase Angle Measurement	B. Time Synchronization	C. Data Reconstruction
+07460660.pdf	6253	1158,0	3267,0	2677,0	2747,0	1696,0	4006,0	21501,0	13786,0	5445,0
+
+		A. Cross-Technology Interference	A. Overview	B. Physical Layer Hints	C. CTI Detection	D. Symbol Error Localization (in interfered packets)	E. CTI-aware Packet Recovery:	F. System Integration	A. System Performance	B. Dive in CrossZig
+07460663.pdf	7210	5677,0	2026,0	4362,0	8068,0	3130,0	7811,0	10692,0	3918,0	19208,0
+
+		A. Design Principles	B. Algorithms	C. Proof-of-Concept	A. Layer Compression	B. Redundancy Estimation	A. Decomposition Search and Optimization	B. Recomposition Inference	A. Prototype Platforms	B. Prototype Components	A. Methodology	B. Energy and Execution Time Benefits	C. Safely Identifying and Leveraging Redundancy	D. Decomposition and Assignment to Processors
+07460664.pdf	4477	1968,0	3717,0	6758,0	3341,0	4768,0	5209,0	734,0	1574,0	3333,0	4465,0	4338,0	5554,0	12445,0
+
+		A. Sensing Tower Design	B. Custom-designed Sensors
+07460665.pdf	1446	396,0	2497,0
+
+	
+07460666.pdf	0
+
+	
+07460667.pdf	0
+
+	
+07460668.pdf	0
+
+		A. Demo Application: Smart Home
+07460669.pdf	6556	6556,0
+
+	
+07460672.pdf	0
+
+	
+07460674.pdf	0
+
+		A. Increasing Spatio-Temporal Resolution	B. Simplified UWB Transmitter Design	C. Recovering UWB and the Time/Frequency Duality	D. Bandstitching for Narrowband Interference Cancellation	E. Measuring Time with UWB Pulse Trains	F. From Time to Position	C. Signal Processing Backend	E. System Microbenchmarks	A. Limitations	B. Future Directions	A. Narrowband Location Systems	B. UWB Systems and Technology
+07460675.pdf	5075	1886,0	2026,0	6330,0	1144,0	778,0	6020,0	10299,0	3646,0	2702,0	6290,0	1861,0	17927,0
+
+		A. HB-Phone Hardware Design and Prototype	B. Unique Challenges of the HB-Phone System	A. FFT and Low-pass filtering	B. Calculating Sample ACF	C. Sample ACF Peak Finding and Measurement	D. Extracting Heartbeats from Original Geophone Signals	A. Evaluation Phase I: Controlled Experiments	B. Evaluation Phase II: Long-Term At-Home Deployment for	A. Overview of Existing Bed-Mounted Heartbeat Sensors	B. Overview of Signal Processing for Heartbeat Detection
+07460676.pdf	5552	4988,0	6604,0	1875,0	2169,0	1184,0	2811,0	6668,0	11701,0	5673,0	11854,0
+
+		A. Design Goals	B. Unique Characteristics of Wearable Radio-based Sensing	A. Background of Channel State Information (CSI)	B. Radio Signal Processing Pipeline Overview	C. Noise Removal	D. PCA-Based Dimension Reduction	E. Feature Extraction	F. Training via an Overcomplete Dictionary Construction	A. Experimental Methodology	B. Human Participants and Data Collection	C. Performance Comparison between Radio- and Audio-based	D. Performance Comparison between Radio- and Audio-	E. Performance of Personalized Model	F. Impact of Training Dataset Size	G. Impact of Radio Signal Transmission Rate	H. Impact of Radio Transmitter/Receiver On-body Locations	J. Usability Study
+07460677.pdf	3540	2576,0	4873,0	1752,0	1666,0	1187,0	1672,0	2249,0	5513,0	2267,0	2507,0	1780,0	2807,0	1344,0	1374,0	2216,0	3699,0	20703,0
+
+		A. Boundary Crossing Localization System	B. Link Line Obstruction Model	C. Maximum Likelihood Classifier	D. Hidden Markov Model Classifier	E. On-the-fly Model Update	F. Baseline Classifiers	A. Equipment and Setup	B. Experiments	C. Validation Metrics	A. Sensitivity to Parameter Choice	B. Classifier Comparison	C. Relative Costs	D. Real-Time Performance
+07460678.pdf	4601	1959,0	4952,0	1445,0	2528,0	2178,0	3745,0	2510,0	3119,0	2579,0	5300,0	13609,0	1892,0	14009,0
+
+		A. Occupancy Grid Mapping	B. Enhanced Particle Filtering	A. Experimental Setup	B. Performance Evaluation
+07460679.pdf	6912	1757,0	11261,0	3708,0	10925,0
+
+		A. Soil Characteristics	B. Fluid Flow Model	C. Boundary and Initial Conditions	D. Fluid Flow Model Simplification	A. Seeking a Suitable Location	B. System Development and Deployment	C. Node Development	D. System Comparison	A. Quality of Service	B. Water Consumption Analysis	C. Moisture Uniformity	D. Energy Consumption Analysis
+07460680.pdf	4550	1796,0	5938,0	1865,0	11335,0	698,0	2246,0	3336,0	2295,0	2999,0	2307,0	1329,0	18466,0
+
+		A. Interference Pattern	B. Localized Interference	C. Communication Opportunities	D. Summary	A. Oppcast in a Nutshell	B. Channel Diversity	C. Spatial Diversity	A. Experimental Details	B. Baseline Protocols	C. Evaluation Metrics	D. Testbed Specific Information	E. A Case for Channel Diversity	F. A Case for Spatial Diversity	G. Channel Utilization	H. Impact of Exploiting Path Diversity	J. Evaluation in Urban Environments
+07460681.pdf	3000	3837,0	1564,0	2412,0	1277,0	3217,0	5018,0	4205,0	1320,0	784,0	871,0	1053,0	2787,0	2157,0	1021,0	3226,0	13252,0
+
+		A. Computing Mean Reliability with Maximum a Posteriori	B. Computing the Error Variance	C. Computing the Posterior Belief	A. Testing with Synthetic Data	B. Comparing Computation Times	C. Empirical Evaluation
+07460719.pdf	8407	3170,0	2930,0	3404,0	13351,0	1244,0	26346,0
+
+		A. Hook Configuration File	B. Hook Positions	A. Measurement Phase Overview	B. TCL Program Example	C. Program Structure	D. TCL Operations	A. PAD	B. Domo	C. Sympathy	A. Jump Table	B. Memory Layout	C. Tiny Code Dissemination	A. Experiment Setup	B. Deployment Efficiency	C. TinySDM Overhead
+07460723.pdf	2939	2002,0	1644,0	2073,0	2774,0	2325,0	3183,0	2985,0	3402,0	1624,0	981,0	3335,0	2628,0	582,0	1690,0	12861,0
+
+		A. Deriving the Likelihood Function	B. The TA-EM Scheme	A. Deriving the Likelihood Function	B. The TASD-EM Scheme	A. Experimental Setups and Evaluation Metrics	B. Evaluation of Our Methods
+07460724.pdf	11855	1683,0	27625,0	7873,0	4650,0	5139,0	24164,0
+
+		A. Hardware structure 	B. Four stage charging 	C. Improving MPPT algorithm 
+08052702.pdf	3691	1180,0	3281,0	6613,0
+
+		A. Fast Voltage Stability Index (FVSI)	B. Line Stability Index (Lmn)	C. Voltage Collapse Proximity Indicator (VCPI)	D. Voltage Collapse Prediction Index (VcPrI)
+08052703.pdf	2527	307,0	452,0	473,0	8877,0
+
+	
+08052711.pdf	0
+
+	
+08052712.pdf	0
+
+	
+08052714.pdf	0
+
+	
+08052715.pdf	0
+
+		A. Scenarios and types of End users 	B. Seasonal / Regional Variations 
+08052717.pdf	9508	913,0	18103,0
+
+	
+08052719.pdf	0
+
+		A. Operating Curve	B. Non-Islanding Transients	C. Power Quality
+08052720.pdf	4754	4976,0	4132,0	5155,0
+
+	
+08052721.pdf	0
+
+		A. Assessment of ANN Model 
+08052723.pdf	6299	6299,0
+
+		A. Optical Response 	B. Electrical Analogy 
+08052725.pdf	5375	2102,0	8648,0
+
+		A.   Modeling of Solar Photovoltaic Array 	A.    Modeling of Boost Converter 	B.    k Factor Control of Boost Converter 	C.    Modeling of PWM Inverter 	D.    Modified IC Method of Active Power Control 	E.    Reactive Power Control 
+08052727.pdf	2603	2289,0	748,0	960,0	2542,0	1356,0	7723,0
+
+		A. Derivation of Principal Components using the Phase Angle  	B. Phase Angle between Positive-sequence Voltage and 	A. System under Study 	B. Performance of phase angle based principal component 
+08052728.pdf	5996	2884,0	8829,0	1264,0	11009,0
+
+		A. How EVs are different from other traditional load	B. Specifications of EV	A. Importance of reactive power from grid connected EVs	B. Control of Reactive Power for grid connected EVs	A. Significance of PSO for ELD problem	A. Base Case:without EV Load
+08052729.pdf	4017	765,0	2563,0	613,0	3195,0	4779,0	12187,0
+
+		A. Switching States of NPC 	A. Switching States of ANPC 	A. Phase Disposition PWM (PDPWM) 	B. Third Harmonic Injection PWM (THIPWM) 
+08052730.pdf	2625	2215,0	1355,0	508,0	6423,0
+
+		A. Power generation using electrogenic mixed consortium 	B. Single-parameter optimization of influential anodic 	C. Power generation in MFC by using dark fermentative 	D. COD removal and Columbic efficiency 	E. Overall energy recovery  
+08052735.pdf	1351	269,0	878,0	2308,0	899,0	2405,0
+
+		A. Materials Used 	B. Fabrication of Catalyst Matrix SPPy and Ni-Ag 	C. Working Electrode Preparation and Electrochemical 	D. X-Ray Diffraction (XRD) Analyses 	E. Transmission Electron Microscopic (TEM) and Energy-	F. DMFC Single Cell Performance along with Fabrication of 	A. XRD Analyses 	B. TEM and EDX Analyses 	C. CV and IF/IB Analyses 	D. LSV Analyses 	E. Chroamperometry 	F. Impedance 	G. DMFC Performance 
+08052738.pdf	1854	397,0	2296,0	817,0	756,0	856,0	954,0	1072,0	1117,0	2270,0	2505,0	1118,0	815,0	9132,0
+
+	
+08052739.pdf	0
+
+		A. Methods and data 	B. The Batteries 	C. LCI specific to Indian conditions  
+08052740.pdf	6718	4509,0	2815,0	12830,0
+
+		A. Psychology of Trust	B. Differing Views of Trust	C. Systems Engineering Processes	A. Trust Relationships	B. Generating the Graph	C. Graph Constraints	D. Trust Metric	E. Trust Model Comparison and Analysis	F. Path Generation Algorithm	A. Model Metrics	B. Trust State Coefficient Calculation	C. Building the model	D. Trust Relation Interaction
+08455879.pdf	3121	3142,0	880,0	6717,0	1427,0	5788,0	2238,0	2692,0	3053,0	938,0	789,0	2206,0	2865,0	7844,0
+
+		A. Model Definitions	B. Dynamic Cloud Service Trust Evaluation Model 	C. Dynamic Cloud Service Trust Evaluation Process 	A. Direct Trust 	B. Indirect Trust 	C. Comprehensive Trust	D. Privacy Data Protection	A. Encryption Time Performance Analysis	B. Customer Satisfaction	C. Success Rate of Cloud Services Selections
+08455880.pdf	2199	1045,0	1485,0	2088,0	2823,0	700,0	957,0	2095,0	1099,0	1852,0	7854,0
+
+		A. The QoS Management for Real-Time Transmission	B. Real-Time Transmission Scheme	A. Data Classification	B. Transmission Period	C. Transmission Architecture of the Flexilink	A. Synchronous Flow Parameters	B. Transmission Period Conversion Algorithms	C. Overload Transmission Scheme	A. The Transmission of SF and AF in Congested Networks	B. Specific Simulation	C. Experimental Evaluation of Throughput
+08455882.pdf	1988	1959,0	2586,0	2314,0	1697,0	1429,0	1106,0	1869,0	2293,0	1477,0	1463,0	3678,0
+
+		A. Data Collection Procedure 	A. Study limitations	A. Construct validity and reliability 	B. Hypothesis testing 
+08455883.pdf	7118	4364,0	677,0	2392,0	21039,0
+
+		A. Basic terminology	B. Example use-case	A. Registry Contracts	B. Root Identity Contracts	C. Shared Identity Contracts	D. Attribute Contracts and Attribute Data	E. Cryptographic keys in DecentID	A. Privacy protection	B. Performance measurements	C. Conceptual analysis	A. Identity Management	B. Blockchains
+08455884.pdf	2379	1660,0	2805,0	1370,0	1103,0	2033,0	2555,0	1538,0	1554,0	3237,0	3999,0	1030,0	5675,0
+
+		A. Trust and Reputation	B. Influence	A. General Approach	B. Reputation Calculus	C. Method Application
+08455885.pdf	4832	2734,0	1612,0	2661,0	1268,0	15888,0
+
+		L. R. Prete, “Using mininet for emulation and prototyping	A. Doupé, and G.-J. Ahn, “Honeyproxy: Design and implemen-
+08455887.pdf	995	1659,0	332,0
+
+		A. Data Loss Patterns	B. Data Gathering	C. Dynamic Trust Weight Allocation (DTWA)
+08455888.pdf	8840	1220,0	1998,0	23303,0
+
+		A. Security Model	B. Computation of MFCC-ED	A. Watermark Embedding in the Encrypted Domain	B. Watermark Extraction and Detection	A. Performance under Different Embedding Factors	B. Various Attacks Applied to the Watermarked Audio
+08455889.pdf	3221	1015,0	3283,0	2142,0	2658,0	698,0	9535,0
+
+		A. Motivation	B. Key Contribution	A. Concept of Trust	B. I-Sharing	C. Trust-based Access Control Systems in IoT	A. Service Scenario	B. Adversarial Model	A. Overall Architecture	B. Session Manager	C. Authorization Manager	D. Adaptation Manager	E. Trust Manager	F. I-Sharing Group Manager	A. Experimental Setup	B. Metrics	C. Simulation Results
+08455890.pdf	3965	2482,0	3702,0	919,0	1125,0	3401,0	3782,0	8637,0	1251,0	1002,0	1149,0	3218,0	2536,0	1986,0	6439,0	1104,0	20716,0
+
+		A. Security Model	B. Homomorphic encryption and Secure Multi-Party Com-	A. Watermark Embedding in the Encrypted Domain	B. Watermark Extraction	A. Evaluation Metrics	B. Various Attacks Applied to the Watermarked Audio	C. Performance of the Watermark Scheme Under Attacks
+08455891.pdf	3060	823,0	1418,0	2940,0	3176,0	723,0	3515,0	8830,0
+
+		A. Motivation	A. The Routing Strategy
+08455892.pdf	10003	4713,0	15294,0
+
+		A. Entity-centric Trust Models 	B. Data-centric Trust Models 	C. Combined Trust Models 	A. Blockchain 	B. Certificate Transparency 	C. Components of BARS 	D. Assumptions 	A. System Initialization 	B. Certificate Update 	C. Public Key Revocation 	D. Authentication Process 	A. Different Types of Messages 	B. Reputation Evaluation Algorithm 	A. Security Analysis 	B. Validity of Reputation Evaluation Algorithm 	A. Thus, A’s reputation score increases whereas B gets 	C. Performance Evaluation 
+08455893.pdf	1481	1149,0	1367,0	1443,0	552,0	791,0	1706,0	918,0	601,0	1531,0	832,0	1941,0	1112,0	1923,0	1426,0	349,0	332,0	7206,0
+
+		A. Bionic Feature of Trust 	B. Trust Description 	A. Trust Evaluation Process 	B. Trust Sequence Searching 	A. Parameter Setting 	B. Experiment Analysis 
+08455898.pdf	4162	5177,0	3983,0	5448,0	1794,0	1195,0	7375,0
+
+		A. Definitions	B. Chinese remainder theorem	A. Algorithms	B. Discussion
+08455899.pdf	6661	2226,0	5402,0	5745,0	13273,0
+
+		A. Scenario	B. Node Capability	C. Attack model	A. Security Factors	B. Routing Factors	C. Energey Factors	A. Calculation and Updating Trust-Value	B. Routing Selection
+08455900.pdf	2794	887,0	399,0	1719,0	1274,0	1201,0	1483,0	905,0	14488,0
+
+		A. Overview	B. Basic definitions	C. Non-Competitive Model	D. Competitive Models	B. Evaluation of competitive models	C. Lessons Learned
+08455901.pdf	5231	1500,0	5261,0	1349,0	12217,0	4476,0	6585,0
+
+		A. Analysis of Attacks Based on the Random UA Tool	B. Analysis of Attacks Based on the VaxSIP UA Tool	C. Dialed Number Analysis for the SipCLI UA tool	D. Dialed Number Analysis for the Empty UA Tool
+08455916.pdf	6421	5303,0	6353,0	4272,0	9759,0
+
+		A. Based on Content 	B. Based on Approach 	A.  Principles of Building Evaluation Architecture 	B. Comprehensive Quality Evaluation Framework 	C. Quantitative Index System 	D. Quantization and Normalization 	E. Affirmation of Weight 	F. Detailed Steps 	A. Basic Item Test 	B. Comprehensive Test 
+08455917.pdf	3715	1827,0	2156,0	1186,0	3413,0	2578,0	994,0	6826,0	1729,0	2722,0	13728,0
+
+		A. Understanding Ocular Recognition Scanning 	B. Base of the System 	C. Hardware System 	D. Software System 	E. Applications of such System  	A. Image Preprocessing 	B. Feature Extraction 	C. Matching / Verification 	A. Iris System 	B. Retinal System 	C. Scan Fusion Reporting  	D. Third-Party Approval Reporting  	A. System Security  	B. Client Security  	C. Iris Recognition Security 	D. Retina Scanning Security 	E. Third-party Security 	F. System Information Storage Security 
+08455918.pdf	1582	1906,0	2115,0	1227,0	1972,0	2118,0	1174,0	705,0	1097,0	1049,0	1371,0	837,0	1135,0	824,0	1046,0	1151,0	1313,0	928,0	6521,0
+
+	
+08484325.pdf	0
+
+	
+08484326.pdf	0
+
+		A. Doherty Architecture	B. Optimization-Oriented Method 
+08484335.pdf	4655	1726,0	7585,0
+
+		A. First-Order Multiplexer Stage	B. Higher-Order Multiplexer Designs
+08484353.pdf	5744	2851,0	8638,0
+
+	
+08484366.pdf	0
+
+		A. PAPR Reduction 	B. The BER Performance 	C. The Radar Performance 
+08484372.pdf	1431	946,0	392,0	2956,0
+
+	
+08484384.pdf	0
+
+		A. General Model Setup	B. Observation of Physical Phenomena	C. Specific Model Parameters
+08484386.pdf	2768	665,0	1753,0	5886,0
+
+		A. Reconfigurable antenna with reduced BFN 	B. Efficient Ka-band Frontends  	A. General Description 	B. Main characteristics and background  	C. Application to the simulation reconfigurable front-ends. 
+08484389.pdf	1935	1885,0	917,0	1366,0	1186,0	4324,0
+
+	
+08484446.pdf	0
+
+		A. Power amplifier nonlinearity	A. Baseband Tx-side	B. Baseband Rx-side	C. Coherency of the system	D. RF part
+08484502.pdf	2028	3247,0	494,0	235,0	507,0	5661,0
+
+		B. Output Network	C. Input Matching	D. Input Splitter
+08484553.pdf	3398	2894,0	1324,0	5978,0
+
+		A. GaAs RF Frontend Module
+08484564.pdf	6769	6769,0
+
+	
+08484612.pdf	0
+
+		A. Single transmitter chain	B. Calibration and phase alignment	C. Suggestions and solutions 
+08484613.pdf	2015	283,0	2339,0	3424,0
+
+		A. Extending the Class-G Approach 	B. Class-S Approach 
+08484690.pdf	2822	736,0	4909,0
+
+		A. State of the art	B. Concept of the Riemann Pump Circuit
+08484695.pdf	5916	2736,0	9097,0
+
+	
+08484696.pdf	0
+
+	
+08484697.pdf	0
+
+	
+08484718.pdf	0
+
+		A. HDD SMART Technology	B. Disk Fault Modes	A. Disk SMART Dataset	B. Critical SMART Attributes	C. Understanding Logical Disk Failures	A. Discovering the Start of Disk Degradation	B. Differentiated Disk Degradation Signatures	A. Prediction of Two Types of Disk Failures	B. Remediation of Logical Failures
+08831190.pdf	4243	1342,0	1429,0	3253,0	2748,0	3407,0	4256,0	3700,0	3926,0	14134,0
+
+		A. Deep Neural Networks	B. Challenges for Deep Neural Networks	C. Search-Based Testing	D. Novelty Search	E. Testing Deep Neural Networks	A. Experiment Setup	B. Assessing the Impact of Environmental Uncertainty	C. Improving Performance under Environmental Uncertainty	D. Threats to Validity
+08831191.pdf	5145	2885,0	1547,0	1598,0	2387,0	20240,0	1740,0	1843,0	1457,0	12611,0
+
+		A. Implementation Constraints	B. Basic Approach	C. Adaptive CPU-GPU Scheduling and Load Balancing	D. Avoiding Warp Divergence	E. Utilizing GPU Memory Effectively	A. Experimental Setup and Methodology	B. Hadoop Map-Reduce (HMR)	D. Apache Spark
+08831192.pdf	3875	590,0	2082,0	2260,0	1395,0	1712,0	4078,0	4313,0	14574,0
+
+		A. The Future of Software DVFS	B. The Challenges of Actuating Power	A. Adaptive Controller Formulation	B. The Gain Limit	C. Using CoPPer	A. Testing Platform	B. Evaluation Applications	C. Execution and Analysis	A. Efficiently Meeting Performance Goals	B. Controlling Memory-bound Applications	C. Reducing Power for Unachievable Goals	D. Adapting to Runtime Changes	E. Multiple Applications
+08831193.pdf	3740	2556,0	4086,0	1894,0	5823,0	2390,0	1480,0	2175,0	4280,0	6303,0	2125,0	2922,0	2152,0	10438,0
+
+		A. Atomic Services	B. Algebraic Composition	C. Workflow Selection	A. Sequencer	B. Parallelizer	A. Solution Space Variability	B. Models@Runtime
+08831195.pdf	5015	1142,0	2987,0	2380,0	3582,0	17707,0	1492,0	5821,0
+
+		A. SLO Structure	B. SLO Examples	A. Search Strategy	B. Literature Selection & Quality Assessment	C. Data Extraction and Synthesis
+08831196.pdf	5091	1993,0	2581,0	2554,0	1722,0	16607,0
+
+		A. Time Series Characteristics	B. Forecasting Methods	C. Forecasting Method Recommendation	A. Binary Classification with Oversampling	B. Recommendation-based Ensemble Forecasting	A. Experimental Setup	C. Evaluation of Alternative Approaches	D. Threats to Validity	E. Evaluation Findings
+08831197.pdf	5672	949,0	439,0	10602,0	4347,0	3748,0	9069,0	10878,0	3224,0	7797,0
+
+		A. Running Example	B. Implementation	A. Utilization Thresholds	B. Quality-Elasticity	C. Resource Utilization
+08831198.pdf	7896	2230,0	4127,0	9307,0	6827,0	16990,0
+
+		A. Physical Challenges	B. Experimental Challenges	A. Device Properties	B. Virtualized IoT	C. Application Architecture in EMU-IoT	D. Producer Host	E. Gateway Host	F. Application Component	G. EMU-IoT Simulator	A. Defining an Experiment	B. Environment Prerequisites	C. EMU-IoT Configuration and Customization	D. Creating a custom experiment class	E. Creating new IoT Devices	A. Cost Analysis
+08831199.pdf	3132	743,0	6992,0	2788,0	2548,0	1474,0	1224,0	1303,0	767,0	6765,0	712,0	954,0	1091,0	3472,0	5098,0	11050,0
+
+	
+08831204.pdf	0
+
+		A. Basic Concepts	B. Modeling the Problem	C. Stochastic Games	D. Properties	A. Scalability	B. Property verification	C. Collaborative vs. Competitive
+08831206.pdf	7349	3819,0	12082,0	1817,0	7417,0	2730,0	5278,0	18301,0
+
+		A. Flexible Support for Real World Deployments	B. Dynamic In-field Accelerator Reconfiguration and Control	C. Easy and Fast Accelerator Access	D. On-device Energy Measurement	E. Easy and Low-Overhead Accelerator Reuse	A. Elastic Node Hardware	B. The Elastic Node Middleware	A. Single HWF: Local Deep Learning	B. Multiple HWFs: Neighbourhood Data Preprocessing	A. Energy Consumption	B. Accelerator Access Performance	C. Accelerator Start-up and Switching Latency	D. Impact of Batch Processing	E. Monitoring Accuracy	F. MCU and FPGA Resource Overhead
+08831207.pdf	3456	490,0	455,0	598,0	381,0	776,0	6455,0	9166,0	7100,0	3397,0	2673,0	2679,0	2359,0	1827,0	1367,0	12118,0
+
+		A. Impact of Skewed Workloads	B. The Limits of Batching	A. Architecture and Implementation	B. Merging Mice Requests	C. Splitting Elephant Requests	D. Split Plus Merge	A. Setup and Scenarios	B. Chisel Aggregate Results	C. Sensitivity Analysis	D. Effective Query Sizes
+08831208.pdf	4326	3723,0	5101,0	4703,0	2281,0	2436,0	6469,0	3266,0	3100,0	2058,0	10129,0
+
+		A. Placement Problem	B. Pack Policy	C. Spread Policy	D. XBalance Policy	A. Definitions	B. Optimization Problem	C. ABP Algorithm
+08831212.pdf	3684	727,0	1066,0	920,0	2506,0	2316,0	614,0	17642,0
+
+		A. Towards Generalizable Fuel-Efficient Navigation	B. Experimental Methodology	A. Normalization from the model’s perspective	B. The Fuel Rate Profile	C. Model accuracy compared to other approaches
+08831213.pdf	10933	5038,0	3023,0	5558,0	5531,0	35517,0
+
+		A. Foundations	B. Model	C. Testbed Setup	A. Application Separation	B. Correction Factor	C. Identifying Function Power Consumption	D. Portability	A. Energy Proportionality	B. Performance Counters	C. Power Consumption on Mobile Devices
+08831214.pdf	4766	5869,0	6228,0	4340,0	2681,0	651,0	2951,0	7048,0	1125,0	1401,0	15366,0
+
+		A. The Search Space	B. The Scalarization Simplex	C. The Pareto Front	D. The Bi-Criteria Weighted Chebyshev Norm Algorithm	E. Complexity	A. Application description	B. Measurements	C. Constraints	D. Utility dimensions	A. Numerical Example	B. The Pareto Front for the Example	C. Scalarization of the Pareto Front	A. The Promise of Non-Scalarization	B. Computational Aspects	C. Dimensionality
+08831215.pdf	2664	2598,0	4355,0	1570,0	2535,0	566,0	2430,0	997,0	1017,0	2740,0	1933,0	335,0	3934,0	2980,0	1826,0	10152,0
+
+		A. Simultaneous Multithreading	B. Size-Interval Task Assignment
+08831216.pdf	15181	1280,0	29082,0
+
+		A. Apache Storm	B. Rules of Thumb Baseline	C. Bayesian Optimization	D. Genetic Algorithms	E. Support Vector Machines	A. GA Parameter Search	B. Classifying Bad Parameters	C. Transitioning to New Clusters and Topologies	A. Comparison with Spearmint Bayesian Optimizer	B. Comparison of the Classifiers	C. Comparison of the Tuners on the Intel Cluster	D. Porting the Tuners to the ARM Cluster
+08831217.pdf	4713	5648,0	986,0	2554,0	1905,0	2493,0	3816,0	8456,0	7305,0	1722,0	2294,0	5158,0	14229,0
+
+		A. Distributed Deep Learning	B. Transient Servers	A. Experimental Setup	B. Transient vs. On-demand Servers	C. Scaling Up vs. Out with Transient Servers	D. Revocation Impact	E. Scaling Up with On-demand Servers	F. Dynamic Transient Clusters	G. Implications of heterogeneous training
+08831218.pdf	6119	4816,0	6167,0	5660,0	5529,0	2938,0	3370,0	690,0	5055,0	20847,0
+
+		A. Model for LoWPAN Management	B. Demonstration Workflow	C. Analysis with Comparison
+08449785.pdf	2827	3528,0	1695,0	3258,0
+
+	
+08713073.pdf	0
+
+		A. NetTest Measurement Methodology	B. RTR Crowdsourced Testing	C. MONROE Controlled Testing	A. Statistical Properties	B. Features	A. Linear Interpolation	B. Curve Fitting with Simple Linear Regression	A. Overview of the Forecasting ML Algorithms	B. Feature Selection	A. Performance Comparison of the Forecasting Models	B. Trade-off Between Data Consumption and Error
+08792968.pdf	4651	2495,0	1353,0	1970,0	1308,0	8790,0	1306,0	2904,0	3854,0	9688,0	2455,0	15038,0
+
+		A. License-Plate-Recognition Camera	B. Measurement Accuracy	C. Measurement Errors	D. Data Cleansing	A. Arrival and Departure Pattern	B. Stay Duration Pattern	C. Parking Behaviour Users	A. Fitting a Poisson Distribution	B. Modeling Car-park Usage as a Queuing System
+08792972.pdf	4929	7868,0	1850,0	5901,0	4206,0	5810,0	1805,0	3052,0	5948,0	7925,0
+
+		A. Prerequisites	B. Example Scenario	C. Coordination Protocol	A. Simulation Setup	B. Lifetime of a Car in a Micro Cloud	C. Channel Utilization	D. Data Availability in Micro Cloud	E. Fraction of Data Available in Micro Cloud	F. Redundancy of Data in Micro Cloud	G. Number of Transmissions per Data Content
+08792973.pdf	3265	1461,0	757,0	7632,0	3613,0	920,0	1912,0	2336,0	2354,0	1378,0	10293,0
+
+		A. System model	B. Threat model	A. Witness advertisement	B. Witness selection	C. Confirmation messages	D. Whitelist filter	E. Network dynamics	F. Example of parameter selection	G. Operations on IoT devices	A. Simulation to evaluate confirmation throughput	B. Performance on IoT devices
+08792979.pdf	3431	3766,0	1446,0	1055,0	4782,0	3921,0	2591,0	1415,0	868,0	4181,0	4051,0	9669,0
+
+		A. System Overview	B. System Notations	C. Quality of Experience and Fairness	D. Backhaul Traffic and Data Processing	A. Retention-based Collaborative Caching (RBCC) Heuristic	B. Computational Complexity	A. Simulation Setup	B. Video Bitrate	C. Video Data Traffic	D. Processed Data	E. Impact of Cache Size	F. Impact of Edge Processing Capacity
+08792981.pdf	4147	2593,0	3781,0	4828,0	10047,0	5606,0	3892,0	3297,0	574,0	933,0	3001,0	1066,0	10152,0
+
+		A. System model	B. Problem formulation	D. Computational complexity	A. Reference scenarios and benchmarks	B. Results: synthetic scenario	C. Results: realistic scenario
+08792983.pdf	6017	2146,0	17671,0	1107,0	3970,0	3207,0	8006,0
+
+		A. Fronthaul-aware Resource Allocation in C-RAN	B. Bandwidth/Energy-efficient Resource Allocation in C-RAN
+08792996.pdf	7444	3529,0	11360,0
+
+		A. System Model	B. Computation Model	C. Problem Formulation	A. Optimal Resource Allocation under Given N	B. Mode Selection Based on Channel Gains	C. Time Sharing for Better Fairness	A. Optimal Resource Allocation under Given N	B. Binary Offloading Performance of TDMA
+08792997.pdf	8243	1668,0	3133,0	2122,0	3119,0	2692,0	20870,0	12920,0	19425,0
+
+		A. Smart Environment 	B. Crowd Measurements 	A. Overall System Architecture 	B. Design of Hardware and Software of Wireless Sensor nodes 	C. Design of the Server 	A. Network Bandwidth 	B. Database Storage 	C. Power Consumption 
+08793006.pdf	4742	3326,0	5789,0	3752,0	3742,0	5241,0	2135,0	2217,0	11739,0
+
+		A. Wireless Communication: The Silver Box	B. Virtual Cycling Environment	A. Considered Scenarios	B. Modeled Road Network	C. Recorded Bicycle Traces	D. Collision Detection	E. Simulation Setup	F. Evaluation
+08793008.pdf	4880	2613,0	7626,0	3633,0	1506,0	1346,0	1995,0	3728,0	16599,0
+
+		A. Procedure of Active Scanning	B. Causes of Active Scanning	C. Need of Machine Learning	A. Controlled Setup	B. Uncontrolled Setup	C. Challenges	A. Unsupervised Learning	B. Supervised Learning	C. Feature Importance
+08793010.pdf	4576	1147,0	2365,0	8059,0	4782,0	1594,0	3419,0	2505,0	2180,0	15135,0
+
+	
+08793011.pdf	0
+
+		A. Two-tier Network Architecture	B. Protocol stack	A. Internet Sharing	A. Phase I: Mesh Generation	B. Phase II: Mesh Discovery	C. Phase III: Mesh Bridging	A. Lower Tier	B. Upper Tier	C. Drone discovery
+08793029.pdf	4240	1568,0	11122,0	1433,0	865,0	9122,0	3404,0	1178,0	1262,0	8213,0
+
+		A. Network Model	B. Problem Formulation	A. Minimizing the makespan	B. Minimizing the average completion time	A. Minimizing the makespan	B. Minimizing the average completion time	A. Settings	B. Results
+08793031.pdf	5243	1871,0	1535,0	1975,0	14161,0	1975,0	13730,0	1656,0	5046,0
+
+		B. RPL Routing Protocol 	C. Constrained Application Protocol 	A. Control plane 	B. Topology Maintenance 	C. Forwarding 	A. SDN Controller 	B. Gateway 	C. SDN Nodes 	D. Forwarding example 	A. SND-Controller Resources 	B. SND-Node Resources 	A. Cooja simulations 	B. Testbed implementation 
+08793044.pdf	3445	2387,0	1648,0	2781,0	2003,0	2770,0	893,0	349,0	6027,0	3736,0	1526,0	2097,0	5398,0	13181,0
+
+		A. Heterogeneous LTE-WiFi Networks (HetNet)	B. Software-Defined Networking (SDN)	A. Centralized control	B. Traffic steering	C. Network reconfiguration	A. Parameter Tuning Heuristics	B. FDM Quick-start	C. Max-min Fairness	A. Mininet-WiFi Emulated Networks	B. SDN Controller	A. Static Network Test Scenario	B. Mobility Management Test Scenario	C. Dynamic Network Test Scenario
+08793045.pdf	3300	4427,0	1742,0	1350,0	2619,0	5198,0	2225,0	565,0	4132,0	2057,0	4068,0	3884,0	1792,0	8852,0
+
+		A. Knowledge Extraction	B. Knowledge Graph	C. Recommender Component	D. BPMN Parser	E. Interactive Graphical User Interface and API	F. User Feedback for Continuous Learning
+08793049.pdf	4476	4942,0	2987,0	2974,0	1028,0	2303,0	12622,0
+
+		A. Urban scenario	B. Rural scenario	C. Semi-rural scenario
+08793051.pdf	3601	1974,0	1359,0	7471,0
+
+		A. Layer-based Segmentation Strategy	B. Adaptive Enhancement Strategy
+08350911.pdf	9490	7682,0	11298,0
+
+		A. DNN: CNN + LSTM 	B. BiometricNET Architecture  	C. Implementation Details 
+08350983.pdf	4686	2547,0	1181,0	10330,0
+
+	
+08351076.pdf	0
+
+	
+08351103.pdf	0
+
+		A. Selection of Stereoscopic Retargeted Images 	B. Subjective Experiment 	A. Disparity Range Feature 	B. Boundary Disparity Feature 	C. Disparity Intensity Distribution Feature 	D. Image Quality Feature 
+08351198.pdf	3999	3776,0	3366,0	1419,0	2724,0	2707,0	10006,0
+
+		A. HDR Pinhole Array Mask	B. Synthesizing LDR Images	C. Constructing HDR Images	A. Processor Design	B. Hardware Performance
+08351257.pdf	3169	2049,0	2831,0	2994,0	2722,0	5252,0
+
+		A. Feature Extraction 	B. Joint Learning Of Gradient Dictionary 	C. Feature Preprocessing  	D. SVR Training  
+08351261.pdf	4194	2700,0	1544,0	1386,0	11147,0
+
+	
+08351264.pdf	0
+
+		A. The ISFET	B. Pixel Topology and Operation	A. Thermal System	B. Electrostatic System
+08351342.pdf	4221	1374,0	3943,0	2077,0	9492,0
+
+	
+08351351.pdf	0
+
+		A. Decimation	B. Drift Removal
+08351424.pdf	7121	2652,0	11590,0
+
+	
+08351454.pdf	0
+
+		A. Linear-Logarithmic Pixel Architecture	B. Logarithmic Mode Operation	C. Linear Mode Operation	D. Tunable Threshold Inverter Comparator	E. Shared Buffer	A. Preliminary Electrical Testing	B. VOC detection with Chemoresponsive Textiles
+08351551.pdf	2247	3190,0	1529,0	1037,0	1063,0	820,0	602,0	7492,0
+
+		A. Flexible Electrode Array	B. Wireless Neural Recording Module	A. Preprocessing	B. HD classifier	A. Generating Dataset	B. Classification Results
+08351613.pdf	2934	1407,0	2989,0	1033,0	2050,0	2170,0	7959,0
+
+		A. SVM with Linear Kernel	B. SVM with Nonlinear Kernels	C. Performance Comparison
+08351647.pdf	2064	694,0	920,0	4578,0
+
+	
+08351664.pdf	0
+
+	
+08351743.pdf	0
+
+		A. Metal Oxide Resistive Random Access Memory 	B. Spin-Transfer-Torque Magnetic Random Access Memory 	C. Phase-Change Random Access Memory 	D. Designing Energy-Efficient On-Chip Memory Systems 	B. In-Memory Computing 
+08351756.pdf	5069	1044,0	1208,0	1192,0	6285,0	15616,0
+
+	
+08351818.pdf	0
+
+		A. Memristor for Computing 	B. Crossbar Array Structure 	A. Sparse Coding  	B. Real-world Image Processing 	A. Online Dictionary Learning Algorithm 	A. Reservoir Computing 	B. Digit Recongition 	C. Solving Dynamic Nonlinear Problems 
+08351831.pdf	2499	899,0	1552,0	2818,0	1987,0	3596,0	1219,0	2793,0	5130,0
+

@@ -49,6 +49,7 @@ public class DocumentParser {
      */
     public void prepareList(ArrayList<KeyValueObject<String, File>> documentFiles) {
         try {
+            // getKey() = Konferenzname, getValue() = Name des PDF Dokuments.
             for(KeyValueObject<String,File> docFile : documentFiles){
                 //Falls docFile null ist
                 if (docFile == null)

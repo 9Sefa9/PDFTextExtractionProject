@@ -47,6 +47,7 @@ public class Metadata implements Analyzable {
             PDDocumentInformation info = document.getPdfDocument().getDocumentInformation();
             if (info.getTitle() == null || info.getTitle().isEmpty()) {
                 String fixedTitle = extract(document);
+                this.pageSizesList.add(document.getPdfDocument().getNumberOfPages());
                 titlesList.add(fixedTitle);
 
             } else {

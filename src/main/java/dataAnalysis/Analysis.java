@@ -68,16 +68,16 @@ public class Analysis implements Analyzable {
             t6.setName("ANALYSIS 6");
 
             t1.start();
-            Thread.sleep(200);
+          //  Thread.sleep(2000);
             t1.join();
             t2.start();
-            Thread.sleep(200);
+            Thread.sleep(250);
             t3.start();
-            Thread.sleep(200);
+            Thread.sleep(250);
             t4.start();
-            Thread.sleep(200);
+            Thread.sleep(250);
             t5.start();
-            Thread.sleep(200);
+            Thread.sleep(250);
             t6.start();
 
             t2.join();
@@ -233,7 +233,7 @@ public class Analysis implements Analyzable {
         //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
         CSV csv = new CSV(args[1].concat("\\analysisAllgemeinSpezifischKapitel" + (System.nanoTime() / 100000) + ".csv"));
         //Erste Zeile direkt mal definieren..
-        csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, new String[]{"Primaere Kapitel", "Sekundaere Kapitel"}));
+        csv.writeCSV((String[]) Helper.concatenate(new String[]{""}, new String[]{"Allgemeine Kapitel", "Spezifische Kapitel"}));
         List<String> chapterNameList = new ArrayList<>();
         List<Integer> intList = new ArrayList<>();
 
@@ -272,7 +272,7 @@ public class Analysis implements Analyzable {
             //Hier wird die Positionsausfindigung fertig gestellt-
 
             //Jetzt wird unterteilt zwischen gut und schlecht.
-            String[] relevantHeaderDefines = {"Abstr", "INTROD", "INTRID", "CONCL", "ACKNOWLED", "REFEREN", "RELATE", "EVALUA", "RESUL", "DISCUSS"};
+            String[] relevantHeaderDefines = {"Abstr", "INTROD","MOTIVAT", "INTRID", "CONCL", "ACKNOWLED", "REFEREN", "RELATE", "EVALUA", "RESUL", "DISCUSS"};
             float irrelevantHeaderPosAll = 0;
             //Wichtig für die Durschschnittsberechnung
             int irrelevantCount = 0;
