@@ -71,13 +71,13 @@ public class Analysis implements Analyzable {
           //  Thread.sleep(2000);
             t1.join();
             t2.start();
-            Thread.sleep(250);
+            Thread.sleep(1000);
             t3.start();
-            Thread.sleep(250);
+            Thread.sleep(1000);
             t4.start();
-            Thread.sleep(250);
+            Thread.sleep(1000);
             t5.start();
-            Thread.sleep(250);
+            Thread.sleep(1000);
             t6.start();
 
             t2.join();
