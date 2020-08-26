@@ -58,6 +58,246 @@
 		A. Amplify and Forward Relaying 	B. Decode and Forward Relaying 	C. Compress and Forward Relaying 	D. Adaptive Forward Relaying 	A. Simulation Scenario-I:  	B.  Simulation Scenario-II: 	C. Simulation Scenario-III: 	D. Procedure for network entry for a new RS:  
 05942094.pdf	1804	573,0	866,0	646,0	2940,0	2459,0	971,0	1805,0	4175,0
 
+		B. Let X and Y be the sets of internal peers that belong to	A. Evolution versus time	B. Channel popularity	C. Peer arrival and departure processes	A. Peer discovery process	B. Content retrieval
+06038655.pdf	4480	3172,0	4018,0	3173,0	3462,0	4344,0	8714,0
+
+		A. Overview and Design Rationale	C. This knowledge can originate from a user setting in our	B. Capacity Estimation	C. Threshold	D. Decay Function	E. Dynamic Decay Rate Adaptation	L. This introduces two problems. First, what if the application	F. Decay Rate Reset	G. Extended Capacity Estimation	H. Traffic Injection	A. No Background Traffic	B. Background Traffic at M	C. Background Traffic at F	D. Capacity Decay	E. Influence of Threshold	F. Overestimation	G. Overhead
+06038656.pdf	2585	2371,0	1094,0	3148,0	1518,0	2913,0	96,0	1524,0	3055,0	1934,0	6092,0	1404,0	1517,0	1884,0	1051,0	1371,0	1421,0	11562,0
+
+		A. Related Work	B. Methodology	A. MTTF and MTTR Distribution	B. TTF and TTR Distribution	C. Peer Lifetime	A. Local CPU Load	B. Disk and Bandwidth Capacity	A. Fast Backup in Online Storage	B. Fault Tolerance in Cycle-sharing System
+06038657.pdf	5799	3326,0	2908,0	2838,0	5971,0	3702,0	2205,0	6346,0	8820,0	16081,0
+
+		A. The index falsification pollution	B. Strategy for detecting the index falsification	C. Similarity metric for pollution detection	A. Investigating the shared contents	B. Metric assessment	C. Quantification and characterization of KAD’s pollution
+06038658.pdf	2826	1297,0	3894,0	1085,0	1431,0	2559,0	6693,0
+
+		A. System Specification and Requirements	B. Workload	C. Metrics	D. Benchmark Implementation	A. Baseline	B. Scalability	C. Stability	D. Robustness	E. Discussion of Results
+06038659.pdf	4829	2761,0	5391,0	5369,0	5556,0	2273,0	2242,0	8212,0	800,0	10859,0
+
+		A. Informal Description	B. Formal Definition	C. Assumptions	A. Preliminary Simulations	A. Abstraction Layer and Random Overlay	B. Connectivity Measurement Protocol	A. Experimental Setup	B. Overlapping Networks	C. Dynamic Behavior and Convergence Time
+06038660.pdf	5968	2518,0	1631,0	15681,0	6849,0	2974,0	4005,0	4281,0	3179,0	12598,0
+
+		A. Tracker-Tier Neighbor Selection	B. Peer-Tier Neighbor Selection	C. Chunk Scheduling	A. Neighbor View Exchange	B. Swap Operation	A. Simulation Setup	B. Performance Metrics	A. Tracker Tier Neighbor Selection	B. Peer Tier Neighbor Selection	C. Chunk Scheduling	D. The DNA Protocol
+06038661.pdf	10026	3138,0	1310,0	5399,0	803,0	937,0	4393,0	4799,0	6296,0	37951,0	28164,0	17099,0
+
+	
+06038662.pdf	0
+
+		A. Chord	B. EpiChord	C. Symphony	A. !ID : Total Order of the Routing Table Set	B. Guarantee of Reachability	C. Entry Learning	D. Entry Filtering	A. GFRT-Chord	E. Let Gs denote a group that s belongs to. Consider a case	B. Extendibility of FRT	A. Entry Learning and Entry Filtering in FRT-Chord	B. Learning and Path Lengths in FRT-Chord	C. Path Lengths and the Number of Nodes in FRT-Chord	D. Path Lengths in GFRT-Chord
+06038664.pdf	3444	2435,0	1609,0	1893,0	4467,0	200,0	2440,0	8203,0	8140,0	1486,0	3204,0	3894,0	746,0	545,0	8964,0
+
+		A. The Kademlia DHT System	B. Content Management	C. Related Work	A. Load Distribution	B. Reliability and Diversity	C. Accuracy of the Candidate List	D. Summary of the Motivation	A. Content Publishing	B. Content Search	C. Discussion	A. Simulator Description and Settings	B. Results
+06038666.pdf	4599	2532,0	3351,0	2450,0	5085,0	3982,0	6908,0	3783,0	3653,0	2652,0	5898,0	3600,0	11301,0
+
+		A. Data Model	B. Filter Registration	C. Document Publishing	A. Problem Statement	B. Centralized solution	C. Discussion	A. Similarity-based Filter Replication	B. Document Forwarding	C. Cost Model	D. Cost Model Based Adaptive Replication	E. Splitting the Clusters of Replicated Terms	F. Maintaining Statistics	A. Experimental Settings	B. Study of the Centralized MTAF Solution	C. Study of DHT-based Solution	D. Comparison with STAIRS	D. Shasha. Filtering algorithms and implementation for very fast	J. Kubiatowicz. Tapestry: a resilient global-scale overlay for service
+06038667.pdf	2864	2302,0	2689,0	2141,0	3024,0	1806,0	2711,0	3473,0	1371,0	3673,0	2482,0	1541,0	1053,0	8234,0	1457,0	2497,0	6464,0	2929,0	1718,0
+
+		F. Oggier’s research for this work has been supported by the Singapore	A. Effect of selfish nodes	B. Effect of polluting nodes	C. Interpretation of the analysis
+06038668.pdf	14084	21622,0	7879,0	4539,0	22298,0
+
+		A. Data Assignments in Homogeneous Storage Systems	B. Data Assignments in Heterogeneous Storage Systems	C. Global Welfare / Overall Disk Consumption	A. Redundancy Model	B. Reciprocal Data Exchanges	C. Selfish and Uniform Peer Selection Policies	A. Overall Contributed Resources with Selfish Selection Policy	B. Overall Contributed Resources with Uniform Selection Policy	C. Selfish Selection Policy vs. Uniform Selection Policy	A. Solving the Reward Matrix W	B. Solving W Proportionally to Availability
+06038669.pdf	4417	1126,0	2408,0	1264,0	3172,0	1529,0	3752,0	1564,0	2515,0	9627,0	2871,0	18763,0
+
+		A. Problem Formulation	B. Extension to Downloads	A. Max-flow Formulation	B. Computational Complexity	A. Optimal Scheduling	A. Simulation Settings	B. Scheduling Strategies	C. Impact of Peer Set Size and Congestion	D. Optimal Congested Case	E. Downloads
+06038670.pdf	4658	5088,0	4793,0	2690,0	4600,0	6427,0	3917,0	3346,0	3402,0	1167,0	11155,0
+
+		A. Stability of residential gateways	B. System rationale	C. Gateway-assisted storage system	A. Parameters and data sets	B. Competitors	C. Simulation setup & Performance Metrics	A. Time to backup & restore results	B. Influence of targeted availability	C. Influence of code length k	D. Influence of the size of the network	E. Influence of the amounts of data to backup and restore	F. Resulting needs for storage dimensioning on buffers
+06038671.pdf	3804	2319,0	4674,0	4645,0	4048,0	1897,0	5307,0	4901,0	2926,0	389,0	923,0	612,0	13008,0
+
+	
+06038672.pdf	0
+
+	
+06038673.pdf	0
+
+	
+06038674.pdf	0
+
+		A. DTN with Dynamic Selection of Heterogeneous Networks	B. Seamless Authentication on DTN and cloud
+06038726.pdf	2844	1665,0	4024,0
+
+		A. Background	B. Problem formulation	C. Maximizing download speed and optimizing streaming	A. Current mechanisms in BitTorrent clients	B. A simulator for the current SSAP solution	C. A simulator for the current BAP solution	A. A graph-theoretical model for BitTorrent communities	B. Maximizing throughput	C. Max-min fairness algorithm	A. Communities studied	B. Extracting seeding capacities and seeding libraries	C. Upload and download bandwidths	A. Baseline	B. Torrent selection	C. Bandwidth allocation	A. Baseline	B. Torrent selection	C. Bandwidth allocation
+06038748.pdf	5913	1832,0	3362,0	2305,0	4866,0	1780,0	4413,0	2953,0	732,0	4583,0	1883,0	2395,0	1216,0	2195,0	4479,0	45630,0	2195,0	4479,0	15151,0
+
+		L.L. Zhu is with the College of Mathematics and statistics, Hubei Normal	A. Local Stability Analysis	B. Feedback Control for Singularity Induced Bifurcation
+06221597.pdf	5808	2725,0	7622,0	7078,0
+
+		G.T. Feng is with the School of Mathematics and Quantitative Economic-	J.H. Zhang and X.N. Zhang(email:zhangxinan@hotmail.com) are with
+06221598.pdf	7796	111,0	15482,0
+
+		L. X. Chen is with the Department of Electronic Engineering, Fudan 	A. Choosing the thresholds with the histogram  	B. Get the result image with the contoured product mutual 	A.  The comparison of two methods 	B. Comparison of the result image with different criteria 
+06221599.pdf	3188	2082,0	3732,0	2433,0	2786,0	4907,0
+
+		L.X. Yin is with the Ultrasound Imaging institute, Sichuan Academy of 
+06221600.pdf	11186	11186,0
+
+		A. Scalable Local Regional (SLR) Force	B. Adaptive Local Statistics of Expandable Kernel
+06221601.pdf	12184	5202,0	19166,0
+
+		A. Microbial isolates, Culture conditions and Plasmids. 	C. cupreum was a kind gift from King Mongkut Institute of 	B. Genomic DNA, Total RNA Isolation and RACE 	C. Construction of RNAi expression cassette  	A. Total RNA extraction 	C. Construction of RNAi expression cassette 	C. cupreum is an important filamentous fungus due to the 	C. cupreum forms part of the building blocks of the broader 
+06221602.pdf	3407	58,0	1702,0	2470,0	898,0	9632,0	4371,0	2782,0	5344,0
+
+		G.Z. Zheng is with the ShangRao Normal University, Jiangxi, 	L.T. Yu is with the Department of Systems Science, Beijing Normal 	L.S. Chen was with the Department of Systems Science, Beijing Normal 	D.H. Wang is with the Department of Systems Science, Beijing Normal 	A. Common Spatial Pattern 	B. Support Vector Machine 	A. Data Sources 	B. Data Selecting and Preprocessing 	C. Sample Selection according to Onset Time Point 	D. Feature Selection 	E. Constructing the CSP Filter and SVM Classifier 	F. The Framework 
+06221603.pdf	1769	93,0	406,0	341,0	2355,0	3450,0	1675,0	660,0	1387,0	935,0	1269,0	513,0	8152,0
+
+		F.T. Yu, M.H. Jiang, Y.J. Shen and W.R. Yuan are with the Institute
+06221604.pdf	33061	33061,0
+
+		H. Choi  is with the  Department of Computer and Communication 	A. ITS 	B. Variable Speed Limit 	A. Experimental Freeway 	B. Simulation and Calibration 	A. Bottleneck Station (BS) Searching 	B. VSL Start Station (VSS) Searching 	C. Number of Controlled Stations 	D. Calculation of VSL 	A. Speed Variations 	B. Travel Time 	C. Speed Difference between Stations 	D. Average Variations on VSL 
+06221605.pdf	2575	528,0	1691,0	2708,0	1379,0	5983,0	1624,0	2441,0	2579,0	5157,0	2320,0	924,0	1076,0	5072,0
+
+		G. Cheng and X.J. Wang are with NanYang Power Supply Company, 
+06221606.pdf	12504	12504,0
+
+		A. Diffusion of Gold 	A.N.  is with School of Engineering and  Technology in  Asian 	B.S. is with King Mongkut’s  Institute of Technology Ladkrabang 	B. Pin Layer Reversal Defect on TuMR Head 	C. Transient Heat Transfer 	A. The Bridging Defect Analysis 	B. Pin Layer Reversal and Reliability Test 	C. The Diffusion Effect After Heating. 	D. The Bridging Model Construction for Simulation 
+06221607.pdf	2560	1362,0	64,0	458,0	1211,0	847,0	3666,0	3066,0	1761,0	10607,0
+
+		C.Q. Zhu is with School of Electrical and Information Engineering, 	B. Yang is with School of Electrical and Information Engineering, 	A. Vehicle dynamics model  	B. Engine and motor torque distribution 	A. Torque distribution strategy  	B. Charge sustenance strategy  	A. Fuzzy torque controller 	B. Charge sustenance controller 	A. Simulation results 	B. Effects of weighted factor λ 
+06221608.pdf	2685	286,0	3750,0	1425,0	2539,0	1297,0	5265,0	986,0	1276,0	2438,0	7593,0
+
+	
+06221609.pdf	0
+
+	
+06221610.pdf	0
+
+		A. Surface matching strategy 	B.  Determination of the number of test-points  	C. Centroid-Based Matching 	D. Flexible Transversal Matching 	A.  Experimental Setup  	B.  Experimental Results 
+06221611.pdf	3081	1042,0	2935,0	885,0	4556,0	126,0	8946,0
+
+		A. System Description	B. Fuzzy logic systems	C. K-Filters Observer Design
+06221612.pdf	6884	1071,0	1370,0	18211,0
+
+	
+06221613.pdf	0
+
+		A. Transport Network Topological Structure 	B. Transport Demand Distribution Based On The Gravity 	C.  The Shortest Path  Routing  Strategy 	D. Simulation Model 	A. Transport Demand Distance Distribution 	B. Network Capacity 
+06221614.pdf	2549	2333,0	2221,0	921,0	2009,0	1852,0	5962,0
+
+		A. The Concept of the ISD 	B. The Detection Process of ISD Total in a Frame 	A. Experiment Environment and Evaluation Index 	B. Experiment Method 	C. Experiment Analysis and Result 
+06221615.pdf	3712	451,0	5909,0	3961,0	2762,0	5478,0
+
+		A. A Typical Non-cooperative Satellite 	B. The Design of Measurement Sensor 	A. Image and Camera Coordinates Systems 	B. Light and Camera Coordinates Systems 	C. Target and Camera Coordinates Systems 	D. Question of Pose Measurement 	A. Rectangle Reconstruction 	B. Pose Determination 
+06221616.pdf	3950	1711,0	3567,0	852,0	484,0	404,0	802,0	4933,0	18853,0
+
+		A. Preliminary on the Cheeger Constant	B. A Naive Approach	C. Single-weighted Cheeger Constant	A. The Multicommodity Flow Problem	B. Multi-weighted Cheeger Constant	A. Single Commodity Flow	B. Multicommodity Flow
+06682686.pdf	5348	692,0	2536,0	4202,0	1872,0	4351,0	6090,0	17693,0
+
+		A. Overview of the Problem	B. Network Model	C. PHY-Layer Authentication	A. Background: Precoded Duobinary Signaling (P-DS)	B. Embedding of ASa into MSa	C. Extraction of MSb and ASb	A. Resource Overhead	B. Message Signal’s Error Performance	C. Authentication Signal’s Error Performance	D. Authentication Rate	E. Security	F. Transparency
+06682687.pdf	3913	1413,0	1888,0	2743,0	6510,0	1571,0	4176,0	1533,0	2950,0	3445,0	1016,0	5057,0	14660,0
+
+		A. Network Model	B. Sensing Model	C. Attack Model	A. Nature of CPEs	B. Problem Statement	C. PUET Framework	A. Sequential Testing of Sensing Reports	B. Estimation of Parameters	C. Filtering out Falsified Sensing Reports	A. Testbed Setup	B. Attack Detection Performance	C. PU Detection Performance
+06682688.pdf	3260	3811,0	3162,0	3772,0	2625,0	1191,0	1046,0	2574,0	3971,0	3515,0	2573,0	2437,0	8443,0
+
+		A. Competing Mobile Networks	B. Communication Model	C. Jamming	D. Rewards	A. Basic Definitions and Objective	B. States and Actions	C. State Transition Probability Distribution	A. Q-learning Background	B. Decomposition of CMNG	C. Minimax-Q Learning for CMNG	D. Nash-Q Learning for CMNG	E. Friend-or-foe Q-learning (FFQ) for CMNG	A. Implementation	B. Simulation Setup	C. Experimental Scenarios	D. Results and Discussion
+06682689.pdf	2582	1351,0	1243,0	880,0	1563,0	2629,0	3562,0	7072,0	657,0	1442,0	781,0	829,0	4416,0	2100,0	1148,0	893,0	10760,0
+
+		A. Motivation: prioritized defense deployment	B. T -dominance: the concept	C. T -dominance: the algorithm	A. Dataset and methodology	B. Scenario and results
+06682690.pdf	9533	3797,0	2579,0	20954,0	2081,0	18257,0
+
+		A. Why the Social Botnet for Spam Distribution?	B. Optimal Social Botnet for Spam Distribution	C. Trace-driven Evaluation	A. Rise of Digital Influence	B. Botnet-based Digital-influence Manipulation
+06682691.pdf	9402	4585,0	15263,0	6890,0	1674,0	18598,0
+
+		A. Threat Model	B. Web Bots’ Threats	A. System Overview	B. Tagging Elements	C. Randomization	D. De-randomization	A. Implementation	B. Experiment Setup	C. Security Effectiveness	D. Performance Overhead of NOMAD	A. Attacking NOMAD with Hypothetical Future Bots	B. Enhancing NOMAD	C. Evaluation of Enhanced NOMAD	A. Analysis of Input	B. CAPTCHA Systems
+06682692.pdf	3013	2332,0	977,0	2969,0	2227,0	3194,0	1855,0	1342,0	2330,0	1686,0	4946,0	2261,0	4464,0	2049,0	1139,0	11434,0
+
+		A. Dataset	A. Validating malicious communities using blacklist	B. Well-known communities with standard port numbers	C. Variance of flow features within communities
+06682693.pdf	11365	17170,0	4688,0	3234,0	20371,0
+
+		A. Fingerprinting Tests	B. Fingerprinting Probes	A. Strategy Model	B. Belief Model	C. Payoff Model	A. Analysis Methodology: Perfect Bayesian Equilibrium	B. Fingerprinting Game: Results	A. Strategy Selection Mechanism	B. Implementation Issues	A. Performance and Characteristic Analysis	B. Accuracy Verification	A. The outputs of both cases are presented in Table V. We
+06682694.pdf	3818	4641,0	3006,0	8044,0	1465,0	5060,0	1361,0	2340,0	3264,0	901,0	6733,0	857,0	8148,0
+
+		A. Overview	B. Description	C. Advantages	A. Threat Model	B. Adversarial Tactics	C. Source Heuristic	A. Experiment Results	B. Cost Estimates
+06682695.pdf	5365	1189,0	2585,0	3310,0	1512,0	7770,0	12783,0	3046,0	10727,0
+
+		A. Network Model	B. Considered Attack	A. Design Objective	B. Challenge
+06682696.pdf	11514	2026,0	1299,0	2571,0	40162,0
+
+		A. System and Threat Model 	B. Design Goals 	A. Trust Management Framework 	B. Notations/Preliminaries and Definitions 	C. The Proposed Scheme 	D. Procedures 	A. Security Proofs 	B. Performance Analysis  
+06682697.pdf	6049	2145,0	1431,0	2136,0	1042,0	11043,0	12717,0	7148,0	10734,0
+
+		A. Related Work	B. Unique Factors of UANs	A. Security Vulnerabilities	B. Preliminary Attack Model	A. Improved Attack Model	B. Impact of Mobility
+06682698.pdf	7450	1683,0	9895,0	1711,0	13002,0	6824,0	11588,0
+
+		A. Motivation	B. Content Privacy in Current Geosocial Networks	C. Cryptographic Preliminaries and Assumptions	A. Network Model	B. Design Objectives	C. Adversarial Model	A. Overview	B. Identity Verification	C. Searchable Content Encryption	D. Ciphertext Update and User Revocation	A. Security and Privacy Analysis	B. Efficiency Analysis
+06682699.pdf	4291	2373,0	2964,0	1080,0	1993,0	1461,0	1876,0	1584,0	4491,0	9106,0	9529,0	3425,0	11619,0
+
+		A. Smart Grid Network Architecture	B. Attack Model	A. Framework Design	B. Collision-Free Channel Hopping Sequence Distribution	C. Intelligent Local Controller Switching with Channel Hop-	A. Testbed Setup	B. Implementation and Results	A. Simulation Setup	B. Metrics	C. Results
+06682700.pdf	4231	2285,0	3409,0	4430,0	2787,0	8435,0	682,0	1478,0	1133,0	1700,0	15980,0
+
+		A. Homomorphic Authenticable Signatures	B. Certificateless Signatures	A. Overview	B. Design of HA-CLS	C. Security Analysis of HA-CLS	A. Overview	B. Design of Certificateless Public Auditing	C. Security Analysis of Certificateless Public Auditing	A. Computation Cost	B. Communication Cost	C. Experimental Results
+06682701.pdf	6001	3045,0	1003,0	1022,0	1737,0	19161,0	20025,0	1175,0	5281,0	1295,0	711,0	11559,0
+
+		A. System Model	B. Security Model	C. Design Goals	A. Preliminaries and Notation	B. Our Construction	C. Auditing After Deduplication	D. Batch Auditing	E. Discussion	F. Security Proof	A. Numerical Analysis	B. Experimental Result
+06682702.pdf	3697	1813,0	768,0	1169,0	687,0	4454,0	2553,0	2218,0	1370,0	6857,0	8818,0	9965,0
+
+		A. Botnet Detection	B. Virtual Machine Introspection	C. Fingerprinting	A. Monitor the Guest OS in a Virtualized Environment	B. Learning-Based Bot Behavior Profile	C. Passive Bot Detection	D. Active Bot Fingerprinting	A. Passive Detection Agent	B. Active Detection Agent	C. Implementation	A. Data Source	B. Learning-based Bot Behavior Profiling	C. Passive Bot Detection	D. Active Bot Detection
+06682703.pdf	6523	1416,0	1496,0	1303,0	1049,0	1824,0	3814,0	3203,0	2623,0	404,0	5368,0	634,0	34593,0	24985,0	8622,0
+
+		A. Our Contributions	A. Homomorphic Encryption	B. PCP Model	C. Efficient Arguments without Short PCPs	D. Two Recent Efficient Arguments: PEPPER and GINGER	A. Commitment Construction	B. First Decommitment	C. Second Decommitment
+06682704.pdf	5972	2734,0	690,0	902,0	8571,0	6283,0	2111,0	976,0	25510,0
+
+		A. Problem Scenario	B. Threat Model	A. Initial Attempts	B. Design Strategies	C. CloudSafe Overview	A. Cryptographic Scheme for CloudSafe	B. Construction for the Cryptographic Scheme	A. Overview	B. Secure Key Distribution	C. Virtual Server Lifecycle and Authentication	A. Implementation	B. Evaluation
+06682705.pdf	3931	2006,0	1090,0	2140,0	2580,0	2993,0	2139,0	5122,0	2831,0	3376,0	1992,0	1398,0	19513,0
+
+		A. IDENTFICATION F CRACKS 	A. Classification of cracks 	B. Experimental Setup 	A. The ROC Method 
+06754844.pdf	2432	28,0	1105,0	1078,0	7517,0
+
+		A. Related Work	A. Dual-Tree Complex Wavelet Transforms	B. Dual-Tree Rotated Complex Wavelet Filters	A. Eigenvector Computation	B. Proposed Algorithm	A. Retrieval Examples
+06754846.pdf	2890	2340,0	2022,0	2063,0	1872,0	3820,0	5228,0
+
+		A. Gibbs Random Field 
+06754847.pdf	16020	16020,0
+
+		A. Line Detection	B. K-means Clustering	C. Averaging Pixels	D. Weighted Average
+06754848.pdf	3967	7124,0	2223,0	1418,0	5103,0
+
+		A. Preprocessing 	B. Text Line Segmentation 	C. Character Extraction 	D. Word Extraction 
+06754849.pdf	6287	330,0	5354,0	1211,0	18255,0
+
+		A. Scale space extrema detection	B. Keypoint localization	C. Orientation assignment	D. Keypoint descriptor	A. D. Patel Institute of Technology and Charutar Vidya
+06754850.pdf	2243	3367,0	628,0	649,0	4790,0	1784,0
+
+		A. Image Acquisation 	B. PreProcessing	C. Feature Extraction	D. Training	E. Testing	A. Global Features	B. Local Features	A. Creating BPNN	B. Training of BPNN	C. Testing using trained BPNN	A. Experiment 1	B. Experiment 2
+06754851.pdf	1872	857,0	5895,0	451,0	417,0	648,0	713,0	3659,0	1061,0	1403,0	790,0	662,0	5919,0
+
+		A. Skin components 	B. Skin Genetics 	A. First Order Statistics (FOS) 	B. Colourspace 	A. Image Capture 	B. Pre-processing 	C. FOS Calculations 	A. C. Kolamkar would like to thank all the families who 
+06754853.pdf	2923	2642,0	3975,0	928,0	3095,0	631,0	1708,0	3411,0	6999,0
+
+		A. Tournament Strategies	B. Scoring System
+06754854.pdf	6568	3258,0	9878,0
+
+	
+06754855.pdf	0
+
+		A. Patch Extraction	B. Inpainting
+06754858.pdf	4910	1270,0	8551,0
+
+		A. Active Illumination Equalization	B. Image Sharpening	C. Standard Deviation Filtering	D. Mirror Image Superposition	D. Significance of BPSO	E. Comparison with other FR system
+06754859.pdf	2990	1469,0	981,0	2118,0	5784,0	1424,0	6167,0
+
+		B.V. Santhosh Krishna, the cryptosystem consists of two 	A. Key Space Analysis 	B. Key Sensitivity Analysis 	C. Statistical Analysis 	D. Correlation co-efficient analysis 	E. Information entropy analysis 	F. Differential Analysis 
+06754860.pdf	3294	11094,0	629,0	254,0	1356,0	932,0	533,0	8262,0
+
+		A. Literature review	A. Fractal dimension by perimeter method	A. Pseudo code of region of interest extraction	B. Pseudo code of perimeter method
+06754861.pdf	4276	4368,0	2343,0	906,0	9488,0
+
+		A. Selection 	B. Non-uniform illumination correction 	C. Contrast Enhancement 	D. OD Localization and Elimination 
+06754862.pdf	4311	303,0	1961,0	1930,0	13050,0
+
+		A. CT Scan 	C. CT data set 	D. Pre-Processing	E. Region Growing 	F. Morphological Operations 
+06754863.pdf	2182	1878,0	463,0	497,0	498,0	7578,0
+
+		A. Conversion from RGB color space to CIELAB color 	B. K-mean Clustering 	C. Contrast Enhancement 	D. Blood vessel detection 	E. Hough Transform for circle 	F. Classifying Hard and Soft Exudates 
+06754864.pdf	1926	766,0	955,0	639,0	866,0	1667,0	6667,0
+
+		A. ADJPEG forgery detection 	B. NADJPEG forgery detection 	C. Primary Quantization Table Detection 	D. JPEG Ghost detection 	A. Detection of A-DJPG Compression 	B. Detection of NA DJPEG artifact 	C. Detection of Both A-DJPG and NA-DJPG Compression. 	D. Primary Quantization Table detection 	E. JPEG Ghost Detection 
+06754865.pdf	3366	1596,0	4869,0	1799,0	2473,0	3005,0	4214,0	1797,0	1126,0	9420,0
+
+		A. Colour Transformation  	B. Discrete Wavelet Transform 	C. K-means Clustering 
+06754866.pdf	4888	1040,0	1960,0	11664,0
+
+		A. Works on  Non-Kannada Scripts 	B.  Works on Kannada Script	A. The System Architecture of the Era Predictor 	B. Mathematical Background  	C. Methodology:     	D.  Functional Description of the Modules 	A.  Experimental Results 	B. Analysis of Prediction rate  
+06754872.pdf	3782	6891,0	2141,0	565,0	5545,0	2519,0	2371,0	628,0	9601,0
+
 		A. Background	B. Motivation	A. Hardware Design and Implementation	B. Time Synchronization	C. PSS Harvesting Circuit Design	A. Correlation Models	A. Frequency & Voltage & Phase Angle Measurement	B. Time Synchronization	C. Data Reconstruction
 07460660.pdf	6253	1158,0	3267,0	2677,0	2747,0	1696,0	4006,0	21501,0	13786,0	5445,0
 
@@ -297,6 +537,66 @@
 
 	
 08484718.pdf	0
+
+		A. Theoretical Problem Setting	B. Computer Simulation	B.CI	A. Variational Problem and Optimal Dividing	B. Pseudo-Entropy Functions
+08779876.pdf	3717	6085,0	1916,0	455,0	2014,0	8119,0
+
+		F./G
+08779885.pdf	7246	7246,0
+
+	
+08779890.pdf	0
+
+	
+08779904.pdf	0
+
+	
+08779905.pdf	0
+
+	
+08779914.pdf	0
+
+		A.ax
+08779931.pdf	7364	7364,0
+
+	
+08779941.pdf	0
+
+	
+08779979.pdf	0
+
+		A. Potential metrics and data description	B. Data analysis approach
+08779991.pdf	10918	7245,0	14592,0
+
+	
+08779998.pdf	0
+
+	
+08780013.pdf	0
+
+	
+08780029.pdf	0
+
+	
+08780031.pdf	0
+
+	
+08780043.pdf	0
+
+	
+08780044.pdf	0
+
+	
+08780077.pdf	0
+
+	
+08780086.pdf	0
+
+	
+08780091.pdf	0
+
+	
+08780110.pdf	0
 
 		A. HDD SMART Technology	B. Disk Fault Modes	A. Disk SMART Dataset	B. Critical SMART Attributes	C. Understanding Logical Disk Failures	A. Discovering the Start of Disk Degradation	B. Differentiated Disk Degradation Signatures	A. Prediction of Two Types of Disk Failures	B. Remediation of Logical Failures
 08831190.pdf	4243	1342,0	1429,0	3253,0	2748,0	3407,0	4256,0	3700,0	3926,0	14134,0

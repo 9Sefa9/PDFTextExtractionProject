@@ -50,10 +50,12 @@ public class    Document {
     //wird verwendet, um den string zu bearbeiten.
     public void setPdfTextStripper(PDFTextStripper strippper) {
         this.pdfTextStripper = strippper;
-
+        StringBuilder br;
         try {
-            String fullText = this.pdfTextStripper.getText(getPdfDocument());
-            setPdfText(fullText);
+            br = new StringBuilder();
+            br.append(this.pdfTextStripper.getText(getPdfDocument()));
+            //String fullText = this.pdfTextStripper.getText(getPdfDocument());
+            setPdfText(br.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }

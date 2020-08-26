@@ -1,0 +1,240 @@
+	Durschnitt	A. Local Constraint Checking	B. Cycle Checking	A. Metadata Store	B. The Query Template	C. Distributed Algorithms	A. Weak Scaling Experiments	B. Strong Scaling Experiments
+08048872.pdf	6900	3533,0	7386,0	692,0	578,0	10530,0	2490,0	23092,0
+
+		A. Motivation	B. Contributions	A. One-to-all (Scatter)	B. All-to-one (Gather)	C. All-to-all	A. All-to-all (Allgather)	B. One-to-all (Broadcast)	A. Summary of Results	B. MPI Scatter	C. MPI Gather	D. MPI Alltoall	E. MPI Allgather	F. MPI Bcast	G. Multi-Node Scalability
+08048873.pdf	4118	5128,0	9584,0	5722,0	2768,0	2508,0	6127,0	5259,0	1372,0	928,0	465,0	3647,0	867,0	2329,0	10961,0
+
+		A. Motivating Application	B. Region Templates Framework	A. Sensitivity Analysis Methods	B. Graphical Workflow Description and Deployment in RT	A. Multi-level Computation Reuse	B. Data Storage Layer	A. Performance Benefits of the Cooperative Execution using	B. Impact of Multi-level Computation Reuse and SA meth-	C. Performance with Hierarchical Storage
+08048914.pdf	5761	3879,0	4482,0	1623,0	1628,0	15457,0	5540,0	1824,0	6556,0	10867,0
+
+		A. Sunway Taihu Light Architecture	B. Related Work	C. Seed-and-Extend Approach	A. Large-Scale Inter-CG Parallelization	B. Multithreaded Intra-CG Parallelization	C. SIMD Vectorization	D. Exploiting Local Device Memory	A. Single-Node Performance Analysis	B. Comparison with RazerS3	C. Scalability Analysis
+08048915.pdf	3920	2423,0	1803,0	4593,0	5330,0	4028,0	2420,0	3243,0	3136,0	1880,0	10352,0
+
+		A. Storage Formats for Sparse Tensors	B. Parallel Sparse Tensor Algorithms and Implementations	A. Unified Form of Sparse Tensor Modes	B. The F-COO Storage Format	C. One-Shot Sparse Tensor Computations	D. Parallel Algorithms for Sparse Tensor Operations on	A. Performance Results and Analysis	B. Mode Behavior	C. Rank Behavior	D. Memory Consumption on GPUs	E. CANDECOMP/PARAFAC (CP) Decomposition on GPUs
+08048916.pdf	3775	2123,0	3918,0	1092,0	4921,0	2422,0	10558,0	1967,0	1232,0	776,0	646,0	11873,0
+
+		A. Progressive Refinement	B. Canopus vs. Multi-level Compression	C. Canopus vs. Adaptive Mesh Refinement	D. Challenges	A. Canopus Overview	B. Notation	C. Data Refactoring	D. Data Placement	E. Data Retrieval	A. Applications	B. Testbed and Assumptions	C. Write Performance	D. Impact on Data Analytics	E. Progressive Data Exploration
+08048917.pdf	3936	3112,0	1397,0	1354,0	2455,0	4381,0	2746,0	7443,0	1231,0	3937,0	2034,0	1476,0	1492,0	2992,0	19064,0
+
+		A. Storage Systems at Scale	B. MPI I/O and the Two-Phase I/O Scheme	A. Implementation of the Two-Phase I/O Scheme	B. Topology-aware aggregators placement	C. Abstraction of the Topology	A. Targeted supercomputers	B. Collective I/O Optimization with User-Defined Parameters	C. Microbenchmark	D. HACC-IO
+08048918.pdf	4708	2209,0	6004,0	4814,0	3280,0	1883,0	2658,0	3754,0	3325,0	14450,0
+
+		A. HPC: From strict to relaxed POSIX-IO API and semantics	B. Big data: from distributed file systems to object storage	C. Storage-based convergence between HPC and Big Data	A. Applications	B. Experimental configuration	C. Tracing HPC applications	D. Tracing Big Data applications
+08048919.pdf	4387	2789,0	1323,0	6202,0	834,0	872,0	1063,0	17631,0
+
+		A. Burst Buffer Enabled HPC System	B. Design Principles	A. Methodology	B. Key Results
+08048920.pdf	4780	1791,0	2418,0	4039,0	10875,0
+
+		A. Energy Models for Compute Servers	B. Cloud and HPC Simulators	A. Modeling Computation Times	B. Modeling Communication Times	C. Modeling the Energy Consumption of Compute Nodes	A. Computations: Unbiasing Emulation for Multi-core CPUs	B. Communications: Local Communications	C. Energy: Heterogeneity and Communication Polling	A. Validation Study	B. Scalability and Extrapolation
+08048921.pdf	5910	2134,0	6666,0	4102,0	3998,0	3678,0	12981,0	5145,0	4961,0	1578,0	13863,0
+
+		A. Processing Input Files	B. Generating metrics	C. Generating Models	A. Experiment environment	B. Benchmarks	C. Mini Application	D. Results
+08048922.pdf	5955	4020,0	2669,0	18164,0	245,0	833,0	1082,0	14676,0
+
+		A. Performance Loss in Parallel Execution	B. Ready Path Analysis	C. Spotting Delays	A. SparseLU	B. Alignment	C. FFT	D. Other benchmarks	J. Mellor-Crummey, and N. R. Tallent, “Hpctoolkit: Tools	K. Solchenbach, “Vampir: Visualization and analysis of mpi
+08048923.pdf	6177	4345,0	4298,0	7676,0	10906,0	6974,0	7942,0	9913,0	821,0	2725,0
+
+		A. System Setup	B. Application Analyses	C. Analysis of the Results	D. General Discussion
+08048924.pdf	7908	2426,0	1736,0	14143,0	13330,0
+
+		A. Solution Overview	B. Main Components	C. Semantic of QoS Guarantees	D. System Model	E. Prediction Module	F. Control Algorithm	G. Optimization Approach	A. Testbed architecture	B. Dask Framework and its distributed architecture	C. The attributes of synthetic datasets	D. Performance Improvement	E. Sensitivity analysis
+08048925.pdf	3508	1570,0	2119,0	2488,0	1832,0	1694,0	1931,0	7115,0	1215,0	820,0	1359,0	3959,0	15998,0
+
+		A. System Design	B. User Interface
+08048926.pdf	8916	7768,0	10065,0
+
+		A. GPU Memory Background	B. Initial Observations for Model Construction	A. General Description	B. The Calculation of Tcomp	C. Calculation of Tmem	D. Calculation of Toverlap	E. Other Details	A. Model Accuracy	B. Exploring Model Construction
+08048928.pdf	7070	3985,0	4617,0	2034,0	11996,0	15390,0	2097,0	6222,0	1960,0	15336,0
+
+		A. Network Topologies	B. Routing	C. Uni-directional Interconnection Networks	A. Network Topologies	B. Routing	C. Parallel Application Performance Evaluation	A. Distance to the Moore bound	B. Application performance	C. Layout and Cabling	D. Soft Error Tolerance
+08048929.pdf	6168	1500,0	1637,0	11300,0	1500,0	15494,0	5955,0	1160,0	4202,0	8635,0	10300,0
+
+	
+08048930.pdf	0
+
+		A. Dragonfly Topology	B. Dragonfly Network Studies	C. Performance Analysis Tools	A. Data Aggregation	B. Visualization Techniques	C. Interactive Analysis and Exploration	A. Communication Patterns	B. Routing Strategies	C. Application Performance Characterization	D. Inter-Job Interference
+08048931.pdf	5256	1017,0	1680,0	7006,0	1613,0	8200,0	2975,0	3246,0	2426,0	6582,0	17818,0
+
+		A. Notations	B. Graph Partitioning	C. Computation Engine & Programming Abstraction	D. Comparison	A. System Architecture	B. Spark-based Graph Pre-Processing	C. GAB-based Vertex-Centric Computation	A. All-in-All Vertex Replication	B. Edge Cache Mechanism	C. Hybrid Communication Mode	A. Performance of PageRank	B. Performance of SSSP
+08048937.pdf	4148	1268,0	3325,0	3781,0	2195,0	1674,0	6409,0	7721,0	4751,0	4196,0	5098,0	1247,0	8121,0
+
+		A. Model for LoWPAN Management	B. Demonstration Workflow	C. Analysis with Comparison
+08449785.pdf	2827	3528,0	1695,0	3258,0
+
+	
+08713073.pdf	0
+
+		A. NetTest Measurement Methodology	B. RTR Crowdsourced Testing	C. MONROE Controlled Testing	A. Statistical Properties	B. Features	A. Linear Interpolation	B. Curve Fitting with Simple Linear Regression	A. Overview of the Forecasting ML Algorithms	B. Feature Selection	A. Performance Comparison of the Forecasting Models	B. Trade-off Between Data Consumption and Error
+08792968.pdf	4651	2495,0	1353,0	1970,0	1308,0	8790,0	1306,0	2904,0	3854,0	9688,0	2455,0	15038,0
+
+		A. License-Plate-Recognition Camera	B. Measurement Accuracy	C. Measurement Errors	D. Data Cleansing	A. Arrival and Departure Pattern	B. Stay Duration Pattern	C. Parking Behaviour Users	A. Fitting a Poisson Distribution	B. Modeling Car-park Usage as a Queuing System
+08792972.pdf	4929	7868,0	1850,0	5901,0	4206,0	5810,0	1805,0	3052,0	5948,0	7925,0
+
+		A. Prerequisites	B. Example Scenario	C. Coordination Protocol	A. Simulation Setup	B. Lifetime of a Car in a Micro Cloud	C. Channel Utilization	D. Data Availability in Micro Cloud	E. Fraction of Data Available in Micro Cloud	F. Redundancy of Data in Micro Cloud	G. Number of Transmissions per Data Content
+08792973.pdf	3265	1461,0	757,0	7632,0	3613,0	920,0	1912,0	2336,0	2354,0	1378,0	10293,0
+
+		A. System model	B. Threat model	A. Witness advertisement	B. Witness selection	C. Confirmation messages	D. Whitelist filter	E. Network dynamics	F. Example of parameter selection	G. Operations on IoT devices	A. Simulation to evaluate confirmation throughput	B. Performance on IoT devices
+08792979.pdf	3431	3766,0	1446,0	1055,0	4782,0	3921,0	2591,0	1415,0	868,0	4181,0	4051,0	9669,0
+
+		A. System Overview	B. System Notations	C. Quality of Experience and Fairness	D. Backhaul Traffic and Data Processing	A. Retention-based Collaborative Caching (RBCC) Heuristic	B. Computational Complexity	A. Simulation Setup	B. Video Bitrate	C. Video Data Traffic	D. Processed Data	E. Impact of Cache Size	F. Impact of Edge Processing Capacity
+08792981.pdf	4147	2593,0	3781,0	4828,0	10047,0	5606,0	3892,0	3297,0	574,0	933,0	3001,0	1066,0	10152,0
+
+		A. System model	B. Problem formulation	D. Computational complexity	A. Reference scenarios and benchmarks	B. Results: synthetic scenario	C. Results: realistic scenario
+08792983.pdf	6017	2146,0	17671,0	1107,0	3970,0	3207,0	8006,0
+
+		A. Fronthaul-aware Resource Allocation in C-RAN	B. Bandwidth/Energy-efficient Resource Allocation in C-RAN
+08792996.pdf	7444	3529,0	11360,0
+
+		A. System Model	B. Computation Model	C. Problem Formulation	A. Optimal Resource Allocation under Given N	B. Mode Selection Based on Channel Gains	C. Time Sharing for Better Fairness	A. Optimal Resource Allocation under Given N	B. Binary Offloading Performance of TDMA
+08792997.pdf	8243	1668,0	3133,0	2122,0	3119,0	2692,0	20870,0	12920,0	19425,0
+
+		A. Smart Environment 	B. Crowd Measurements 	A. Overall System Architecture 	B. Design of Hardware and Software of Wireless Sensor nodes 	C. Design of the Server 	A. Network Bandwidth 	B. Database Storage 	C. Power Consumption 
+08793006.pdf	4742	3326,0	5789,0	3752,0	3742,0	5241,0	2135,0	2217,0	11739,0
+
+		A. Wireless Communication: The Silver Box	B. Virtual Cycling Environment	A. Considered Scenarios	B. Modeled Road Network	C. Recorded Bicycle Traces	D. Collision Detection	E. Simulation Setup	F. Evaluation
+08793008.pdf	4880	2613,0	7626,0	3633,0	1506,0	1346,0	1995,0	3728,0	16599,0
+
+		A. Procedure of Active Scanning	B. Causes of Active Scanning	C. Need of Machine Learning	A. Controlled Setup	B. Uncontrolled Setup	C. Challenges	A. Unsupervised Learning	B. Supervised Learning	C. Feature Importance
+08793010.pdf	4576	1147,0	2365,0	8059,0	4782,0	1594,0	3419,0	2505,0	2180,0	15135,0
+
+	
+08793011.pdf	0
+
+		A. Two-tier Network Architecture	B. Protocol stack	A. Internet Sharing	A. Phase I: Mesh Generation	B. Phase II: Mesh Discovery	C. Phase III: Mesh Bridging	A. Lower Tier	B. Upper Tier	C. Drone discovery
+08793029.pdf	4240	1568,0	11122,0	1433,0	865,0	9122,0	3404,0	1178,0	1262,0	8213,0
+
+		A. Network Model	B. Problem Formulation	A. Minimizing the makespan	B. Minimizing the average completion time	A. Minimizing the makespan	B. Minimizing the average completion time	A. Settings	B. Results
+08793031.pdf	5243	1871,0	1535,0	1975,0	14161,0	1975,0	13730,0	1656,0	5046,0
+
+		B. RPL Routing Protocol 	C. Constrained Application Protocol 	A. Control plane 	B. Topology Maintenance 	C. Forwarding 	A. SDN Controller 	B. Gateway 	C. SDN Nodes 	D. Forwarding example 	A. SND-Controller Resources 	B. SND-Node Resources 	A. Cooja simulations 	B. Testbed implementation 
+08793044.pdf	3445	2387,0	1648,0	2781,0	2003,0	2770,0	893,0	349,0	6027,0	3736,0	1526,0	2097,0	5398,0	13181,0
+
+		A. Heterogeneous LTE-WiFi Networks (HetNet)	B. Software-Defined Networking (SDN)	A. Centralized control	B. Traffic steering	C. Network reconfiguration	A. Parameter Tuning Heuristics	B. FDM Quick-start	C. Max-min Fairness	A. Mininet-WiFi Emulated Networks	B. SDN Controller	A. Static Network Test Scenario	B. Mobility Management Test Scenario	C. Dynamic Network Test Scenario
+08793045.pdf	3300	4427,0	1742,0	1350,0	2619,0	5198,0	2225,0	565,0	4132,0	2057,0	4068,0	3884,0	1792,0	8852,0
+
+		A. Knowledge Extraction	B. Knowledge Graph	C. Recommender Component	D. BPMN Parser	E. Interactive Graphical User Interface and API	F. User Feedback for Continuous Learning
+08793049.pdf	4476	4942,0	2987,0	2974,0	1028,0	2303,0	12622,0
+
+		A. Urban scenario	B. Rural scenario	C. Semi-rural scenario
+08793051.pdf	3601	1974,0	1359,0	7471,0
+
+		A. Basic Concepts 	B. Stability Evaluation Model 	A. Architecture of Infrastructure  for DKEM 	B. Evolution Patterns in DKEM 	A. Test Case and Experiment Environment 	B. Effectiveness Evaluation 	C. Efficiency Evaluation 
+08456325.pdf	4718	2289,0	2593,0	3394,0	8748,0	1091,0	3427,0	11488,0
+
+		A. Drivers and Passengers	B. Ridesharing example	C. Ridesharing constraints	D. Problem definition	E. Data Structure	A. Departure Time Pruning	B. Euclidean Distance Pruning	C. Road Network Distance Pruning	A. Dataset	B. Overall Performance	C. Inside the URoad
+08456326.pdf	3017	1143,0	663,0	1169,0	313,0	4321,0	950,0	5587,0	4801,0	1002,0	3569,0	9679,0
+
+		A. Convolutional Neural Network	B. Handwritten Chinese Character Recognition	C. Stroke Extraction and Matching	A. Architecture of Convolutional Neural Network	B. Print Font and Handwritten Based Print Font	C. Chinese Character Recognition Service	A. Experimental Datasets and Experiment Settings	B. Experimental Results and Analysis
+08456327.pdf	4588	2857,0	2177,0	2068,0	2393,0	2711,0	12018,0	2399,0	10087,0
+
+		A. Identification of Layers	B. Sequence Decoding and Evaluation	C. Genetic Operators
+08456328.pdf	7249	2145,0	809,0	18794,0
+
+		A. Matrix Factorization	B. Long Short-Term Memory	A. Overall Framework	B. Analysis of online QoS prediction using MF	C. Personalized LSTM	D. Personalized LSTM based Matrix Factorization	A. Experimental settings
+08456329.pdf	4201	596,0	1036,0	2161,0	1218,0	2230,0	5896,0	16274,0
+
+		A. Notation and Problem Definition	B. LSTM-based Feature Extraction	C. Autocorrelation-based Piecewise Prediction	A. Loss Function	B. Optimization	A. Dataset and Setup	B. Evaluation Scheme	C. Benchmarks	D. Quantitative Comparisons	E. Case Study
+08456330.pdf	2969	1030,0	2864,0	3707,0	1565,0	2442,0	2289,0	1015,0	2247,0	1467,0	11065,0
+
+		A. Creation process and overview	B. Defined taxonomies
+08456331.pdf	18380	5860,0	30901,0
+
+		A. Encrypter algorithms
+08456332.pdf	21281	21281,0
+
+		A. Cross-browser Issues 	B. XBIs Detection 	C. Example XBI and Root Cause Analysis 	A. Analyze DOM APIs invocation 	B. Analyze CSS properties 	C. Analyze HTML Elements 	A. Subjects 	B. Methodology 	C. Discussion of Results  	D. Case Studies 
+08456333.pdf	4264	3174,0	2770,0	8012,0	2749,0	2599,0	3292,0	2652,0	1036,0	4200,0	12156,0
+
+		A. Constraints on WSN Services Composition	B. WSN Services Compositions for Concurrent Requests	J. W. S. Liu, “A framework for fusion of human sensor
+08456334.pdf	7914	3456,0	17653,0	2635,0
+
+		A. Entity Feature Model	B. Refined Process Model	C. Ability Feature Model	A. Reusability	B. Efficiency	C. Effectiveness	A. Classical BPM	B. Artifact-centric BPM
+08456335.pdf	3813	1552,0	2010,0	8919,0	1332,0	1015,0	4570,0	1507,0	9603,0
+
+		A. Static Approaches	B. Dynamic Preference Based Approaches	C. Dynamic Service Based Approaches	D. Dynamic Preference And Service Based Approaches	A. Dynamic Preference Model	B. Gibbs Sampling	C. Dynamic Quality of Services	D. DPDQ Recommendation Algorithm	A. Dataset Description	B. Evaluation Metrics	C. Experiment Algorithms	D. Experimental Results Analysis
+08456336.pdf	2689	1786,0	517,0	696,0	2632,0	1709,0	4073,0	731,0	4490,0	325,0	1516,0	2104,0	11698,0
+
+		A. What-if Analysis	B. Modeling of web systems	C. Modeling of Workloads	D. Predicting Resource Consumption and QoS	A. Lightweight Workload Model	B. System Models with Multiple Layers	C. Log Mining	D. Validation and Prediction	A. Experimental Setting	B. Evaluation Results
+08456337.pdf	4155	1935,0	2474,0	2388,0	2130,0	4781,0	2530,0	4373,0	3748,0	1627,0	15572,0
+
+		A. Service Integration	B. Automatic Feedback Annotation	C. Human Intervention Mechanism	D. Service Application	A. When should we involve the human intervention proce-	B. Which service operation should be selected to annotate	C. Recommendation and Annotation	D. Human-Computer Interaction	A. Data	B. Efficiency Threshold to Involve Human Intervention	C. Operation Selection	D. Recommendation Evaluation
+08456338.pdf	2442	524,0	616,0	910,0	428,0	3069,0	2996,0	3852,0	2167,0	1119,0	1407,0	1796,0	10422,0
+
+		A. Basic Definitions in HIN	B. Problem Description	A. Meta Path based Similarity	B. Matrix Factorization based Latent Features	C. Factorization Machine based Recommendation Model	D. Model Learning	A. Dataset Description	B. Evaluation Metric	C. Performance Comparison	D. Study on Impact of Training Data Density	E. Study on Impact of H and K	F. Study on Impact of λ
+08456339.pdf	2508	1794,0	328,0	884,0	1312,0	5340,0	2073,0	503,0	1421,0	3346,0	947,0	1159,0	10992,0
+
+		A. Performance Benchmarking	B. Functional Testing	C. Service Virtualisation	D. Requirements	A. Input Data Selection	B. Scope	C. Processing Pipeline	D. Extraction	E. Synthesising Queries	F. Data Representation and Meta-Data
+08456340.pdf	3618	1158,0	950,0	745,0	7464,0	3444,0	3303,0	3040,0	2822,0	2261,0	10994,0
+
+		A. REST APIs	B. Stateful Services as “REST APIs”	C. Modelling and Refinement in Event-B	A. Service States with REST APIs	B. Design Approach	B. Description of the Development	C. Formal Verification of HBS	D. Proof Statistic
+08456341.pdf	5075	1270,0	2599,0	6932,0	1314,0	11277,0	4444,0	2573,0	10191,0
+
+		A. Motivation	B. Challenges	A. DASH and Time-slot System in MEC	B. Client-side Action Component	C. Center Node-side Action Component	D. Edge Node-side Action Component	A. Dataset Description	B. Experiment Setup	C. QoE Performance Comparison	D. Network Load Performance Comparison
+08456342.pdf	3679	1409,0	6271,0	3700,0	1820,0	5630,0	4408,0	1792,0	2214,0	1662,0	7891,0
+
+		A. Multiple-robot application and SLAM	B. Cloud based SLAM	A. Architecture overview	B. Group-based parallelism	C. Low latency data sharing model for SLAM	A. Scalability on robots	B. Environment with different scales	C. Real world evaluation
+08456343.pdf	4388	3091,0	1737,0	2729,0	3829,0	7058,0	3316,0	2978,0	10369,0
+
+		A. Motivation	B. Problem Description	A. Bipartite Graph in Dynamic Service Scheduling	B. Dynamic Schedule Mechanism	A. Data set and Environment	B. Metrix 	C. Experiment and Evaluation	A. Edge-computation-based service	B. Service Scheduling
+08456344.pdf	4050	4224,0	9737,0	2142,0	4616,0	1553,0	1152,0	3674,0	2266,0	7093,0
+
+		A. Layer-based Segmentation Strategy	B. Adaptive Enhancement Strategy
+08350911.pdf	9490	7682,0	11298,0
+
+		A. DNN: CNN + LSTM 	B. BiometricNET Architecture  	C. Implementation Details 
+08350983.pdf	4686	2547,0	1181,0	10330,0
+
+	
+08351076.pdf	0
+
+	
+08351103.pdf	0
+
+		A. Selection of Stereoscopic Retargeted Images 	B. Subjective Experiment 	A. Disparity Range Feature 	B. Boundary Disparity Feature 	C. Disparity Intensity Distribution Feature 	D. Image Quality Feature 
+08351198.pdf	3999	3776,0	3366,0	1419,0	2724,0	2707,0	10006,0
+
+		A. HDR Pinhole Array Mask	B. Synthesizing LDR Images	C. Constructing HDR Images	A. Processor Design	B. Hardware Performance
+08351257.pdf	3169	2049,0	2831,0	2994,0	2722,0	5252,0
+
+		A. Feature Extraction 	B. Joint Learning Of Gradient Dictionary 	C. Feature Preprocessing  	D. SVR Training  
+08351261.pdf	4194	2700,0	1544,0	1386,0	11147,0
+
+	
+08351264.pdf	0
+
+		A. The ISFET	B. Pixel Topology and Operation	A. Thermal System	B. Electrostatic System
+08351342.pdf	4221	1374,0	3943,0	2077,0	9492,0
+
+	
+08351351.pdf	0
+
+		A. Decimation	B. Drift Removal
+08351424.pdf	7121	2652,0	11590,0
+
+	
+08351454.pdf	0
+
+		A. Linear-Logarithmic Pixel Architecture	B. Logarithmic Mode Operation	C. Linear Mode Operation	D. Tunable Threshold Inverter Comparator	E. Shared Buffer	A. Preliminary Electrical Testing	B. VOC detection with Chemoresponsive Textiles
+08351551.pdf	2247	3190,0	1529,0	1037,0	1063,0	820,0	602,0	7492,0
+
+		A. Flexible Electrode Array	B. Wireless Neural Recording Module	A. Preprocessing	B. HD classifier	A. Generating Dataset	B. Classification Results
+08351613.pdf	2934	1407,0	2989,0	1033,0	2050,0	2170,0	7959,0
+
+		A. SVM with Linear Kernel	B. SVM with Nonlinear Kernels	C. Performance Comparison
+08351647.pdf	2064	694,0	920,0	4578,0
+
+	
+08351664.pdf	0
+
+	
+08351743.pdf	0
+
+		A. Metal Oxide Resistive Random Access Memory 	B. Spin-Transfer-Torque Magnetic Random Access Memory 	C. Phase-Change Random Access Memory 	D. Designing Energy-Efficient On-Chip Memory Systems 	B. In-Memory Computing 
+08351756.pdf	5069	1044,0	1208,0	1192,0	6285,0	15616,0
+
+	
+08351818.pdf	0
+
+		A. Memristor for Computing 	B. Crossbar Array Structure 	A. Sparse Coding  	B. Real-world Image Processing 	A. Online Dictionary Learning Algorithm 	A. Reservoir Computing 	B. Digit Recongition 	C. Solving Dynamic Nonlinear Problems 
+08351831.pdf	2499	899,0	1552,0	2818,0	1987,0	3596,0	1219,0	2793,0	5130,0
+
