@@ -15,13 +15,13 @@ public class Export extends Extractable {
      * @param path Gibt an, wohin das Dokument abgspeichert werden soll.
      */
     public void exportDocument(Document document, String path) {
-
+        File file1;
         //src\main\resources\colored08662658.pdf
         try {
             if(document==null)
                 throw new ExportException("DocumentHandler ist null!");
 
-            File file1 = new File(path);
+            file1 = new File(path);
             document.getPdfDocument().save(file1);
             //document.getPdfDocument().close();
             System.out.println("Datei erfolgreich exportiert unter "+path);

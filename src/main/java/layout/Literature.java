@@ -23,24 +23,33 @@ public class Literature implements Analyzable {
     @Override
     public void analyze() {
         System.out.println("Entering Literature Extraction on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
+        int lastPage1;
+        int lastPage2;
+        PageExtractor extract;
+        PDDocument newDocument;
+        String docText;
+        String []documentText;
+        int first;
+        int second;
+        StringBuilder b;
         for (Document document : this.handler.getDocumentsList()) {
 
-            int lastPage1= document.getPdfDocument().getNumberOfPages()-1 == 0 ? 1:document.getPdfDocument().getNumberOfPages()-1;
-            int lastPage2= document.getPdfDocument().getNumberOfPages();
+            lastPage1= document.getPdfDocument().getNumberOfPages()-1 == 0 ? 1:document.getPdfDocument().getNumberOfPages()-1;
+            lastPage2= document.getPdfDocument().getNumberOfPages();
             try {
-                PageExtractor extract = new PageExtractor(document.getPdfDocument(),lastPage1,lastPage2);
-                PDDocument newDocument = extract.extract();
+                extract = new PageExtractor(document.getPdfDocument(),lastPage1,lastPage2);
+                newDocument = extract.extract();
                 //der vorherige Dokument wird durch einen neuen PDDocument überladen.
                 document.setPdfDocument(newDocument);
                 //neuen PDFTextStripper zu initialisieren ist ein wichtiger schritt und darf nicht ausgelassen werden.
                 document.setPdfTextStripper(new PDFTextStripper());
 
-                String docText = document.getPdfText().toLowerCase();
+                docText = document.getPdfText().toLowerCase();
                 //Regex => logisches oder, mit characters, die nicht zwangsweise angenommen werden müssen, aber können.
                 // [abc] => a oder b oder c
-                String []documentText = docText.split("[-\\\\t,;.?!:@\\\\[\\\\](){}_*/]");
-                int first =0;
-                int second =documentText.length-1;
+                documentText = docText.split("[-\\\\t,;.?!:@\\\\[\\\\](){}_*/]");
+                first =0;
+                second =documentText.length-1;
 
                 //Anfangen soll man ab "referen"ces.
                 for(int i = 0; i<documentText.length;i++){
@@ -55,7 +64,7 @@ public class Literature implements Analyzable {
                 }
 
                 //bis zu der letzten Seite soll untersucht werden. (Erstmal normal printen)
-                StringBuilder b = new StringBuilder();
+                 b = new StringBuilder();
                 for (int i = first ; i<=second;i++){
                     b.append(documentText[i]);
                 }

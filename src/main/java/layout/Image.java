@@ -32,14 +32,18 @@ public class Image implements Analyzable {
     @Override
     public void analyze() {
         System.out.println("Entering Image Extraction on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
+        int imageCount;
+        PDResources pdResources;
+        PDXObject po;
+        PDImageXObject pio;
         for (Document document : this.handler.getDocumentsList()) {
             try {
-                int imageCount = 0;
+                imageCount = 0;
                 for (PDPage page : document.getPdfDocument().getPages()) {
-                    PDResources pdResources = page.getResources();
+                    pdResources = page.getResources();
                     for (COSName c : pdResources.getXObjectNames()) {
-                        PDXObject po = pdResources.getXObject(c);
-                        PDImageXObject pio=null;// = (PDImageXObject) po;
+                        po = pdResources.getXObject(c);
+                        pio=null;// = (PDImageXObject) po;
                         if(po instanceof PDImageXObject){
                             pio = ((PDImageXObject)po);
 

@@ -48,6 +48,10 @@ public class DocumentParser {
      * @param documentFiles beinhaltet eine Liste mit dem Namen des zugehörigen Konferenz und PDF File.
      */
     public void prepareList(ArrayList<KeyValueObject<String, File>> documentFiles) {
+        PDFTextStripper stripper=null;
+        PDDocument document=null;
+        Document newDocument=null;
+        String conferenceName,pdfName,pdfPath;
         try {
             // getKey() = Konferenzname, getValue() = Name des PDF Dokuments.
             for(KeyValueObject<String,File> docFile : documentFiles){
@@ -56,15 +60,17 @@ public class DocumentParser {
                     throw new ImportException("Null File in documentFiles!");
 
                 //Abspeichern von information
-                String conferenceName = docFile.getKey();
-                String pdfName = docFile.getValue().getName();
-                String pdfPath = docFile.getValue().getAbsolutePath();
+                conferenceName = docFile.getKey();
+                pdfName = docFile.getValue().getName();
+                pdfPath = docFile.getValue().getAbsolutePath();
 
                 //Erstelle ein Document mit den Informationen und lade den Dokument.
-                Document newDocument = new Document(conferenceName,pdfName, pdfPath);
+                newDocument = new Document(conferenceName,pdfName, pdfPath);
                 //Weitere Informationen speichern(wichtig für Extraktion..Wird voraussichtlich überladen in den Analyzable unterklassen.)
-                newDocument.setPdfDocument(PDDocument.load(docFile.getValue()));
-                newDocument.setPdfTextStripper(new PDFTextStripper());
+                document = PDDocument.load(docFile.getValue());
+                newDocument.setPdfDocument(document);
+                stripper = new PDFTextStripper();
+                newDocument.setPdfTextStripper(stripper);
 
                 //Zuletzt werden die Konferenz Namen in eine List gespeichert
                 this.conferenceNames.add(conferenceName);

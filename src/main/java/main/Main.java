@@ -15,11 +15,12 @@ public class Main {
     public static void main(String[] args) {
         java.util.logging.Logger.getLogger("org.apache.pdfbox").setLevel(java.util.logging.Level.SEVERE);
         long now = System.nanoTime();
+        Analyzable a;
         switch (args.length){
             case 0:{System.out.println("No arguments found!\nUsage: java -jar <DIR PATH OF FOLDER CONTAINING DOCUMENTS or DIR PATH OF ONLY 1 PDF DOCUMENT> <SAVEPATH FOR CSV EXPORT>");break;}
             case 1:{System.out.println("Only 1 argument found!\nUsage: java -jar <DIR PATH OF FOLDER CONTAINING DOCUMENTS or DIR PATH OF ONLY 1 PDF DOCUMENT> <SAVEPATH FOR CSV EXPORT>");break; }
             case 2:{
-                Analyzable a = new Analysis(args);
+                a = new Analysis(args);
                 a.analyze();
                 break;
             }

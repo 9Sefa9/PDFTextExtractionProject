@@ -29,8 +29,9 @@ public class Helper<E> implements PDFX {
      */
     public static void startPDF(String path) {
         if (Desktop.isDesktopSupported() && isWindows()) {
+            File myFile;
             try {
-                File myFile = new File(path/*"src\\main\\resources\\colored08662658.pdf"*/);
+                myFile = new File(path/*"src\\main\\resources\\colored08662658.pdf"*/);
                 Desktop.getDesktop().open(myFile);
             } catch (IOException ex) {
                 // no application registered for PDFs
@@ -73,9 +74,13 @@ public class Helper<E> implements PDFX {
      * @param text String
      */
     public static void print(String text){
+        StringBuilder br;
         try {
-            if (text != null)
-                System.out.println(text);
+            br = new StringBuilder();
+            if (text != null) {
+                br.append(text);
+                System.out.println(br.toString());
+            }
             else throw new EmptyException("text ist  null");
         }catch (EmptyException e){
             e.printStackTrace();
@@ -118,9 +123,11 @@ public class Helper<E> implements PDFX {
 
         Iterator<Float> keyIter = keys.iterator();
 
+        float key;
+        String value;
         while (keyIter.hasNext()) {
-            float key = keyIter.next();
-            String value = list.get(key);
+            key = keyIter.next();
+            value = list.get(key);
             list.put(key, value);
         }
     }

@@ -42,16 +42,18 @@ public class Metadata implements Analyzable {
     public void analyze() {
         System.out.println("Entering Metadata Extraction on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
         //iteriert über alle PDF die vorher importiert wurden.
+        PDDocumentInformation info;
+        String fixedTitle;
         for (Document document : documentParser.getDocumentsList()) {
           //  DateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
-            PDDocumentInformation info = document.getPdfDocument().getDocumentInformation();
+            info = document.getPdfDocument().getDocumentInformation();
             if (info.getTitle() == null || info.getTitle().isEmpty()) {
-                String fixedTitle = extract(document);
+                fixedTitle = extract(document);
                 this.pageSizesList.add(document.getPdfDocument().getNumberOfPages());
                 titlesList.add(fixedTitle);
 
             } else {
-                String fixedTitle = info.getTitle();
+                fixedTitle = info.getTitle();
                this.pageSizesList.add(document.getPdfDocument().getNumberOfPages());
                this.titlesList.add(fixedTitle);
                   //    System.out.println("Page Count=" + document.getPdfDocument().getNumberOfPages() + "\n" + "Title=" + info.getTitle() + "\n" + "Author=" + info.getAuthor() + "\n" + "Subject=" + info.getSubject() + "\n" + "Keywords=" + info.getKeywords() + "\n" + "Creator=" + info.getCreator() + "\n" + "Producer=" + info.getProducer() + "\n" + "Creation Date=" + formatter.format(info.getCreationDate().getTime()) + "\n" + "Modification Date=" + formatter.format(info.getModificationDate().getTime()) + "\n" + "Trapped=" + info.getTrapped());

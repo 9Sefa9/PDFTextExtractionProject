@@ -103,10 +103,11 @@ public class Section implements Analyzable {
     public void analyze() {
         System.out.println("Entering Section Extraction on " + Thread.currentThread().getName() + " :: " + Thread.currentThread().getId());
         for (Document document : this.handler.getDocumentsList()) {
+            String fullText;
             try {
                 this.docName = document.getPdfName();
                 // System.out.println(document.getPdfName());
-                document.setPdfTextStripper(new PDFTextStripper());
+              //  document.setPdfTextStripper(new PDFTextStripper());
 
 
               /*  document.getPdfTextStripper().setParagraphStart("\t");
@@ -118,7 +119,7 @@ public class Section implements Analyzable {
                     }
                 }
                */
-                String fullText = document.getPdfText();
+                fullText = document.getPdfText();
                 //System.out.println(fullText);
                 //  System.out.println(fullText);
                 //  System.out.println(fullText);
@@ -153,10 +154,11 @@ public class Section implements Analyzable {
 
         //  for (int i = 0; i < fullText.length(); i++) {
         //Chapter position bestimmung
+        int index;
         for (int j = 0; j < detectedChapterHeadersList.size(); j++) {
-            //TODO Positionen werden nicht ordentlich bestimmt.
 
-            int index = fullText.indexOf(detectedChapterHeadersList.get(j));
+
+            index = fullText.indexOf(detectedChapterHeadersList.get(j));
 
             if (index != -1) {
                 detectedChapterPositionsList.add(index);
@@ -164,9 +166,9 @@ public class Section implements Analyzable {
         }
         //Section position bestimmung
         for (int j = 0; j < detectedSectionHeadersList.size(); j++) {
-            //TODO Positionen werden nicht ordentlich bestimmt.
 
-            int index = fullText.indexOf(detectedSectionHeadersList.get(j));
+
+            index = fullText.indexOf(detectedSectionHeadersList.get(j));
 
             if (index != -1) {
                 detectedSectionPositionsList.add(index);
