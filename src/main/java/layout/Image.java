@@ -48,14 +48,15 @@ public class Image implements Analyzable {
                             pio = ((PDImageXObject)po);
 
                             if (po != null || pio != null) {
-                                //Die breite und höhe beträgt 20. Bei kleineren werten kommen winzige Bilder hinzu
+                                //Die breite und höhe soll mindestens 20 betragen. Bei kleineren werten kommen winzige Bilder hinzu und sind in Publikationen
+                                //nicht korrekt interpretierbar.
                                 if (pio.getWidth() > 50f && pio.getHeight() > 50f) {
-                                    // nbedingt beide kommentare auskommentieren, wenn die Bilder abgespeichert werden sollen auf Desktop.
-                                 //   File file = new File("G:/Users/Sefa/Desktop/TEST/" + System.nanoTime() / 1000 + ".png");
+                                    // unbedingt die folgenden kommentare auskommentieren, sonst werden die Bilder abgespeichert.
+                                 //   File file = new File("C:/Users/MaxMustermann/Desktop/ABbilderOrdner/" + System.nanoTime() / 1000 + ".png");
                                  //   BufferedImage img = pio.getImage();
                                  //   ImageIO.write(img, "png", file);
 
-                                  //  this.imagesList.add(new KeyValueObject<BufferedImage, Document>(img, document));
+
                                     imageCount += 1;
 
                                 }
@@ -71,10 +72,6 @@ public class Image implements Analyzable {
         }
         System.out.println("Entering Image Extraction on "+Thread.currentThread().getName()+" :: "+Thread.currentThread().getId());
     }
-
-  //  public List<KeyValueObject<BufferedImage, Document>> getImagesList() {
-   //     return this.imagesList;
- //   }
 
     public List<KeyValueObject<Integer, Document>> getImageCountList() {
         return this.imageCountList;

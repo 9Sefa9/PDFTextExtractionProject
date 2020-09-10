@@ -23,7 +23,7 @@ public class Helper<E> implements PDFX {
 
 
     /**
-     * Startet PDF Document (Windows)
+     * Startet PDF Document (Nur für Windows)
      *
      * @param path Pfad eines PDF Documents, der gestartet werden soll.
      */

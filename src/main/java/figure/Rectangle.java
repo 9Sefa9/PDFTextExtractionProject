@@ -11,6 +11,9 @@ import java.awt.*;
 
 import java.io.IOException;
 
+/**
+ * OPTIONAL:     Das Zeichnen von Rechtecken in ein Dokument. Muss zwingend mit dem Objekt "Export" exportiert werden.
+ */
 public class Rectangle extends Drawable {
     public Rectangle(float x, float y, float width, float height, Color color, PDDocument pdfDocument, int page) {
         super(x, y, width, height, color, pdfDocument, page);

@@ -10,8 +10,8 @@ import interfaces.Analyzable;
  * @version 1.0
  */
 public class Main {
-    //I:\Informatik\10.Semester\Bachelorarbeit\DatenAnsammlung src\\main\\resources\\08662658.pdf
-    //"src\\main\\resources\\08662658.pdf";
+    //Beispiel Pfad der Konferenze - Argument 1: "C:\Users\Extraktionsprogramm\SefaGoevercinBachelorarbeit\DatenAnsammlung"
+    //Beispiel Pfad wo CSV Dateien abgespeichert werden sollen - Argument 2: "C:\Users\MaxMustermann\Extraktionsprogramm\src\main\resources\08662658.pdf"
     public static void main(String[] args) {
         java.util.logging.Logger.getLogger("org.apache.pdfbox").setLevel(java.util.logging.Level.SEVERE);
         long now = System.nanoTime();

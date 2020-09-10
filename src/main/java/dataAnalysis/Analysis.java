@@ -24,23 +24,12 @@ public class Analysis implements Analyzable {
         this.args = args;
     }
 
-    //"src\\main\\resources\\sectionClass.csv"
     @Override
     public void analyze() {
         imp = new Import();
         handler = new DocumentParser();
         imp.importDocument(handler, args[0]);
 
-
-        //   character = new Character(handler);
-        //   word = new Word(handler);
-        //    image = new Image(handler);
-        //    literature = new Literature(handler);
-
-        //       Analyzable[] analyzableDocument = {metadata,literature,character,word};
-        //      for (Analyzable a : analyzableDocument) {
-        //           a.analyze();
-        //      }
         Thread t6 = new Thread(() -> {
             analysis6();
         });
@@ -68,7 +57,6 @@ public class Analysis implements Analyzable {
             t6.setName("ANALYSIS 6");
 
             t1.start();
-            //  Thread.sleep(2000);
             t1.join();
             t2.start();
             Thread.sleep(1000);
@@ -276,7 +264,7 @@ public class Analysis implements Analyzable {
             }
             //Hier wird die Positionsausfindigung fertig gestellt-
 
-            //Jetzt wird unterteilt zwischen gut und schlecht.
+            //Jetzt wird unterteilt zwischen allgemein und spezifisch.
             String[] relevantHeaderDefines = {"Abstr", "INTROD", "MOTIVAT", "INTRID", "CONCL", "ACKNOWLED", "REFEREN", "RELATE", "EVALUA", "RESUL", "DISCUSS"};
             float irrelevantHeaderPosAll = 0;
             //Wichtig für die Durschschnittsberechnung
@@ -418,7 +406,6 @@ public class Analysis implements Analyzable {
                 }
             }
             //chapter name List
-            //Äquivalent zur Iteration von k< section.getChapterList().get(i).getKey().size ...  chapterNameList.add(section.getChapterList().get(i).getKey().get(k));
             chapterNameList.addAll(section.getChapterList().get(i).getKey());
             //int list to string array
             String[] tmpIntArr = new String[intList.size()];
@@ -426,19 +413,19 @@ public class Analysis implements Analyzable {
                 tmpIntArr[j] = (((int) intList.get(j)) + ",0");
 
             }
-            //Hier wird die Positionsausfindigung fertig gestellt. JETZT:
-
-            //Identifizeren, welche allgemin und welche spezfiische Kapitel ist.
+            //Hier wird die Positionsausfindigung fertig gestellt.
 
         }
-        //Kategorisiere nun die jeweiligen Header zu den array lists.  Also :
-        // Arralist relevantHeaderLengths
+        //Identifizeren, welche allgemin und welche spezfiische Kapitel sind:
+        //Kategorisiere dazu die jeweiligen Header zu den array lists.  Also :
+        // Arralist =>   relevantHeaderLengths :
+
         // ArrayList 1 = ALle Abstrakte.
         // ArrayList 2 = Alle Itroduction.
         // ....
         // bis RelevantHeaderDefines.
-        //  Helper.print(chapterNameList);
-        //Ab hier beginnt die aussortierung von Allgemein zu Sekundär.
+
+        //Ab hier beginnt die aussortierung zwischen "allgemein" und "spezifisch".
         String[] relevantHeaderDefines = {"Abstr", "INTROD", "INTRID", "RELATE", "BACKG", "APPROA", "CONCLUS", "ACKNOWLED", "REFEREN", "EVALUA", "RESUL", "DISCUSS"};
         ArrayList<ArrayList<String>> relevantHeaderLengths = new ArrayList<>();
         boolean found;
@@ -475,9 +462,6 @@ public class Analysis implements Analyzable {
             if (found) {
                 relevantHeaderLengths.get(foundRelevantIndex).add(intList.get(j) + "");
             }
-            if (!found) {
-                // System.out.println(chapterNameList.get(j));
-            }
 
         }
 
@@ -490,7 +474,7 @@ public class Analysis implements Analyzable {
                 //bereite preparedArray Vor, um in die csv abzuspeichern
                 preparedArray[j] = relevantHeaderLengths.get(i).get(j);
             }
-            //  csv.writeCSV(Helper.toStringArray(relevantHeaderLengths.get(0)));
+
             csv.writeCSV((String[]) Helper.concatenate(new String[]{relevantHeaderDefines[i]}, preparedArray));
         }
 
@@ -499,130 +483,5 @@ public class Analysis implements Analyzable {
         intList.clear();
 
         csv.closeWriter();
-    }
-
-
-    //TODO beinhaltet die siebte Analyse:
-    private void analysis7() {
-        Section section = new Section(handler);
-        section.analyze();
-
-        //TODO von einem Kapitel zum anderen die character zahlen itereieren und abspeichern.
-        CSV csv = new CSV(args[1].concat("\\analysisAllgemeinSplittedKapitel" + (System.nanoTime() / 100000) + ".csv"));
-
-
-        List<String> chapterNameList = new ArrayList<>();
-        List<Integer> intList = new ArrayList<>();
-
-        for (int i = 0; i < handler.getDocumentsList().size(); i++) {
-            KeyValueObject<List<Integer>, Document> eachDocument = section.getChapterPositionsList().get(i);
-
-            // positionen der Chapters in Dokument 0:
-            List<Integer> positions = eachDocument.getKey();
-            for (int j = 0; j < positions.size(); j++) {
-                //wenn bis Reference erreicht wurde, dann soll die Position auch nur bis dahin kalkulieren.
-                if (j < section.getChapterList().get(i).getKey().size()) {
-                    int introductionPos = positions.get(j);
-
-                    //Wenn am Ende der Zeile erreicht, subtrahiere mit Ende der Zeile.
-                    if (j == section.getChapterList().get(i).getKey().size() - 1) {
-                        introductionPos = eachDocument.getValue().getPdfText().length() - positions.get(j);
-                    }
-                    //Der index des nächsten Kapitels ist immer größer als der vorherige. Die Bedingung muss daher gelten.
-                    if (j + 1 < positions.size() && positions.get(j + 1) > positions.get(j))
-                        introductionPos = positions.get(j + 1) - positions.get(j);
-
-                    //else
-                    intList.add(introductionPos);
-                }
-            }
-            //chapter name List
-            //Äquivalent zur Iteration von k< section.getChapterList().get(i).getKey().size ...  chapterNameList.add(section.getChapterList().get(i).getKey().get(k));
-            chapterNameList.addAll(section.getChapterList().get(i).getKey());
-            //int list to string array
-            String[] tmpIntArr = new String[intList.size()];
-            for (int j = 0; j < intList.size(); j++) {
-                tmpIntArr[j] = (((int) intList.get(j)) + ",0");
-
-            }
-            //Hier wird die Positionsausfindigung fertig gestellt. JETZT:
-
-            //Identifizeren, welche allgemin und welche spezfiische Kapitel ist.
-
-        }
-        //Kategorisiere nun die jeweiligen Header zu den array lists.  Also :
-        // Arralist relevantHeaderLengths
-        // ArrayList 1 = ALle Abstrakte.
-        // ArrayList 2 = Alle Itroduction.
-        // ....
-        // bis RelevantHeaderDefines.
-        //  Helper.print(chapterNameList);
-        //Ab hier beginnt die aussortierung von Allgemein zu Sekundär.
-        String[] relevantHeaderDefines = {"Abstr", "INTROD", "INTRID", "RELATE", "BACKG", "APPROA", "CONCLUS", "ACKNOWLED", "REFEREN", "EVALUA", "RESUL", "DISCUSS"};
-        ArrayList<ArrayList<String>> relevantHeaderLengths = new ArrayList<>();
-
-
-        for (int i = 0; i < relevantHeaderDefines.length; i++) {
-            relevantHeaderLengths.add(new ArrayList<String>());
-        }
-
-        for (int j = 0; j < chapterNameList.size(); j++) {
-
-            boolean found = false;
-            int foundRelevantIndex = 0;
-
-            //selektiere alle irrelevanten und relevanten Daten.
-            for (int k = 0; k < relevantHeaderDefines.length; k++) {
-
-                //Wenn der ChapterName irrelevant ist:
-                if (!chapterNameList.get(j).trim().contains(relevantHeaderDefines[k])) {
-                    foundRelevantIndex = k;
-                    found = false;
-
-                }
-                //Ansonsten ist es ein relevanter ChapterName.
-                else {
-                    foundRelevantIndex = k;
-                    found = true;
-
-                    break;
-                }
-
-            }
-
-
-            if (found) {
-                relevantHeaderLengths.get(foundRelevantIndex).add(intList.get(j) + "");
-            }
-
-        }
-
-        //Schreibe nun die Daten entsprechend in die Zeilen! nicht in die Spalte!(Wollte mal auch was anderes probieren...
-        for (int i = 0; i < relevantHeaderLengths.size(); i++) {
-            String[] preparedArray = new String[relevantHeaderLengths.get(i).size()];
-            for (int j = 0; j < relevantHeaderLengths.get(i).size(); j++) {
-
-                //bereite preparedArray Vor, um in die csv abzuspeichern
-                preparedArray[j] = relevantHeaderLengths.get(i).get(j);
-            }
-            //  csv.writeCSV(Helper.toStringArray(relevantHeaderLengths.get(0)));
-            csv.writeCSV((String[]) Helper.concatenate(new String[]{relevantHeaderDefines[i]}, preparedArray));
-        }
-
-
-        chapterNameList.clear();
-        intList.clear();
-
-        csv.closeWriter();
-    }
-
-    //TODO beinhaltet die fünfte Analyse:
-    private void analysis8() {
-
-    }
-
-    //TODO beinhaltet die sechste Analyse:
-    private void analysis9() {
-
     }
 }

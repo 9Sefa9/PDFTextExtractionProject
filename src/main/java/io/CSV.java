@@ -14,8 +14,6 @@ public class CSV {
     private CSVReader reader;
     private FileReader fileReader;
 
-    //Inkrementoren
-    private int i,j;
 
     public CSV(String commonPath){
         try {
@@ -58,27 +56,7 @@ public class CSV {
     public void writeCSV(List<String[]> values) {
         writer.writeAll(values,true);
     }
-/*
-    /**
-     * Liest eine *.csv Datei bezüglich csvFile
-     * TODO könnte gemacht werden.
-     *
-     * @param csvFile Der Pfad einer *.csv der abgelesen werden soll.
 
-
-    public void readCSV(String csvFile) {
-        try {
-
-            String[] line;
-            while ((line = reader.readNext()) != null) {
-                System.out.println("Country [id= " + line[0] + ", code= " + line[1] + " , name=" + line[2] + "]");
-            }
-
-        } catch (IOException | CsvValidationException i) {
-            i.printStackTrace();
-        }
-    }
-*/
     public synchronized void closeWriter() {
         try {
             if (this.writer != null) {

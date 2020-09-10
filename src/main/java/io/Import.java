@@ -45,9 +45,9 @@ public class Import extends Extractable {
         else if (dirPathFile.isDirectory()) {
             findPDFrecursiv2(handler, dirPathFile);
         }
-
-        // Die Anzahl der KOnferenzen kann  erst mal  ausgeschlossen werden,,
         System.out.println(" PDFs bzw. Publikation: " + getDetectedFiles().size());
+
+        //Extraktionsprozess beginnt mit dem Handler
         handler.prepareList(detectedFiles);
 
     }
@@ -75,7 +75,7 @@ public class Import extends Extractable {
 
     }
 
-
+    //ignore
     private void findPDFrecursiv(DocumentParser handler, String dirPath) {
         File file;
         String absolutePath;
@@ -125,14 +125,18 @@ public class Import extends Extractable {
     }
 
     /**
-     * NullFunction
+     * Empty Function.
      */
     @Override
     public void exportDocument(Document document, String path) {
     }
 
+    /**
+     * Gibt die Namen aller Dokumente zurück.
+     *
+     */
     public String[] getDocumentNames() {
-        //der size gefällt mir nicht. ist nicht korrekt. Sollte aber kein problem sein.
+
         String[] documentNames = new String[getDetectedFiles().size()];
         for (int i = 0; i < getDetectedFiles().size(); i++) {
             documentNames[i] = getDetectedFiles().get(i).getValue().getName();

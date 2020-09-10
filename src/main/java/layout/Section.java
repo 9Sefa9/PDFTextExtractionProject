@@ -26,7 +26,7 @@ public class Section implements Analyzable {
     private String docName;
     //private Listen, wichtig zur Berechnung.
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+    //KAPITEL Handling:
 
     //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Kapitel beginnen kann. Könnte erweitert werden.
     private final String[] chapterHeaderDefines = {
@@ -65,7 +65,7 @@ public class Section implements Analyzable {
 
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+    //ABSATZ Handling:
 
     //beinhaltet Anfangsbuchstaben / Phrasen mit der ein Abschnitt beginnen kann. Könnte erweitert werden.
     private final String[] sectionHeaderDefines = {
@@ -81,7 +81,7 @@ public class Section implements Analyzable {
 
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //Öffentlich zugänglich:
+
     private List<KeyValueObject<List<String>, Document>> chapterList;
     private List<KeyValueObject<List<String>, Document>> sectionList;
     private List<KeyValueObject<List<Integer>, Document>> chapterPositionsList;
@@ -97,7 +97,7 @@ public class Section implements Analyzable {
     }
 
     /**
-     * Analysiert die vorhanden sections innerhalb des PDF Dokuments.
+     * Analysiert die Kapiteln und Absätze innerhalb des PDF Dokuments.
      */
     @Override
     public void analyze() {
@@ -106,24 +106,8 @@ public class Section implements Analyzable {
             String fullText;
             try {
                 this.docName = document.getPdfName();
-                // System.out.println(document.getPdfName());
-              //  document.setPdfTextStripper(new PDFTextStripper());
 
-
-              /*  document.getPdfTextStripper().setParagraphStart("\t");
-                document.getPdfTextStripper().setSortByPosition(false);
-                for (String line:  document.getPdfTextStripper().getText(document.getPdfDocument()).split( document.getPdfTextStripper().getParagraphStart())) {
-                    if (!line.isEmpty()) {
-                        System.out.println(line);
-                        System.out.println("********************************************************************");
-                    }
-                }
-               */
                 fullText = document.getPdfText();
-                //System.out.println(fullText);
-                //  System.out.println(fullText);
-                //  System.out.println(fullText);
-                //     System.out.println(fullText);
 
                 findHeaders(fullText);
                 calculatePositions(fullText);
@@ -133,7 +117,6 @@ public class Section implements Analyzable {
                 this.sectionPositionsList.add(new KeyValueObject<>(detectedSectionPositionsList, document));
                 this.chapterPositionsList.add(new KeyValueObject<>(detectedChapterPositionsList, document));
 
-                // System.out.println(fullText+"\n*******************************************************************");
             } catch (Exception i) {
                 i.printStackTrace();
             }
@@ -152,8 +135,7 @@ public class Section implements Analyzable {
         detectedChapterPositionsList = new ArrayList<>();
         detectedSectionPositionsList = new ArrayList<>();
 
-        //  for (int i = 0; i < fullText.length(); i++) {
-        //Chapter position bestimmung
+        //Chapter(Kapitel) position bestimmung
         int index;
         for (int j = 0; j < detectedChapterHeadersList.size(); j++) {
 
@@ -164,7 +146,7 @@ public class Section implements Analyzable {
                 detectedChapterPositionsList.add(index);
             }
         }
-        //Section position bestimmung
+        //Section(Absatz) position bestimmung
         for (int j = 0; j < detectedSectionHeadersList.size(); j++) {
 
 
@@ -186,35 +168,24 @@ public class Section implements Analyzable {
     private synchronized void findHeaders(String fullText) {
         detectedChapterHeadersList = new ArrayList<>();
         detectedSectionHeadersList = new ArrayList<>();
-        // System.out.println(fullText);
+
         String[] str = fullText.split("(\r\n|\r|\n|\n\r|\t)");
-        //System.out.println(str.length);
+
+        //Zu Optiomierungszwecken verwendet, damit die Schleife nicht wieder von vorne beginnt zu überprüfen
         int oldFoundedJChapter = 0;
         for (int i = 0; i + 1 < str.length; i++) {
-            //str[i] = str[i].replaceAll(".*[\\\\/$§#*~{}^()=@°:;*\"\\[\\]\n\t]", " ").trim();
-            //[,.\-{}@\\$;()°=\[\]:^~/#]
 
-            // Funktionierende Version. ALlerdings werden i.e. mit aufgenommen und die chapter werden nciht akzeptiert von anderen papern: .*^[^\[0-9\]].*([A-Z]|[0-9])*[^,\-.]$
-            //  str[i] = str[i].replaceFirst("\\s+", "");
-            //   str[i] = str[i].replaceAll("\\w", " ");
-            //TODO Hardgecoded... FYR's hat apostroph probleme... dann würde es safe funktionieren..
-            //TODO all exxcept first few letters regex
-            // str[i] = str[i].replaceAll("’","");
-         //   System.out.println(str[i] + "\n+*+++**+++***+");
-
-
+            //Reguläre Ausdrücke filtern solche, die keine Kapiteln sind.
             if (!str[i].isEmpty() && str[i].length() < 90 && str[i].length() > 3 && (Character.isUpperCase(str[i].charAt(0)) || Character.isDigit(str[i].charAt(0))) && str[i].matches("(.*^[^\\[0-9\\]].*(\\w|[0-9])*[^,.;%$=:]$|.*^[0-9]+\\s*[A-Z]+)")) {
-                //str[i] = StringUtils.deleteWhitespace(str[i]);
 
                 for (int j = oldFoundedJChapter; j < chapterHeaderDefines.length; j++) {
 
 
                     if (str[i].startsWith(chapterHeaderDefines[j]) || str[i].equals(chapterHeaderDefines[j])) {
+                        //Wurde ein Kapitel gefunden ? abspeichern unter den erkannten listen.
                         detectedChapterHeadersList.add(str[i]);
-                        //Optimierungszweck, damit nicht von vorne gesucht werden muss.
-                       // oldFoundedJChapter = oldFoundedJChapter >= 2 ? oldFoundedJChapter - 1 : 0;
+
                         oldFoundedJChapter =j;
-                     //   System.out.println(str[i]);
                         break;
                     }
 
@@ -224,17 +195,16 @@ public class Section implements Analyzable {
         //VariableLimit sorgt dafür, dass immer nur bis zur Reference nach Abschnitten gesucht werden. Falls kein Reference extrahiert werden konnte, bleibt es bei der normalen Dokumenten Länge str.length.
         int variableLimit = str.length;
         for (int i = 0; i + 1 < variableLimit; i++) {
-            //A.Skowron (Eds.).
-            //  System.out.println(str[i] + "\n+*+++**+++***+");
+            //Reguläre Ausdrücke filtern solche, die keine Absätze sind .
             if (i > 20 && !str[i].isEmpty() && str[i].length() < 80 && str[i].length() > 3 && str[i].matches(".*^[^\\[0-9\\]]*[^,\\[\\].]$")) {
-                    //System.out.println(str[i] + "\n+*+++**+++***+");
+
                 variableLimit = (str[i].startsWith("REFE") ? i : str.length);
                 for (int j = 0; j < sectionHeaderDefines.length; j++) {
 
-                    if ((str[i].startsWith(sectionHeaderDefines[j]) || str[i].equals(sectionHeaderDefines[j])) /*&& this.docName.equals("05942046.pdf")*/) {
+                    if ((str[i].startsWith(sectionHeaderDefines[j]) || str[i].equals(sectionHeaderDefines[j]))) {
+                        //Wurde ein Absatz gefunden ? abspeichern unter den erkannten listen.
                         detectedSectionHeadersList.add(str[i]);
-                        //   oldFoundedJSection = oldFoundedJSection == 0 ? 0 : oldFoundedJSection;
-                        //System.out.println(str[i]);
+
                         break;
 
                     }
@@ -244,42 +214,7 @@ public class Section implements Analyzable {
         }
 
     }
-            /*
-
-                    //  System.out.println(str[i]+"\n+*+++**+++***+");
-                    // if (java.lang.Character.isDigit(str[i].charAt(0))) {
-                    //     if (java.lang.Character.isUpperCase(str[i].charAt(2))) {
-                    //     System.out.println("1    " + str[i] + "\n+*+++**+++***+");
-                    if (str[i].startsWith(chapterHeaderDefines[j])) {
-                        String[] test = str[i].split(" ");
-                        boolean containsUppercase = false;
-                        if (test != null) {
-                            for (int k = 0; k < test.length; k++) {
-                                if (test[k].length() > 4) {
-                                    //System.out.println("TEST: " + k + ": " + test[k]);
-                                    containsUppercase = (StringUtils.isAllUpperCase(test[k]) || str[i].startsWith(chapterHeaderDefines[j]));
-                                    if (Character.isUpperCase(test[k].trim().charAt(0)) && StringUtils.isAllLowerCase(test[k].trim().substring(1))) {
-                                        // System.out.println("CHARACTERUPPERCASE:  "+test[k]);
-                                    }
-                                }
-                            }
-                        }
-                        if (containsUppercase)
-             */
-    //  System.out.println("2      " + str[i] + "\n+*+++**+++***+");
-    //   break;
-
-    //  }
-
-
-                 /*   if(str[i].startsWith(chapterHeaderDefines[j]) && (java.lang.Character.isUpperCase(str[i].charAt(1)) || java.lang.Character.isUpperCase(str[i].charAt(2)))){
-                        System.out.println("zweiter IF:"+str[i]+""+" length: "+str[i].length()+"\n+*+++**+++***+");
-                        detectedChapterHeadersList.add(str[i]);
-             ]       }*/
-
-
-    // System.out.println(count);
-
+    //Getter und Setter
 
     public List<KeyValueObject<List<String>, Document>> getChapterList() {
         return this.chapterList;
@@ -305,109 +240,3 @@ public class Section implements Analyzable {
         return this.detectedSectionPositionsList;
     }
 }
-
-
-//  System.out.println(s);
-//   for (int i = 0; i < str.length; i++) {
-//      if (str[i] != null && !str[i].isEmpty()) {
-//           if (str[i].length() < 60 && str[i].length() > 10 && str[i].startsWith("I")&&str[i].matches(".*[^-,.]$")) {
-//       sectionCandidates.add(str[i]);
-//            }
-//        }
-//  }
-
-      /*
-        try {
-            Document.getPdfDocument().pdfTextStripper = new PDFTextStripper() {
-                @Override
-                protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
-                    Document.getPdfDocument().pdfTextStripper.setParagraphStart("\t");
-                    StringBuilder builder = new StringBuilder();
-                    //Wird zum erstellen eines csv Files verwendet.
-                    //\w matched alle char's die kein word sind. any non-word character.
-                    wordsAndOccurencesMap.merge(text.replaceAll("\\W", "").toLowerCase(Locale.ENGLISH), 1, Integer::sum);
-                    for (TextPosition t : textPositions) {
-                        //Zum Umranden der einzelnen Character.
-                        PDFont font = t.getFont();
-                        BoundingBox boundingBox = font.getBoundingBox();
-                        Rectangle2D.Float rect = new Rectangle2D.Float(boundingBox.getLowerLeftX(), boundingBox.getUpperRightY(), boundingBox.getWidth(), boundingBox.getHeight());
-                        AffineTransform affineTransform = t.getTextMatrix().createAffineTransform();
-                        affineTransform.scale(1 / 1000f, 1 / 1000f);
-                        Shape shape = affineTransform.createTransformedShape(rect);
-                        // Invertierung der Y - Achse.  Notwendig, da java in 2D User Space arbeitet. Und nicht in PDF User Space.
-                        Rectangle2D bounds = shape.getBounds2D();
-                        bounds.setRect(bounds.getX(), bounds.getY() - bounds.getHeight(), bounds.getWidth(), bounds.getHeight());
-
-                        //Wird zum zeichnen verwendet.
-                        charactersBoxCoordinatesMap.put(bounds, getCurrentPageNo());
-
-
-                        if (builder.length() == 0) {
-                            // builder.append("[[[FontSize:"+t.getFontSizeInPt()+" || "+t.getPageWidth()+ "]]]  ");
-                        }
-                        if (!t.equals(-1)) {
-                            builder.append(t);
-                        }
-
-                    }
-                    String newText = builder.toString();
-                    super.writeString(newText, textPositions);
-                }
-            };
-
-            //Wichtig, damit die initialisierung aufgerufen wird!
-            this.pdfDocumentText = pdfTextStripper.getText(this.pdfDocument);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
-
-//Überlegung:  Es existieren wörter, die in der Mitte kein Sinn ergeben. z.b But:  Bu    t
-//ERste Vorüberlegung wäre: wenn die anzahl an brüchigen Wörtern ab einem bestimmten Faktor hoch sind => zwei abschnitte vorhanden.
-//Ansonsten handelt es sich um Fließtext.
-//Ich könnte aber auch teorethisch untersuchen ob es silben trennungen gibt wie :   pedestri-
-//keine ahnung. Muss ich noch mal schauen...
-//  private void linksRechtsSectionBoundingArea() {
-      /*
-        try {
-            float width = Document.getPdfDocument().getPage(0).getMediaBox().getWidth();
-            float height = Document.getPdfDocument().getPage(0).getMediaBox().getHeight();
-            StringBuilder pdfText = new StringBuilder();
-            PDFTextStripperByArea stripper = new PDFTextStripperByArea();
-
-            stripper.setSortByPosition(true);
-
-            Rectangle2D rectLeft = new Rectangle2D.Float(0, 0, width / 2, height);
-
-            Rectangle2D rectRight = new Rectangle2D.Float(width / 2, 0, width / 2, height);
-
-            stripper.addRegion("leftColumn", rectLeft);
-
-            stripper.addRegion("rightColumn", rectRight);
-
-            PDPageTree allPages = Document.getPdfDocument().getDocumentCatalog().getPages();
-            int pageNumber = Document.getPdfDocument().getNumberOfPages();
-
-
-            String leftText = "";
-            String rightText = "";
-
-            for (int i = 0; i < pageNumber; i++) {
-
-                PDPage page = allPages.get(i);
-
-                stripper.extractRegions(page);
-                leftText = stripper.getTextForRegion("leftColumn");
-                rightText = stripper.getTextForRegion("rightColumn");
-
-                pdfText.append(leftText);
-                pdfText.append(rightText);
-            }
-            System.out.println(pdfText.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
-//  }
-

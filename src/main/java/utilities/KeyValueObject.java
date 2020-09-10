@@ -1,4 +1,10 @@
 package utilities;
+
+import extractor.DocumentParser;
+
+/**
+ * Datenstruktur zum abspeichern von zwei Paaren, Key und Value.
+ */
 public class KeyValueObject<K,V> {
     K key;
     V value;

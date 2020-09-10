@@ -7,7 +7,9 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
 import java.awt.*;
 
-//Vorlage um eine Klasse zu representieren, dass zeichnen kann.
+/**
+ * Vorlage um eine Klasse zu representieren, dass zeichnen kann.
+ */
 public abstract class Drawable implements PDFX {
     //Hauptinformationen einer geometrischen Figur
     protected float x, y, width, height;

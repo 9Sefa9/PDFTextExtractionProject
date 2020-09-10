@@ -23,25 +23,6 @@ public class DocumentParser {
         conferenceNames = new HashSet<>();
     }
 
-
-   /* public void prepareList(File[] documentFiles) {
-        try {
-            for (File docFile : documentFiles) {
-
-                if (docFile == null)
-                    throw new ImportException("Null File in documentFiles!");
-
-                //identifiziere die einzelnen konferenzNamen und trage Sie in die documentsList ein.
-                Document newDocument = new Document(docFile.getName(), docFile.getAbsolutePath());
-                newDocument.setPdfDocument(PDDocument.load(docFile));
-
-                this.documentsList.add(newDocument);
-            }
-        } catch (IOException | ImportException i) {
-            i.printStackTrace();
-        }
-    }*/
-
     /**
      * mit prepareList werden PDF files den Konferenzen zugeordnet und in die documentsList abgespeichert.
      *
@@ -89,22 +70,4 @@ public class DocumentParser {
         String[]tmp = new String[this.conferenceNames.size()];
         return this.conferenceNames.toArray(tmp);
     }
-       /* //der size gefällt mir nicht. ist nicht korrekt. Sollte aber kein problem sein.
-        String[] conferencesName = new String[getDetectedFiles().size()];
-        String lastConferenceName ="";
-        //wichtig, da sonst lücken entstehen.
-        int j=0;
-        for (int i = 0; i < getDetectedFiles().size(); i++) {
-            File parentFile = getDetectedFiles().get(i).getValue().getParentFile();
-            //wenn Elternpfad noch existiert
-            if (parentFile != null)
-                //und falls der nicht vorher eingetragen wurde,
-                if(!parentFile.getName().equals(lastConferenceName)) {
-                    conferencesName[j] = parentFile.getName();
-                    lastConferenceName = parentFile.getName();
-                    j+=1;
-                }
-        }
-        return conferencesName;
-    }*/
 }

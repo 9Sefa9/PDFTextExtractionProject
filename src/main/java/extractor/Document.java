@@ -7,7 +7,11 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import java.io.File;
 import java.io.IOException;
 
-public class    Document {
+/**
+ * Repräsentiert ein "Dokument" Objekt.  Folglich hat diese einen Namen, den Namen der Konferenz aus der er stammt,
+ * sein STrippe und der PDDocument um auf weitere Eigenschaften zugreifen zu können.
+ */
+public class Document {
     private PDDocument pdfDocument;
     private PDFTextStripper pdfTextStripper;
     private String pdfText;
@@ -18,8 +22,6 @@ public class    Document {
         this.conferenceName = conferenceName;
         this.pdfName = pdfName;
         this.pdfPath = absolutePath;
-        //speicher die Anzahl an Seiten ab.
-
     }
 
     public void setPdfPath(String pdfPath) {
